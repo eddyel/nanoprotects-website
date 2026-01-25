@@ -51,9 +51,9 @@ export default function Home() {
       <section
         id="philosophy"
         className="relative min-h-screen flex items-center bg-cover bg-center"
-        style={{ backgroundImage: 'url(/images/refined_why_materials.png)' }}
+        style={{ backgroundImage: 'url(/images/hero-riad.jpg)' }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50 z-10" />
+        <div className="absolute inset-0 bg-black/75 z-10" />
         <div className="container relative z-20 py-32">
           <div className="max-w-4xl">
             <h2 className="font-display font-bold text-white mb-6 leading-tight text-shadow-lg text-[1.75rem] md:text-[3rem] lg:text-[4rem]">
@@ -70,9 +70,9 @@ export default function Home() {
       <section
         id="what"
         className="relative min-h-screen flex items-center bg-cover bg-center"
-        style={{ backgroundImage: 'url(/images/revised_what_threestage.png)' }}
+        style={{ backgroundImage: 'url(/images/hotel-lobby.jpg)' }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50 z-10" />
+        <div className="absolute inset-0 bg-black/75 z-10" />
         <div className="container relative z-20 py-32">
           <div className="text-center mb-16">
             <h2 className="font-display font-bold text-white mb-4 leading-tight text-shadow-lg text-[1.75rem] md:text-[3rem] lg:text-[4rem]">
@@ -130,9 +130,9 @@ export default function Home() {
       <section
         id="how"
         className="relative min-h-screen flex items-center bg-cover bg-center"
-        style={{ backgroundImage: 'url(/images/revised_how_twophase.png)' }}
+        style={{ backgroundImage: 'url(/images/marble-macro.jpg)' }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50 z-10" />
+        <div className="absolute inset-0 bg-black/75 z-10" />
         <div className="container relative z-20 py-32">
           <div className="text-center mb-16">
             <h2 className="font-display font-bold text-white mb-4 leading-tight text-shadow-lg text-[1.75rem] md:text-[3rem] lg:text-[4rem]">

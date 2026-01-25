@@ -41,19 +41,19 @@ export default function Navigation() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-3 rtl:space-x-reverse">
+          <div className="flex items-center gap-3">
             <img
               src="/images/PHOTO-2026-01-25-15-41-21.jpg"
               alt="NanoProtects Logo"
               className="h-10 w-10 object-contain"
             />
-            <span className="text-white font-display text-xl font-semibold">
+            <span className="text-xl font-display font-semibold text-white whitespace-nowrap">
               NanoProtects
             </span>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+          <div className="hidden lg:flex items-center gap-8">
             <button
               onClick={() => scrollToSection('philosophy')}
               className="text-white/90 hover:text-white transition-colors text-sm font-medium"
