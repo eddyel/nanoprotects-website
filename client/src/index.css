@@ -56,8 +56,8 @@
   --muted-foreground: oklch(0.45 0.01 60);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --background: oklch(0.98 0 0); /* Off-white */
-  --foreground: oklch(0.2 0.01 60); /* Near-black text */
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.2 0.01 60);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.2 0.01 60);
   --popover: oklch(1 0 0);
@@ -109,66 +109,21 @@
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-width: 1280px;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 
   .flex {
     min-height: 0;
     min-width: 0;
-  }
-
-  @media (min-width: 640px) {
-    .container {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .container {
-      padding-left: 2rem;
-      padding-right: 2rem;
-      max-width: 1280px;
-    }
-  }
-
-  /* Immersive Section with Overlay */
-  .section-immersive {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-    padding: 6rem 0;
-  }
-
-  @media (max-width: 767px) {
-    .section-immersive {
-      min-height: auto;
-      padding: 5rem 0;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .section-immersive {
-      background-attachment: fixed;
-    }
-  }
-
-  .section-immersive::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(45, 45, 45, 0.7), rgba(45, 45, 45, 0.5));
-    z-index: 1;
-  }
-
-  .section-immersive > * {
-    position: relative;
-    z-index: 2;
   }
 
   /* Glass Card Effect */
@@ -177,24 +132,18 @@
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 1rem;
-    padding: 1.5rem;
-  }
-
-  @media (min-width: 768px) {
-    .glass-card {
-      padding: 2rem;
-    }
+    padding: 2rem;
   }
 
   /* Phase Badge */
   .phase-badge {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: white;
     background: oklch(0.48 0.18 252);
