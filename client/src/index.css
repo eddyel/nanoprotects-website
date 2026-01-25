@@ -139,8 +139,17 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     background-size: cover;
     background-position: center;
+    padding: 6rem 0;
+  }
+
+  @media (max-width: 767px) {
+    .section-immersive {
+      min-height: auto;
+      padding: 5rem 0;
+    }
   }
 
   @media (min-width: 768px) {
@@ -168,22 +177,37 @@
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .glass-card {
+      padding: 2rem;
+    }
   }
 
   /* Phase Badge */
   .phase-badge {
-    width: 5rem;
-    height: 5rem;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: white;
     background: oklch(0.48 0.18 252);
     box-shadow: 0 4px 20px rgba(0, 102, 204, 0.4);
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 768px) {
+    .phase-badge {
+      width: 5rem;
+      height: 5rem;
+      font-size: 2rem;
+    }
   }
 }
 
