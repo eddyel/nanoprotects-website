@@ -56,25 +56,37 @@ export default function Navigation() {
           <div className="hidden lg:flex items-center gap-8">
             <button
               onClick={() => scrollToSection('philosophy')}
-              className="text-white/90 hover:text-white transition-colors text-sm font-medium"
+              className="text-white/90 hover:text-white transition-colors text-sm font-medium
+                         min-h-[44px] px-4 py-3 -mx-2 rounded-md hover:bg-white/10
+                         focus:outline-none focus:ring-2 focus:ring-primary/50"
+              aria-label={t.nav.philosophy}
             >
               {t.nav.philosophy}
             </button>
             <button
               onClick={() => scrollToSection('what')}
-              className="text-white/90 hover:text-white transition-colors text-sm font-medium"
+              className="text-white/90 hover:text-white transition-colors text-sm font-medium
+                         min-h-[44px] px-4 py-3 -mx-2 rounded-md hover:bg-white/10
+                         focus:outline-none focus:ring-2 focus:ring-primary/50"
+              aria-label={t.nav.hospitality}
             >
               {t.nav.hospitality}
             </button>
             <button
               onClick={() => scrollToSection('how')}
-              className="text-white/90 hover:text-white transition-colors text-sm font-medium"
+              className="text-white/90 hover:text-white transition-colors text-sm font-medium
+                         min-h-[44px] px-4 py-3 -mx-2 rounded-md hover:bg-white/10
+                         focus:outline-none focus:ring-2 focus:ring-primary/50"
+              aria-label={t.nav.materials}
             >
               {t.nav.materials}
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="text-white/90 hover:text-white transition-colors text-sm font-medium"
+              className="text-white/90 hover:text-white transition-colors text-sm font-medium
+                         min-h-[44px] px-4 py-3 -mx-2 rounded-md hover:bg-white/10
+                         focus:outline-none focus:ring-2 focus:ring-primary/50"
+              aria-label={t.nav.contact}
             >
               {t.nav.contact}
             </button>
@@ -86,11 +98,14 @@ export default function Navigation() {
               <button
                 key={lang.code}
                 onClick={() => setLanguage(lang.code)}
-                className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+                className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded text-sm font-medium
+                            transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 ${
                   language === lang.code
                     ? 'bg-primary text-white'
                     : 'text-white/70 hover:text-white hover:bg-white/10'
                 }`}
+                aria-label={`Switch to ${lang.label}`}
+                aria-current={language === lang.code ? 'true' : undefined}
               >
                 {lang.label}
               </button>
@@ -100,7 +115,11 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white p-2"
+            className="md:hidden text-white p-3 min-h-[44px] min-w-[44px]
+                       rounded-md hover:bg-white/10 focus:outline-none
+                       focus:ring-2 focus:ring-primary/50"
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -108,41 +127,56 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 space-y-4 bg-secondary/95 backdrop-blur-md">
+          <div className="md:hidden py-4 space-y-2 bg-secondary/95 backdrop-blur-md">
             <button
               onClick={() => scrollToSection('philosophy')}
-              className="block w-full text-left text-white/90 hover:text-white transition-colors px-4 py-2"
+              className="block w-full text-left text-white/90 hover:text-white transition-colors
+                         px-6 py-4 min-h-[44px] rounded-md hover:bg-white/10
+                         focus:outline-none focus:ring-2 focus:ring-primary/50"
+              aria-label={t.nav.philosophy}
             >
               {t.nav.philosophy}
             </button>
             <button
               onClick={() => scrollToSection('what')}
-              className="block w-full text-left text-white/90 hover:text-white transition-colors px-4 py-2"
+              className="block w-full text-left text-white/90 hover:text-white transition-colors
+                         px-6 py-4 min-h-[44px] rounded-md hover:bg-white/10
+                         focus:outline-none focus:ring-2 focus:ring-primary/50"
+              aria-label={t.nav.hospitality}
             >
               {t.nav.hospitality}
             </button>
             <button
               onClick={() => scrollToSection('how')}
-              className="block w-full text-left text-white/90 hover:text-white transition-colors px-4 py-2"
+              className="block w-full text-left text-white/90 hover:text-white transition-colors
+                         px-6 py-4 min-h-[44px] rounded-md hover:bg-white/10
+                         focus:outline-none focus:ring-2 focus:ring-primary/50"
+              aria-label={t.nav.materials}
             >
               {t.nav.materials}
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="block w-full text-left text-white/90 hover:text-white transition-colors px-4 py-2"
+              className="block w-full text-left text-white/90 hover:text-white transition-colors
+                         px-6 py-4 min-h-[44px] rounded-md hover:bg-white/10
+                         focus:outline-none focus:ring-2 focus:ring-primary/50"
+              aria-label={t.nav.contact}
             >
               {t.nav.contact}
             </button>
-            <div className="flex items-center space-x-2 px-4 pt-2">
+            <div className="flex items-center space-x-2 px-4 pt-4">
               {languages.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => setLanguage(lang.code)}
-                  className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+                  className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded text-sm font-medium
+                              transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 ${
                     language === lang.code
                       ? 'bg-primary text-white'
                       : 'text-white/70 hover:text-white hover:bg-white/10'
                   }`}
+                  aria-label={`Switch to ${lang.label}`}
+                  aria-current={language === lang.code ? 'true' : undefined}
                 >
                   {lang.label}
                 </button>
