@@ -51,6 +51,12 @@ export interface Translations {
     emailPlaceholder: string;
     messagePlaceholder: string;
     submit: string;
+    submitting: string;
+    successMessage: string;
+    errorNameRequired: string;
+    errorEmailInvalid: string;
+    errorMessageRequired: string;
+    errorSubmit: string;
   };
   footer: {
     tagline: string;
@@ -110,6 +116,12 @@ export const translations: Record<Language, Translations> = {
       emailPlaceholder: 'Votre email',
       messagePlaceholder: 'Parlez-nous de votre projet',
       submit: 'Envoyer',
+      submitting: 'Envoi en cours...',
+      successMessage: 'Message envoyé avec succès ! Nous vous répondrons bientôt.',
+      errorNameRequired: 'Le nom est requis (minimum 2 caractères)',
+      errorEmailInvalid: 'Veuillez entrer une adresse email valide',
+      errorMessageRequired: 'Le message est requis (minimum 10 caractères)',
+      errorSubmit: 'Échec de l\'envoi du message. Veuillez réessayer.',
     },
     footer: {
       tagline: 'Nettoyage & Protection Invisible ou Décorative Toutes Surfaces',
@@ -167,6 +179,12 @@ export const translations: Record<Language, Translations> = {
       emailPlaceholder: 'بريدك الإلكتروني',
       messagePlaceholder: 'أخبرنا عن مشروعك',
       submit: 'إرسال',
+      submitting: 'جارٍ الإرسال...',
+      successMessage: 'تم إرسال الرسالة بنجاح! سنرد عليك قريبًا.',
+      errorNameRequired: 'الاسم مطلوب (حد أدنى حرفين)',
+      errorEmailInvalid: 'يرجى إدخال عنوان بريد إلكتروني صحيح',
+      errorMessageRequired: 'الرسالة مطلوبة (حد أدنى 10 أحرف)',
+      errorSubmit: 'فشل إرسال الرسالة. يرجى المحاولة مرة أخرى.',
     },
     footer: {
       tagline: 'تنظيف وحماية غير مرئية أو زخرفية لجميع الأسطح',
@@ -224,6 +242,12 @@ export const translations: Record<Language, Translations> = {
       emailPlaceholder: 'Tu email',
       messagePlaceholder: 'Cuéntanos sobre tu proyecto',
       submit: 'Enviar',
+      submitting: 'Enviando...',
+      successMessage: '¡Mensaje enviado con éxito! Te responderemos pronto.',
+      errorNameRequired: 'El nombre es obligatorio (mínimo 2 caracteres)',
+      errorEmailInvalid: 'Por favor, introduce un correo electrónico válido',
+      errorMessageRequired: 'El mensaje es obligatorio (mínimo 10 caracteres)',
+      errorSubmit: 'Error al enviar el mensaje. Por favor, inténtalo de nuevo.',
     },
     footer: {
       tagline: 'Limpieza y Protección Invisible o Decorativa Todas las Superficies',
@@ -281,6 +305,12 @@ export const translations: Record<Language, Translations> = {
       emailPlaceholder: 'Your email',
       messagePlaceholder: 'Tell us about your project',
       submit: 'Send',
+      submitting: 'Sending...',
+      successMessage: 'Message sent successfully! We will respond soon.',
+      errorNameRequired: 'Name is required (minimum 2 characters)',
+      errorEmailInvalid: 'Please enter a valid email address',
+      errorMessageRequired: 'Message is required (minimum 10 characters)',
+      errorSubmit: 'Failed to send message. Please try again.',
     },
     footer: {
       tagline: 'Cleaning & Invisible or Decorative Protection All Surfaces',

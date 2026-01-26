@@ -5,6 +5,7 @@ Design Philosophy: Moroccan Modernism with Immersive Overlay
 - No text overlapping or jumbled layouts
 */
 
+import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
@@ -12,9 +13,62 @@ import { ArrowRight, Droplet, Users, TrendingUp, Microscope, SprayCan, Shield, C
 
 export default function Home() {
   const { t } = useLanguage();
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const validateForm = (formData: FormData) => {
+    const errors: Record<string, string> = {};
+    const email = formData.get('email') as string;
+    const name = formData.get('name') as string;
+    const message = formData.get('message') as string;
+
+    if (!name || name.trim().length < 2) {
+      errors.name = t.contact.errorNameRequired || 'Name is required (min 2 characters)';
+    }
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = t.contact.errorEmailInvalid || 'Please enter a valid email';
+    }
+
+    if (!message || message.trim().length < 10) {
+      errors.message = t.contact.errorMessageRequired || 'Message is required (min 10 characters)';
+    }
+
+    return errors;
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormErrors({});
+
+    const formData = new FormData(e.currentTarget);
+    const errors = validateForm(formData);
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      // Focus first error field
+      const firstErrorField = Object.keys(errors)[0];
+      const field = e.currentTarget.querySelector(`[name="${firstErrorField}"]`) as HTMLElement;
+      field?.focus();
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      // TODO: Implement backend submission
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      alert(t.contact.successMessage || 'Message sent successfully!');
+      e.currentTarget.reset();
+      setFormErrors({});
+    } catch (error) {
+      setFormErrors({ submit: t.contact.errorSubmit || 'Failed to send message. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -243,34 +297,101 @@ export default function Home() {
               {t.contact.subtitle}
             </p>
 
-            <form className="space-y-6" onSubmit={(e) => {
-              e.preventDefault();
-              alert('Formulaire de contact - À implémenter avec backend');
-            }}>
-              <input
-                type="text"
-                placeholder={t.contact.namePlaceholder}
-                className="w-full px-6 py-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-primary text-[1rem]"
-                required
-              />
-              <input
-                type="email"
-                placeholder={t.contact.emailPlaceholder}
-                className="w-full px-6 py-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-primary text-[1rem]"
-                required
-              />
-              <textarea
-                placeholder={t.contact.messagePlaceholder}
-                rows={6}
-                className="w-full px-6 py-4 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-primary resize-none text-[1rem]"
-                required
-              />
+            <form className="space-y-6" onSubmit={handleSubmit} noValidate>
+              {/* Name Field */}
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder={t.contact.namePlaceholder}
+                  className={`w-full px-6 py-4 min-h-[48px] rounded-lg bg-white/10 border
+                             text-white placeholder-white/60 text-[1rem]
+                             focus:outline-none focus:ring-2 transition-all duration-200
+                             ${formErrors.name
+                               ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                               : 'border-white/20 focus:ring-primary focus:border-primary'
+                             }`}
+                  required
+                  aria-label={t.contact.namePlaceholder}
+                  aria-invalid={!!formErrors.name}
+                  aria-describedby={formErrors.name ? 'name-error' : undefined}
+                />
+                {formErrors.name && (
+                  <p id="name-error" className="mt-2 text-sm text-red-400" role="alert">
+                    {formErrors.name}
+                  </p>
+                )}
+              </div>
+
+              {/* Email Field */}
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  inputMode="email"
+                  autoComplete="email"
+                  placeholder={t.contact.emailPlaceholder}
+                  className={`w-full px-6 py-4 min-h-[48px] rounded-lg bg-white/10 border
+                             text-white placeholder-white/60 text-[1rem]
+                             focus:outline-none focus:ring-2 transition-all duration-200
+                             ${formErrors.email
+                               ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                               : 'border-white/20 focus:ring-primary focus:border-primary'
+                             }`}
+                  required
+                  aria-label={t.contact.emailPlaceholder}
+                  aria-invalid={!!formErrors.email}
+                  aria-describedby={formErrors.email ? 'email-error' : undefined}
+                />
+                {formErrors.email && (
+                  <p id="email-error" className="mt-2 text-sm text-red-400" role="alert">
+                    {formErrors.email}
+                  </p>
+                )}
+              </div>
+
+              {/* Message Field */}
+              <div>
+                <textarea
+                  name="message"
+                  placeholder={t.contact.messagePlaceholder}
+                  rows={6}
+                  className={`w-full px-6 py-4 min-h-[120px] rounded-lg bg-white/10 border
+                             text-white placeholder-white/60 text-[1rem]
+                             focus:outline-none focus:ring-2 transition-all duration-200
+                             resize-none
+                             ${formErrors.message
+                               ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                               : 'border-white/20 focus:ring-primary focus:border-primary'
+                             }`}
+                  required
+                  aria-label={t.contact.messagePlaceholder}
+                  aria-invalid={!!formErrors.message}
+                  aria-describedby={formErrors.message ? 'message-error' : undefined}
+                />
+                {formErrors.message && (
+                  <p id="message-error" className="mt-2 text-sm text-red-400" role="alert">
+                    {formErrors.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Submit Error */}
+              {formErrors.submit && (
+                <p className="text-sm text-red-400" role="alert">
+                  {formErrors.submit}
+                </p>
+              )}
+
+              {/* Submit Button */}
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-primary hover:bg-primary/90 text-white py-6 text-[1rem] md:text-[1.125rem]"
+                disabled={isSubmitting}
+                className="w-full bg-primary hover:bg-primary/90 text-white py-6 text-[1rem] md:text-[1.125rem]
+                           disabled:opacity-50 disabled:cursor-not-allowed min-h-[48px]"
               >
-                {t.contact.submit}
+                {isSubmitting ? (t.contact.submitting || 'Sending...') : t.contact.submit}
               </Button>
             </form>
           </div>
