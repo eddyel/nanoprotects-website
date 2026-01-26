@@ -81,7 +81,7 @@ export default function Home() {
         style={{ backgroundImage: 'url(/images/hero-riad.jpg)' }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50 z-10" />
-        <div className="container relative z-20 py-32">
+        <div className="container relative z-20 py-16 md:py-24 lg:py-32">
           <div className="max-w-4xl">
             <h1 className="font-display font-bold text-white mb-6 leading-tight text-shadow-lg text-[2rem] md:text-[3.5rem] lg:text-[5rem]">
               {t.hero.title}
@@ -108,7 +108,7 @@ export default function Home() {
         style={{ backgroundImage: 'url(/images/hero-riad.jpg)' }}
       >
         <div className="absolute inset-0 bg-black/75 z-10" />
-        <div className="container relative z-20 py-32">
+        <div className="container relative z-20 py-16 md:py-24 lg:py-32">
           <div className="max-w-4xl">
             <h2 className="font-display font-bold text-white mb-6 leading-tight text-shadow-lg text-[1.75rem] md:text-[3rem] lg:text-[4rem]">
               {t.why.title}
@@ -127,7 +127,7 @@ export default function Home() {
         style={{ backgroundImage: 'url(/images/hotel-lobby.jpg)' }}
       >
         <div className="absolute inset-0 bg-black/75 z-10" />
-        <div className="container relative z-20 py-32">
+        <div className="container relative z-20 py-16 md:py-24 lg:py-32">
           <div className="text-center mb-16">
             <h2 className="font-display font-bold text-white mb-4 leading-tight text-shadow-lg text-[1.75rem] md:text-[3rem] lg:text-[4rem]">
               {t.what.title}
@@ -187,7 +187,7 @@ export default function Home() {
         style={{ backgroundImage: 'url(/images/marble-macro.jpg)' }}
       >
         <div className="absolute inset-0 bg-black/75 z-10" />
-        <div className="container relative z-20 py-32">
+        <div className="container relative z-20 py-16 md:py-24 lg:py-32">
           <div className="text-center mb-16">
             <h2 className="font-display font-bold text-white mb-4 leading-tight text-shadow-lg text-[1.75rem] md:text-[3rem] lg:text-[4rem]">
               {t.how.title}
@@ -288,7 +288,7 @@ export default function Home() {
           }} />
         </div>
 
-        <div className="container relative z-10 py-32">
+        <div className="container relative z-10 py-16 md:py-24 lg:py-32">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="font-display font-bold text-white mb-6 text-[1.75rem] md:text-[3rem] lg:text-[4rem]">
               {t.contact.title}
