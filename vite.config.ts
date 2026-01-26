@@ -166,6 +166,26 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+
+    // Performance optimizations
+    target: 'es2020',
+    minify: 'esbuild',
+    cssMinify: 'lightningcss',
+
+    // Code splitting configuration
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor splitting for better caching
+          'react-vendor': ['react', 'react-dom'],
+          'ui-vendor': ['lucide-react', '@radix-ui/react-slot'],
+          'routing': ['wouter'],
+        },
+      },
+    },
+
+    // Chunk size warnings (500KB threshold)
+    chunkSizeWarningLimit: 500,
   },
   server: {
     port: 3000,
