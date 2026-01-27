@@ -1,9 +1,11 @@
-import { Link } from 'wouter';
+import { useLocation } from 'wouter';
 import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
 export default function Home() {
+  const [, setLocation] = useLocation();
+  
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -32,25 +34,23 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/showroom">
-              <Button 
-                size="lg" 
-                className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white font-semibold"
-              >
-                Showroom
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
+            <Button 
+              size="lg" 
+              onClick={() => setLocation('/showroom')}
+              className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white font-semibold"
+            >
+              Showroom
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
             
-            <Link href="/contact">
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="text-lg px-8 py-6 bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm font-semibold"
-              >
-                Demander un Diagnostic Gratuit
-              </Button>
-            </Link>
+            <Button 
+              size="lg" 
+              variant="outline"
+              onClick={() => setLocation('/contact')}
+              className="text-lg px-8 py-6 bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm font-semibold"
+            >
+              Demander un Diagnostic Gratuit
+            </Button>
           </div>
         </div>
       </section>
