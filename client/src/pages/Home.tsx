@@ -23,17 +23,17 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/60" />
         
         {/* Content */}
-        <div className="relative z-10 container max-w-5xl text-center px-6">
+        <div className="relative z-10 container max-w-5xl px-6">
           <h1 className="font-display text-[2.5rem] md:text-[4rem] lg:text-[5.5rem] font-bold text-white mb-8 leading-tight">
             L'Innovation au Service de l'Excellence
           </h1>
           
-          <p className="text-white/90 text-[1.125rem] md:text-[1.5rem] max-w-3xl mx-auto mb-12 leading-relaxed">
+          <p className="text-white/90 text-[1.125rem] md:text-[1.5rem] max-w-3xl mb-12 leading-relaxed">
             Nettoyage régénérant et protection nanotechnologique durable pour les surfaces d'exception. 
             Nous révélons la beauté originelle de vos matériaux et la protégeons pour 3 à 5 ans grâce à des revêtements invisibles de dernière génération.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Button 
               size="lg" 
               onClick={() => setLocation('/showroom')}
@@ -58,7 +58,7 @@ export default function Home() {
       {/* Quick Value Proposition */}
       <section className="py-20 bg-white">
         <div className="container max-w-6xl">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
+          <div className="grid md:grid-cols-3 gap-8">
             <div className="p-8">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl font-display font-bold text-primary">60%</span>
