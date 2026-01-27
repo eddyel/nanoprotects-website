@@ -42,32 +42,30 @@ export default function Navigation() {
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/">
-            <a className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-              <img
-                src="/images/PHOTO-2026-01-25-15-41-21.jpg"
-                alt="NanoProtects Logo"
-                className="h-12 w-12 object-contain"
-              />
-              <span className="font-display text-xl font-bold text-white whitespace-nowrap">
-                NanoProtects
-              </span>
-            </a>
+          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <img
+              src="/images/PHOTO-2026-01-25-15-41-21.jpg"
+              alt="NanoProtects Logo"
+              className="h-12 w-12 object-contain"
+            />
+            <span className="font-display text-xl font-bold text-white whitespace-nowrap">
+              NanoProtects
+            </span>
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-6">
             {menuItems.map((item) => (
-              <Link key={item.path} href={item.path}>
-                <a
-                  className={`text-sm font-medium transition-colors whitespace-nowrap ${
-                    location === item.path
-                      ? 'text-primary'
-                      : 'text-white/90 hover:text-white'
-                  }`}
-                >
-                  {item.label}
-                </a>
+              <Link 
+                key={item.path} 
+                href={item.path}
+                className={`text-sm font-medium transition-colors whitespace-nowrap ${
+                  location === item.path
+                    ? 'text-primary'
+                    : 'text-white/90 hover:text-white'
+                }`}
+              >
+                {item.label}
               </Link>
             ))}
           </div>
@@ -105,17 +103,17 @@ export default function Navigation() {
         <div className="lg:hidden bg-secondary border-t border-white/10">
           <div className="container py-4 space-y-3">
             {menuItems.map((item) => (
-              <Link key={item.path} href={item.path}>
-                <a
-                  className={`block py-2 text-sm font-medium transition-colors ${
-                    location === item.path
-                      ? 'text-primary'
-                      : 'text-white/90'
-                  }`}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
+              <Link 
+                key={item.path} 
+                href={item.path}
+                className={`block py-2 text-sm font-medium transition-colors ${
+                  location === item.path
+                    ? 'text-primary'
+                    : 'text-white/90'
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
               </Link>
             ))}
             <div className="flex gap-2 pt-4 border-t border-white/10">
