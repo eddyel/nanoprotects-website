@@ -8,7 +8,7 @@ export default function NotreMethode() {
       
       <section className="pt-32 pb-20">
         <div className="container max-w-6xl">
-          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-right text-secondary mb-8">
+          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left text-secondary mb-8">
             Notre Méthode en Deux Phases
           </h1>
           <p className="text-center text-gray-600 text-lg max-w-3xl mx-auto mb-20">

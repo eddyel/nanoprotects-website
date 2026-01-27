@@ -56,7 +56,7 @@ export default function MateriauxExpertises() {
       
       <section className="pt-32 pb-20">
         <div className="container max-w-6xl">
-          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-right text-secondary mb-16">
+          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left text-secondary mb-16">
             Materiaux et Expertises
           </h1>
           
