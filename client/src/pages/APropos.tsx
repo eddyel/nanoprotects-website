@@ -19,7 +19,7 @@ export default function APropos() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="container max-w-5xl">
-          <h1 className="font-display text-[2.5rem] md:text-[4rem] lg:text-[5rem] font-bold text-center text-secondary mb-6 leading-tight">
+          <h1 className="font-display text-[2.5rem] md:text-[4rem] lg:text-[5rem] font-bold text-right text-secondary mb-6 leading-tight">
             Nanotechnologies au service de l'hospitalité d'exception
           </h1>
         </div>
@@ -115,7 +115,7 @@ export default function APropos() {
       {/* Prestigious References */}
       <section className="py-20">
         <div className="container max-w-5xl">
-          <h2 className="font-display text-[2rem] md:text-[2.5rem] font-bold text-center text-secondary mb-12">
+          <h2 className="font-display text-[2rem] md:text-[2.5rem] font-bold text-right text-secondary mb-12">
             Ils nous font confiance
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">

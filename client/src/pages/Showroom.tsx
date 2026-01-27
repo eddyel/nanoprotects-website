@@ -88,7 +88,7 @@ export default function Showroom() {
       {/* Header Section */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-gray-50 to-white">
         <div className="container">
-          <h1 className="font-display text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-bold text-center text-secondary mb-4">
+          <h1 className="font-display text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-bold text-right text-secondary mb-4">
             Showroom : l'Excellence en Images
           </h1>
           <p className="text-center text-gray-600 text-[1rem] max-w-2xl mx-auto">

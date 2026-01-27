@@ -48,7 +48,7 @@ export default function Contact() {
       
       <section className="pt-32 pb-20">
         <div className="container max-w-3xl">
-          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-center text-secondary mb-8">
+          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-right text-secondary mb-8">
             Demandez un Diagnostic Gratuit
           </h1>
           <p className="text-center text-gray-600 text-lg mb-12">
