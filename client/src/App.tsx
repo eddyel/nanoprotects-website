@@ -8,6 +8,12 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 
 // Lazy load page components for code splitting
 const Home = lazy(() => import("./pages/Home"));
+const Showroom = lazy(() => import("./pages/Showroom"));
+const APropos = lazy(() => import("./pages/APropos"));
+const PourquoiNousChoisir = lazy(() => import("./pages/PourquoiNousChoisir"));
+const NotreMethode = lazy(() => import("./pages/NotreMethode"));
+const MateriauxExpertises = lazy(() => import("./pages/MateriauxExpertises"));
+const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Loading fallback component
@@ -27,6 +33,12 @@ function Router() {
     <Suspense fallback={<LoadingFallback />}>
       <Switch>
         <Route path={"/"} component={Home} />
+        <Route path="/showroom" component={Showroom} />
+        <Route path="/a-propos" component={APropos} />
+        <Route path="/pourquoi-nous-choisir" component={PourquoiNousChoisir} />
+        <Route path="/notre-methode" component={NotreMethode} />
+        <Route path="/materiaux-expertises" component={MateriauxExpertises} />
+        <Route path="/contact" component={Contact} />
         <Route path={"/404"} component={NotFound} />
         {/* Final fallback route */}
         <Route component={NotFound} />

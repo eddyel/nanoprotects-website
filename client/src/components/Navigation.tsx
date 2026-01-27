@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'wouter';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Language } from '@/lib/translations';
-import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 export default function Navigation() {
+  const [location] = useLocation();
   const { language, setLanguage, t } = useLanguage();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,15 +17,16 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
-  };
+  const menuItems = [
+    { path: '/a-propos', label: 'À Propos' },
+    { path: '/pourquoi-nous-choisir', label: 'Pourquoi Nous Choisir ?' },
+    { path: '/notre-methode', label: 'Notre Méthode' },
+    { path: '/materiaux-expertises', label: 'Matériaux & Expertises' },
+    { path: '/showroom', label: 'Showroom' },
+    { path: '/contact', label: 'Contact' },
+  ];
 
-  const languages: { code: Language; label: string }[] = [
+  const languages = [
     { code: 'fr', label: 'FR' },
     { code: 'ar', label: 'AR' },
     { code: 'es', label: 'ES' },
@@ -35,82 +36,53 @@ export default function Navigation() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-secondary/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        isScrolled ? 'bg-secondary/95 backdrop-blur-md shadow-lg' : 'bg-secondary/95 backdrop-blur-md'
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          className="flex items-center justify-between h-20"
-          style={{
-            paddingTop: 'max(0px, var(--safe-area-inset-top))',
-          }}
-        >
+      <div className="container">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center gap-3">
-            <img
-              src="/images/PHOTO-2026-01-25-15-41-21.jpg"
-              alt="NanoProtects Logo"
-              className="h-10 w-10 object-contain"
-            />
-            <span className="text-xl font-display font-semibold text-white whitespace-nowrap">
-              NanoProtects
-            </span>
-          </div>
+          <Link href="/">
+            <a className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+              <img
+                src="/images/PHOTO-2026-01-25-15-41-21.jpg"
+                alt="NanoProtects Logo"
+                className="h-12 w-12 object-contain"
+              />
+              <span className="font-display text-xl font-bold text-white whitespace-nowrap">
+                NanoProtects
+              </span>
+            </a>
+          </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
-            <button
-              onClick={() => scrollToSection('philosophy')}
-              className="text-white/90 hover:text-white transition-colors text-sm font-medium
-                         min-h-[44px] px-4 py-3 -mx-2 rounded-md hover:bg-white/10
-                         focus:outline-none focus:ring-2 focus:ring-primary/50"
-              aria-label={t.nav.philosophy}
-            >
-              {t.nav.philosophy}
-            </button>
-            <button
-              onClick={() => scrollToSection('what')}
-              className="text-white/90 hover:text-white transition-colors text-sm font-medium
-                         min-h-[44px] px-4 py-3 -mx-2 rounded-md hover:bg-white/10
-                         focus:outline-none focus:ring-2 focus:ring-primary/50"
-              aria-label={t.nav.hospitality}
-            >
-              {t.nav.hospitality}
-            </button>
-            <button
-              onClick={() => scrollToSection('how')}
-              className="text-white/90 hover:text-white transition-colors text-sm font-medium
-                         min-h-[44px] px-4 py-3 -mx-2 rounded-md hover:bg-white/10
-                         focus:outline-none focus:ring-2 focus:ring-primary/50"
-              aria-label={t.nav.materials}
-            >
-              {t.nav.materials}
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="text-white/90 hover:text-white transition-colors text-sm font-medium
-                         min-h-[44px] px-4 py-3 -mx-2 rounded-md hover:bg-white/10
-                         focus:outline-none focus:ring-2 focus:ring-primary/50"
-              aria-label={t.nav.contact}
-            >
-              {t.nav.contact}
-            </button>
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex items-center gap-6">
+            {menuItems.map((item) => (
+              <Link key={item.path} href={item.path}>
+                <a
+                  className={`text-sm font-medium transition-colors whitespace-nowrap ${
+                    location === item.path
+                      ? 'text-primary'
+                      : 'text-white/90 hover:text-white'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </Link>
+            ))}
           </div>
 
           {/* Language Switcher */}
-          <div className="hidden md:flex items-center space-x-2 rtl:space-x-reverse">
+          <div className="hidden lg:flex items-center gap-2">
             {languages.map((lang) => (
               <button
                 key={lang.code}
-                onClick={() => setLanguage(lang.code)}
-                className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded text-sm font-medium
-                            transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 ${
+                onClick={() => setLanguage(lang.code as any)}
+                className={`px-3 py-1.5 rounded text-sm font-medium transition-all ${
                   language === lang.code
                     ? 'bg-primary text-white'
                     : 'text-white/70 hover:text-white hover:bg-white/10'
                 }`}
-                aria-label={`Switch to ${lang.label}`}
-                aria-current={language === lang.code ? 'true' : undefined}
               >
                 {lang.label}
               </button>
@@ -119,77 +91,54 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white p-3 min-h-[44px] min-w-[44px]
-                       rounded-md hover:bg-white/10 focus:outline-none
-                       focus:ring-2 focus:ring-primary/50"
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMobileMenuOpen}
+            className="lg:hidden text-white p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 space-y-2 bg-secondary/95 backdrop-blur-md">
-            <button
-              onClick={() => scrollToSection('philosophy')}
-              className="block w-full text-left text-white/90 hover:text-white transition-colors
-                         px-6 py-4 min-h-[44px] rounded-md hover:bg-white/10
-                         focus:outline-none focus:ring-2 focus:ring-primary/50"
-              aria-label={t.nav.philosophy}
-            >
-              {t.nav.philosophy}
-            </button>
-            <button
-              onClick={() => scrollToSection('what')}
-              className="block w-full text-left text-white/90 hover:text-white transition-colors
-                         px-6 py-4 min-h-[44px] rounded-md hover:bg-white/10
-                         focus:outline-none focus:ring-2 focus:ring-primary/50"
-              aria-label={t.nav.hospitality}
-            >
-              {t.nav.hospitality}
-            </button>
-            <button
-              onClick={() => scrollToSection('how')}
-              className="block w-full text-left text-white/90 hover:text-white transition-colors
-                         px-6 py-4 min-h-[44px] rounded-md hover:bg-white/10
-                         focus:outline-none focus:ring-2 focus:ring-primary/50"
-              aria-label={t.nav.materials}
-            >
-              {t.nav.materials}
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="block w-full text-left text-white/90 hover:text-white transition-colors
-                         px-6 py-4 min-h-[44px] rounded-md hover:bg-white/10
-                         focus:outline-none focus:ring-2 focus:ring-primary/50"
-              aria-label={t.nav.contact}
-            >
-              {t.nav.contact}
-            </button>
-            <div className="flex items-center space-x-2 px-4 pt-4">
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-secondary border-t border-white/10">
+          <div className="container py-4 space-y-3">
+            {menuItems.map((item) => (
+              <Link key={item.path} href={item.path}>
+                <a
+                  className={`block py-2 text-sm font-medium transition-colors ${
+                    location === item.path
+                      ? 'text-primary'
+                      : 'text-white/90'
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              </Link>
+            ))}
+            <div className="flex gap-2 pt-4 border-t border-white/10">
               {languages.map((lang) => (
                 <button
                   key={lang.code}
-                  onClick={() => setLanguage(lang.code)}
-                  className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded text-sm font-medium
-                              transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 ${
+                  onClick={() => {
+                    setLanguage(lang.code as any);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`px-3 py-1.5 rounded text-sm font-medium transition-all ${
                     language === lang.code
                       ? 'bg-primary text-white'
-                      : 'text-white/70 hover:text-white hover:bg-white/10'
+                      : 'text-white/70 bg-white/10'
                   }`}
-                  aria-label={`Switch to ${lang.label}`}
-                  aria-current={language === lang.code ? 'true' : undefined}
                 >
                   {lang.label}
                 </button>
               ))}
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   );
 }
