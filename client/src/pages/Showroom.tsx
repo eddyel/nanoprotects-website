@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
@@ -10,6 +12,7 @@ interface GalleryImage {
   afterImage: string;
   title: string;
   description: string;
+  isSingleImage?: boolean;
 }
 
 const categories = [
@@ -34,10 +37,11 @@ const galleryImages: GalleryImage[] = [
   {
     id: '2',
     category: 'Bejmat',
-    beforeImage: '/images/showroom/bejmat-floor-before.jpg',
-    afterImage: '/images/showroom/bejmat-floor-after.jpg',
+    beforeImage: '/images/bejmat-couloir-av-ap.webp',
+    afterImage: '/images/bejmat-couloir-av-ap.webp',
     title: 'Sol en Bejmat - Riad',
-    description: 'Restauration couleur & traitement hydrofuge'
+    description: 'Restauration couleur & traitement hydrofuge',
+    isSingleImage: true
   },
   {
     id: '3',
@@ -85,105 +89,122 @@ export default function Showroom() {
     <div className="min-h-screen bg-white">
       <Navigation />
       
-      {/* Header Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container">
-          <h1 className="font-display text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-bold text-left text-secondary mb-4">
+      <div className="container pt-20 pb-20">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
             Showroom : l'Excellence en Images
           </h1>
-          <p className="text-center text-gray-600 text-[1rem] max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto">
             Découvrez la transformation spectaculaire de nos interventions à travers notre galerie avant/après
           </p>
         </div>
-      </section>
 
-      {/* Filter Bar */}
-      <section className="sticky top-20 z-30 bg-white/95 backdrop-blur-sm border-b border-gray-200 py-6">
-        <div className="container">
-          <div className="flex flex-wrap justify-center gap-3">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveFilter(category)}
-                className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 text-sm ${
-                  activeFilter === category
-                    ? 'bg-primary text-white shadow-lg shadow-primary/30'
-                    : 'bg-white text-gray-700 border border-gray-300 hover:border-primary hover:text-primary'
-                }`}
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveFilter(category)}
+              className={`px-4 py-2 rounded-full font-medium transition-all ${
+                activeFilter === category
+                  ? 'bg-primary text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        {/* Gallery Grid */}
+        <div className="masonry-grid">
+          <AnimatePresence>
+            {filteredImages.map((image) => (
+              <motion.div
+                key={image.id}
+                layout
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="masonry-item"
+                onClick={() => setLightboxImage(image)}
               >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Masonry Gallery */}
-      <section className="py-16">
-        <div className="container">
-          <div className="masonry-grid">
-            <AnimatePresence mode="popLayout">
-              {filteredImages.map((image) => (
-                <motion.div
-                  key={image.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.4 }}
-                  className="masonry-item"
-                  onClick={() => setLightboxImage(image)}
-                >
-                  <div className="gallery-card group">
-                    {/* Before/After Split Image */}
-                    <div className="relative overflow-hidden rounded-lg aspect-[4/3]">
-                      <div className="grid grid-cols-2 h-full">
-                        {/* Before */}
-                        <div className="relative">
-                          <img
-                            src={image.beforeImage}
-                            alt={`${image.title} - Avant`}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
-                            AVANT
-                          </div>
+                <div className="gallery-card group">
+                  {/* Before/After Image Container */}
+                  <div className="relative overflow-hidden rounded-lg aspect-[4/3]">
+                    {image.isSingleImage ? (
+                      /* Single Combined Image */
+                      <div className="relative w-full h-full">
+                        <img
+                          src={image.beforeImage}
+                          alt={`${image.title} - Avant et Après`}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
+                          AVANT
                         </div>
-                        {/* After */}
-                        <div className="relative">
-                          <img
-                            src={image.afterImage}
-                            alt={`${image.title} - Après`}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
-                            APRÈS
-                          </div>
+                        <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
+                          APRÈS
+                        </div>
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                          <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
+                            Cliquer pour agrandir
+                          </span>
                         </div>
                       </div>
-                      {/* Hover Overlay */}
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                        <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
-                          Cliquer pour agrandir
-                        </span>
-                      </div>
-                    </div>
-                    {/* Caption */}
-                    <div className="p-4">
-                      <h3 className="font-semibold text-secondary text-[1rem] mb-1">
-                        {image.title}
-                      </h3>
-                      <p className="text-sm text-gray-600">
-                        {image.description}
-                      </p>
-                    </div>
+                    ) : (
+                      /* Split Before/After Layout */
+                      <>
+                        <div className="grid grid-cols-2 h-full">
+                          {/* Before */}
+                          <div className="relative">
+                            <img
+                              src={image.beforeImage}
+                              alt={`${image.title} - Avant`}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
+                              AVANT
+                            </div>
+                          </div>
+                          {/* After */}
+                          <div className="relative">
+                            <img
+                              src={image.afterImage}
+                              alt={`${image.title} - Après`}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
+                              APRÈS
+                            </div>
+                          </div>
+                        </div>
+                        {/* Hover Overlay */}
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                          <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
+                            Cliquer pour agrandir
+                          </span>
+                        </div>
+                      </>
+                    )}
                   </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
+                  {/* Caption */}
+                  <div className="p-4">
+                    <h3 className="font-semibold text-secondary text-[1rem] mb-1">
+                      {image.title}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      {image.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
-      </section>
+      </div>
 
       {/* Lightbox Modal */}
       <AnimatePresence>
@@ -192,52 +213,45 @@ export default function Showroom() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
             onClick={() => setLightboxImage(null)}
           >
-            <button
-              className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
-              onClick={() => setLightboxImage(null)}
-            >
-              <X size={32} />
-            </button>
             <motion.div
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
-              className="max-w-6xl w-full"
+              className="relative max-w-4xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="relative">
+              {lightboxImage.isSingleImage ? (
+                /* Single Image Lightbox */
+                <img
+                  src={lightboxImage.beforeImage}
+                  alt={`${lightboxImage.title} - Avant et Après`}
+                  className="w-full h-auto rounded-lg"
+                />
+              ) : (
+                /* Split Image Lightbox */
+                <div className="grid grid-cols-2 gap-2 bg-black rounded-lg overflow-hidden">
                   <img
                     src={lightboxImage.beforeImage}
                     alt={`${lightboxImage.title} - Avant`}
-                    className="w-full h-auto rounded-lg"
+                    className="w-full h-auto"
                   />
-                  <div className="absolute top-4 left-4 bg-black/70 text-white text-sm font-semibold px-4 py-2 rounded">
-                    AVANT
-                  </div>
-                </div>
-                <div className="relative">
                   <img
                     src={lightboxImage.afterImage}
                     alt={`${lightboxImage.title} - Après`}
-                    className="w-full h-auto rounded-lg"
+                    className="w-full h-auto"
                   />
-                  <div className="absolute top-4 right-4 bg-primary text-white text-sm font-semibold px-4 py-2 rounded">
-                    APRÈS
-                  </div>
                 </div>
-              </div>
-              <div className="text-center mt-6 text-white">
-                <h3 className="text-2xl font-display font-bold mb-2">
-                  {lightboxImage.title}
-                </h3>
-                <p className="text-gray-300">
-                  {lightboxImage.description}
-                </p>
-              </div>
+              )}
+              
+              <button
+                onClick={() => setLightboxImage(null)}
+                className="absolute -top-10 right-0 text-white hover:text-gray-300 transition-colors"
+              >
+                <X size={32} />
+              </button>
             </motion.div>
           </motion.div>
         )}
