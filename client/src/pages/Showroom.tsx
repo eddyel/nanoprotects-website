@@ -62,6 +62,15 @@ const galleryImages: GalleryImage[] = [
     isSingleImage: true
   },
   {
+    id: '2d',
+    category: 'Bejmat',
+    beforeImage: '/images/bejmat-escalier-av-ap.webp',
+    afterImage: '/images/bejmat-escalier-av-ap.webp',
+    title: 'Escalier en Bejmat - Riad',
+    description: 'Nettoyage & traitement anti-dérapant',
+    isSingleImage: true
+  },
+  {
     id: '3',
     category: 'Marbre',
     beforeImage: '/images/showroom/marble-white-before.jpg',
