@@ -44,6 +44,15 @@ const galleryImages: GalleryImage[] = [
     isSingleImage: true
   },
   {
+    id: '2b',
+    category: 'Bejmat',
+    beforeImage: '/images/bejmat-patio-av-ap.webp',
+    afterImage: '/images/bejmat-patio-av-ap.webp',
+    title: 'Patio en Bejmat - Riad',
+    description: 'Nettoyage & traitement protecteur',
+    isSingleImage: true
+  },
+  {
     id: '3',
     category: 'Marbre',
     beforeImage: '/images/showroom/marble-white-before.jpg',
