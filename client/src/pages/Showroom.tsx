@@ -53,6 +53,15 @@ const galleryImages: GalleryImage[] = [
     isSingleImage: true
   },
   {
+    id: '2c',
+    category: 'Bejmat',
+    beforeImage: '/images/bejmat-entree-av-ap.webp',
+    afterImage: '/images/bejmat-entree-av-ap.webp',
+    title: 'Entrée en Bejmat - Riad',
+    description: 'Nettoyage en profondeur & traitement hydrofuge',
+    isSingleImage: true
+  },
+  {
     id: '3',
     category: 'Marbre',
     beforeImage: '/images/showroom/marble-white-before.jpg',
