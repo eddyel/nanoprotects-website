@@ -7,7 +7,7 @@ import Navigation from '@/components/Navigation';
 
 interface GalleryImage {
   id: string;
-  category: string;
+  category: string | string[];
   beforeImage: string;
   afterImage: string;
   title: string;
@@ -73,10 +73,11 @@ const galleryImages: GalleryImage[] = [
   {
     id: '3',
     category: 'Marbre',
-    beforeImage: '/images/showroom/marble-white-before.jpg',
-    afterImage: '/images/showroom/marble-white-after.jpg',
-    title: 'Marbre Blanc de Carrare',
-    description: 'Élimination taches & protection anti-taches'
+    beforeImage: '/images/marbre-table-ronde-av-ap.webp',
+    afterImage: '/images/marbre-table-ronde-av-ap.webp',
+    title: 'Table en Marbre - Hotel',
+    description: 'Nettoyage profond, Crystallisation & traitement anti-taches',
+    isSingleImage: true
   },
   {
     id: '4',
@@ -102,6 +103,15 @@ const galleryImages: GalleryImage[] = [
     title: 'Marbre Lobby Hôtel',
     description: 'Traitement anti-dérapant invisible'
   },
+  {
+    id: '7',
+    category: ['Marbre', 'Zellige'],
+    beforeImage: '/images/marbre-zellige-av-ap.webp',
+    afterImage: '/images/marbre-zellige-av-ap.webp',
+    title: 'Marbre Blanc de Carrare & Zellige Noir - Hotel',
+    description: 'Nettoyage profond & Protection sublimée',
+    isSingleImage: true
+  },
 ];
 
 export default function Showroom() {
@@ -110,7 +120,10 @@ export default function Showroom() {
 
   const filteredImages = activeFilter === 'Tous'
     ? galleryImages
-    : galleryImages.filter(img => img.category === activeFilter);
+    : galleryImages.filter(img => {
+        const categories = Array.isArray(img.category) ? img.category : [img.category];
+        return categories.includes(activeFilter);
+      });
 
   return (
     <div className="min-h-screen bg-white">
