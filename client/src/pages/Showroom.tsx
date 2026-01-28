@@ -67,7 +67,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/bejmat-escalier-av-ap.webp',
     afterImage: '/images/bejmat-escalier-av-ap.webp',
     title: 'Escalier en Bejmat - Riad',
-    description: 'Nettoyage & traitement anti-dérapant',
+    description: 'Nettoyage & traitement Hydrofuge et Oléofuge invisible',
     isSingleImage: true
   },
   {
