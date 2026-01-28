@@ -16,6 +16,14 @@ export interface Translations {
   why: {
     title: string;
     subtitle: string;
+    reason1Title: string;
+    reason1Description: string;
+    reason2Title: string;
+    reason2Description: string;
+    reason3Title: string;
+    reason3Description: string;
+    reason4Title: string;
+    reason4Description: string;
   };
   what: {
     title: string;
@@ -79,8 +87,16 @@ export const translations: Record<Language, Translations> = {
       cta: 'Découvrez Notre Philosophie',
     },
     why: {
-      title: 'Pourquoi Protéger Votre Patrimoine?',
+      title: 'Pourquoi Nous Choisir ?',
       subtitle: 'Chaque surface raconte une histoire. Chaque matériau porte l\'âme de l\'artisan qui l\'a créé. Préserver cette beauté, c\'est honorer un héritage et garantir que vos espaces continuent d\'inspirer l\'émerveillement pour les générations à venir.',
+      reason1Title: 'Expertise Scientifique & Sur-Mesure',
+      reason1Description: 'Notre diagnostic précis et nos protocoles scientifiques écologiques, appliqués par des équipes hautement qualifiées, garantissent une solution parfaitement adaptée à chaque matériau et à vos enjeux spécifiques.',
+      reason2Title: 'Technologie Durable & Régénérante',
+      reason2Description: 'Nous allions un nettoyage régénérant, qui redonne leur éclat d\'origine aux surfaces, à une protection nanotechnologique invisible et durable (3 à 5 ans), pour une beauté préservée à long terme.',
+      reason3Title: 'Agilité Opérationnelle & Discrétion Totale',
+      reason3Description: 'Notre processus est conçu pour être ultra-efficace, agile et parfaitement discret. Il s\'intègre sans perturber votre exploitation, dans le respect strict de vos plannings et de votre image de marque.',
+      reason4Title: 'Partenariat Rentable & de Confiance',
+      reason4Description: 'Grâce à une relation de dialogue continu et une fiabilité d\'exécution, nous réduisons drastiquement vos coûts de maintenance à long terme, transformant l\'entretien en un investissement stratégique et serein.',
     },
     what: {
       title: 'Révéler la Beauté, Puis la Rendre Éternelle',
@@ -142,8 +158,16 @@ export const translations: Record<Language, Translations> = {
       cta: 'اكتشف فلسفتنا',
     },
     why: {
-      title: 'لماذا حماية تراثك؟',
+      title: 'لماذا تختارنا؟',
       subtitle: 'كل سطح يحكي قصة. كل مادة تحمل روح الحرفي الذي صنعها. الحفاظ على هذا الجمال يعني تكريم إرث وضمان استمرار مساحاتك في إلهام الإعجاب للأجيال القادمة.',
+      reason1Title: 'الخبرة العلمية والحلول المخصصة',
+      reason1Description: 'يضمن تشخيصنا الدقيق وبروتوكولاتنا العلمية البيئية، التي تطبقها فرق مؤهلة عالياً، حلاً مثالياً لكل مادة واحتياجاتك المحددة.',
+      reason2Title: 'التكنولوجيا المستدامة والمجددة',
+      reason2Description: 'نجمع بين التنظيف المجدد الذي يعيد اللمعان الأصلي للأسطح مع الحماية النانوية غير المرئية والدائمة (3-5 سنوات)، لجمال محفوظ على المدى الطويل.',
+      reason3Title: 'الرشاقة التشغيلية والسرية الكاملة',
+      reason3Description: 'عمليتنا مصممة لتكون فعالة للغاية وخفيفة وسرية تماماً. تندمج بدون تعطيل عملياتك، مع احترام صارم لجداولك وسمعتك.',
+      reason4Title: 'الشراكة المربحة والموثوقة',
+      reason4Description: 'من خلال الحوار المستمر والموثوقية في التنفيذ، نقلل بشكل كبير تكاليف الصيانة طويلة الأجل، مما يحول الصيانة إلى استثمار استراتيجي وآمن.',
     },
     what: {
       title: 'كشف الجمال، ثم جعله أبديًا',
@@ -205,8 +229,16 @@ export const translations: Record<Language, Translations> = {
       cta: 'Descubre Nuestra Filosofía',
     },
     why: {
-      title: '¿Por Qué Proteger Tu Patrimonio?',
+      title: '¿Por Qué Elegirnos?',
       subtitle: 'Cada superficie cuenta una historia. Cada material lleva el alma del artesano que lo creó. Preservar esta belleza es honrar un legado y garantizar que tus espacios continúen inspirando asombro para las generaciones venideras.',
+      reason1Title: 'Experiencia Científica y Soluciones Personalizadas',
+      reason1Description: 'Nuestro diagnóstico preciso y protocolos científicos ecológicos, aplicados por equipos altamente calificados, garantizan una solución perfectamente adaptada a cada material y a tus necesidades específicas.',
+      reason2Title: 'Tecnología Sostenible y Regeneradora',
+      reason2Description: 'Combinamos una limpieza regeneradora que devuelve el brillo original a las superficies con una protección nanotecnológica invisible y duradera (3-5 años), para una belleza preservada a largo plazo.',
+      reason3Title: 'Agilidad Operacional y Discreción Total',
+      reason3Description: 'Nuestro proceso está diseñado para ser ultra eficiente, ágil y completamente discreto. Se integra sin perturbar tu operación, con respeto estricto a tus horarios y tu imagen de marca.',
+      reason4Title: 'Asociación Rentable y de Confianza',
+      reason4Description: 'Gracias a un diálogo continuo y confiabilidad en la ejecución, reducimos drásticamente tus costos de mantenimiento a largo plazo, transformando el mantenimiento en una inversión estratégica y segura.',
     },
     what: {
       title: 'Revelar la Belleza, Luego Hacerla Eterna',
@@ -268,8 +300,16 @@ export const translations: Record<Language, Translations> = {
       cta: 'Discover Our Philosophy',
     },
     why: {
-      title: 'Why Protect Your Heritage?',
+      title: 'Why Choose Us?',
       subtitle: 'Every surface tells a story. Every material carries the soul of the artisan who created it. Preserving this beauty means honoring a legacy and ensuring your spaces continue to inspire wonder for generations to come.',
+      reason1Title: 'Scientific Expertise & Customized Solutions',
+      reason1Description: 'Our precise diagnosis and ecological scientific protocols, applied by highly qualified teams, guarantee a solution perfectly adapted to each material and your specific needs.',
+      reason2Title: 'Sustainable & Regenerative Technology',
+      reason2Description: 'We combine regenerative cleaning that restores the original shine to surfaces with invisible and durable nanotechnology protection (3-5 years), for beauty preserved long-term.',
+      reason3Title: 'Operational Agility & Total Discretion',
+      reason3Description: 'Our process is designed to be ultra-efficient, agile, and completely discreet. It integrates without disrupting your operations, with strict respect for your schedules and brand image.',
+      reason4Title: 'Profitable & Trustworthy Partnership',
+      reason4Description: 'Through continuous dialogue and reliable execution, we drastically reduce your long-term maintenance costs, transforming maintenance into a strategic and secure investment.',
     },
     what: {
       title: 'Reveal Beauty, Then Make It Eternal',
