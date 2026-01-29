@@ -61,7 +61,7 @@ const categories = [
   'Carreaux Beldi',
   'Zellige',
   'Métal',
-  'Sécurité Sols'
+  'Minéralisation'
 ];
 
 const galleryImages: GalleryImage[] = [
