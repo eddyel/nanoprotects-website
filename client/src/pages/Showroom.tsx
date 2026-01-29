@@ -25,6 +25,7 @@ const categories = [
   'Bejmat',
   'Pierre de Taza',
   'Marbre',
+  'Carreaux Beldi',
   'Zellige',
   'Métal',
   'Sécurité Sols'
@@ -194,6 +195,16 @@ const galleryImages: GalleryImage[] = [
     title: 'Console Marbre - Hotel',
     description: 'Nettoyage profond, Crystallisation & Protection Sublimé',
     isSingleImage: true
+  },
+  {
+    id: '17',
+    category: 'Carreaux Beldi',
+    beforeImage: '/images/plage-piscine-carreaux-beldi-marbre.webp',
+    afterImage: '/images/plage-piscine-carreaux-beldi-marbre.webp',
+    title: 'Plage Piscine Carreaux Beldi, Marbre - Hotel',
+    description: 'Nettoyage profond & Protection Sublimé',
+    isSingleImage: true,
+    hideLabels: true
   },
 ];
 
