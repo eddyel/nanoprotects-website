@@ -257,6 +257,16 @@ const galleryImages: GalleryImage[] = [
     description: 'Nettoyage profond & Protection Sublimé',
     isSingleImage: true
   },
+  {
+    id: '20',
+    category: 'Métal',
+    beforeImage: '/images/transat-alu-protected.png',
+    afterImage: '/images/transat-alu-protected.png',
+    title: 'Transat Alluminium - Particulier',
+    description: 'Nettoyage profond & Protection Sublimé',
+    isSingleImage: true,
+    hideLabels: true
+  },
 ];
 
 export default function Showroom() {
