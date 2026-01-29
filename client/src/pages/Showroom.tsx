@@ -1,9 +1,42 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import Navigation from '@/components/Navigation';
+import LazyImage from '@/components/LazyImage';
+
+// Custom hook for lazy loading images with Intersection Observer
+const useLazyImage = (ref: React.RefObject<HTMLImageElement>) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && ref.current) {
+          const img = ref.current;
+          const src = img.dataset.src;
+          if (src) {
+            img.src = src;
+            img.onload = () => setIsLoaded(true);
+            observer.unobserve(img);
+          }
+        }
+      },
+      { rootMargin: '50px' }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, [ref]);
+
+  return isLoaded;
+};
 
 interface GalleryImage {
   id: string;
@@ -303,11 +336,10 @@ export default function Showroom() {
                   <div className="relative overflow-hidden rounded-lg aspect-[4/3]">
                     {image.isVideo ? (
                       <div className="relative w-full h-full bg-black">
-                        <img
-                          src={image.videoPoster}
+                        <LazyImage
+                          src={image.videoPoster || ''}
                           alt={`${image.title} - Poster`}
                           className="w-full h-full object-cover"
-                          loading="lazy"
                         />
                         <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
                           AVANT
@@ -322,11 +354,10 @@ export default function Showroom() {
                     ) : image.isSingleImage ? (
                       /* Single Combined Image */
                       <div className="relative w-full h-full">
-                        <img
-                          src={image.beforeImage}
+                        <LazyImage
+                          src={image.beforeImage || ''}
                           alt={`${image.title} - Avant et Après`}
                           className="w-full h-full object-cover"
-                          loading="lazy"
                         />
                         {!image.hideLabels && (
                           <>
@@ -350,11 +381,10 @@ export default function Showroom() {
                         <div className="grid grid-cols-2 h-full">
                           {/* Before */}
                           <div className="relative">
-                            <img
-                              src={image.beforeImage}
+                            <LazyImage
+                              src={image.beforeImage || ''}
                               alt={`${image.title} - Avant`}
                               className="w-full h-full object-cover"
-                              loading="lazy"
                             />
                             <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
                               AVANT
@@ -362,11 +392,10 @@ export default function Showroom() {
                           </div>
                           {/* After */}
                           <div className="relative">
-                            <img
-                              src={image.afterImage}
+                            <LazyImage
+                              src={image.afterImage || ''}
                               alt={`${image.title} - Après`}
                               className="w-full h-full object-cover"
-                              loading="lazy"
                             />
                             <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
                               APRES
