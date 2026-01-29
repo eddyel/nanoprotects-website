@@ -215,6 +215,15 @@ const galleryImages: GalleryImage[] = [
     description: 'Nettoyage profond & Protection Sublimé',
     isSingleImage: true
   },
+  {
+    id: '19',
+    category: ['Carreaux Beldi', 'Zellige'],
+    beforeImage: '/images/sol-restaurant-carreaux-beldi-zellige-riad.webp',
+    afterImage: '/images/sol-restaurant-carreaux-beldi-zellige-riad.webp',
+    title: 'Sol Restaurant Carreaux Beldi, Zellige - Riad',
+    description: 'Nettoyage profond & Protection Sublimé',
+    isSingleImage: true
+  },
 ];
 
 export default function Showroom() {
