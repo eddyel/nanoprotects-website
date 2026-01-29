@@ -37,8 +37,8 @@ const galleryImages: GalleryImage[] = [
   {
     id: '2',
     category: 'Bejmat',
-    beforeImage: '/images/bejmat-couloir-av-ap.webp',
-    afterImage: '/images/bejmat-couloir-av-ap.webp',
+    beforeImage: '/images/bejmat-corridor-riad.webp',
+    afterImage: '/images/bejmat-corridor-riad.webp',
     title: 'Sol en Bejmat - Riad',
     description: 'Restauration couleur & traitement hydrofuge',
     isSingleImage: true
@@ -46,8 +46,8 @@ const galleryImages: GalleryImage[] = [
   {
     id: '2b',
     category: 'Bejmat',
-    beforeImage: '/images/bejmat-patio-av-ap.webp',
-    afterImage: '/images/bejmat-patio-av-ap.webp',
+    beforeImage: '/images/bejmat-patio-riad.webp',
+    afterImage: '/images/bejmat-patio-riad.webp',
     title: 'Patio en Bejmat - Riad',
     description: 'Nettoyage & traitement protecteur',
     isSingleImage: true
@@ -55,8 +55,8 @@ const galleryImages: GalleryImage[] = [
   {
     id: '2c',
     category: 'Bejmat',
-    beforeImage: '/images/bejmat-entree-av-ap.webp',
-    afterImage: '/images/bejmat-entree-av-ap.webp',
+    beforeImage: '/images/bejmat-entrance-riad.webp',
+    afterImage: '/images/bejmat-entrance-riad.webp',
     title: 'Entrée en Bejmat - Riad',
     description: 'Nettoyage en profondeur & traitement hydrofuge',
     isSingleImage: true
@@ -64,8 +64,8 @@ const galleryImages: GalleryImage[] = [
   {
     id: '2d',
     category: 'Bejmat',
-    beforeImage: '/images/bejmat-escalier-av-ap.webp',
-    afterImage: '/images/bejmat-escalier-av-ap.webp',
+    beforeImage: '/images/bejmat-staircase-riad.webp',
+    afterImage: '/images/bejmat-staircase-riad.webp',
     title: 'Escalier en Bejmat - Riad',
     description: 'Nettoyage & traitement Hydrofuge et Oléofuge invisible',
     isSingleImage: true
@@ -73,8 +73,8 @@ const galleryImages: GalleryImage[] = [
   {
     id: '3',
     category: 'Marbre',
-    beforeImage: '/images/marbre-table-ronde-av-ap.webp',
-    afterImage: '/images/marbre-table-ronde-av-ap.webp',
+    beforeImage: '/images/marbre-table-hotel.webp',
+    afterImage: '/images/marbre-table-hotel.webp',
     title: 'Table en Marbre - Hotel',
     description: 'Nettoyage profond, Crystallisation & traitement anti-taches',
     isSingleImage: true
@@ -109,6 +109,15 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/marbre-zellige-av-ap.webp',
     afterImage: '/images/marbre-zellige-av-ap.webp',
     title: 'Marbre Blanc de Carrare & Zellige Noir - Hotel',
+    description: 'Nettoyage profond & Protection sublimée',
+    isSingleImage: true
+  },
+  {
+    id: '8',
+    category: 'Zellige',
+    beforeImage: '/images/zellige-sol-mur-riad.webp',
+    afterImage: '/images/zellige-sol-mur-riad.webp',
+    title: 'Sol & Mur Zellige - Riad',
     description: 'Nettoyage profond & Protection sublimée',
     isSingleImage: true
   },
@@ -265,24 +274,42 @@ export default function Showroom() {
             >
               {lightboxImage.isSingleImage ? (
                 /* Single Image Lightbox */
-                <img
-                  src={lightboxImage.beforeImage}
-                  alt={`${lightboxImage.title} - Avant et Après`}
-                  className="w-full h-auto rounded-lg"
-                />
-              ) : (
-                /* Split Image Lightbox */
-                <div className="grid grid-cols-2 gap-2 bg-black rounded-lg overflow-hidden">
+                <div className="relative">
                   <img
                     src={lightboxImage.beforeImage}
-                    alt={`${lightboxImage.title} - Avant`}
-                    className="w-full h-auto"
+                    alt={`${lightboxImage.title} - Avant et Après`}
+                    className="w-full h-auto rounded-lg"
                   />
-                  <img
-                    src={lightboxImage.afterImage}
-                    alt={`${lightboxImage.title} - Après`}
-                    className="w-full h-auto"
-                  />
+                  <div className="absolute top-4 left-4 bg-black/70 text-white text-sm font-semibold px-4 py-2 rounded">
+                    AVANT
+                  </div>
+                  <div className="absolute top-4 right-4 bg-primary text-white text-sm font-semibold px-4 py-2 rounded">
+                    APRÈS
+                  </div>
+                </div>
+              ) : (
+                /* Split Image Lightbox */
+                <div className="grid grid-cols-2 gap-2 bg-black rounded-lg overflow-hidden relative">
+                  <div className="relative">
+                    <img
+                      src={lightboxImage.beforeImage}
+                      alt={`${lightboxImage.title} - Avant`}
+                      className="w-full h-auto"
+                    />
+                    <div className="absolute top-4 left-4 bg-black/70 text-white text-sm font-semibold px-4 py-2 rounded">
+                      AVANT
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <img
+                      src={lightboxImage.afterImage}
+                      alt={`${lightboxImage.title} - Après`}
+                      className="w-full h-auto"
+                    />
+                    <div className="absolute top-4 right-4 bg-primary text-white text-sm font-semibold px-4 py-2 rounded">
+                      APRÈS
+                    </div>
+                  </div>
                 </div>
               )}
               
