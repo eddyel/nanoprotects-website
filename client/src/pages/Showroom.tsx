@@ -157,6 +157,15 @@ const galleryImages: GalleryImage[] = [
     isSingleImage: true,
     hideLabels: true
   },
+  {
+    id: '13',
+    category: 'Pierre de Taza',
+    beforeImage: '/images/plage-piscine-pierre-taza.webp',
+    afterImage: '/images/plage-piscine-pierre-taza.webp',
+    title: 'Plage Piscine Pierre de Taza - Résidence',
+    description: 'Nettoyage profond & Protection Sublimé',
+    isSingleImage: true
+  },
 ];
 
 export default function Showroom() {
