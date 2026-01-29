@@ -10,6 +10,9 @@ export default function Home() {
   
   return (
     <div className="min-h-screen">
+      {/* Top Light Brown Strip */}
+      <div className="h-4 bg-amber-50" />
+      
       <Navigation />
       
       {/* Hero Section */}
@@ -56,6 +59,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Bottom Light Brown Strip */}
+      <div className="h-4 bg-amber-50" />
+
       {/* Quick Value Proposition */}
       <section className="py-20 bg-white">
         <div className="container max-w-6xl">
@@ -92,6 +98,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Bottom Light Brown Strip */}
+      <div className="h-4 bg-amber-50" />
     </div>
   );
 }

@@ -42,16 +42,13 @@ export default function Navigation() {
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <img
-              src="/images/PHOTO-2026-01-25-15-41-21.webp"
+              src="/images/nanoprotects-logo-new.png"
               alt="NanoProtects Logo"
-              className="h-12 w-12 object-contain"
+              className="h-16 object-contain brightness-0 invert"
               loading="eager"
             />
-            <span className="font-display text-xl font-bold text-white whitespace-nowrap">
-              NanoProtects
-            </span>
           </Link>
 
           {/* Desktop Menu */}
