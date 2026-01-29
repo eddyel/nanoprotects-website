@@ -18,11 +18,11 @@ export default function Navigation() {
   });
 
   const menuItems = [
-    { path: '/a-propos', label: t.nav.philosophy },
     { path: '/pourquoi-nous-choisir', label: t.nav.hospitality },
     { path: '/notre-methode', label: t.nav.materials },
     { path: '/materiaux-expertises', label: t.nav.projects },
     { path: '/showroom', label: 'Showroom' },
+    { path: '/a-propos', label: t.nav.philosophy },
     { path: '/contact', label: t.nav.contact },
   ];
 
