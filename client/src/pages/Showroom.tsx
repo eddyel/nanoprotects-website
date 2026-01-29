@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import LazyImage from '@/components/LazyImage';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // Custom hook for lazy loading images with Intersection Observer
 const useLazyImage = (ref: React.RefObject<HTMLImageElement>) => {
@@ -300,6 +301,7 @@ const galleryImages: GalleryImage[] = [
 ];
 
 export default function Showroom() {
+  const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('Tous');
   const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
   const [videoEnded, setVideoEnded] = useState(false);
