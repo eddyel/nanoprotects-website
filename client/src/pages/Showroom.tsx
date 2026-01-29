@@ -8,11 +8,15 @@ import Navigation from '@/components/Navigation';
 interface GalleryImage {
   id: string;
   category: string | string[];
-  beforeImage: string;
-  afterImage: string;
+  beforeImage?: string;
+  afterImage?: string;
+  videoMp4?: string;
+  videoWebm?: string;
+  videoPoster?: string;
   title: string;
   description: string;
   isSingleImage?: boolean;
+  isVideo?: boolean;
 }
 
 const categories = [
@@ -139,11 +143,23 @@ const galleryImages: GalleryImage[] = [
     description: 'Détartrage, nettoyage profond & Protection sublimée',
     isSingleImage: true
   },
+  {
+    id: '11',
+    category: 'Pierre de Taza',
+    videoMp4: '/images/cabine-spa-av-ap.mp4',
+    videoWebm: '/images/cabine-spa-av-ap.webm',
+    videoPoster: '/images/cabine-spa-av-ap-poster.webp',
+    title: 'Sol Cabine Massage Pierre de Taza - Hotel',
+    description: 'Nettoyage profond & Protection sublimée',
+    isVideo: true
+  },
 ];
 
 export default function Showroom() {
   const [activeFilter, setActiveFilter] = useState('Tous');
   const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
+  const [videoEnded, setVideoEnded] = useState(false);
+  const [videoRef, setVideoRef] = useState<HTMLVideoElement | null>(null);
 
   const filteredImages = activeFilter === 'Tous'
     ? galleryImages
@@ -151,6 +167,19 @@ export default function Showroom() {
         const categories = Array.isArray(img.category) ? img.category : [img.category];
         return categories.includes(activeFilter);
       });
+
+  const handleLightboxOpen = (image: GalleryImage) => {
+    setLightboxImage(image);
+    setVideoEnded(false);
+  };
+
+  const handlePlayAgain = () => {
+    if (videoRef) {
+      videoRef.currentTime = 0;
+      videoRef.play();
+      setVideoEnded(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -196,12 +225,30 @@ export default function Showroom() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
                 className="masonry-item"
-                onClick={() => setLightboxImage(image)}
+                onClick={() => handleLightboxOpen(image)}
               >
                 <div className="gallery-card group">
                   {/* Before/After Image Container */}
                   <div className="relative overflow-hidden rounded-lg aspect-[4/3]">
-                    {image.isSingleImage ? (
+                    {image.isVideo ? (
+                      <div className="relative w-full h-full bg-black">
+                        <img
+                          src={image.videoPoster}
+                          alt={`${image.title} - Poster`}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                        <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
+                          AVANT
+                        </div>
+                        <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
+                          APRES
+                        </div>
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                          <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Cliquer pour agrandir</span>
+                        </div>
+                      </div>
+                    ) : image.isSingleImage ? (
                       /* Single Combined Image */
                       <div className="relative w-full h-full">
                         <img
@@ -214,7 +261,7 @@ export default function Showroom() {
                           AVANT
                         </div>
                         <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
-                          APRÈS
+                          APRES
                         </div>
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                           <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
@@ -247,7 +294,7 @@ export default function Showroom() {
                               loading="lazy"
                             />
                             <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
-                              APRÈS
+                              APRES
                             </div>
                           </div>
                         </div>
@@ -293,7 +340,41 @@ export default function Showroom() {
               className="relative max-w-4xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              {lightboxImage.isSingleImage ? (
+              {lightboxImage.isVideo ? (
+                /* Video Lightbox */
+                <div className="relative bg-black rounded-lg overflow-hidden">
+                  <div className="relative">
+                    <video
+                      ref={setVideoRef}
+                      src={lightboxImage.videoMp4}
+                      className="w-full h-auto"
+                      controls
+                      preload="metadata"
+                      poster={lightboxImage.videoPoster}
+                      autoPlay
+                      onEnded={() => setVideoEnded(true)}
+                    />
+                    {/* AVANT/APRES Labels */}
+                    <div className="absolute top-4 left-4 bg-black/70 text-white text-sm font-semibold px-4 py-2 rounded">
+                      AVANT
+                    </div>
+                    <div className="absolute top-4 right-4 bg-primary text-white text-sm font-semibold px-4 py-2 rounded">
+                      APRES
+                    </div>
+                    {/* Play Again Button */}
+                    {videoEnded && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg">
+                        <button
+                          onClick={handlePlayAgain}
+                          className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+                        >
+                          Play again
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ) : lightboxImage.isSingleImage ? (
                 /* Single Image Lightbox */
                 <div className="relative">
                   <img
@@ -305,7 +386,7 @@ export default function Showroom() {
                     AVANT
                   </div>
                   <div className="absolute top-4 right-4 bg-primary text-white text-sm font-semibold px-4 py-2 rounded">
-                    APRÈS
+                    APRES
                   </div>
                 </div>
               ) : (
@@ -328,7 +409,7 @@ export default function Showroom() {
                       className="w-full h-auto"
                     />
                     <div className="absolute top-4 right-4 bg-primary text-white text-sm font-semibold px-4 py-2 rounded">
-                      APRÈS
+                      APRES
                     </div>
                   </div>
                 </div>
