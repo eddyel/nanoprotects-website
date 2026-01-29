@@ -21,7 +21,7 @@ export default function Navigation() {
     { path: '/pourquoi-nous-choisir', label: t.nav.hospitality },
     { path: '/notre-methode', label: t.nav.materials },
     { path: '/materiaux-expertises', label: t.nav.projects },
-    { path: '/showroom', label: 'Showroom' },
+    { path: '/showroom', label: t.nav.realizations },
     { path: '/a-propos', label: t.nav.philosophy },
     { path: '/contact', label: t.nav.contact },
   ];
@@ -57,13 +57,15 @@ export default function Navigation() {
               <Link 
                 key={item.path} 
                 href={item.path}
-                className={`text-sm font-medium transition-colors whitespace-nowrap ${
+                className={`text-xs font-medium transition-colors text-center leading-tight ${
                   location === item.path
                     ? 'text-primary'
                     : 'text-white/90 hover:text-white'
                 }`}
               >
-                {item.label}
+                {item.label.split('\n').map((line, i) => (
+                  <div key={i}>{line}</div>
+                ))}
               </Link>
             ))}
           </div>

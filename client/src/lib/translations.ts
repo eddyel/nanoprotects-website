@@ -6,6 +6,7 @@ export interface Translations {
     hospitality: string;
     materials: string;
     projects: string;
+    realizations: string;
     contact: string;
   };
   hero: {
@@ -95,10 +96,11 @@ export interface Translations {
 export const translations: Record<Language, Translations> = {
   fr: {
     nav: {
-      philosophy: 'À Propos',
-      hospitality: 'Pourquoi Nous Choisir ?',
-      materials: 'Notre Méthode',
-      projects: 'Matériaux & Expertises',
+      philosophy: 'À\nPropos',
+      hospitality: 'Pourquoi\nNous Choisir ?',
+      materials: 'Notre\nMéthode',
+      projects: 'Matériaux\n& Expertises',
+      realizations: 'Nos\nRéalisations',
       contact: 'Contact',
     },
     hero: {
@@ -187,9 +189,10 @@ export const translations: Record<Language, Translations> = {
   ar: {
     nav: {
       philosophy: 'حول',
-      hospitality: 'لماذا تختارنا؟',
+      hospitality: 'لماذا\nتختارنا؟',
       materials: 'طريقتنا',
-      projects: 'المواد والخبرات',
+      projects: 'المواد\nوالخبرات',
+      realizations: 'إنجازاتنا',
       contact: 'اتصل بنا',
     },
     hero: {
@@ -277,10 +280,11 @@ export const translations: Record<Language, Translations> = {
   },
   es: {
     nav: {
-      philosophy: 'Acerca de',
-      hospitality: '¿Por Qué Elegirnos?',
-      materials: 'Nuestro Método',
-      projects: 'Materiales y Experiencias',
+      philosophy: 'Acerca\nde',
+      hospitality: '¿Por Qué\nElegirnos?',
+      materials: 'Nuestro\nMétodo',
+      projects: 'Materiales\ny Experiencias',
+      realizations: 'Nuestras\nRealizaciones',
       contact: 'Contacto',
     },
     hero: {
@@ -369,9 +373,10 @@ export const translations: Record<Language, Translations> = {
   en: {
     nav: {
       philosophy: 'About',
-      hospitality: 'Why Choose Us?',
-      materials: 'Our Method',
-      projects: 'Materials & Expertise',
+      hospitality: 'Why Choose\nUs?',
+      materials: 'Our\nMethod',
+      projects: 'Materials\n& Expertise',
+      realizations: 'Our\nProjects',
       contact: 'Contact',
     },
     hero: {
