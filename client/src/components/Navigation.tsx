@@ -15,15 +15,15 @@ export default function Navigation() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  });
 
   const menuItems = [
-    { path: '/a-propos', label: 'À Propos' },
-    { path: '/pourquoi-nous-choisir', label: 'Pourquoi Nous Choisir ?' },
-    { path: '/notre-methode', label: 'Notre Méthode' },
-    { path: '/materiaux-expertises', label: 'Matériaux & Expertises' },
+    { path: '/a-propos', label: t.nav.philosophy },
+    { path: '/pourquoi-nous-choisir', label: t.nav.hospitality },
+    { path: '/notre-methode', label: t.nav.materials },
+    { path: '/materiaux-expertises', label: t.nav.projects },
     { path: '/showroom', label: 'Showroom' },
-    { path: '/contact', label: 'Contact' },
+    { path: '/contact', label: t.nav.contact },
   ];
 
   const languages = [
