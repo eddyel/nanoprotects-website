@@ -287,6 +287,16 @@ const galleryImages: GalleryImage[] = [
     isVideo: true,
     hideLabels: true
   },
+  {
+    id: '23',
+    category: 'Minéralisation',
+    videoMp4: '/images/mur-pise.mp4',
+    videoPoster: '/images/mur-pise-poster.webp',
+    title: 'Mur en Pisé - Hotel',
+    description: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
+    isVideo: true,
+    hideLabels: true
+  },
 ];
 
 export default function Showroom() {
