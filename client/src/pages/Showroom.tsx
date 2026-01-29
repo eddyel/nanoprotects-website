@@ -186,6 +186,15 @@ const galleryImages: GalleryImage[] = [
     isSingleImage: true,
     hideLabels: true
   },
+  {
+    id: '16',
+    category: 'Marbre',
+    beforeImage: '/images/console-marbre-hotel.png',
+    afterImage: '/images/console-marbre-hotel.png',
+    title: 'Console Marbre - Hotel',
+    description: 'Nettoyage profond, Crystallisation & Protection Sublimé',
+    isSingleImage: true
+  },
 ];
 
 export default function Showroom() {
