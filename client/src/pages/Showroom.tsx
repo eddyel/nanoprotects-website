@@ -262,7 +262,7 @@ const galleryImages: GalleryImage[] = [
     category: 'Métal',
     beforeImage: '/images/transat-alu-protected.png',
     afterImage: '/images/transat-alu-protected.png',
-    title: 'Transat Alluminium - Particulier',
+    title: 'Transat Aluminium - Particulier',
     description: 'Nettoyage profond & Protection Sublimé',
     isSingleImage: true,
     hideLabels: true
