@@ -153,6 +153,15 @@ const galleryImages: GalleryImage[] = [
     description: 'Nettoyage profond & Protection sublimée',
     isVideo: true
   },
+  {
+    id: '12',
+    category: 'Pierre de Taza',
+    beforeImage: '/images/sol-pierre-taza-hotel.webp',
+    afterImage: '/images/sol-pierre-taza-hotel.webp',
+    title: 'Sol Pierre de Taza - Hotel',
+    description: 'Nettoyage profond & Protection Invisible',
+    isSingleImage: true
+  },
 ];
 
 export default function Showroom() {
