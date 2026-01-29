@@ -37,21 +37,20 @@ export default function Home() {
             {t.hero.subtitle}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col gap-4 w-fit">
             <Button 
               size="lg" 
               onClick={() => setLocation('/showroom')}
-              className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white font-semibold"
+              className="text-lg px-6 py-6 bg-primary hover:bg-primary/90 text-white font-semibold justify-center whitespace-nowrap"
             >
-              Showroom
-              <ArrowRight className="ml-2 w-5 h-5" />
+              Nos Réalisations
             </Button>
             
             <Button 
               size="lg" 
               variant="outline"
               onClick={() => setLocation('/contact')}
-              className="text-lg px-8 py-6 bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm font-semibold"
+              className="text-lg px-6 py-6 bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm font-semibold justify-center whitespace-nowrap"
             >
               {t.hero.cta}
             </Button>
@@ -59,48 +58,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Bottom Light Brown Strip */}
-      <div className="h-4 bg-amber-50" />
 
-      {/* Quick Value Proposition */}
-      <section className="py-20 bg-white">
-        <div className="container max-w-6xl">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-8">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl font-display font-bold text-primary">60%</span>
-              </div>
-              <h3 className="font-semibold text-secondary text-lg mb-2">{t.home.benefit1Title}</h3>
-              <p className="text-gray-600 text-sm">
-                {t.home.benefit1Text}
-              </p>
-            </div>
-            
-            <div className="p-8">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-display font-bold text-primary">3-5 ans</span>
-              </div>
-              <h3 className="font-semibold text-secondary text-lg mb-2">{t.home.benefit2Title}</h3>
-              <p className="text-gray-600 text-sm">
-                {t.home.benefit2Text}
-              </p>
-            </div>
-            
-            <div className="p-8">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-display font-bold text-primary">12-18 mois</span>
-              </div>
-              <h3 className="font-semibold text-secondary text-lg mb-2">{t.home.benefit3Title}</h3>
-              <p className="text-gray-600 text-sm">
-                {t.home.benefit3Text}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Bottom Light Brown Strip */}
-      <div className="h-4 bg-amber-50" />
     </div>
   );
 }
