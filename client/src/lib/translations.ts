@@ -95,10 +95,10 @@ export interface Translations {
 export const translations: Record<Language, Translations> = {
   fr: {
     nav: {
-      philosophy: 'Philosophie',
-      hospitality: 'Hôtellerie',
-      materials: 'Matériaux',
-      projects: 'Réalisations',
+      philosophy: 'À Propos',
+      hospitality: 'Pourquoi Nous Choisir ?',
+      materials: 'Notre Méthode',
+      projects: 'Matériaux & Expertises',
       contact: 'Contact',
     },
     hero: {
@@ -186,10 +186,10 @@ export const translations: Record<Language, Translations> = {
   },
   ar: {
     nav: {
-      philosophy: 'الفلسفة',
-      hospitality: 'الضيافة',
-      materials: 'المواد',
-      projects: 'المشاريع',
+      philosophy: 'حول',
+      hospitality: 'لماذا تختارنا؟',
+      materials: 'طريقتنا',
+      projects: 'المواد والخبرات',
       contact: 'اتصل بنا',
     },
     hero: {
@@ -277,10 +277,10 @@ export const translations: Record<Language, Translations> = {
   },
   es: {
     nav: {
-      philosophy: 'Filosofía',
-      hospitality: 'Hostelería',
-      materials: 'Materiales',
-      projects: 'Proyectos',
+      philosophy: 'Acerca de',
+      hospitality: '¿Por Qué Elegirnos?',
+      materials: 'Nuestro Método',
+      projects: 'Materiales y Experiencias',
       contact: 'Contacto',
     },
     hero: {
@@ -310,7 +310,7 @@ export const translations: Record<Language, Translations> = {
     },
     why: {
       title: '¿Por Qué Elegirnos?',
-      subtitle: 'Cada superficie cuenta una historia. Cada material lleva el alma del artesano que lo creó. Preservar esta belleza es honrar un legado y garantizar que tus espacios continúen inspirando asombro para las generaciones venideras.',
+      subtitle: 'Cada superficie cuenta una historia. Cada material lleva el alma del artesano que lo creó. Preservar esta belleza es honrar un legado y garantir que tus espacios continúen inspirando asombro para las generaciones venideras.',
       reason1Title: 'Experiencia Científica y Soluciones Personalizadas',
       reason1Description: 'Nuestro diagnóstico preciso y protocolos científicos ecológicos, aplicados por equipos altamente calificados, garantizan una solución perfectamente adaptada a cada material y a tus necesidades específicas.',
       reason2Title: 'Tecnología Sostenible y Regeneradora',
@@ -368,10 +368,10 @@ export const translations: Record<Language, Translations> = {
   },
   en: {
     nav: {
-      philosophy: 'Philosophy',
-      hospitality: 'Hospitality',
-      materials: 'Materials',
-      projects: 'Projects',
+      philosophy: 'About',
+      hospitality: 'Why Choose Us?',
+      materials: 'Our Method',
+      projects: 'Materials & Expertise',
       contact: 'Contact',
     },
     hero: {
