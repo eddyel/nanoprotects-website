@@ -17,6 +17,7 @@ interface GalleryImage {
   description: string;
   isSingleImage?: boolean;
   isVideo?: boolean;
+  hideLabels?: boolean;
 }
 
 const categories = [
@@ -83,14 +84,7 @@ const galleryImages: GalleryImage[] = [
     description: 'Nettoyage profond, Crystallisation & traitement anti-taches',
     isSingleImage: true
   },
-  {
-    id: '4',
-    category: 'Pierre de Taza',
-    beforeImage: '/images/showroom/pierre-taza-before.webp',
-    afterImage: '/images/showroom/pierre-taza-after.webp',
-    title: 'Pierre de Taza - Façade',
-    description: 'Démoussage & imperméabilisation'
-  },
+
   {
     id: '5',
     category: 'Métal',
@@ -160,7 +154,8 @@ const galleryImages: GalleryImage[] = [
     afterImage: '/images/sol-pierre-taza-hotel.webp',
     title: 'Sol Pierre de Taza - Hotel',
     description: 'Nettoyage profond & Protection Invisible',
-    isSingleImage: true
+    isSingleImage: true,
+    hideLabels: true
   },
 ];
 
@@ -266,12 +261,16 @@ export default function Showroom() {
                           className="w-full h-full object-cover"
                           loading="lazy"
                         />
-                        <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
-                          AVANT
-                        </div>
-                        <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
-                          APRES
-                        </div>
+                        {!image.hideLabels && (
+                          <>
+                            <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
+                              AVANT
+                            </div>
+                            <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
+                              APRES
+                            </div>
+                          </>
+                        )}
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                           <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
                             Cliquer pour agrandir
