@@ -166,6 +166,16 @@ const galleryImages: GalleryImage[] = [
     description: 'Nettoyage profond & Protection Sublimé',
     isSingleImage: true
   },
+  {
+    id: '14',
+    category: 'Pierre de Taza',
+    beforeImage: '/images/plage-piscine-pierre-taza-hotel.jpg',
+    afterImage: '/images/plage-piscine-pierre-taza-hotel.jpg',
+    title: 'Plage Piscine Pierre de Taza - Hotel',
+    description: 'Protection Invisible',
+    isSingleImage: true,
+    hideLabels: true
+  },
 ];
 
 export default function Showroom() {
