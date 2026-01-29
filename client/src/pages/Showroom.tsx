@@ -206,6 +206,15 @@ const galleryImages: GalleryImage[] = [
     isSingleImage: true,
     hideLabels: true
   },
+  {
+    id: '18',
+    category: 'Carreaux Beldi',
+    beforeImage: '/images/sol-cuisine-carreaux-beldi-riad.png',
+    afterImage: '/images/sol-cuisine-carreaux-beldi-riad.png',
+    title: 'Sol Cuisine Carreaux Beldi - Riad',
+    description: 'Nettoyage profond & Protection Sublimé',
+    isSingleImage: true
+  },
 ];
 
 export default function Showroom() {
