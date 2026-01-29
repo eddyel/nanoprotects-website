@@ -267,6 +267,16 @@ const galleryImages: GalleryImage[] = [
     isSingleImage: true,
     hideLabels: true
   },
+  {
+    id: '21',
+    category: 'Minéralisation',
+    videoMp4: '/images/mur-briquettes.mpeg',
+    videoPoster: '/images/mur-briquettes-poster.webp',
+    title: 'Mur Briquettes - Hotel',
+    description: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
+    isVideo: true,
+    hideLabels: true
+  },
 ];
 
 export default function Showroom() {
@@ -351,12 +361,16 @@ export default function Showroom() {
                           alt={`${image.title} - Poster`}
                           className="w-full h-full object-cover"
                         />
-                        <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
-                          AVANT
-                        </div>
-                        <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
-                          APRES
-                        </div>
+                        {!image.hideLabels && (
+                          <>
+                            <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
+                              AVANT
+                            </div>
+                            <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
+                              APRES
+                            </div>
+                          </>
+                        )}
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                           <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Cliquer pour agrandir</span>
                         </div>
