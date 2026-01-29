@@ -73,8 +73,8 @@ const galleryImages: GalleryImage[] = [
   {
     id: '3',
     category: 'Marbre',
-    beforeImage: '/images/marbre-table-hotel.webp',
-    afterImage: '/images/marbre-table-hotel.webp',
+    beforeImage: '/images/marbre-table-ronde-av-ap.webp',
+    afterImage: '/images/marbre-table-ronde-av-ap.webp',
     title: 'Table en Marbre - Hotel',
     description: 'Nettoyage profond, Crystallisation & traitement anti-taches',
     isSingleImage: true
@@ -119,6 +119,24 @@ const galleryImages: GalleryImage[] = [
     afterImage: '/images/zellige-sol-mur-riad.webp',
     title: 'Sol & Mur Zellige - Riad',
     description: 'Nettoyage profond & Protection sublimée',
+    isSingleImage: true
+  },
+  {
+    id: '9',
+    category: 'Zellige',
+    beforeImage: '/images/zellige-fontaine-hotel.webp',
+    afterImage: '/images/zellige-fontaine-hotel.webp',
+    title: 'Fontaine Zellige - Hotel',
+    description: 'Détartrage, Nettoyage profond & Protection sublimée',
+    isSingleImage: true
+  },
+  {
+    id: '10',
+    category: 'Zellige',
+    beforeImage: '/images/zellige-sol-hotel.webp',
+    afterImage: '/images/zellige-sol-hotel.webp',
+    title: 'Sol Zellige - Hotel',
+    description: 'Détartrage, nettoyage profond & Protection sublimée',
     isSingleImage: true
   },
 ];
