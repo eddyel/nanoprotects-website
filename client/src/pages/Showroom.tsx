@@ -277,6 +277,16 @@ const galleryImages: GalleryImage[] = [
     isVideo: true,
     hideLabels: true
   },
+  {
+    id: '22',
+    category: 'Minéralisation',
+    videoMp4: '/images/mur-enduit.mp4',
+    videoPoster: '/images/mur-enduit-poster.webp',
+    title: 'Mur Enduit - Particulier',
+    description: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
+    isVideo: true,
+    hideLabels: true
+  },
 ];
 
 export default function Showroom() {
