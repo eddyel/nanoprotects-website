@@ -176,6 +176,16 @@ const galleryImages: GalleryImage[] = [
     isSingleImage: true,
     hideLabels: true
   },
+  {
+    id: '15',
+    category: 'Pierre de Taza',
+    beforeImage: '/images/sol-pierre-taza-particulier.jpg',
+    afterImage: '/images/sol-pierre-taza-particulier.jpg',
+    title: 'Sol Pierre de Taza - Particulier',
+    description: 'Nettoyage profond & Protection Sublimé',
+    isSingleImage: true,
+    hideLabels: true
+  },
 ];
 
 export default function Showroom() {
