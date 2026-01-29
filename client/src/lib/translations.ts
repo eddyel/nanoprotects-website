@@ -13,6 +13,26 @@ export interface Translations {
     subtitle: string;
     cta: string;
   };
+  home: {
+    benefit1Title: string;
+    benefit1Text: string;
+    benefit2Title: string;
+    benefit2Text: string;
+    benefit3Title: string;
+    benefit3Text: string;
+  };
+  showroom: {
+    title: string;
+    subtitle: string;
+    filterAll: string;
+    filterBejmat: string;
+    filterPierreTaza: string;
+    filterMarble: string;
+    filterCarreauxBeldi: string;
+    filterZellige: string;
+    filterMetal: string;
+    filterMineralization: string;
+  };
   why: {
     title: string;
     subtitle: string;
@@ -82,9 +102,29 @@ export const translations: Record<Language, Translations> = {
       contact: 'Contact',
     },
     hero: {
-      title: 'La Beauté Qui Défie Le Temps',
-      subtitle: 'Protection nanotechnologique au service du patrimoine marocain',
-      cta: 'Découvrez Notre Philosophie',
+      title: 'L\'Innovation au Service de l\'Excellence',
+      subtitle: 'Nettoyage régénérant et protection nanotechnologique durable pour les surfaces d\'exception. Nous révélons la beauté originelle de vos matériaux et la protégeons pour 3 à 5 ans grâce à des revêtements invisibles de dernière génération.',
+      cta: 'Demander un Diagnostic Gratuit',
+    },
+    home: {
+      benefit1Title: 'Temps Libéré',
+      benefit1Text: 'Vos équipes se concentrent sur l\'hospitalité, nous prenons soin de vos surfaces',
+      benefit2Title: 'Protection Durable',
+      benefit2Text: 'Revêtement nanotechnologique invisible qui résiste à l\'eau, l\'huile et les taches',
+      benefit3Title: 'ROI Rapide',
+      benefit3Text: 'Retour sur investissement prouvé grâce aux économies de maintenance',
+    },
+    showroom: {
+      title: 'Showroom : l\'Excellence en Images',
+      subtitle: 'Découvrez la transformation spectaculaire de nos interventions à travers notre galerie avant/après',
+      filterAll: 'Tous',
+      filterBejmat: 'Bejmat',
+      filterPierreTaza: 'Pierre de Taza',
+      filterMarble: 'Marbre',
+      filterCarreauxBeldi: 'Carreaux Beldi',
+      filterZellige: 'Zellige',
+      filterMetal: 'Métal',
+      filterMineralization: 'Minéralisation',
     },
     why: {
       title: 'Pourquoi Nous Choisir ?',
@@ -153,9 +193,29 @@ export const translations: Record<Language, Translations> = {
       contact: 'اتصل بنا',
     },
     hero: {
-      title: 'الجمال الذي يتحدى الزمن',
-      subtitle: 'حماية تقنية النانو في خدمة التراث المغربي',
-      cta: 'اكتشف فلسفتنا',
+      title: 'الابتكار في خدمة التميز',
+      subtitle: 'التنظيف المجدد والحماية النانوية المستدامة للأسطح الاستثنائية. نكشف الجمال الأصلي لمواد بناءك ونحميها لمدة 3 إلى 5 سنوات بفضل الطلاءات غير المرئية من الجيل الأخير.',
+      cta: 'اطلب تشخيصًا مجانيًا',
+    },
+    home: {
+      benefit1Title: 'وقت محرر',
+      benefit1Text: 'تركز فرقك على الضيافة، نحن نعتني بأسطحك',
+      benefit2Title: 'حماية دائمة',
+      benefit2Text: 'طلاء نانوتكنولوجي غير مرئي يقاوم الماء والزيت والبقع',
+      benefit3Title: 'عائد سريع',
+      benefit3Text: 'عائد استثمار مثبت بفضل توفير الصيانة',
+    },
+    showroom: {
+      title: 'عرض الأعمال: التميز في الصور',
+      subtitle: 'اكتشف التحول الرائع لتدخلاتنا من خلال معرض قبل وبعد',
+      filterAll: 'الكل',
+      filterBejmat: 'بيجمات',
+      filterPierreTaza: 'حجر تازة',
+      filterMarble: 'رخام',
+      filterCarreauxBeldi: 'بلاط بلدي',
+      filterZellige: 'زليج',
+      filterMetal: 'معدن',
+      filterMineralization: 'تمعدن',
     },
     why: {
       title: 'لماذا تختارنا؟',
@@ -224,9 +284,29 @@ export const translations: Record<Language, Translations> = {
       contact: 'Contacto',
     },
     hero: {
-      title: 'La Belleza Que Desafía El Tiempo',
-      subtitle: 'Protección nanotecnológica al servicio del patrimonio marroquí',
-      cta: 'Descubre Nuestra Filosofía',
+      title: 'La Innovación al Servicio de la Excelencia',
+      subtitle: 'Limpieza regeneradora y protección nanotecnológica duradera para superficies excepcionales. Revelamos la belleza original de tus materiales y la protegemos durante 3 a 5 años gracias a recubrimientos invisibles de última generación.',
+      cta: 'Solicita un Diagnóstico Gratuito',
+    },
+    home: {
+      benefit1Title: 'Tiempo Liberado',
+      benefit1Text: 'Tus equipos se concentran en la hospitalidad, nosotros cuidamos tus superficies',
+      benefit2Title: 'Protección Duradera',
+      benefit2Text: 'Recubrimiento nanotecnológico invisible que resiste agua, aceite y manchas',
+      benefit3Title: 'ROI Rápido',
+      benefit3Text: 'Retorno de inversión comprobado gracias al ahorro de mantenimiento',
+    },
+    showroom: {
+      title: 'Galería: La Excelencia en Imágenes',
+      subtitle: 'Descubre la transformación espectacular de nuestras intervenciones a través de nuestra galería antes/después',
+      filterAll: 'Todos',
+      filterBejmat: 'Bejmat',
+      filterPierreTaza: 'Piedra de Taza',
+      filterMarble: 'Mármol',
+      filterCarreauxBeldi: 'Baldosas Beldi',
+      filterZellige: 'Zellige',
+      filterMetal: 'Metal',
+      filterMineralization: 'Mineralización',
     },
     why: {
       title: '¿Por Qué Elegirnos?',
@@ -295,9 +375,29 @@ export const translations: Record<Language, Translations> = {
       contact: 'Contact',
     },
     hero: {
-      title: 'Beauty That Defies Time',
-      subtitle: 'Nanotechnology protection serving Moroccan heritage',
-      cta: 'Discover Our Philosophy',
+      title: 'Innovation in Service of Excellence',
+      subtitle: 'Regenerative cleaning and sustainable nanotechnology protection for exceptional surfaces. We reveal the original beauty of your materials and protect it for 3 to 5 years with next-generation invisible coatings.',
+      cta: 'Request a Free Diagnosis',
+    },
+    home: {
+      benefit1Title: 'Time Freed',
+      benefit1Text: 'Your teams focus on hospitality, we care for your surfaces',
+      benefit2Title: 'Lasting Protection',
+      benefit2Text: 'Invisible nanotechnology coating that resists water, oil, and stains',
+      benefit3Title: 'Fast ROI',
+      benefit3Text: 'Proven return on investment through maintenance savings',
+    },
+    showroom: {
+      title: 'Showroom: Excellence in Images',
+      subtitle: 'Discover the spectacular transformation of our interventions through our before/after gallery',
+      filterAll: 'All',
+      filterBejmat: 'Bejmat',
+      filterPierreTaza: 'Taza Stone',
+      filterMarble: 'Marble',
+      filterCarreauxBeldi: 'Beldi Tiles',
+      filterZellige: 'Zellige',
+      filterMetal: 'Metal',
+      filterMineralization: 'Mineralization',
     },
     why: {
       title: 'Why Choose Us?',

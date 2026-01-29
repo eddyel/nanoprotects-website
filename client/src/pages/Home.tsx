@@ -2,9 +2,11 @@ import { useLocation } from 'wouter';
 import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Home() {
   const [, setLocation] = useLocation();
+  const { t } = useLanguage();
   
   return (
     <div className="min-h-screen">
@@ -25,12 +27,11 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 container max-w-5xl px-6">
           <h1 className="font-display text-[2.5rem] md:text-[4rem] lg:text-[5.5rem] font-bold text-white mb-8 leading-tight">
-            L'Innovation au Service de l'Excellence
+            {t.hero.title}
           </h1>
           
           <p className="text-white/90 text-[1.125rem] md:text-[1.5rem] max-w-3xl mb-12 leading-relaxed">
-            Nettoyage régénérant et protection nanotechnologique durable pour les surfaces d'exception. 
-            Nous révélons la beauté originelle de vos matériaux et la protégeons pour 3 à 5 ans grâce à des revêtements invisibles de dernière génération.
+            {t.hero.subtitle}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
@@ -49,7 +50,7 @@ export default function Home() {
               onClick={() => setLocation('/contact')}
               className="text-lg px-8 py-6 bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm font-semibold"
             >
-              Demander un Diagnostic Gratuit
+              {t.hero.cta}
             </Button>
           </div>
         </div>
@@ -63,9 +64,9 @@ export default function Home() {
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl font-display font-bold text-primary">60%</span>
               </div>
-              <h3 className="font-semibold text-secondary text-lg mb-2">Temps Libéré</h3>
+              <h3 className="font-semibold text-secondary text-lg mb-2">{t.home.benefit1Title}</h3>
               <p className="text-gray-600 text-sm">
-                Vos équipes se concentrent sur l'hospitalité, nous prenons soin de vos surfaces
+                {t.home.benefit1Text}
               </p>
             </div>
             
@@ -73,9 +74,9 @@ export default function Home() {
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-display font-bold text-primary">3-5 ans</span>
               </div>
-              <h3 className="font-semibold text-secondary text-lg mb-2">Protection Durable</h3>
+              <h3 className="font-semibold text-secondary text-lg mb-2">{t.home.benefit2Title}</h3>
               <p className="text-gray-600 text-sm">
-                Revêtement nanotechnologique invisible qui résiste à l'eau, l'huile et les taches
+                {t.home.benefit2Text}
               </p>
             </div>
             
@@ -83,9 +84,9 @@ export default function Home() {
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-display font-bold text-primary">12-18 mois</span>
               </div>
-              <h3 className="font-semibold text-secondary text-lg mb-2">ROI Rapide</h3>
+              <h3 className="font-semibold text-secondary text-lg mb-2">{t.home.benefit3Title}</h3>
               <p className="text-gray-600 text-sm">
-                Retour sur investissement prouvé grâce aux économies de maintenance
+                {t.home.benefit3Text}
               </p>
             </div>
           </div>

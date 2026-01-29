@@ -335,28 +335,40 @@ export default function Showroom() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
-            Showroom : l'Excellence en Images
+            {t.showroom.title}
           </h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Découvrez la transformation spectaculaire de nos interventions à travers notre galerie avant/après
+            {t.showroom.subtitle}
           </p>
         </div>
 
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveFilter(category)}
-              className={`px-4 py-2 rounded-full font-medium transition-all ${
-                activeFilter === category
-                  ? 'bg-primary text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+          {categories.map((category) => {
+            const translatedCategory = category === 'Tous' ? t.showroom.filterAll
+              : category === 'Bejmat' ? t.showroom.filterBejmat
+              : category === 'Pierre de Taza' ? t.showroom.filterPierreTaza
+              : category === 'Marbre' ? t.showroom.filterMarble
+              : category === 'Carreaux Beldi' ? t.showroom.filterCarreauxBeldi
+              : category === 'Zellige' ? t.showroom.filterZellige
+              : category === 'Métal' ? t.showroom.filterMetal
+              : category === 'Minéralisation' ? t.showroom.filterMineralization
+              : category;
+            
+            return (
+              <button
+                key={category}
+                onClick={() => setActiveFilter(category)}
+                className={`px-4 py-2 rounded-full font-medium transition-all ${
+                  activeFilter === category
+                    ? 'bg-primary text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {translatedCategory}
+              </button>
+            );
+          })}
         </div>
 
         {/* Gallery Grid */}
