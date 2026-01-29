@@ -371,6 +371,13 @@ export default function Showroom() {
                             </div>
                           </>
                         )}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-16 h-16 rounded-full bg-white/50 flex items-center justify-center">
+                            <svg className="w-8 h-8 text-white/50" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          </div>
+                        </div>
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                           <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Cliquer pour agrandir</span>
                         </div>
