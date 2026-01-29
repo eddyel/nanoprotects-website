@@ -29,8 +29,8 @@ const galleryImages: GalleryImage[] = [
   {
     id: '1',
     category: 'Zellige',
-    beforeImage: '/images/showroom/zellige-traditional-before.jpg',
-    afterImage: '/images/showroom/zellige-traditional-after.jpg',
+    beforeImage: '/images/showroom/zellige-traditional-before.webp',
+    afterImage: '/images/showroom/zellige-traditional-after.webp',
     title: 'Zellige Traditionnel',
     description: 'Nettoyage en profondeur & protection nano-céramique'
   },
@@ -82,24 +82,24 @@ const galleryImages: GalleryImage[] = [
   {
     id: '4',
     category: 'Pierre de Taza',
-    beforeImage: '/images/showroom/pierre-taza-before.jpg',
-    afterImage: '/images/showroom/pierre-taza-after.jpg',
+    beforeImage: '/images/showroom/pierre-taza-before.webp',
+    afterImage: '/images/showroom/pierre-taza-after.webp',
     title: 'Pierre de Taza - Façade',
     description: 'Démoussage & imperméabilisation'
   },
   {
     id: '5',
     category: 'Métal',
-    beforeImage: '/images/showroom/metal-brass-before.jpg',
-    afterImage: '/images/showroom/metal-brass-after.jpg',
+    beforeImage: '/images/showroom/metal-brass-before.webp',
+    afterImage: '/images/showroom/metal-brass-after.webp',
     title: 'Quincaillerie en Laiton',
     description: 'Polissage & protection anti-oxydation'
   },
   {
     id: '6',
     category: 'Sécurité Sols',
-    beforeImage: '/images/showroom/securite-sols-before.jpg',
-    afterImage: '/images/showroom/securite-sols-after.jpg',
+    beforeImage: '/images/showroom/securite-sols-before.webp',
+    afterImage: '/images/showroom/securite-sols-after.webp',
     title: 'Marbre Lobby Hôtel',
     description: 'Traitement anti-dérapant invisible'
   },
@@ -208,6 +208,7 @@ export default function Showroom() {
                           src={image.beforeImage}
                           alt={`${image.title} - Avant et Après`}
                           className="w-full h-full object-cover"
+                          loading="lazy"
                         />
                         <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
                           AVANT
@@ -231,6 +232,7 @@ export default function Showroom() {
                               src={image.beforeImage}
                               alt={`${image.title} - Avant`}
                               className="w-full h-full object-cover"
+                              loading="lazy"
                             />
                             <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
                               AVANT
@@ -242,6 +244,7 @@ export default function Showroom() {
                               src={image.afterImage}
                               alt={`${image.title} - Après`}
                               className="w-full h-full object-cover"
+                              loading="lazy"
                             />
                             <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
                               APRÈS

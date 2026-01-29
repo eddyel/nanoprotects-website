@@ -14,7 +14,7 @@ export default function Home() {
       <section 
         className="relative min-h-screen flex items-center justify-center"
         style={{
-          backgroundImage: 'url(/images/hero-riad.jpg)',
+          backgroundImage: 'url(/images/hero-riad.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

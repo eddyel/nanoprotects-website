@@ -44,9 +44,10 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <img
-              src="/images/PHOTO-2026-01-25-15-41-21.jpg"
+              src="/images/PHOTO-2026-01-25-15-41-21.webp"
               alt="NanoProtects Logo"
               className="h-12 w-12 object-contain"
+              loading="eager"
             />
             <span className="font-display text-xl font-bold text-white whitespace-nowrap">
               NanoProtects
