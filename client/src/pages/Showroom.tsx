@@ -66,14 +66,7 @@ const categories = [
 ];
 
 const galleryImages: GalleryImage[] = [
-  {
-    id: '1',
-    category: 'Zellige',
-    beforeImage: '/images/showroom/zellige-traditional-before.webp',
-    afterImage: '/images/showroom/zellige-traditional-after.webp',
-    title: 'Zellige Traditionnel',
-    description: 'Nettoyage en profondeur & protection nano-céramique'
-  },
+
   {
     id: '2',
     category: 'Bejmat',
@@ -120,22 +113,8 @@ const galleryImages: GalleryImage[] = [
     isSingleImage: true
   },
 
-  {
-    id: '5',
-    category: 'Métal',
-    beforeImage: '/images/showroom/metal-brass-before.webp',
-    afterImage: '/images/showroom/metal-brass-after.webp',
-    title: 'Quincaillerie en Laiton',
-    description: 'Polissage & protection anti-oxydation'
-  },
-  {
-    id: '6',
-    category: 'Sécurité Sols',
-    beforeImage: '/images/showroom/securite-sols-before.webp',
-    afterImage: '/images/showroom/securite-sols-after.webp',
-    title: 'Marbre Lobby Hôtel',
-    description: 'Traitement anti-dérapant invisible'
-  },
+
+
   {
     id: '7',
     category: ['Marbre', 'Zellige'],
