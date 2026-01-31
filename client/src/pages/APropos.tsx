@@ -17,23 +17,23 @@ export default function APropos() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="pt-32 pb-10" style={{ backgroundColor: '#f5f5f5' }}>
         <div className="container max-w-5xl">
-          <h1 className="font-display text-[2.5rem] md:text-[4rem] lg:text-[5rem] font-bold text-left mb-6 leading-tight" style={{ color: '#A33215' }}>
+          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-6 leading-tight" style={{ color: '#A33215' }}>
             Nanotechnologies au service de l'hospitalité d'exception
           </h1>
         </div>
       </section>
 
       {/* Three Sections */}
-      <section className="py-20">
+      <section className="py-10">
         <div className="container max-w-4xl space-y-20">
           {/* Section 1: Notre Raison d'Être */}
           <div className="space-y-6">
             <h2 className="font-display text-[2rem] md:text-[2.5rem] font-bold text-secondary mb-6">
               Notre Raison d'Être
             </h2>
-            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4">
+            <div className="font-body text-base md:text-lg max-w-none text-gray-700 leading-relaxed space-y-4">
               <p>
                 Chaque surface raconte une histoire. Chaque matériau porte l'âme de l'artisan qui l'a créé. Préserver cette beauté, c'est honorer un héritage et garantir que vos espaces continuent d'inspirer l'émerveillement pour les générations à venir.
               </p>
@@ -48,7 +48,7 @@ export default function APropos() {
             <h2 className="font-display text-[2rem] md:text-[2.5rem] font-bold text-secondary mb-6">
               Notre Méthode
             </h2>
-            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4">
+            <div className="font-body text-base md:text-lg max-w-none text-gray-700 leading-relaxed space-y-4">
               <p>
                 Nous développons et déployons des processus d'intervention à la fois ultra-efficients et parfaitement discrets, conçus pour s'insérer sans perturbation dans l'exploitation de nos clients.
               </p>
@@ -63,7 +63,7 @@ export default function APropos() {
             <h2 className="font-display text-[2rem] md:text-[2.5rem] font-bold text-secondary mb-6">
               Notre Expertise
             </h2>
-            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4">
+            <div className="font-body text-base md:text-lg max-w-none text-gray-700 leading-relaxed space-y-4">
               <p>
                 Nous alliions la culture du soin méticuleux et l'intention authentique à une recherche permanente de solutions nanotechnologiques de pointe.
               </p>
@@ -76,7 +76,7 @@ export default function APropos() {
       </section>
 
       {/* Two Pillars */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20" style={{ backgroundColor: '#f5f5f5' }}>
         <div className="container max-w-6xl">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Pillar 1 */}

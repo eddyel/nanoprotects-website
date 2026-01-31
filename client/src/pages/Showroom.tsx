@@ -313,12 +313,19 @@ export default function Showroom() {
       <div className="container pt-20 pb-20">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#A33215' }}>
+          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold mb-4" style={{ color: '#A33215' }}>
             {t.showroom.title}
           </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto mb-6 text-lg md:text-xl">
             {t.showroom.subtitle}
           </p>
+          
+          {/* Certification Badges */}
+          <div className="flex justify-center items-center gap-16 mb-4">
+            <img src="/images/certified-safety.png" alt="Certified Safety" className="h-24 md:h-28 object-contain" />
+            <img src="/images/sustainable-solution.png" alt="Sustainable Solution" className="h-24 md:h-28 object-contain" />
+            <img src="/images/long-lasting-results.png" alt="Long-Lasting Results" className="h-24 md:h-28 object-contain" />
+          </div>
         </div>
 
         {/* Filter Buttons */}
