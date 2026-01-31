@@ -24,6 +24,13 @@ const categories = [
     surfaces: 'Terrasses, Plage de piscine, Mobilier , Bardages'
   },
   {
+    id: 'textiles',
+    title: 'Textiles',
+    enjeux: 'Tâches organiques, odeurs, décoloration',
+    action: 'Nettoyage en profondeur par Injection / Extraction sous pression, traitement anti-tâches et anti-salissures, protection textile respirante',
+    surfaces: 'Tapis, Moquettes, Rideaux, Tentures murales, Coussins'
+  },
+  {
     id: 'securite',
     title: 'Traitement Anti-Dérapant',
     icon: 'slipping',
@@ -32,18 +39,12 @@ const categories = [
     surfaces: 'Marbre crystallisé, Carrelage vittrifié, Céramiques'
   },
   {
-    id: 'textiles',
-    title: 'Textiles',
-    enjeux: 'Taches organiques, odeurs, usure prematuree, decoloration.',
-    action: 'Nettoyage en profondeur, traitement anti-taches et anti-salissures, protection textile respirante.',
-    surfaces: 'Tapis, moquettes, rideaux, tentures murales, coussins'
-  },
-  {
     id: 'metaux',
-    title: 'Metaux et Verre',
-    enjeux: 'Oxydation, corrosion, traces de calcaire, empreintes digitales.',
-    action: 'Polissage professionnel, traitement anti-oxydation, revetement hydrophobe pour faciliter entretien.',
-    surfaces: 'Laiton, cuivre, inox, aluminium, vitres, miroirs, parois de douche'
+    title: 'Traitement Minéralisant',
+    subtitle: 'Matériaux poreux friables',
+    enjeux: 'Érosion, effritement, poussière',
+    action: 'Traitement pénétrant de minéralisation (durcissement et consolidation interne) avec protection hydrofuge non-filmogène, effet anti-poussière durable',
+    surfaces: 'Briquettes en terre cuite, Stucs en plâtre, Pisé, Enduits, Mortiers, Bétons, Façades et Sols anciens'
   }
 ];
 
@@ -84,11 +85,16 @@ export default function MateriauxExpertises() {
           {/* Content */}
           {activeCategory && (
             <div className="max-w-4xl mx-auto animate-in fade-in duration-300">
-              <div className="mb-12">
+                <div className="mb-12">
                 <div className="flex items-center gap-3">
-                  <h2 className="font-display text-[2rem] font-bold" style={{ color: '#A33215' }}>
-                    {activeCategory.title}
-                  </h2>
+                  <div className="flex items-baseline gap-2">
+                    <h2 className="font-display text-[2rem] font-bold" style={{ color: '#A33215' }}>
+                      {activeCategory.title}
+                    </h2>
+                    {activeCategory.subtitle && (
+                      <span className="text-sm text-gray-700">({activeCategory.subtitle})</span>
+                    )}
+                  </div>
                   {activeCategory.icon === 'slipping' && (
                     <img src="/images/icon-slipping.png" alt="Slipping hazard" className="w-24 h-24" style={{ marginTop: '-8px' }} />
                   )}
@@ -111,7 +117,7 @@ export default function MateriauxExpertises() {
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Surfaces concernees</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Surfaces concernées</h3>
                   <p className="text-gray-600 italic">
                     {activeCategory.surfaces}
                   </p>
