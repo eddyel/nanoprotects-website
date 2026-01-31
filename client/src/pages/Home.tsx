@@ -1,7 +1,6 @@
 import { useLocation } from 'wouter';
 import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Home() {
@@ -9,26 +8,28 @@ export default function Home() {
   const { t } = useLanguage();
   
   return (
-    <div className="min-h-screen">
-      {/* Top Light Brown Strip */}
-      <div className="h-4 bg-amber-50" />
-      
+    <div className="w-full">
+      {/* Navigation */}
       <Navigation />
       
-      {/* Hero Section */}
+      {/* Hero Section with Static Background Image */}
       <section 
-        className="relative min-h-screen flex items-center justify-center"
+        className="relative min-h-screen flex items-center justify-center w-full pt-20"
         style={{
           backgroundImage: 'url(/images/hero-riad.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
         }}
       >
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/60" />
+        {/* Overlay - Earth Protection Charter with A75C16 terracotta */}
+        <div 
+          className="absolute inset-0" 
+          style={{ backgroundColor: '#A75C16', opacity: 0.55 }}
+        />
         
-        {/* Content */}
-        <div className="relative z-10 container max-w-5xl px-6">
+        {/* Centered Hero Content */}
+        <div className="relative z-10 container max-w-5xl px-6 text-center md:text-left py-20">
           <h1 className="font-display text-[2.5rem] md:text-[4rem] lg:text-[5.5rem] font-bold text-white mb-8 leading-tight">
             {t.hero.title}
           </h1>
@@ -41,7 +42,7 @@ export default function Home() {
             <Button 
               size="lg" 
               onClick={() => setLocation('/showroom')}
-              className="text-lg px-6 py-6 bg-primary hover:bg-primary/90 text-white font-semibold justify-center whitespace-nowrap"
+              className="text-lg px-6 py-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold justify-center whitespace-nowrap border-2 border-blue-600"
             >
               Nos Réalisations
             </Button>
@@ -50,15 +51,13 @@ export default function Home() {
               size="lg" 
               variant="outline"
               onClick={() => setLocation('/contact')}
-              className="text-lg px-6 py-6 bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm font-semibold justify-center whitespace-nowrap"
+              className="text-lg px-6 py-6 bg-transparent hover:bg-white/10 text-white border-2 border-white/50 backdrop-blur-sm font-semibold justify-center whitespace-nowrap"
             >
               {t.hero.cta}
             </Button>
           </div>
         </div>
       </section>
-
-
     </div>
   );
 }

@@ -13,13 +13,13 @@ export default function APropos() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f5f5' }}>
       <Navigation />
       
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="container max-w-5xl">
-          <h1 className="font-display text-[2.5rem] md:text-[4rem] lg:text-[5rem] font-bold text-left text-secondary mb-6 leading-tight">
+          <h1 className="font-display text-[2.5rem] md:text-[4rem] lg:text-[5rem] font-bold text-left mb-6 leading-tight" style={{ color: '#A33215' }}>
             Nanotechnologies au service de l'hospitalité d'exception
           </h1>
         </div>

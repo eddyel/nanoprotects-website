@@ -115,13 +115,13 @@ export default function PourquoiNousChoisir() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f5f5' }}>
       <Navigation />
       
       <section className="pt-32 pb-20">
         <div className="container max-w-6xl">
           {/* Page Title */}
-          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left text-secondary mb-20">
+          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-20" style={{ color: '#A33215' }}>
             {t.why.title}
           </h1>
           
@@ -130,7 +130,8 @@ export default function PourquoiNousChoisir() {
             {reasons.map((reason, index) => (
               <article 
                 key={index}
-                className="reason-card relative bg-white p-8 rounded-lg border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group overflow-hidden"
+                className="reason-card relative p-8 rounded-lg border shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group overflow-hidden"
+                style={{ backgroundColor: '#ffffff', borderColor: '#A75C16' }}
               >
                 {/* Top border animation on hover */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-t-lg" />

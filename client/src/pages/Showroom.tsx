@@ -328,13 +328,13 @@ export default function Showroom() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f5f5' }}>
       <Navigation />
       
       <div className="container pt-20 pb-20">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#A33215' }}>
             {t.showroom.title}
           </h1>
           <p className="text-gray-600 max-w-2xl mx-auto">

@@ -35,9 +35,8 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-secondary/95 backdrop-blur-md shadow-lg' : 'bg-secondary/95 backdrop-blur-md'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}
+      style={{ backgroundColor: '#A33215' }}
     >
       <div className="container">
         <div className="flex items-center justify-between h-20">
@@ -52,20 +51,18 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-12">
             {menuItems.map((item) => (
               <Link 
                 key={item.path} 
                 href={item.path}
-                className={`text-xs font-medium transition-colors text-center leading-tight ${
+                className={`text-xs font-bold transition-colors text-center leading-tight whitespace-pre-line ${
                   location === item.path
-                    ? 'text-primary'
-                    : 'text-white/90 hover:text-white'
+                    ? 'text-white border-b-2 border-b-amber-600 pb-2'
+                    : 'text-white border-b-2 border-b-amber-600/40 hover:border-b-amber-600 pb-2'
                 }`}
               >
-                {item.label.split('\n').map((line, i) => (
-                  <div key={i}>{line}</div>
-                ))}
+                {item.label}
               </Link>
             ))}
           </div>

@@ -3,12 +3,12 @@ import { Sparkles, Shield, Clock, TrendingUp, Handshake } from 'lucide-react';
 
 export default function NotreMethode() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f5f5' }}>
       <Navigation />
       
       <section className="pt-32 pb-20">
         <div className="container max-w-6xl">
-          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left text-secondary mb-8">
+          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-8" style={{ color: '#A33215' }}>
             Notre Méthode en Deux Phases
           </h1>
           <p className="text-center text-gray-600 text-lg max-w-3xl mx-auto mb-20">
@@ -22,7 +22,7 @@ export default function NotreMethode() {
               <div className="absolute -top-6 -left-6 w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white font-display text-3xl font-bold shadow-lg">
                 1
               </div>
-              <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-2xl p-10 pt-16">
+              <div className="bg-gradient-to-br from-gray-50 to-white border-2 rounded-2xl p-10 pt-16" style={{ borderColor: '#A75C16' }}>
                 <div className="flex items-center gap-4 mb-6">
                   <Sparkles className="w-10 h-10 text-primary" />
                   <h2 className="font-display text-[2rem] font-bold text-secondary">
@@ -54,7 +54,7 @@ export default function NotreMethode() {
               <div className="absolute -top-6 -left-6 w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white font-display text-3xl font-bold shadow-lg">
                 2
               </div>
-              <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-2xl p-10 pt-16">
+              <div className="bg-gradient-to-br from-gray-50 to-white border-2 rounded-2xl p-10 pt-16" style={{ borderColor: '#A75C16' }}>
                 <div className="flex items-center gap-4 mb-6">
                   <Shield className="w-10 h-10 text-primary" />
                   <h2 className="font-display text-[2rem] font-bold text-secondary">

@@ -51,17 +51,17 @@ export default function MateriauxExpertises() {
   const activeCategory = categories.find(cat => cat.id === activeTab);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f5f5' }}>
       <Navigation />
       
       <section className="pt-32 pb-20">
         <div className="container max-w-6xl">
-          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left text-secondary mb-16">
+          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-16" style={{ color: '#A33215' }}>
             Materiaux et Expertises
           </h1>
           
           {/* Sticky Tab Navigation */}
-          <div className="sticky top-20 z-30 bg-white/95 backdrop-blur-sm border-b border-gray-200 -mx-4 px-4 mb-12">
+          <div className="sticky top-20 z-30 backdrop-blur-sm -mx-4 px-4 mb-12" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderBottomColor: '#A75C16', borderBottomWidth: '1px' }}>
             <div className="flex overflow-x-auto gap-2 py-4 scrollbar-hide">
               {categories.map((category) => (
                 <button
@@ -69,9 +69,10 @@ export default function MateriauxExpertises() {
                   onClick={() => setActiveTab(category.id)}
                   className={`px-6 py-3 rounded-lg font-medium whitespace-nowrap transition-all ${
                     activeTab === category.id
-                      ? 'bg-primary text-white shadow-lg'
+                      ? 'text-white shadow-lg'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
+                  style={activeTab === category.id ? { backgroundColor: '#A33215' } : {}}
                 >
                   {category.title}
                 </button>
@@ -82,7 +83,7 @@ export default function MateriauxExpertises() {
           {/* Content */}
           {activeCategory && (
             <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-300">
-              <h2 className="font-display text-[2rem] font-bold text-secondary">
+              <h2 className="font-display text-[2rem] font-bold" style={{ color: '#A33215' }}>
                 {activeCategory.title}
               </h2>
               
