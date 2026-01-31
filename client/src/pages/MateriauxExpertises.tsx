@@ -4,31 +4,32 @@ import Navigation from '@/components/Navigation';
 const categories = [
   {
     id: 'pierres',
-    title: 'Pierres et Patrimoine',
-    enjeux: 'Salissures organiques, efflorescences, taches, degradation par UV et pollution.',
-    action: 'Nettoyage doux sans pression excessive, traitement anti-mousse ecologique, application de protection hydrofuge et oleofuge nano-ceramique.',
-    surfaces: 'Pierre de Taza, marbre, travertin, pierre calcaire, ardoise, granit'
+    title: 'Pierres',
+    enjeux: 'Salissures organiques, efflorescences, taches, dégradations causées par la pollution et les UV.',
+    action: 'Nettoyage régénérant respectueux des matériaux & application à saturation de solutions nanotechnologiques de protection imprégnantes hydrofuge et oléofuge.',
+    surfaces: 'Pierre de Taza, Marbre, Travertin, Pierres calcaire, Ardoise, Granit'
   },
   {
     id: 'maconnerie',
-    title: 'Maconnerie',
-    enjeux: 'Porosite elevee, absorption eau, taches de ciment, salissures grasses.',
-    action: 'Decapage chimique selectif, nettoyage haute pression controlee, impermeabilisation respirante.',
-    surfaces: 'Bejmat (terre cuite), carreaux de ciment beldi, zellige traditionnel, briques apparentes'
+    title: 'Matériaux Traditionnels',
+    enjeux: 'Porosité élevée, absorption eau, tâches de ciment, jaunissement et/ou écaillage d\'anciens vernis, encrassement, salissures grasses, perte de couleurs dû aux UV',
+    action: 'Décapage humide sans poussière, restauration des couleurs, imperméabilisation anti-tâches respirante non filmogène, protection anti-UV',
+    surfaces: 'Bejmat, Carreaux de ciment Beldi, Zellige, Dess'
   },
   {
     id: 'bois',
     title: 'Bois Composite',
-    enjeux: 'Grisaillement, taches organiques, decoloration UV, accumulation de poussiere.',
-    action: 'Nettoyage doux, restauration de la couleur origine, protection UV et anti-taches.',
-    surfaces: 'Terrasses en bois composite, mobilier exterieur, bardages'
+    enjeux: 'Grisaillement, tâches organiques, décoloration UV, encrassement, écaillage film plastique ou vernis',
+    action: 'Nettoyage doux, restauration de la couleur origine, protection nanotechnologique imprégnante anti-UV et anti-tâches',
+    surfaces: 'Terrasses, Plage de piscine, Mobilier , Bardages'
   },
   {
     id: 'securite',
-    title: 'Securite des Sols',
-    enjeux: 'Glissance excessive sur sols mouilles (piscines, douches, cuisines), risque de chute.',
-    action: 'Application de traitement anti-derapant invisible qui augmente le coefficient de friction sans alterer esthetique.',
-    surfaces: 'Marbre poli, carrelage vitrifie, pierre naturelle, zellige'
+    title: 'Traitement Anti-Dérapant',
+    icon: 'slipping',
+    enjeux: 'Glissance excessive sur sols mouillés (piscines, douches, cuisines), risque de chute.',
+    action: 'Application d\'un traitement non corrosif durable dérivé du Silicium en phase aqueuse anti-dérapant NON ACIDE, qui augmente le coefficient de friction sans altérer l\'esthétique',
+    surfaces: 'Marbre crystallisé, Carrelage vittrifié, Céramiques'
   },
   {
     id: 'textiles',
@@ -57,7 +58,7 @@ export default function MateriauxExpertises() {
       <section className="pt-32 pb-20">
         <div className="container max-w-6xl">
           <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-16" style={{ color: '#A33215' }}>
-            Materiaux et Expertises
+            Matiériaux et Expertises
           </h1>
           
           {/* Sticky Tab Navigation */}
@@ -82,10 +83,17 @@ export default function MateriauxExpertises() {
 
           {/* Content */}
           {activeCategory && (
-            <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-300">
-              <h2 className="font-display text-[2rem] font-bold" style={{ color: '#A33215' }}>
-                {activeCategory.title}
-              </h2>
+            <div className="max-w-4xl mx-auto animate-in fade-in duration-300">
+              <div className="mb-12">
+                <div className="flex items-center gap-3">
+                  <h2 className="font-display text-[2rem] font-bold" style={{ color: '#A33215' }}>
+                    {activeCategory.title}
+                  </h2>
+                  {activeCategory.icon === 'slipping' && (
+                    <img src="/images/icon-slipping.png" alt="Slipping hazard" className="w-24 h-24" style={{ marginTop: '-8px' }} />
+                  )}
+                </div>
+              </div>
               
               <div className="space-y-6">
                 <div>
@@ -96,7 +104,7 @@ export default function MateriauxExpertises() {
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Notre action</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Nos actions</h3>
                   <p className="text-gray-700 leading-relaxed">
                     {activeCategory.action}
                   </p>
