@@ -42,7 +42,7 @@ export default function Home() {
             <Button 
               size="lg" 
               onClick={() => setLocation('/showroom')}
-              className="text-lg px-6 py-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold justify-center whitespace-nowrap border-2 border-blue-600"
+              className="text-lg px-6 py-6 font-semibold justify-center whitespace-nowrap border-2 btn-brand"
             >
               Nos Réalisations
             </Button>

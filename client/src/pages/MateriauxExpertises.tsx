@@ -5,6 +5,12 @@ const categories = [
   {
     id: 'pierres',
     title: 'Pierres',
+    showProcessIcons: true,
+    processSteps: [
+      { icon: 'prep', label: 'Préparation Intégrale' },
+      { icon: 'nano', label: 'Application Nano-Technologique' },
+      { icon: 'protect', label: 'Protection Durable' }
+    ],
     enjeux: 'Salissures organiques, efflorescences, taches, dégradations causées par la pollution et les UV.',
     action: 'Nettoyage régénérant respectueux des matériaux & application à saturation de solutions nanotechnologiques de protection imprégnantes hydrofuge et oléofuge.',
     surfaces: 'Pierre de Taza, Marbre, Travertin, Pierres calcaire, Ardoise, Granit'
@@ -12,6 +18,12 @@ const categories = [
   {
     id: 'maconnerie',
     title: 'Matériaux Traditionnels',
+    showProcessIcons: true,
+    processSteps: [
+      { icon: 'prep', label: 'Préparation Intégrale' },
+      { icon: 'nano', label: 'Application Nano-Technologique' },
+      { icon: 'protect', label: 'Protection Durable' }
+    ],
     enjeux: 'Porosité élevée, absorption eau, tâches de ciment, jaunissement et/ou écaillage d\'anciens vernis, encrassement, salissures grasses, perte de couleurs dû aux UV',
     action: 'Décapage humide sans poussière, restauration des couleurs, imperméabilisation anti-tâches respirante non filmogène, protection anti-UV',
     surfaces: 'Bejmat, Carreaux de ciment Beldi, Zellige, Dess'
@@ -19,6 +31,12 @@ const categories = [
   {
     id: 'bois',
     title: 'Bois Composite',
+    showProcessIcons: true,
+    processSteps: [
+      { icon: 'prep', label: 'Préparation Intégrale' },
+      { icon: 'nano', label: 'Application Nano-Technologique' },
+      { icon: 'protect', label: 'Protection Durable' }
+    ],
     enjeux: 'Grisaillement, tâches organiques, décoloration UV, encrassement, écaillage film plastique ou vernis',
     action: 'Nettoyage doux, restauration de la couleur origine, protection nanotechnologique imprégnante anti-UV et anti-tâches',
     surfaces: 'Terrasses, Plage de piscine, Mobilier , Bardages'
@@ -26,6 +44,12 @@ const categories = [
   {
     id: 'textiles',
     title: 'Textiles',
+    showProcessIcons: true,
+    processSteps: [
+      { icon: 'prep', label: 'Préparation Intégrale' },
+      { icon: 'nano', label: 'Application Nano-Technologique' },
+      { icon: 'protect', label: 'Protection Durable' }
+    ],
     enjeux: 'Tâches organiques, odeurs, décoloration',
     action: 'Nettoyage en profondeur par Injection / Extraction sous pression, traitement anti-tâches et anti-salissures, protection textile respirante',
     surfaces: 'Tapis, Moquettes, Rideaux, Tentures murales, Coussins'
@@ -82,21 +106,31 @@ export default function MateriauxExpertises() {
             </div>
           </div>
 
-          {/* Content */}
+              {/* Content */}
           {activeCategory && (
             <div className="max-w-4xl mx-auto animate-in fade-in duration-300">
                 <div className="mb-12">
-                <div className="flex items-center gap-3">
-                  <div className="flex items-baseline gap-2">
-                    <h2 className="font-display text-[2rem] font-bold" style={{ color: '#A33215' }}>
+                <div className="flex items-center gap-0 flex-nowrap">
+                  <div className="flex items-center gap-2 flex-shrink-0">
+                    <h2 className="font-display text-[2rem] font-bold whitespace-nowrap" style={{ color: '#A33215' }}>
                       {activeCategory.title}
                     </h2>
                     {activeCategory.subtitle && (
-                      <span className="text-sm text-gray-700">({activeCategory.subtitle})</span>
+                      <span className="text-sm text-gray-700 whitespace-nowrap">({activeCategory.subtitle})</span>
                     )}
                   </div>
                   {activeCategory.icon === 'slipping' && (
-                    <img src="/images/slipping-hazard-icon.png" alt="Slipping hazard" className="w-24 h-24" style={{ marginTop: '-8px' }} />
+                    <img src="/images/slipping-hazard-icon.png" alt="Slipping hazard" className="w-24 h-24 flex-shrink-0" style={{ marginTop: '-8px' }} />
+                  )}
+                  {activeCategory.showProcessIcons && activeCategory.processSteps && (
+                    <div className="flex items-center gap-6 flex-grow justify-start" style={{ marginLeft: '1rem' }}>
+                      {activeCategory.processSteps.map((step, idx) => (
+                        <div key={idx} className="flex flex-col items-center gap-1 flex-shrink-0">
+                          <img src={`/images/process-icon-${idx + 1}.png`} alt={step.label} className="h-16 w-auto" />
+                          <span className="text-xs font-medium text-gray-800 text-center whitespace-nowrap">{step.label}</span>
+                        </div>
+                      ))}
+                    </div>
                   )}
                 </div>
               </div>

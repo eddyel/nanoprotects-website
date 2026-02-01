@@ -196,9 +196,9 @@ export default function Contact() {
             <Button 
               type="submit" 
               size="lg" 
-              className="w-full text-lg py-6"
+              className="w-full text-lg py-6 border-2 btn-brand"
             >
-              Envoyer la Demande
+              Envoyer votre Demande
             </Button>
           </form>
         </div>

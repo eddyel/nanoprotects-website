@@ -56,12 +56,12 @@
 
 :root {
   /* Moroccan Modernism Color Palette */
-  --primary: oklch(0.48 0.18 252); /* Vibrant Blue #0066CC */
-  --primary-foreground: oklch(0.98 0 0);
+  --primary: #8b402d; /* Brand Terracotta */
+  --primary-foreground: #ffffff;
   --secondary: oklch(0.25 0.03 60); /* Deep Charcoal #2D2D2D */
   --secondary-foreground: oklch(0.98 0 0);
-  --accent: oklch(0.65 0.12 45); /* Warm Terracotta */
-  --accent-foreground: oklch(0.98 0 0);
+  --accent: #8b402d; /* Brand Terracotta */
+  --accent-foreground: #ffffff;
   --muted: oklch(0.85 0.01 60);
   --muted-foreground: oklch(0.45 0.01 60);
   --destructive: oklch(0.577 0.245 27.325);
@@ -157,6 +157,17 @@
 }
 
 @layer components {
+  .btn-brand {
+    background-color: #8b402d !important;
+    border-color: #8b402d !important;
+    color: white !important;
+  }
+
+  .btn-brand:hover {
+    background-color: #6b3020 !important;
+    border-color: #6b3020 !important;
+  }
+
   .container {
     width: 100%;
     margin-left: auto;
@@ -198,8 +209,8 @@
     font-size: 1.75rem;
     font-weight: 700;
     color: white;
-    background: oklch(0.48 0.18 252);
-    box-shadow: 0 4px 20px rgba(0, 102, 204, 0.4);
+    background: #8b402d;
+    box-shadow: 0 4px 20px rgba(139, 64, 45, 0.4);
     flex-shrink: 0;
   }
 
@@ -261,8 +272,8 @@
   button,
   a,
   [role="button"] {
-    -webkit-tap-highlight-color: rgba(0, 102, 204, 0.2);
-    tap-highlight-color: rgba(0, 102, 204, 0.2);
+    -webkit-tap-highlight-color: rgba(139, 64, 45, 0.2);
+    tap-highlight-color: rgba(139, 64, 45, 0.2);
   }
 
   /* Prevent text selection on touch interactions */
