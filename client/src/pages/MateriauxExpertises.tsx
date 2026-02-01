@@ -96,7 +96,7 @@ export default function MateriauxExpertises() {
                     )}
                   </div>
                   {activeCategory.icon === 'slipping' && (
-                    <img src="/images/icon-slipping.png" alt="Slipping hazard" className="w-24 h-24" style={{ marginTop: '-8px' }} />
+                    <img src="/images/slipping-hazard-icon.png" alt="Slipping hazard" className="w-24 h-24" style={{ marginTop: '-8px' }} />
                   )}
                 </div>
               </div>
