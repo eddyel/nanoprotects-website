@@ -1,21 +1,52 @@
 import { Link, useLocation } from 'wouter';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Menu, X } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navigation() {
   const [location] = useLocation();
   const { language, setLanguage, t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
+  // Handle scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  });
+  }, []);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
+  // Close menu on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [mobileMenuOpen]);
+
+  // Handle outside click
+  const handleBackdropClick = useCallback(() => {
+    setMobileMenuOpen(false);
+  }, []);
 
   const menuItems = [
     { path: '/pourquoi-nous-choisir', label: t.nav.hospitality },
@@ -86,54 +117,89 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden text-white p-2"
+            className="lg:hidden text-white p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-secondary border-t border-white/10">
-          <div className="container py-4 space-y-3">
-            {menuItems.map((item) => (
-              <Link 
-                key={item.path} 
-                href={item.path}
-                className={`block py-2 text-sm font-medium transition-colors ${
-                  location === item.path
-                    ? 'text-primary'
-                    : 'text-white/90'
-                }`}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <div className="flex gap-2 pt-4 border-t border-white/10">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => {
-                    setLanguage(lang.code as any);
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`px-3 py-1.5 rounded text-sm font-medium transition-all ${
-                    language === lang.code
-                      ? 'bg-primary text-white'
-                      : 'text-white/70 bg-white/10'
-                  }`}
+      {/* Mobile Menu with Animation */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <>
+            {/* Backdrop Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden fixed inset-0 top-20 bg-black/50 z-40"
+              onClick={handleBackdropClick}
+              aria-hidden="true"
+            />
+
+            {/* Mobile Menu */}
+            <motion.div
+              ref={mobileMenuRef}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+              className="lg:hidden bg-secondary border-t border-white/10 relative z-50"
+            >
+              <div className="container py-4 space-y-3">
+                {menuItems.map((item, index) => (
+                  <motion.div
+                    key={item.path}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05, duration: 0.2 }}
+                  >
+                    <Link
+                      href={item.path}
+                      className={`block py-2 min-h-[44px] flex items-center text-sm font-medium transition-colors ${
+                        location === item.path
+                          ? 'text-primary'
+                          : 'text-white/90'
+                      }`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.2 }}
+                  className="flex gap-2 pt-4 border-t border-white/10"
                 >
-                  {lang.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        setLanguage(lang.code as any);
+                        setMobileMenuOpen(false);
+                      }}
+                      className={`px-3 py-1.5 min-h-[44px] rounded text-sm font-medium transition-all ${
+                        language === lang.code
+                          ? 'bg-primary text-white'
+                          : 'text-white/70 bg-white/10'
+                      }`}
+                    >
+                      {lang.label}
+                    </button>
+                  ))}
+                </motion.div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

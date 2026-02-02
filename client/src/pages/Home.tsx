@@ -30,7 +30,7 @@ export default function Home() {
         
         {/* Centered Hero Content */}
         <div className="relative z-10 container max-w-5xl px-6 text-center md:text-left py-20">
-          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-white mb-8 leading-tight">
+          <h1 className="font-display text-[1.75rem] sm:text-[2.5rem] md:text-[3.5rem] font-bold text-white mb-8 leading-tight">
             {t.hero.title}
           </h1>
           

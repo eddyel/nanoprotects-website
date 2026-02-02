@@ -97,6 +97,7 @@
   }
   body {
     @apply bg-background text-foreground font-body;
+    overflow-x: hidden;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
@@ -172,9 +173,16 @@
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: max(1.5rem, var(--safe-area-inset-left));
-    padding-right: max(1.5rem, var(--safe-area-inset-right));
+    padding-left: max(1rem, var(--safe-area-inset-left));
+    padding-right: max(1rem, var(--safe-area-inset-right));
     max-width: 1280px;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: max(1.5rem, var(--safe-area-inset-left));
+      padding-right: max(1.5rem, var(--safe-area-inset-right));
+    }
   }
 
   @media (min-width: 768px) {
@@ -296,5 +304,32 @@
     .touch-hover:active {
       transform: none;
     }
+  }
+
+  /* Touch target utility - ensures minimum 44x44px touch area per Apple HIG */
+  .touch-target {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Safe area padding utilities */
+  .pb-safe {
+    padding-bottom: max(1rem, var(--safe-area-inset-bottom));
+  }
+
+  .pt-safe {
+    padding-top: max(1rem, var(--safe-area-inset-top));
+  }
+
+  .pl-safe {
+    padding-left: max(1rem, var(--safe-area-inset-left));
+  }
+
+  .pr-safe {
+    padding-right: max(1rem, var(--safe-area-inset-right));
+  }
+
+  .p-safe {
+    padding: max(1rem, var(--safe-area-inset-top)) max(1rem, var(--safe-area-inset-right)) max(1rem, var(--safe-area-inset-bottom)) max(1rem, var(--safe-area-inset-left));
   }
 }

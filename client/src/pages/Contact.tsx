@@ -64,8 +64,9 @@ export default function Contact() {
                 </label>
                 <input
                   type="text"
+                  inputMode="text"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full px-4 py-3 min-h-[44px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   placeholder="Votre nom"
                 />
               </div>
@@ -76,8 +77,9 @@ export default function Contact() {
                 </label>
                 <input
                   type="email"
+                  inputMode="email"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full px-4 py-3 min-h-[44px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   placeholder="votre@email.com"
                 />
               </div>
@@ -89,7 +91,8 @@ export default function Contact() {
               </label>
               <input
                 type="tel"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                inputMode="tel"
+                className="w-full px-4 py-3 min-h-[44px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="+212 6XX XXX XXX"
               />
             </div>
@@ -105,7 +108,7 @@ export default function Contact() {
                     key={materiau}
                     type="button"
                     onClick={() => toggleMateriau(materiau)}
-                    className={`px-4 py-2 rounded-lg border-2 transition-all text-sm font-medium ${
+                    className={`px-4 py-2 min-h-[44px] rounded-lg border-2 transition-all text-sm font-medium active:scale-[0.98] ${
                       selectedMateriaux.includes(materiau)
                         ? 'border-primary bg-primary/10 text-primary'
                         : 'border-gray-300 text-gray-700 hover:border-gray-400'
@@ -131,7 +134,7 @@ export default function Contact() {
                     key={zone}
                     type="button"
                     onClick={() => toggleZone(zone)}
-                    className={`px-4 py-2 rounded-lg border-2 transition-all text-sm font-medium ${
+                    className={`px-4 py-2 min-h-[44px] rounded-lg border-2 transition-all text-sm font-medium active:scale-[0.98] ${
                       selectedZones.includes(zone)
                         ? 'border-primary bg-primary/10 text-primary'
                         : 'border-gray-300 text-gray-700 hover:border-gray-400'
