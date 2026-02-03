@@ -4,6 +4,8 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 
 export default function NotreMethode() {
+  const { language } = useLanguage();
+  const t = translations[language];
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f5f5f5' }}>
       <Navigation />

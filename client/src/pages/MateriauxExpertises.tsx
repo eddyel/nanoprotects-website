@@ -75,6 +75,8 @@ const categories = [
 ];
 
 export default function MateriauxExpertises() {
+  const { language } = useLanguage();
+  const t = translations[language];
   const [activeTab, setActiveTab] = useState('pierres');
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);

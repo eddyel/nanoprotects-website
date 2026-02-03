@@ -18,6 +18,8 @@ const villes = [
 ];
 
 export default function Contact() {
+  const { language } = useLanguage();
+  const t = translations[language];
   const [selectedMateriaux, setSelectedMateriaux] = useState<string[]>([]);
   const [selectedZones, setSelectedZones] = useState<string[]>([]);
   const [ville, setVille] = useState('');
@@ -51,10 +53,10 @@ export default function Contact() {
       <section className="pt-32 pb-20">
         <div className="container max-w-3xl">
           <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-8" style={{ color: '#A33215' }}>
-            Demandez un Diagnostic Gratuit
+            {t.contact.title}
           </h1>
           <p className="text-center text-gray-600 text-lg mb-12">
-            Pour un patrimoine qui défie le temps, la première étape est un diagnostic sur mesure. Partagez-nous les détails de votre projet pour une analyse préliminaire gratuite et sans engagement.
+            {t.contact.subtitle}
           </p>
           
           <form onSubmit={handleSubmit} className="space-y-8">
