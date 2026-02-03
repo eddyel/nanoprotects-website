@@ -105,8 +105,39 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Language Switcher - Dropdown */}
-          <div className="hidden lg:flex items-center">
+          {/* Social Media Icons + Language Switcher */}
+          <div className="hidden lg:flex items-center gap-6">
+            {/* LinkedIn Logo */}
+            <a
+              href="https://www.linkedin.com/company/nanoprotects"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform duration-300 hover:rotate-12"
+              aria-label="Visit NanoProtects on LinkedIn"
+            >
+              <img
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/flWxAWaYuRyOYOUb.png"
+                alt="LinkedIn"
+                className="h-10 w-10 object-contain"
+              />
+            </a>
+
+            {/* Facebook Logo */}
+            <a
+              href="https://web.facebook.com/NanoProtects"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform duration-300 hover:rotate-12"
+              aria-label="Visit NanoProtects on Facebook"
+            >
+              <img
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/oiXWMMLIEqiMfpaq.png"
+                alt="Facebook"
+                className="h-10 w-10 object-contain"
+              />
+            </a>
+
+            {/* Language Switcher - Dropdown */}
             <Select value={language} onValueChange={(value) => setLanguage(value as any)}>
               <SelectTrigger className="w-auto border-0 bg-transparent text-white hover:bg-white/10 focus:ring-0 px-3 py-1.5 h-auto">
                 <SelectValue placeholder="Language" />
@@ -178,11 +209,47 @@ export default function Navigation() {
                     </Link>
                   </motion.div>
                 ))}
+                {/* Social Media Icons */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.25, duration: 0.2 }}
+                  className="pt-4 border-t border-white/10 flex gap-4"
+                >
+                  <a
+                    href="https://www.linkedin.com/company/nanoprotects"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-transform duration-300 hover:rotate-12"
+                    aria-label="Visit NanoProtects on LinkedIn"
+                  >
+                    <img
+                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/flWxAWaYuRyOYOUb.png"
+                      alt="LinkedIn"
+                      className="h-10 w-10 object-contain"
+                    />
+                  </a>
+                  <a
+                    href="https://web.facebook.com/NanoProtects"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-transform duration-300 hover:rotate-12"
+                    aria-label="Visit NanoProtects on Facebook"
+                  >
+                    <img
+                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/oiXWMMLIEqiMfpaq.png"
+                      alt="Facebook"
+                      className="h-10 w-10 object-contain"
+                    />
+                  </a>
+                </motion.div>
+
+                {/* Language Switcher */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3, duration: 0.2 }}
-                  className="pt-4 border-t border-white/10"
+                  className="pt-4"
                 >
                   <Select value={language} onValueChange={(value) => {
                     setLanguage(value as any);
