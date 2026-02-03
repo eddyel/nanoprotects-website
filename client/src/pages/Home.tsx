@@ -39,11 +39,11 @@ export default function Home() {
               {t.hero.subtitle}
             </p>
             
-            <div className="flex flex-col gap-4 w-fit">
+            <div className="flex flex-col gap-4 w-fit md:gap-4 gap-3">
               <Button 
                 size="lg" 
                 onClick={() => setLocation('/showroom')}
-                className="text-lg px-6 py-6 font-semibold justify-center whitespace-nowrap border-2 btn-brand"
+                className="text-lg px-6 py-6 font-semibold justify-center whitespace-nowrap border-2 btn-brand md:text-lg text-base md:px-6 px-4 md:py-6 py-4"
               >
                 Nos Réalisations
               </Button>
@@ -52,7 +52,7 @@ export default function Home() {
                 size="lg" 
                 variant="outline"
                 onClick={() => setLocation('/contact')}
-                className="text-lg px-6 py-6 bg-transparent hover:bg-white/10 text-white border-2 border-white/50 backdrop-blur-sm font-semibold justify-center whitespace-nowrap"
+                className="text-lg px-6 py-6 bg-transparent hover:bg-white/10 text-white border-2 border-white/50 backdrop-blur-sm font-semibold justify-center whitespace-nowrap md:text-lg text-base md:px-6 px-4 md:py-6 py-4"
               >
                 {t.hero.cta}
               </Button>
@@ -61,13 +61,13 @@ export default function Home() {
         </div>
 
         {/* Social Media Logos at Bottom of Hero */}
-        <div className="absolute bottom-6 left-0 right-0 z-10 flex justify-center items-center gap-6">
+        <div className="absolute bottom-16 left-0 right-0 z-10 flex justify-center items-center gap-4 md:gap-6 md:bottom-6">
           {/* LinkedIn Logo */}
           <a
             href="https://www.linkedin.com/company/nanoprotects"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-all duration-300 hover:rotate-12 opacity-50 hover:opacity-100"
+            className="transition-all duration-300 hover:rotate-12 opacity-75 hover:opacity-100"
             aria-label="Visit NanoProtects on LinkedIn"
           >
             <img
@@ -82,7 +82,7 @@ export default function Home() {
             href="https://web.facebook.com/NanoProtects"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-all duration-300 hover:rotate-12 opacity-50 hover:opacity-100"
+            className="transition-all duration-300 hover:rotate-12 opacity-75 hover:opacity-100"
             aria-label="Visit NanoProtects on Facebook"
           >
             <img
@@ -97,11 +97,11 @@ export default function Home() {
             href="https://www.instagram.com/nanoprotects"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-all duration-300 hover:rotate-12 opacity-50 hover:opacity-100"
+            className="transition-all duration-300 hover:rotate-12 opacity-75 hover:opacity-100"
             aria-label="Visit NanoProtects on Instagram"
           >
             <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/BzmFgcmiGLTeRhZF.png"
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/RfTqmYBPaYbPSvsA.png"
               alt="Instagram"
               className="h-12 w-12 object-contain"
             />
