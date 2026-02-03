@@ -106,7 +106,7 @@ export const translations: Record<Language, Translations> = {
     hero: {
       title: 'L\'Innovation au Service de l\'Excellence',
       subtitle: 'Nettoyage régénérant et protection nanotechnologique durable pour les surfaces d\'exception. Nous révélons la beauté originelle de vos matériaux et la protégeons pour 3 à 5 ans grâce à des revêtements invisibles de dernière génération.',
-      cta: 'Demander un Diagnostic Gratuit',
+      cta: 'Contactez Nous',
     },
     home: {
       benefit1Title: 'Temps Libéré',
@@ -198,7 +198,7 @@ export const translations: Record<Language, Translations> = {
     hero: {
       title: 'الابتكار في خدمة التميز',
       subtitle: 'التنظيف المجدد والحماية النانوية المستدامة للأسطح الاستثنائية. نكشف الجمال الأصلي لمواد بناءك ونحميها لمدة 3 إلى 5 سنوات بفضل الطلاءات غير المرئية من الجيل الأخير.',
-      cta: 'اطلب تشخيصًا مجانيًا',
+      cta: 'اتصل بنا',
     },
     home: {
       benefit1Title: 'وقت محرر',
@@ -290,8 +290,7 @@ export const translations: Record<Language, Translations> = {
     hero: {
       title: 'La Innovación al Servicio de la Excelencia',
       subtitle: 'Limpieza regeneradora y protección nanotecnológica duradera para superficies excepcionales. Revelamos la belleza original de tus materiales y la protegemos durante 3 a 5 años gracias a recubrimientos invisibles de última generación.',
-      cta: 'Solicita un Diagnóstico Gratuito',
-    },
+      cta: 'Contáctenos',    },
     home: {
       benefit1Title: 'Tiempo Liberado',
       benefit1Text: 'Tus equipos se concentran en la hospitalidad, nosotros cuidamos tus superficies',
@@ -382,7 +381,7 @@ export const translations: Record<Language, Translations> = {
     hero: {
       title: 'Innovation in Service of Excellence',
       subtitle: 'Regenerative cleaning and sustainable nanotechnology protection for exceptional surfaces. We reveal the original beauty of your materials and protect it for 3 to 5 years with next-generation invisible coatings.',
-      cta: 'Request a Free Diagnosis',
+      cta: 'Contact Us',
     },
     home: {
       benefit1Title: 'Time Freed',

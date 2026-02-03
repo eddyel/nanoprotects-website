@@ -1,8 +1,15 @@
 import { Link, useLocation } from 'wouter';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -98,21 +105,20 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Language Switcher */}
-          <div className="hidden lg:flex items-center gap-2">
-            {languages.map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => setLanguage(lang.code as any)}
-                className={`px-3 py-1.5 rounded text-sm font-medium transition-all ${
-                  language === lang.code
-                    ? 'bg-primary text-white'
-                    : 'text-white/70 hover:text-white hover:bg-white/10'
-                }`}
-              >
-                {lang.label}
-              </button>
-            ))}
+          {/* Language Switcher - Dropdown */}
+          <div className="hidden lg:flex items-center">
+            <Select value={language} onValueChange={(value) => setLanguage(value as any)}>
+              <SelectTrigger className="w-auto border-0 bg-transparent text-white hover:bg-white/10 focus:ring-0 px-3 py-1.5 h-auto">
+                <SelectValue placeholder="Language" />
+              </SelectTrigger>
+              <SelectContent className="bg-secondary border-white/20">
+                {languages.map((lang) => (
+                  <SelectItem key={lang.code} value={lang.code} className="text-white hover:bg-white/10 focus:bg-white/10 cursor-pointer">
+                    {lang.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           {/* Mobile Menu Button */}
@@ -176,24 +182,23 @@ export default function Navigation() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3, duration: 0.2 }}
-                  className="flex gap-2 pt-4 border-t border-white/10"
+                  className="pt-4 border-t border-white/10"
                 >
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => {
-                        setLanguage(lang.code as any);
-                        setMobileMenuOpen(false);
-                      }}
-                      className={`px-3 py-1.5 min-h-[44px] rounded text-sm font-medium transition-all ${
-                        language === lang.code
-                          ? 'bg-primary text-white'
-                          : 'text-white/70 bg-white/10'
-                      }`}
-                    >
-                      {lang.label}
-                    </button>
-                  ))}
+                  <Select value={language} onValueChange={(value) => {
+                    setLanguage(value as any);
+                    setMobileMenuOpen(false);
+                  }}>
+                    <SelectTrigger className="w-full border border-white/20 bg-white/10 text-white focus:ring-0 py-2 min-h-[44px]">
+                      <SelectValue placeholder="Language" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-secondary border-white/20">
+                      {languages.map((lang) => (
+                        <SelectItem key={lang.code} value={lang.code} className="text-white hover:bg-white/10 focus:bg-white/10 cursor-pointer">
+                          {lang.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </motion.div>
               </div>
             </motion.div>

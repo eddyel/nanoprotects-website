@@ -38,7 +38,7 @@ export default function APropos() {
                 Chaque surface raconte une histoire. Chaque matériau porte l'âme de l'artisan qui l'a créé. Préserver cette beauté, c'est honorer un héritage et garantir que vos espaces continuent d'inspirer l'émerveillement pour les générations à venir.
               </p>
               <p>
-                Chez <strong>NanoProtects</strong>, nous sommes bien plus qu'un prestataire de nettoyage. Nous sommes les gardiens de votre patrimoine. Animés par une quête de perfection si aboutie qu'elle en devient invisible, nous œuvrons pour que la beauté des lieux et la qualité de l'accueil défient le temps.
+                Depuis 2019, chez <strong>NanoProtects</strong>, nous sommes bien plus qu'un prestataire de nettoyage. Nous sommes les gardiens de votre patrimoine. Animés par une quête de perfection si aboutie qu'elle en devient invisible, nous œuvrons pour que la beauté des lieux et la qualité de l'accueil défient le temps.
               </p>
             </div>
           </div>
@@ -65,10 +65,10 @@ export default function APropos() {
             </h2>
             <div className="font-body text-base md:text-lg max-w-none text-gray-700 leading-relaxed space-y-4">
               <p>
-                Nous alliions la culture du soin méticuleux et l'intention authentique à une recherche permanente de solutions nanotechnologiques de pointe.
+                Nous combinons la culture du soin méticuleux et l'intention authentique à une recherche permanente de solutions nanotechnologiques de pointe.
               </p>
               <p>
-                Notre expertise repose sur deux piliers complémentaires qui forment un écosystème de protection totale pour vos surfaces d'exception :
+                Notre expertise repose sur deux piliers complémentaires qui forment un écosystème de protection durable pour vos surfaces d'exception :
               </p>
             </div>
           </div>
