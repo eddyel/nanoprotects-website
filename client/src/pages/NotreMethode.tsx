@@ -1,5 +1,7 @@
 import Navigation from '@/components/Navigation';
 import { Sparkles, Shield, CheckCircle, Clock, TrendingUp, Handshake } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/translations';
 
 export default function NotreMethode() {
   return (

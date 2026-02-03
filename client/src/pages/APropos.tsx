@@ -1,5 +1,7 @@
 import Navigation from '@/components/Navigation';
 import { Droplet, Shield, Sparkles, Building2 } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/translations';
 
 export default function APropos() {
   const references = [

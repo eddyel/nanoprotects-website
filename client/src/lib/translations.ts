@@ -95,6 +95,38 @@ export interface Translations {
     errorMessageRequired: string;
     errorSubmit: string;
   };
+  about: {
+    title: string;
+    section1Title: string;
+    section1Text: string;
+    section2Title: string;
+    section2Text: string;
+    section3Title: string;
+    section3Text: string;
+  };
+  materials: {
+    title: string;
+    subtitle: string;
+  };
+  method: {
+    title: string;
+    subtitle: string;
+    phase1Title: string;
+    phase1Description: string;
+    phase1Point1: string;
+    phase1Point2: string;
+    phase1Point3: string;
+    phase2Title: string;
+    phase2Description: string;
+    phase2Point1: string;
+    phase2Point2: string;
+    phase2Point3: string;
+    phase3Title: string;
+    phase3Description: string;
+    phase3Point1: string;
+    phase3Point2: string;
+    phase3Point3: string;
+  };
   footer: {
     tagline: string;
     rights: string;
@@ -202,6 +234,38 @@ export const translations: Record<Language, Translations> = {
       tagline: 'Nettoyage & Protection Invisible ou Décorative Toutes Surfaces',
       rights: 'Tous droits réservés',
     },
+    about: {
+      title: 'Nanotechnologies au service de l\'excellence',
+      section1Title: 'Notre Approche Méthodique : Révéler et Préserver la Beauté Originelle',
+      section1Text: 'Chaque surface raconte une histoire. Chaque matériau porte l\'âme de l\'artisan qui l\'a créé. Préserver cette beauté, c\'est honorer un héritage et garantir que vos espaces continuent d\'inspirer l\'émerveillement pour les générations à venir. Depuis 2019, chez NanoProtects, nous sommes bien plus qu\'un prestataire de nettoyage. Nous sommes les gardiens de votre patrimoine. Animés par une quête de perfection si aboutie qu\'elle en devient invisible, nous œuvrons pour que la beauté des lieux et la qualité de l\'accueil défient le temps.',
+      section2Title: 'Notre Méthode',
+      section2Text: 'Nous développons et déployons des processus d\'intervention à la fois ultra-efficients et parfaitement discrets, conçus pour s\'insérer sans perturbation dans l\'exploitation de nos clients. Notre engagement repose sur un dialogue systématique, une exécution agile et fiable, et une discrétion protectrice, pour préserver et sublimer durablement les matériaux.',
+      section3Title: 'Notre Expertise',
+      section3Text: 'Nous combinons la culture du soin méticuleux et l\'intention authentique à une recherche permanente de solutions nanotechnologiques de pointe. Notre expertise repose sur deux piliers complémentaires qui forment un écosystème de protection durable pour vos surfaces d\'exception.',
+    },
+    materials: {
+      title: 'Matériaux et Expertises',
+      subtitle: 'Avec des solutions adaptées à chaque surface, nous intervenons sur une large gamme de matériaux :',
+    },
+    method: {
+      title: 'Notre Approche Méthodique : Révéler et Préserver la Beauté Originelle',
+      subtitle: 'Une approche complète pour révéler et protéger la beauté de vos surfaces',
+      phase1Title: 'Diagnostic',
+      phase1Description: 'Analyse experte de l\'état de vos surfaces afin de déterminer la nature exacte des salissures, des altérations et du potentiel de restauration.',
+      phase1Point1: 'Cartographie complète des dégradations (taches, usure, micro-rayures)',
+      phase1Point2: 'Identification des types de surface et de leur sensibilité',
+      phase1Point3: 'Établissement d\'un protocole d\'intervention personnalisé et justifié',
+      phase2Title: 'Révéler',
+      phase2Description: 'Nettoyage et régénération en profondeur basés sur le diagnostic, pour restaurer l\'éclat et l\'intégrité originels de la surface.',
+      phase2Point1: 'Décapage et nettoyage professionnel ciblé grâce aux conclusions du diagnostic',
+      phase2Point2: 'Élimination scientifique des taches, résidus et micro-organismes identifiés',
+      phase2Point3: 'Restauration esthétique et préparatoire assurant une surface parfaitement saine et réceptive à la protection',
+      phase3Title: 'Protéger',
+      phase3Description: 'Scellement durable du résultat par l\'application de revêtements nanotechnologiques de dernière génération.',
+      phase3Point1: 'Application d\'une barrière invisible (Nano-SiO₂) au niveau moléculaire, parfaitement adhérente grâce à la surface préparée',
+      phase3Point2: 'Protection active hydrophobe, oléophobe et anti-graffiti',
+      phase3Point3: 'Durabilité durable (3 à 5 ans) et résistance aux UV, aux agents chimiques et à l\'usure',
+    },
   },
   ar: {
     seo: {
@@ -301,6 +365,38 @@ export const translations: Record<Language, Translations> = {
     footer: {
       tagline: 'التنظيف والحماية غير المرئية أو الزخرفية جميع الأسطح',
       rights: 'جميع الحقوق محفوظة',
+    },
+    about: {
+      title: 'النانوتكنولوجيا في خدمة التميز',
+      section1Title: 'نهجنا المنهجي: الكشف والحفاظ على الجمال الأصلي',
+      section1Text: 'كل سطح يحكي قصة. كل مادة تحمل روح الحرفي الذي أنشأها. الحفاظ على هذا الجمال يعني تكريم إرث وضمان أن تستمر مساحاتك في إلهام الدهشة للأجيال القادمة. منذ عام 2019، نحن في NanoProtects أكثر من مجرد مزود خدمة تنظيف. نحن حراس تراثك. مدفوعون بسعي للكمال أصبح غير مرئي لدرجة أنه يصبح غير مرئي، نعمل لكي يتحدى جمال الأماكن وجودة الاستقبال الزمن.',
+      section2Title: 'طريقتنا',
+      section2Text: 'نطور ونطبق عمليات تدخل فعالة للغاية وسرية تماماً، مصممة للاندماج دون إزعاج في عمليات عملائنا. يعتمد التزامنا على الحوار المنهجي والتنفيذ الرشيق والموثوق والسرية الحامية، للحفاظ على المواد وتحسينها بشكل دائم.',
+      section3Title: 'خبرتنا',
+      section3Text: 'نجمع بين ثقافة الرعاية الدقيقة والنية الحقيقية مع البحث المستمر عن حلول النانوتكنولوجيا المتقدمة. تعتمد خبرتنا على عمودين متكاملين يشكلان نظاماً بيئياً للحماية المستدامة لأسطحك الاستثنائية.',
+    },
+    materials: {
+      title: 'المواد والخبرات',
+      subtitle: 'مع حلول مخصصة لكل سطح، نتدخل على نطاق واسع من المواد:',
+    },
+    method: {
+      title: 'نهجنا المنهجي: الكشف والحفاظ على الجمال الأصلي',
+      subtitle: 'نهج شامل للكشف والحفاظ على جمال أسطحك',
+      phase1Title: 'التشخيص',
+      phase1Description: 'تحليل خبير لحالة أسطحك لتحديد الطبيعة الدقيقة للتلوث والتدهور والإمكانات الترميمية.',
+      phase1Point1: 'رسم خريطة شاملة للتدهور (البقع والبلى والخدوش الدقيقة)',
+      phase1Point2: 'تحديد أنواع السطح وحساسيتها',
+      phase1Point3: 'وضع بروتوكول تدخل مخصص ومبرر',
+      phase2Title: 'الكشف',
+      phase2Description: 'التنظيف والتجديد العميق بناءً على التشخيص، لاستعادة البريق والسلامة الأصليين للسطح.',
+      phase2Point1: 'الكشط والتنظيف الاحترافي الموجه بناءً على استنتاجات التشخيص',
+      phase2Point2: 'الإزالة العلمية للبقع والبقايا والكائنات الحية الدقيقة المحددة',
+      phase2Point3: 'الاستعادة الجمالية والتحضيرية لضمان سطح صحي تماماً وقابل للحماية',
+      phase3Title: 'الحماية',
+      phase3Description: 'إغلاق دائم للنتيجة من خلال تطبيق طلاءات النانوتكنولوجيا من الجيل الأخير.',
+      phase3Point1: 'تطبيق حاجز غير مرئي (Nano-SiO₂) على المستوى الجزيئي، مع التصاق مثالي بفضل السطح المحضر',
+      phase3Point2: 'حماية نشطة مقاومة للماء والزيت ومقاومة للكتابة بالجرافيتي',
+      phase3Point3: 'متانة دائمة (3 إلى 5 سنوات) ومقاومة للأشعة فوق البنفسجية والعوامل الكيميائية والبلى',
     },
   },
   es: {
@@ -402,6 +498,38 @@ export const translations: Record<Language, Translations> = {
       tagline: 'Limpieza y Protección Invisible o Decorativa Todas las Superficies',
       rights: 'Todos los derechos reservados',
     },
+    about: {
+      title: 'Nanotecnologías al Servicio de la Excelencia',
+      section1Title: 'Nuestro Enfoque Metodológico: Revelar y Preservar la Belleza Original',
+      section1Text: 'Cada superficie cuenta una historia. Cada material lleva el alma del artesano que lo creó. Preservar esta belleza es honrar un legado y garantizar que tus espacios continúen inspirando asombro para las generaciones venideras. Desde 2019, en NanoProtects somos más que un proveedor de servicios de limpieza. Somos los guardianes de tu patrimonio. Impulsados por una búsqueda de perfección tan lograda que se vuelve invisible, trabajamos para que la belleza de los lugares y la calidad de la acogida desafíen el tiempo.',
+      section2Title: 'Nuestro Método',
+      section2Text: 'Desarrollamos e implementamos procesos de intervención ultra eficientes y perfectamente discretos, diseñados para integrarse sin perturbación en la operación de nuestros clientes. Nuestro compromiso se basa en un diálogo sistemático, una ejecución ágil y confiable, y una discreción protectora, para preservar y mejorar duradéramente los materiales.',
+      section3Title: 'Nuestra Experiencia',
+      section3Text: 'Combinamos la cultura del cuidado meticuloso y la intención auténtica con la búsqueda permanente de soluciones nanotecnológicas de vanguardia. Nuestra experiencia se basa en dos pilares complementarios que forman un ecosistema de protección sostenible para tus superficies excepcionales.',
+    },
+    materials: {
+      title: 'Materiales y Experiencias',
+      subtitle: 'Con soluciones adaptadas a cada superficie, intervenimos en una amplia gama de materiales:',
+    },
+    method: {
+      title: 'Nuestro Enfoque Metodológico: Revelar y Preservar la Belleza Original',
+      subtitle: 'Un enfoque completo para revelar y proteger la belleza de tus superficies',
+      phase1Title: 'Diagnóstico',
+      phase1Description: 'Análisis experto del estado de tus superficies para determinar la naturaleza exacta de la suciedad, alteraciones y potencial de restauración.',
+      phase1Point1: 'Mapeo completo de degradaciones (manchas, desgaste, microrrayos)',
+      phase1Point2: 'Identificación de tipos de superficie y su sensibilidad',
+      phase1Point3: 'Establecimiento de protocolo de intervención personalizado y justificado',
+      phase2Title: 'Revelar',
+      phase2Description: 'Limpieza y regeneración profunda basadas en el diagnóstico, para restaurar el brillo e integridad originales de la superficie.',
+      phase2Point1: 'Decapado y limpieza profesional dirigida según conclusiones del diagnóstico',
+      phase2Point2: 'Eliminación científica de manchas, residuos y microorganismos identificados',
+      phase2Point3: 'Restauración estética y preparatoria asegurando una superficie perfectamente sana y receptiva a la protección',
+      phase3Title: 'Proteger',
+      phase3Description: 'Sellado duradero del resultado mediante la aplicación de recubrimientos nanotecnológicos de última generación.',
+      phase3Point1: 'Aplicación de barrera invisible (Nano-SiO₂) a nivel molecular, perfectamente adherida gracias a la superficie preparada',
+      phase3Point2: 'Protección activa hidrófoba, oleófoba y anti-graffiti',
+      phase3Point3: 'Durabilidad duradera (3 a 5 años) y resistencia a UV, agentes químicos y desgaste',
+    },
   },
   en: {
     seo: {
@@ -501,6 +629,38 @@ export const translations: Record<Language, Translations> = {
     footer: {
       tagline: 'Invisible or Decorative Cleaning and Protection All Surfaces',
       rights: 'All rights reserved',
+    },
+    about: {
+      title: 'Nanotechnologies in Service of Excellence',
+      section1Title: 'Our Methodical Approach: Reveal and Preserve Original Beauty',
+      section1Text: 'Every surface tells a story. Every material carries the soul of the craftsman who created it. Preserving this beauty means honoring a legacy and ensuring your spaces continue to inspire wonder for generations to come. Since 2019, at NanoProtects we are more than a cleaning service provider. We are the guardians of your heritage. Driven by a pursuit of perfection so accomplished it becomes invisible, we work to ensure the beauty of places and quality of hospitality defy time.',
+      section2Title: 'Our Method',
+      section2Text: 'We develop and deploy intervention processes that are ultra-efficient and perfectly discreet, designed to integrate without disruption into our clients\' operations. Our commitment is based on systematic dialogue, agile and reliable execution, and protective discretion, to preserve and sustainably enhance materials.',
+      section3Title: 'Our Expertise',
+      section3Text: 'We combine the culture of meticulous care and authentic intention with the permanent pursuit of cutting-edge nanotechnology solutions. Our expertise is based on two complementary pillars that form an ecosystem of sustainable protection for your exceptional surfaces.',
+    },
+    materials: {
+      title: 'Materials and Expertise',
+      subtitle: 'With solutions adapted to each surface, we intervene on a wide range of materials:',
+    },
+    method: {
+      title: 'Our Methodical Approach: Reveal and Preserve Original Beauty',
+      subtitle: 'A complete approach to reveal and protect the beauty of your surfaces',
+      phase1Title: 'Diagnosis',
+      phase1Description: 'Expert analysis of your surfaces\' condition to determine the exact nature of soiling, alterations and restoration potential.',
+      phase1Point1: 'Complete mapping of degradations (stains, wear, micro-scratches)',
+      phase1Point2: 'Identification of surface types and their sensitivity',
+      phase1Point3: 'Establishment of personalized and justified intervention protocol',
+      phase2Title: 'Reveal',
+      phase2Description: 'Deep cleaning and regeneration based on diagnosis, to restore the original shine and integrity of the surface.',
+      phase2Point1: 'Stripping and professional cleaning targeted according to diagnosis conclusions',
+      phase2Point2: 'Scientific elimination of stains, residues and identified microorganisms',
+      phase2Point3: 'Aesthetic and preparatory restoration ensuring a perfectly healthy surface receptive to protection',
+      phase3Title: 'Protect',
+      phase3Description: 'Durable sealing of the result through the application of cutting-edge nanotechnology coatings.',
+      phase3Point1: 'Application of invisible barrier (Nano-SiO₂) at molecular level, perfectly adhered thanks to prepared surface',
+      phase3Point2: 'Active hydrophobic, oleophobic and anti-graffiti protection',
+      phase3Point3: 'Durable durability (3 to 5 years) and resistance to UV, chemical agents and wear',
     },
   },
 };

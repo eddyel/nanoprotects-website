@@ -2,6 +2,8 @@ import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/translations';
 
 const materiaux = [
   'Bejmat', 'Pierre de Taza', 'Pierres Naturelles', 'Marbre', 'Zellige',

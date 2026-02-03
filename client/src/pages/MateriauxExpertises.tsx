@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/translations';
 
 const categories = [
   {

@@ -363,8 +363,7 @@
   display: inline-block;
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, #feda75 0%, #fa7e1e 5%, #d92e7f 45%, #9b36b7 60%, #515bd4 90%);
-  border-radius: 5px;
+  background-image: url('/instagram.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -401,8 +400,7 @@
   display: inline-block;
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #feda75 0%, #fa7e1e 5%, #d92e7f 45%, #9b36b7 60%, #515bd4 90%);
-  border-radius: 5px;
+  background-image: url('/instagram.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
