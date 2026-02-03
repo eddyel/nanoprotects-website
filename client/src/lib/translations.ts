@@ -151,6 +151,23 @@ export interface Translations {
     cityPlaceholder: string;
     phone: string;
   };
+  confirmation: {
+    titlePrefix: string;
+    messagePrefix: string;
+    messageSuffix: string;
+    responseTime: string;
+    waitingTitle: string;
+    showroomButton: string;
+    furtherTitle: string;
+    methodTitle: string;
+    methodDescription: string;
+    expertiseTitle: string;
+    expertiseDescription: string;
+    learnMore: string;
+    reassuranceMessage: string;
+    urgentPrefix: string;
+    backHome: string;
+  };
   about: {
     title: string;
     section1Title: string;
@@ -385,6 +402,23 @@ export const translations: Record<Language, Translations> = {
       cityPlaceholder: 'Nom de la ville',
       phone: 'Téléphone',
     },
+    confirmation: {
+      titlePrefix: 'Merci pour votre confiance',
+      messagePrefix: 'Nous avons bien reçu votre demande de diagnostic personnalisé concernant',
+      messageSuffix: 'Un expert NanoProtects analysera votre projet et vous contactera par téléphone sous 24 heures ouvrées.',
+      responseTime: 'Nous vous remercions de votre confiance.',
+      waitingTitle: 'En attendant notre appel, plongez au cœur de notre savoir-faire :',
+      showroomButton: '🎬 Découvrir notre Showroom',
+      furtherTitle: 'Pour aller plus loin',
+      methodTitle: 'Notre Méthode en 3 étapes',
+      methodDescription: 'Découvrez notre approche innovante pour préserver la beauté de vos matériaux.',
+      expertiseTitle: 'Expertise : Protéger le Zellige',
+      expertiseDescription: 'Explorez nos solutions spécialisées pour chaque type de surface.',
+      learnMore: 'En savoir plus',
+      reassuranceMessage: 'Votre diagnostic préliminaire est gratuit et sans engagement. Notre mission : préserver durablement la beauté et la valeur de votre patrimoine.',
+      urgentPrefix: 'Pour toute question urgente, vous pouvez nous joindre au',
+      backHome: 'Retour à l\'accueil',
+    },
     footer: {
       tagline: 'Nettoyage & Protection Invisible ou Décorative Toutes Surfaces',
       rights: 'Tous droits réservés',
@@ -392,7 +426,7 @@ export const translations: Record<Language, Translations> = {
     about: {
       title: 'Nanotechnologies au service de l\'excellence',
       section1Title: 'Notre Approche Méthodique : Révéler et Préserver la Beauté Originelle',
-      section1Text: 'Chaque surface raconte une histoire. Chaque matériau porte l\'âme de l\'artisan qui l\'a créé. Préserver cette beauté, c\'est honorer un héritage et garantir que vos espaces continuent d\'inspirer l\'émerveillement pour les générations à venir. Depuis 2019, chez NanoProtects, nous sommes bien plus qu\'un prestataire de nettoyage. Nous sommes les gardiens de votre patrimoine. Animés par une quête de perfection si aboutie qu\'elle en devient invisible, nous œuvrons pour que la beauté des lieux et la qualité de l\'accueil défient le temps.',
+      section1Text: 'Chaque surface raconte une histoire. Chaque matériau porte l\'âme de l\'artisan qui l\'a créé. Préserver cette beauté, c\'est honorer un héritage et garantir que vos espaces continuent d\'inspirer l\'émerveillement pour les générations à venir. Depuis 2019, chez NanoProtects, nous sommes bien plus qu\'un prestataire de nettoyage. Nous sommes les gardiens de votre patrimoine. Animés par une quête de perfection si aboutie qu\'elle en devient invisible, nous œuvrons pour que la beauté des lieux et la qualité de l accueil défient le temps.',
       section2Title: 'Notre Méthode',
       section2Text: 'Nous développons et déployons des processus d\'intervention à la fois ultra-efficients et parfaitement discrets, conçus pour s\'insérer sans perturbation dans l\'exploitation de nos clients. Notre engagement repose sur un dialogue systématique, une exécution agile et fiable, et une discrétion protectrice, pour préserver et sublimer durablement les matériaux.',
       section3Title: 'Notre Expertise',
@@ -615,6 +649,23 @@ export const translations: Record<Language, Translations> = {
       specifyCity: 'حدد المدينة',
       cityPlaceholder: 'اسم المدينة',
       phone: 'الهاتف',
+    },
+    confirmation: {
+      titlePrefix: 'شكراً لثقتك',
+      messagePrefix: 'لقد تلقينا طلب التشخيص الشخصي الخاص بك بخصوص',
+      messageSuffix: 'سيقوم خبير NanoProtects بتحليل مشروعك والاتصال بك عبر الهاتف في غضون 24 ساعة عمل.',
+      responseTime: 'نشكرك على ثقتك بنا.',
+      waitingTitle: 'أثناء انتظار اتصالنا، اكتشف خبرتنا:',
+      showroomButton: '🎬 اكتشف معرضنا',
+      furtherTitle: 'لمزيد من المعلومات',
+      methodTitle: 'طريقتنا في 3 خطوات',
+      methodDescription: 'اكتشف نهجنا المبتكر للحفاظ على جمال مواد البناء الخاصة بك.',
+      expertiseTitle: 'الخبرة: حماية الزليج',
+      expertiseDescription: 'استكشف حلولنا المتخصصة لكل نوع سطح.',
+      learnMore: 'اعرف أكثر',
+      reassuranceMessage: 'التشخيص الأولي الخاص بك مجاني وبدون التزام. مهمتنا: الحفاظ على جمال وقيمة تراثك بشكل دائم.',
+      urgentPrefix: 'لأي سؤال عاجل، يمكنك الاتصال بنا على',
+      backHome: 'العودة إلى الصفحة الرئيسية',
     },
     footer: {
       tagline: 'التنظيف والحماية غير المرئية أو الزخرفية جميع الأسطح',
@@ -846,6 +897,23 @@ export const translations: Record<Language, Translations> = {
       specifyCity: 'Especifica la ciudad',
       cityPlaceholder: 'Nombre de la ciudad',
       phone: 'Teléfono',
+    },
+    confirmation: {
+      titlePrefix: 'Gracias por tu confianza',
+      messagePrefix: 'Hemos recibido tu solicitud de diagnóstico personalizado sobre',
+      messageSuffix: 'Un experto de NanoProtects analizará tu proyecto y te contactará por teléfono dentro de 24 horas hábiles.',
+      responseTime: 'Te agradecemos tu confianza en nosotros.',
+      waitingTitle: 'Mientras esperas nuestro contacto, descubre nuestro saber hacer:',
+      showroomButton: '🎬 Descubre nuestro Showroom',
+      furtherTitle: 'Para saber más',
+      methodTitle: 'Nuestro Método en 3 pasos',
+      methodDescription: 'Descubre nuestro enfoque innovador para preservar la belleza de tus materiales.',
+      expertiseTitle: 'Experiencia: Proteger el Zellige',
+      expertiseDescription: 'Explora nuestras soluciones especializadas para cada tipo de superficie.',
+      learnMore: 'Saber más',
+      reassuranceMessage: 'Tu diagnóstico preliminar es gratuito y sin compromiso. Nuestra misión: preservar duraderas la belleza y el valor de tu patrimonio.',
+      urgentPrefix: 'Para cualquier pregunta urgente, puedes contactarnos en',
+      backHome: 'Volver a inicio',
     },
     footer: {
       tagline: 'Limpieza y Protección Invisible o Decorativa Todas las Superficies',
@@ -1096,6 +1164,23 @@ export const translations: Record<Language, Translations> = {
       specifyCity: 'Specify the city',
       cityPlaceholder: 'City name',
       phone: 'Phone',
+    },
+    confirmation: {
+      titlePrefix: 'Thank you for your trust',
+      messagePrefix: 'We have received your personalized diagnostic request regarding',
+      messageSuffix: 'A NanoProtects expert will analyze your project and contact you by phone within 24 business hours.',
+      responseTime: 'We appreciate your trust in us.',
+      waitingTitle: 'While waiting for our call, discover our expertise:',
+      showroomButton: '🎬 Discover our Showroom',
+      furtherTitle: 'Learn more',
+      methodTitle: 'Our Method in 3 Steps',
+      methodDescription: 'Discover our innovative approach to preserve the beauty of your materials.',
+      expertiseTitle: 'Expertise: Protecting Zellige',
+      expertiseDescription: 'Explore our specialized solutions for every type of surface.',
+      learnMore: 'Learn more',
+      reassuranceMessage: 'Your preliminary diagnosis is free and without commitment. Our mission: to sustainably preserve the beauty and value of your heritage.',
+      urgentPrefix: 'For any urgent questions, you can reach us at',
+      backHome: 'Back to home',
     },
     footer: {
       tagline: 'Invisible or Decorative Cleaning and Protection All Surfaces',

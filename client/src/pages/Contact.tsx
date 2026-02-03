@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation } from 'wouter';
 import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
@@ -21,6 +22,7 @@ interface FormErrors {
 export default function Contact() {
   const { language } = useLanguage();
   const t = translations[language];
+  const [, setLocation] = useLocation();
   const [selectedMateriaux, setSelectedMateriaux] = useState<string[]>([]);
   const [selectedZones, setSelectedZones] = useState<string[]>([]);
   const [ville, setVille] = useState('');
@@ -102,9 +104,7 @@ export default function Contact() {
       newErrors.phone = 'Invalid phone number format';
     }
 
-    if (!formData.message.trim()) {
-      newErrors.message = t.contact.errorMessageRequired || 'Message is required';
-    }
+    // Message is optional - no validation needed
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -139,19 +139,25 @@ export default function Contact() {
       // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Success message
-      toast.success(t.contact.successMessage || 'Form submitted successfully!');
+      // Extract first name from full name
+      const firstName = formData.name.split(' ')[0];
       
-      // Reset form
-      setFormData({ name: '', email: '', phone: '', message: '' });
-      setSelectedMateriaux([]);
-      setSelectedZones([]);
-      setVille('');
-      setAutreVille('');
-      setErrors({});
+      // Prepare confirmation data
+      const confirmationData = {
+        firstName,
+        email: formData.email,
+        phone: formData.phone,
+        materials: selectedMateriaux,
+        zones: selectedZones,
+        ville: ville || autreVille,
+        message: formData.message
+      };
+      
+      // Store in sessionStorage and redirect
+      sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
+      setLocation('/confirmation');
     } catch (error) {
       toast.error(t.contact.errorSubmit || 'An error occurred. Please try again.');
-    } finally {
       setIsSubmitting(false);
     }
   };
