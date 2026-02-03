@@ -113,10 +113,10 @@ export default function MateriauxExpertises() {
       <section className="pt-32 pb-20">
         <div className="container max-w-6xl">
           <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-4" style={{ color: '#A33215' }}>
-            Matériaux et Expertises
+            {t.materials.title}
           </h1>
           <p className="text-lg text-gray-700 mb-16 max-w-3xl">
-            Avec des solutions adaptées à chaque surface, nous intervenons sur une large gamme de matériaux :
+            {t.materials.subtitle}
           </p>
           
           {/* Sticky Tab Navigation with Arrows */}

@@ -13,7 +13,7 @@ export default function NotreMethode() {
       <section className="pt-32 pb-20">
         <div className="container max-w-6xl">
           <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-8" style={{ color: '#A33215' }}>
-            Notre Approche Méthodique : Révéler et Préserver la Beauté Originelle
+            {t.method.title}
           </h1>
           <p className="text-center text-gray-600 text-lg max-w-3xl mx-auto mb-20">
             {/* Subtitle removed as per new design */}
@@ -30,24 +30,24 @@ export default function NotreMethode() {
                 <div className="flex items-center gap-4 mb-6">
                   <CheckCircle className="w-10 h-10 text-primary" />
                   <h2 className="font-display text-[1.75rem] font-bold text-secondary">
-                    Diagnostic
+                    {t.method.phase1Title}
                   </h2>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  Analyse experte de l'état de vos surfaces afin de déterminer la nature exacte des salissures, des altérations et du potentiel de restauration.
+                  {t.method.phase1Description}
                 </p>
                 <ul className="space-y-3 text-gray-600">
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">•</span>
-                    <span>Cartographie complète des dégradations (tâches, usure, micro-rayures)</span>
+                    <span>{t.method.phase1Point1}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">•</span>
-                    <span>Identification des types de surface et de leur sensibilité</span>
+                    <span>{t.method.phase1Point2}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">•</span>
-                    <span>Établissement d'un protocole d'intervention personnalisé et justifié</span>
+                    <span>{t.method.phase1Point3}</span>
                   </li>
                 </ul>
               </div>
@@ -62,24 +62,24 @@ export default function NotreMethode() {
                 <div className="flex items-center gap-4 mb-6">
                   <Sparkles className="w-10 h-10 text-primary" />
                   <h2 className="font-display text-[1.75rem] font-bold text-secondary">
-                    Révéler
+                    {t.method.phase2Title}
                   </h2>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  Nettoyage et régénération en profondeur basés sur le diagnostic, pour restaurer l'éclat et l'intégrité originels de la surface.
+                  {t.method.phase2Description}
                 </p>
                 <ul className="space-y-3 text-gray-600">
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">•</span>
-                    <span>Décapage et nettoyage professionnel ciblé grâce aux conclusions du diagnostic</span>
+                    <span>{t.method.phase2Point1}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">•</span>
-                    <span>Élimination scientifique des tâches, résidus et micro-organismes identifiés</span>
+                    <span>{t.method.phase2Point2}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">•</span>
-                    <span>Restauration esthétique et préparatoire assurant une surface parfaitement saine et réceptive à la protection</span>
+                    <span>{t.method.phase2Point3}</span>
                   </li>
                 </ul>
               </div>
@@ -94,24 +94,24 @@ export default function NotreMethode() {
                 <div className="flex items-center gap-4 mb-6">
                   <Shield className="w-10 h-10 text-primary" />
                   <h2 className="font-display text-[1.75rem] font-bold text-secondary">
-                    Protéger
+                    {t.method.phase3Title}
                   </h2>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  Scellement durable du résultat par l'application de revêtements nanotechnologiques de dernière génération.
+                  {t.method.phase3Description}
                 </p>
                 <ul className="space-y-3 text-gray-600">
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">•</span>
-                    <span>Application d'une barrière invisible (Nano-SiO₂) au niveau moléculaire, parfaitement adhérente grâce à la surface préparée</span>
+                    <span>{t.method.phase3Point1}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">•</span>
-                    <span>Protection active hydrophobe, oléophobe et anti-graffiti</span>
+                    <span>{t.method.phase3Point2}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">•</span>
-                    <span>Durabilité durable (3 à 5 ans) et résistance aux UV, aux agents chimiques et à l'usure</span>
+                    <span>{t.method.phase3Point3}</span>
                   </li>
                 </ul>
               </div>
