@@ -64,7 +64,7 @@ export default function Contact() {
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Nom *
+                  {t.contact.nameLabel}
                 </label>
                 <input
                   type="text"
@@ -77,7 +77,7 @@ export default function Contact() {
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Email *
+                  {t.contact.emailLabel}
                 </label>
                 <input
                   type="email"
@@ -91,7 +91,7 @@ export default function Contact() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Téléphone *
+                {t.contact.phoneLabel}
               </label>
               <input
                 type="tel"
@@ -105,7 +105,7 @@ export default function Contact() {
             {/* Multi-select: Nature des Matériaux */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
-                Nature des Matériaux (sélection multiple)
+                {t.contact.materialNature}
               </label>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {materiaux.map((materiau) => (
@@ -131,7 +131,7 @@ export default function Contact() {
             {/* Multi-select: Zone d'Application */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
-                Zone d'Application (sélection multiple)
+                {t.contact.applicationZone}
               </label>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {zones.map((zone) => (
@@ -157,7 +157,7 @@ export default function Contact() {
             {/* City Dropdown */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Ville *
+                {t.contact.city}
               </label>
               <select
                 required
@@ -165,7 +165,7 @@ export default function Contact() {
                 onChange={(e) => setVille(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
               >
-                <option value="">Sélectionnez une ville</option>
+                <option value="">{t.contact.selectCityPlaceholder}</option>
                 {villes.map((v) => (
                   <option key={v} value={v}>{v}</option>
                 ))}
@@ -176,14 +176,14 @@ export default function Contact() {
             {ville === 'Autre' && (
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Précisez la ville
+                  {t.contact.specifyCity}
                 </label>
                 <input
                   type="text"
                   value={autreVille}
                   onChange={(e) => setAutreVille(e.target.value)}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                  placeholder="Nom de la ville"
+                  placeholder={t.contact.cityPlaceholder}
                 />
               </div>
             )}
@@ -191,7 +191,7 @@ export default function Contact() {
             {/* Message */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Message
+                {t.contact.message}
               </label>
               <textarea
                 rows={5}

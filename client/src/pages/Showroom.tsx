@@ -48,7 +48,7 @@ interface GalleryImage {
   videoWebm?: string;
   videoPoster?: string;
   title: string;
-  description: string;
+  descriptionKey: string;
   isSingleImage?: boolean;
   isVideo?: boolean;
   hideLabels?: boolean;
@@ -73,7 +73,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/bejmat-corridor-riad.webp',
     afterImage: '/images/bejmat-corridor-riad.webp',
     title: 'Sol en Bejmat - Riad',
-    description: 'Restauration couleur & traitement hydrofuge',
+    descriptionKey: 'desc1',
     isSingleImage: true
   },
   {
@@ -82,7 +82,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/bejmat-patio-riad.webp',
     afterImage: '/images/bejmat-patio-riad.webp',
     title: 'Patio en Bejmat - Riad',
-    description: 'Nettoyage & traitement protecteur',
+    descriptionKey: 'desc2',
     isSingleImage: true
   },
   {
@@ -91,7 +91,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/bejmat-entrance-riad.webp',
     afterImage: '/images/bejmat-entrance-riad.webp',
     title: 'Entrée en Bejmat - Riad',
-    description: 'Nettoyage en profondeur & traitement hydrofuge',
+    descriptionKey: 'desc3',
     isSingleImage: true
   },
   {
@@ -100,7 +100,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/bejmat-staircase-riad.webp',
     afterImage: '/images/bejmat-staircase-riad.webp',
     title: 'Escalier en Bejmat - Riad',
-    description: 'Nettoyage & traitement Hydrofuge et Oléofuge invisible',
+    descriptionKey: 'desc4',
     isSingleImage: true
   },
   {
@@ -109,7 +109,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/marbre-table-ronde-av-ap.webp',
     afterImage: '/images/marbre-table-ronde-av-ap.webp',
     title: 'Table en Marbre - Hotel',
-    description: 'Nettoyage profond, Crystallisation & traitement anti-taches',
+    descriptionKey: 'desc5',
     isSingleImage: true
   },
 
@@ -121,7 +121,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/marbre-zellige-av-ap.webp',
     afterImage: '/images/marbre-zellige-av-ap.webp',
     title: 'Marbre Blanc de Carrare & Zellige Noir - Hotel',
-    description: 'Nettoyage profond & Protection sublimée',
+    descriptionKey: 'desc6',
     isSingleImage: true
   },
   {
@@ -130,7 +130,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/zellige-sol-mur-riad.webp',
     afterImage: '/images/zellige-sol-mur-riad.webp',
     title: 'Sol & Mur Zellige - Riad',
-    description: 'Nettoyage profond & Protection sublimée',
+    descriptionKey: 'desc6',
     isSingleImage: true
   },
   {
@@ -139,7 +139,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/zellige-fontaine-hotel.webp',
     afterImage: '/images/zellige-fontaine-hotel.webp',
     title: 'Fontaine Zellige - Hotel',
-    description: 'Détartrage, Nettoyage profond & Protection sublimée',
+    descriptionKey: 'desc8',
     isSingleImage: true
   },
   {
@@ -148,7 +148,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/zellige-sol-hotel.webp',
     afterImage: '/images/zellige-sol-hotel.webp',
     title: 'Sol Zellige - Hotel',
-    description: 'Détartrage, nettoyage profond & Protection sublimée',
+    descriptionKey: 'desc9',
     isSingleImage: true
   },
   {
@@ -158,7 +158,7 @@ const galleryImages: GalleryImage[] = [
     videoWebm: '/images/cabine-spa-av-ap.webm',
     videoPoster: '/images/cabine-spa-av-ap-poster.webp',
     title: 'Sol Cabine Massage Pierre de Taza - Hotel',
-    description: 'Nettoyage profond & Protection sublimée',
+    descriptionKey: 'desc6',
     isVideo: true
   },
   {
@@ -167,7 +167,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/sol-pierre-taza-hotel.webp',
     afterImage: '/images/sol-pierre-taza-hotel.webp',
     title: 'Sol Pierre de Taza - Hotel',
-    description: 'Nettoyage profond & Protection Invisible',
+    descriptionKey: 'desc11',
     isSingleImage: true,
     hideLabels: true
   },
@@ -177,7 +177,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/plage-piscine-pierre-taza.webp',
     afterImage: '/images/plage-piscine-pierre-taza.webp',
     title: 'Plage Piscine Pierre de Taza - Résidence',
-    description: 'Nettoyage profond & Protection Sublimé',
+    descriptionKey: 'desc12',
     isSingleImage: true
   },
   {
@@ -186,7 +186,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/plage-piscine-pierre-taza-hotel.jpg',
     afterImage: '/images/plage-piscine-pierre-taza-hotel.jpg',
     title: 'Plage Piscine Pierre de Taza - Hotel',
-    description: 'Protection Invisible',
+    descriptionKey: 'desc13',
     isSingleImage: true,
     hideLabels: true
   },
@@ -196,7 +196,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/sol-pierre-taza-particulier.jpg',
     afterImage: '/images/sol-pierre-taza-particulier.jpg',
     title: 'Sol Pierre de Taza - Particulier',
-    description: 'Nettoyage profond & Protection Sublimé',
+    descriptionKey: 'desc12',
     isSingleImage: true,
     hideLabels: true
   },
@@ -206,7 +206,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/console-marbre-hotel.png',
     afterImage: '/images/console-marbre-hotel.png',
     title: 'Console Marbre - Hotel',
-    description: 'Nettoyage profond, Crystallisation & Protection Sublimé',
+    descriptionKey: 'desc15',
     isSingleImage: true
   },
   {
@@ -215,7 +215,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/plage-piscine-carreaux-beldi-marbre.webp',
     afterImage: '/images/plage-piscine-carreaux-beldi-marbre.webp',
     title: 'Plage Piscine Carreaux Beldi, Marbre - Hotel',
-    description: 'Nettoyage profond & Protection Sublimé',
+    descriptionKey: 'desc12',
     isSingleImage: true,
     hideLabels: true
   },
@@ -225,7 +225,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/sol-cuisine-carreaux-beldi-riad.png',
     afterImage: '/images/sol-cuisine-carreaux-beldi-riad.png',
     title: 'Sol Cuisine Carreaux Beldi - Riad',
-    description: 'Nettoyage profond & Protection Sublimé',
+    descriptionKey: 'desc12',
     isSingleImage: true
   },
   {
@@ -234,7 +234,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/sol-restaurant-carreaux-beldi-zellige-riad.webp',
     afterImage: '/images/sol-restaurant-carreaux-beldi-zellige-riad.webp',
     title: 'Sol Restaurant Carreaux Beldi, Zellige - Riad',
-    description: 'Nettoyage profond & Protection Sublimé',
+    descriptionKey: 'desc12',
     isSingleImage: true
   },
   {
@@ -243,7 +243,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/transat-alu-protected.png',
     afterImage: '/images/transat-alu-protected.png',
     title: 'Transat Aluminium - Particulier',
-    description: 'Nettoyage profond & Protection Sublimé',
+    descriptionKey: 'desc12',
     isSingleImage: true,
     hideLabels: true
   },
@@ -253,7 +253,7 @@ const galleryImages: GalleryImage[] = [
     videoMp4: '/images/mur-briquettes.mpeg',
     videoPoster: '/images/mur-briquettes-poster.webp',
     title: 'Mur Briquettes - Hotel',
-    description: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
+    descriptionKey: 'desc20',
     isVideo: true,
     hideLabels: true
   },
@@ -263,7 +263,7 @@ const galleryImages: GalleryImage[] = [
     videoMp4: '/images/mur-enduit.mp4',
     videoPoster: '/images/mur-enduit-poster.webp',
     title: 'Mur Enduit - Particulier',
-    description: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
+    descriptionKey: 'desc20',
     isVideo: true,
     hideLabels: true
   },
@@ -273,7 +273,7 @@ const galleryImages: GalleryImage[] = [
     videoMp4: '/images/mur-pise.mp4',
     videoPoster: '/images/mur-pise-poster.webp',
     title: 'Mur en Pisé - Hotel',
-    description: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
+    descriptionKey: 'desc20',
     isVideo: true,
     hideLabels: true
   },
@@ -489,7 +489,7 @@ export default function Showroom() {
                       {image.title}
                     </h3>
                     <p className="text-sm text-gray-600">
-                      {image.description}
+                      {t.showroom[image.descriptionKey as keyof typeof t.showroom] || image.descriptionKey}
                     </p>
                   </div>
                 </div>

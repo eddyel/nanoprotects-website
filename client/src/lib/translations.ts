@@ -45,6 +45,28 @@ export interface Translations {
     labelAfter: string;
     clickToEnlarge: string;
     playAgain: string;
+    desc1: string;
+    desc2: string;
+    desc3: string;
+    desc4: string;
+    desc5: string;
+    desc6: string;
+    desc7: string;
+    desc8: string;
+    desc9: string;
+    desc10: string;
+    desc11: string;
+    desc12: string;
+    desc13: string;
+    desc14: string;
+    desc15: string;
+    desc16: string;
+    desc17: string;
+    desc18: string;
+    desc19: string;
+    desc20: string;
+    desc21: string;
+    desc22: string;
   };
   why: {
     title: string;
@@ -105,6 +127,13 @@ export interface Translations {
     applicationZone: string;
     city: string;
     message: string;
+    nameLabel: string;
+    emailLabel: string;
+    phoneLabel: string;
+    selectCityPlaceholder: string;
+    specifyCity: string;
+    cityPlaceholder: string;
+    phone: string;
   };
   about: {
     title: string;
@@ -234,6 +263,28 @@ export const translations: Record<Language, Translations> = {
       labelAfter: 'APRES',
       clickToEnlarge: 'Cliquer pour agrandir',
       playAgain: 'Rejouer',
+      desc1: 'Restauration couleur & traitement hydrofuge',
+      desc2: 'Nettoyage & traitement protecteur',
+      desc3: 'Nettoyage en profondeur & traitement hydrofuge',
+      desc4: 'Nettoyage & traitement Hydrofuge et Oléofuge invisible',
+      desc5: 'Nettoyage profond, Crystallisation & traitement anti-taches',
+      desc6: 'Nettoyage profond & Protection sublimée',
+      desc7: 'Nettoyage profond & Protection sublimée',
+      desc8: 'Détartrage, Nettoyage profond & Protection sublimée',
+      desc9: 'Détartrage, nettoyage profond & Protection sublimée',
+      desc10: 'Nettoyage profond & Protection sublimée',
+      desc11: 'Nettoyage profond & Protection Invisible',
+      desc12: 'Nettoyage profond & Protection Sublimé',
+      desc13: 'Protection Invisible',
+      desc14: 'Nettoyage profond & Protection Sublimé',
+      desc15: 'Nettoyage profond, Crystallisation & Protection Sublimé',
+      desc16: 'Nettoyage profond & Protection Sublimé',
+      desc17: 'Nettoyage profond & Protection Sublimé',
+      desc18: 'Nettoyage profond & Protection Sublimé',
+      desc19: 'Nettoyage profond & Protection Sublimé',
+      desc20: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
+      desc21: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
+      desc22: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
     },
     why: {
       title: 'Pourquoi Nous Choisir ?',
@@ -294,6 +345,13 @@ export const translations: Record<Language, Translations> = {
       applicationZone: 'Zone d\'Application (sélection multiple)',
       city: 'Ville',
       message: 'Message',
+          nameLabel: 'Nom *',
+      emailLabel: 'Email *',
+      phoneLabel: 'Téléphone *',
+      selectCityPlaceholder: 'Sélectionnez une ville',
+      specifyCity: 'Précisez la ville',
+      cityPlaceholder: 'Nom de la ville',
+      phone: 'Téléphone',
     },
     footer: {
       tagline: 'Nettoyage & Protection Invisible ou Décorative Toutes Surfaces',
@@ -420,6 +478,28 @@ export const translations: Record<Language, Translations> = {
       labelAfter: 'بعد',
       clickToEnlarge: 'انقر للتكبير',
       playAgain: 'إعادة التشغيل',
+      desc1: 'استعادة اللون والمعالجة المقاومة للماء',
+      desc2: 'التنظيف والمعالجة الواقية',
+      desc3: 'التنظيف العميق والمعالجة المقاومة للماء',
+      desc4: 'التنظيف والمعالجة المقاومة للماء والزيت غير المرئية',
+      desc5: 'التنظيف العميق والتبلور والمعالجة المضادة للبقع',
+      desc6: 'التنظيف العميق والحماية السامية',
+      desc7: 'التنظيف العميق والحماية السامية',
+      desc8: 'إزالة الترسبات والتنظيف العميق والحماية السامية',
+      desc9: 'إزالة الترسبات والتنظيف العميق والحماية السامية',
+      desc10: 'التنظيف العميق والحماية السامية',
+      desc11: 'التنظيف العميق والحماية غير المرئية',
+      desc12: 'التنظيف العميق والحماية السامية',
+      desc13: 'الحماية غير المرئية',
+      desc14: 'التنظيف العميق والحماية السامية',
+      desc15: 'التنظيف العميق والتبلور والحماية السامية',
+      desc16: 'التنظيف العميق والحماية السامية',
+      desc17: 'التنظيف العميق والحماية السامية',
+      desc18: 'التنظيف العميق والحماية السامية',
+      desc19: 'التنظيف العميق والحماية السامية',
+      desc20: 'معالجة التمعدن المضادة للتفتت والحماية المقاومة للماء غير المرئية',
+      desc21: 'معالجة التمعدن المضادة للتفتت والحماية المقاومة للماء غير المرئية',
+      desc22: 'معالجة التمعدن المضادة للتفتت والحماية المقاومة للماء غير المرئية',
     },
     why: {
       title: 'لماذا تختارنا؟',
@@ -480,6 +560,13 @@ export const translations: Record<Language, Translations> = {
       applicationZone: 'منطقة التطبيق (اختيار متعدد)',
       city: 'المدينة',
       message: 'الرسالة',
+          nameLabel: 'الاسم *',
+      emailLabel: 'البريد الإلكتروني *',
+      phoneLabel: 'الهاتف *',
+      selectCityPlaceholder: 'اختر مدينة',
+      specifyCity: 'حدد المدينة',
+      cityPlaceholder: 'اسم المدينة',
+      phone: 'الهاتف',
     },
     footer: {
       tagline: 'التنظيف والحماية غير المرئية أو الزخرفية جميع الأسطح',
@@ -606,6 +693,28 @@ export const translations: Record<Language, Translations> = {
       labelAfter: 'DESPUÉS',
       clickToEnlarge: 'Haz clic para ampliar',
       playAgain: 'Reproducir de nuevo',
+      desc1: 'Restauración de color y tratamiento impermeable',
+      desc2: 'Limpieza y tratamiento protector',
+      desc3: 'Limpieza profunda y tratamiento impermeable',
+      desc4: 'Limpieza y tratamiento hidrófugo y oleófugo invisible',
+      desc5: 'Limpieza profunda, cristalización y tratamiento anti-manchas',
+      desc6: 'Limpieza profunda y protección sublime',
+      desc7: 'Limpieza profunda y protección sublime',
+      desc8: 'Desincrustación, limpieza profunda y protección sublime',
+      desc9: 'Desincrustación, limpieza profunda y protección sublime',
+      desc10: 'Limpieza profunda y protección sublime',
+      desc11: 'Limpieza profunda y protección invisible',
+      desc12: 'Limpieza profunda y protección sublime',
+      desc13: 'Protección invisible',
+      desc14: 'Limpieza profunda y protección sublime',
+      desc15: 'Limpieza profunda, cristalización y protección sublime',
+      desc16: 'Limpieza profunda y protección sublime',
+      desc17: 'Limpieza profunda y protección sublime',
+      desc18: 'Limpieza profunda y protección sublime',
+      desc19: 'Limpieza profunda y protección sublime',
+      desc20: 'Mineralización anti-desmenuzamiento y protección impermeable invisible',
+      desc21: 'Mineralización anti-desmenuzamiento y protección impermeable invisible',
+      desc22: 'Mineralización anti-desmenuzamiento y protección impermeable invisible',
     },
     why: {
       title: '¿Por Qué Elegirnos?',
@@ -666,6 +775,13 @@ export const translations: Record<Language, Translations> = {
       applicationZone: 'Zona de Aplicación (selección múltiple)',
       city: 'Ciudad',
       message: 'Mensaje',
+          nameLabel: 'Nombre *',
+      emailLabel: 'Correo electrónico *',
+      phoneLabel: 'Teléfono *',
+      selectCityPlaceholder: 'Selecciona una ciudad',
+      specifyCity: 'Especifica la ciudad',
+      cityPlaceholder: 'Nombre de la ciudad',
+      phone: 'Teléfono',
     },
     footer: {
       tagline: 'Limpieza y Protección Invisible o Decorativa Todas las Superficies',
@@ -792,18 +908,59 @@ export const translations: Record<Language, Translations> = {
       labelAfter: 'AFTER',
       clickToEnlarge: 'Click to enlarge',
       playAgain: 'Play again',
+      desc1: 'Color restoration & waterproof treatment',
+      desc2: 'Cleaning & protective treatment',
+      desc3: 'Deep cleaning & waterproof treatment',
+      desc4: 'Cleaning & invisible hydrophobic and oleophobic treatment',
+      desc5: 'Deep cleaning, crystallization & anti-stain treatment',
+      desc6: 'Deep cleaning & sublime protection',
+      desc7: 'Deep cleaning & sublime protection',
+      desc8: 'Descaling, deep cleaning & sublime protection',
+      desc9: 'Descaling, deep cleaning & sublime protection',
+      desc10: 'Deep cleaning & sublime protection',
+      desc11: 'Deep cleaning & invisible protection',
+      desc12: 'Deep cleaning & sublime protection',
+      desc13: 'Invisible protection',
+      desc14: 'Deep cleaning & sublime protection',
+      desc15: 'Deep cleaning, crystallization & sublime protection',
+      desc16: 'Deep cleaning & sublime protection',
+      desc17: 'Deep cleaning & sublime protection',
+      desc18: 'Deep cleaning & sublime protection',
+      desc19: 'Deep cleaning & sublime protection',
+      desc20: 'Anti-crumbling mineralization & invisible waterproof protection',
+      desc21: 'Anti-crumbling mineralization & invisible waterproof protection',
+      desc22: 'Anti-crumbling mineralization & invisible waterproof protection',
     },
-    why: {
-      title: 'Why Choose Us?',
-      subtitle: 'Every surface tells a story. Every material carries the soul of the craftsman who created it. Preserving this beauty means honoring a legacy and ensuring your spaces continue to inspire wonder for generations to come.',
-      reason1Title: 'Scientific & Custom Expertise',
-      reason1Description: 'Our precise diagnosis and ecological scientific protocols, applied by highly qualified teams, guarantee a solution perfectly adapted to each material and your specific needs.',
-      reason2Title: 'Sustainable & Regenerative Technology',
-      reason2Description: 'We combine regenerative cleaning that restores the original shine to surfaces with invisible and durable nanotechnology protection (3-5 years), for beauty preserved long-term.',
-      reason3Title: 'Operational Agility & Total Discretion',
-      reason3Description: 'Our process is designed to be ultra-efficient, agile and completely discreet. It integrates without disrupting your operations, strictly respecting your schedules and brand image.',
-      reason4Title: 'Profitable & Trustworthy Partnership',
-      reason4Description: 'Through continuous dialogue and reliable execution, we drastically reduce your long-term maintenance costs, transforming maintenance into a strategic and secure investment.',
+    method: {
+      title: 'Our Methodical Approach: Reveal and Preserve Original Beauty',
+      subtitle: 'A complete approach to reveal and protect the beauty of your surfaces',
+      highTechTitle: 'High-Tech Cleaning',
+      highTechDescription: 'Precise diagnosis, deep surface cleaning, restoration of original shine and elimination of stubborn stains thanks to scientific protocols and ecological agents.',
+      protectionTitle: 'Protection Treatment',
+      protectionDescription: 'Application of invisible nanotechnology coatings (Nano-SiO₂) that form a molecular-level impermeable barrier, protecting against water, oil and stains for 3 to 5 years.',
+      phase1Title: 'Diagnosis',
+      phase1Description: 'Expert analysis of your surfaces\' condition to determine the exact nature of soiling, alterations and restoration potential.',
+      phase1Point1: 'Complete mapping of degradations (stains, wear, micro-scratches)',
+      phase1Point2: 'Identification of surface types and their sensitivity',
+      phase1Point3: 'Establishment of personalized and justified intervention protocol',
+      phase2Title: 'Reveal',
+      phase2Description: 'Cleaning and regeneration based on diagnosis, to restore the original shine and integrity of the surface.',
+      phase2Point1: 'Stripping and professional cleaning targeted according to diagnosis conclusions',
+      phase2Point2: 'Scientific removal of stains, residues and microorganisms identified',
+      phase2Point3: 'Aesthetic and preparatory restoration ensuring a perfectly healthy and receptive surface for protection',
+      phase3Title: 'Protection',
+      phase3Description: 'Application of nanotechnology coatings for lasting protection',
+      phase3Point1: 'Nano-SiO2 Application',
+      phase3Point2: 'Invisible nanotechnology coating',
+      phase3Point3: 'Long-lasting protection 3-5 years',
+      trustTitle: 'They Trust Us',
+      metric1Label: 'Time Freed',
+      metric1Description: 'Your teams spend 60% less time on intensive maintenance',
+      metric2Label: 'Return on Investment',
+      metric2Description: 'Measurable return through sustainable savings',
+      metric3Label: 'Sustainable',
+      metric3Subtitle: 'months',
+      metric3Description: 'Continuous support and systematic dialogue'
     },
     what: {
       title: 'Reveal Beauty, Then Make It Eternal',
@@ -852,6 +1009,13 @@ export const translations: Record<Language, Translations> = {
       applicationZone: 'Application Zone (multiple selection)',
       city: 'City',
       message: 'Message',
+          nameLabel: 'Name *',
+      emailLabel: 'Email *',
+      phoneLabel: 'Phone *',
+      selectCityPlaceholder: 'Select a city',
+      specifyCity: 'Specify the city',
+      cityPlaceholder: 'City name',
+      phone: 'Phone',
     },
     footer: {
       tagline: 'Invisible or Decorative Cleaning and Protection All Surfaces',
@@ -901,36 +1065,17 @@ export const translations: Record<Language, Translations> = {
       processStep2: 'Nanotechnology Application',
       processStep3: 'Durable Protection',
     },
-    method: {
-      title: 'Our Methodical Approach: Reveal and Preserve Original Beauty',
-      subtitle: 'A complete approach to reveal and protect the beauty of your surfaces',
-      highTechTitle: 'High-Tech Cleaning',
-      highTechDescription: 'Precise diagnosis, deep surface cleaning, restoration of original shine and elimination of stubborn stains thanks to scientific protocols and ecological agents.',
-      protectionTitle: 'Protection Treatment',
-      protectionDescription: 'Application of invisible nanotechnology coatings (Nano-SiO₂) that form a molecular-level impermeable barrier, protecting against water, oil and stains for 3 to 5 years.',
-      phase1Title: 'Diagnosis',
-      phase1Description: 'Expert analysis of your surfaces\' condition to determine the exact nature of soiling, alterations and restoration potential.',
-      phase1Point1: 'Complete mapping of degradations (stains, wear, micro-scratches)',
-      phase1Point2: 'Identification of surface types and their sensitivity',
-      phase1Point3: 'Establishment of personalized and justified intervention protocol',
-      phase2Title: 'Reveal',
-      phase2Description: 'Deep cleaning and regeneration based on diagnosis, to restore the original shine and integrity of the surface.',
-      phase2Point1: 'Stripping and professional cleaning targeted according to diagnosis conclusions',
-      phase2Point2: 'Scientific elimination of stains, residues and identified microorganisms',
-      phase2Point3: 'Aesthetic and preparatory restoration ensuring a perfectly healthy surface receptive to protection',
-      phase3Title: 'Protect',
-      phase3Description: 'Durable sealing of the result through the application of cutting-edge nanotechnology coatings.',
-      phase3Point1: 'Application of invisible barrier (Nano-SiO₂) at molecular level, perfectly adhered thanks to prepared surface',
-      phase3Point2: 'Active hydrophobic, oleophobic and anti-graffiti protection',
-      phase3Point3: 'Durable durability (3 to 5 years) and resistance to UV, chemical agents and wear',
-      trustTitle: 'Trust Us',
-      metric1Label: 'Time Freed',
-      metric1Description: 'Optimization of cleaning processes for your staff',
-      metric2Label: 'months',
-      metric2Description: 'Proven return on investment through cost savings',
-      metric3Label: 'Partnership',
-      metric3Subtitle: 'Sustainable',
-      metric3Description: 'Continuous support and systematic dialogue',
+    why: {
+      title: 'Why Choose Us?',
+      subtitle: 'Every surface tells a story. Every material carries the soul of the craftsman who created it. Preserving this beauty means honoring a legacy and ensuring your spaces continue to inspire wonder for generations to come.',
+      reason1Title: 'Scientific & Custom Expertise',
+      reason1Description: 'Our precise diagnosis and ecological scientific protocols, applied by highly qualified teams, guarantee a solution perfectly adapted to each material and your specific needs.',
+      reason2Title: 'Sustainable & Regenerative Technology',
+      reason2Description: 'We combine regenerative cleaning that restores the original shine to surfaces with invisible and durable nanotechnology protection (3-5 years), for beauty preserved long-term.',
+      reason3Title: 'Operational Agility & Total Discretion',
+      reason3Description: 'Our process is designed to be ultra-efficient, agile and completely discreet. It integrates without disrupting your operations, strictly respecting your schedules and brand image.',
+      reason4Title: 'Profitable & Trustworthy Partnership',
+      reason4Description: 'Through continuous dialogue and reliable execution, we drastically reduce your long-term maintenance costs, transforming maintenance into a strategic and secure investment.',
     },
   },
 };
