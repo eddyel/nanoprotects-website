@@ -5,13 +5,6 @@ import { Check } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 
-const materiaux = [
-  'Bejmat', 'Pierre de Taza', 'Pierres Naturelles', 'Marbre', 'Zellige',
-  'Bois Composite', 'Métal', 'Sécurité Sols', 'Textile', 'Sanitaire', 'Vitres'
-];
-
-const zones = ['Sols', 'Escaliers', 'Murs', 'Mobilier'];
-
 const villes = [
   'Marrakech', 'Casablanca', 'Essaouira', 'Agadir', 
   'Rabat', 'El Jadida', 'Tanger', 'Autre'
@@ -24,6 +17,28 @@ export default function Contact() {
   const [selectedZones, setSelectedZones] = useState<string[]>([]);
   const [ville, setVille] = useState('');
   const [autreVille, setAutreVille] = useState('');
+
+  // Get material and zone translations
+  const materiaux = [
+    t.contact.material1,
+    t.contact.material2,
+    t.contact.material3,
+    t.contact.material4,
+    t.contact.material5,
+    t.contact.material6,
+    t.contact.material7,
+    t.contact.material8,
+    t.contact.material9,
+    t.contact.material10,
+    t.contact.material11,
+  ];
+
+  const zones = [
+    t.contact.zone1,
+    t.contact.zone2,
+    t.contact.zone3,
+    t.contact.zone4,
+  ];
 
   const toggleMateriau = (materiau: string) => {
     setSelectedMateriaux(prev =>
@@ -71,7 +86,7 @@ export default function Contact() {
                   inputMode="text"
                   required
                   className="w-full px-4 py-3 min-h-[44px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                  placeholder="Votre nom"
+                  placeholder={t.contact.namePlaceholder}
                 />
               </div>
               
@@ -84,7 +99,7 @@ export default function Contact() {
                   inputMode="email"
                   required
                   className="w-full px-4 py-3 min-h-[44px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                  placeholder="votre@email.com"
+                  placeholder={t.contact.emailPlaceholder}
                 />
               </div>
             </div>
@@ -196,7 +211,7 @@ export default function Contact() {
               <textarea
                 rows={5}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                placeholder="Décrivez votre projet..."
+                placeholder={t.contact.messagePlaceholder}
               />
             </div>
 

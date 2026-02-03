@@ -110,6 +110,21 @@ export interface Translations {
   contact: {
     title: string;
     subtitle: string;
+    material1: string;
+    material2: string;
+    material3: string;
+    material4: string;
+    material5: string;
+    material6: string;
+    material7: string;
+    material8: string;
+    material9: string;
+    material10: string;
+    material11: string;
+    zone1: string;
+    zone2: string;
+    zone3: string;
+    zone4: string;
     namePlaceholder: string;
     emailPlaceholder: string;
     messagePlaceholder: string;
@@ -326,6 +341,21 @@ export const translations: Record<Language, Translations> = {
       phase2Step2Text: 'Protection longue durée avec effet autonettoyant, facilitant l\'entretien et préservant l\'éclat et l\'intégrité des surfaces traitées.',
     },
     contact: {
+      material1: 'Bejmat',
+      material2: 'Pierre de Taza',
+      material3: 'Pierres Naturelles',
+      material4: 'Marbre',
+      material5: 'Zellige',
+      material6: 'Bois Composite',
+      material7: 'Métal',
+      material8: 'Sécurité Sols',
+      material9: 'Textile',
+      material10: 'Sanitaire',
+      material11: 'Vitres',
+      zone1: 'Sols',
+      zone2: 'Escaliers',
+      zone3: 'Murs',
+      zone4: 'Mobilier',
       title: 'Commençons Ensemble',
       subtitle: 'Contactez-nous pour un diagnostic gratuit',
       namePlaceholder: 'Votre nom',
@@ -541,6 +571,21 @@ export const translations: Record<Language, Translations> = {
       phase2Step2Text: 'حماية طويلة الأجل مع تأثير التنظيف الذاتي، مما يسهل الصيانة ويحافظ على بريق وسلامة الأسطح المعالجة.',
     },
     contact: {
+      material1: 'بجمات',
+      material2: 'حجر التازة',
+      material3: 'الحجارة الطبيعية',
+      material4: 'الرخام',
+      material5: 'زليج',
+      material6: 'الخشب المركب',
+      material7: 'معدن',
+      material8: 'أمان الأرضيات',
+      material9: 'النسيج',
+      material10: 'الصحي',
+      material11: 'الزجاج',
+      zone1: 'الأرضيات',
+      zone2: 'السلالم',
+      zone3: 'الجدران',
+      zone4: 'الأثاث',
       title: 'لنبدأ معاً',
       subtitle: 'اتصل بنا للحصول على تشخيص مجاني',
       namePlaceholder: 'اسمك',
@@ -756,6 +801,21 @@ export const translations: Record<Language, Translations> = {
       phase2Step2Text: 'Protección de larga duración con efecto autolimpiante, facilitando el mantenimiento y preservando el brillo e integridad de las superficies tratadas.',
     },
     contact: {
+      material1: 'Bejmat',
+      material2: 'Piedra de Taza',
+      material3: 'Piedras Naturales',
+      material4: 'Mármol',
+      material5: 'Zellige',
+      material6: 'Madera Compuesta',
+      material7: 'Metal',
+      material8: 'Seguridad de Pisos',
+      material9: 'Textil',
+      material10: 'Sanitario',
+      material11: 'Vidrio',
+      zone1: 'Pisos',
+      zone2: 'Escaleras',
+      zone3: 'Paredes',
+      zone4: 'Muebles',
       title: 'Comencemos Juntos',
       subtitle: 'Contáctanos para un diagnóstico gratuito',
       namePlaceholder: 'Tu nombre',
@@ -990,6 +1050,21 @@ export const translations: Record<Language, Translations> = {
       phase2Step2Text: 'Long-lasting protection with self-cleaning effect, facilitating maintenance and preserving the shine and integrity of treated surfaces.',
     },
     contact: {
+      material1: 'Bejmat',
+      material2: 'Taza Stone',
+      material3: 'Natural Stones',
+      material4: 'Marble',
+      material5: 'Zellige',
+      material6: 'Composite Wood',
+      material7: 'Metal',
+      material8: 'Floor Safety',
+      material9: 'Textile',
+      material10: 'Sanitary',
+      material11: 'Glass',
+      zone1: 'Floors',
+      zone2: 'Stairs',
+      zone3: 'Walls',
+      zone4: 'Furniture',
       title: 'Let\'s Start Together',
       subtitle: 'Contact us for a free diagnosis',
       namePlaceholder: 'Your name',

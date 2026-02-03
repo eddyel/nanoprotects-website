@@ -136,9 +136,9 @@ export default function MateriauxExpertises() {
       <section className="py-16 px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-8" style={{ color: '#A33215' }}>
               {t.materials.title}
-            </h2>
+            </h1>
             <p className="text-lg text-gray-600">
               {t.materials.subtitle}
             </p>
