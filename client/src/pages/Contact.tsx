@@ -4,11 +4,19 @@ import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
+import { toast } from 'sonner';
 
 const villes = [
   'Marrakech', 'Casablanca', 'Essaouira', 'Agadir', 
   'Rabat', 'El Jadida', 'Tanger', 'Autre'
 ];
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+}
 
 export default function Contact() {
   const { language } = useLanguage();
@@ -17,6 +25,14 @@ export default function Contact() {
   const [selectedZones, setSelectedZones] = useState<string[]>([]);
   const [ville, setVille] = useState('');
   const [autreVille, setAutreVille] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Get material and zone translations
   const materiaux = [
@@ -56,9 +72,88 @@ export default function Contact() {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Validation functions
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhone = (phone: string): boolean => {
+    const phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/;
+    return phoneRegex.test(phone);
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = t.contact.errorNameRequired || 'Name is required';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = t.contact.errorEmailInvalid || 'Email is required';
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = t.contact.errorEmailInvalid || 'Invalid email format';
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else if (!validatePhone(formData.phone)) {
+      newErrors.phone = 'Invalid phone number format';
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = t.contact.errorMessageRequired || 'Message is required';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    // Clear error for this field when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: undefined
+      }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Formulaire soumis ! (Fonctionnalité backend à implémenter)');
+    
+    if (!validateForm()) {
+      toast.error(t.contact.errorSubmit || 'Please fix the errors above');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Success message
+      toast.success(t.contact.successMessage || 'Form submitted successfully!');
+      
+      // Reset form
+      setFormData({ name: '', email: '', phone: '', message: '' });
+      setSelectedMateriaux([]);
+      setSelectedZones([]);
+      setVille('');
+      setAutreVille('');
+      setErrors({});
+    } catch (error) {
+      toast.error(t.contact.errorSubmit || 'An error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -74,47 +169,86 @@ export default function Contact() {
             {t.contact.subtitle}
           </p>
           
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form onSubmit={handleSubmit} className="space-y-8" noValidate>
             {/* Standard Fields */}
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                   {t.contact.nameLabel}
                 </label>
                 <input
+                  id="name"
                   type="text"
+                  name="name"
                   inputMode="text"
                   required
-                  className="w-full px-4 py-3 min-h-[44px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? 'name-error' : undefined}
+                  className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
+                    errors.name ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                  }`}
                   placeholder={t.contact.namePlaceholder}
                 />
+                {errors.name && (
+                  <p id="name-error" className="text-red-600 text-sm mt-1" role="alert">
+                    {errors.name}
+                  </p>
+                )}
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                   {t.contact.emailLabel}
                 </label>
                 <input
+                  id="email"
                   type="email"
+                  name="email"
                   inputMode="email"
                   required
-                  className="w-full px-4 py-3 min-h-[44px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? 'email-error' : undefined}
+                  className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
+                    errors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                  }`}
                   placeholder={t.contact.emailPlaceholder}
                 />
+                {errors.email && (
+                  <p id="email-error" className="text-red-600 text-sm mt-1" role="alert">
+                    {errors.email}
+                  </p>
+                )}
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                 {t.contact.phoneLabel}
               </label>
               <input
+                id="phone"
                 type="tel"
+                name="phone"
                 inputMode="tel"
                 required
-                className="w-full px-4 py-3 min-h-[44px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                value={formData.phone}
+                onChange={handleInputChange}
+                aria-invalid={!!errors.phone}
+                aria-describedby={errors.phone ? 'phone-error' : undefined}
+                className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
+                  errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                }`}
                 placeholder="+212 6XX XXX XXX"
               />
+              {errors.phone && (
+                <p id="phone-error" className="text-red-600 text-sm mt-1" role="alert">
+                  {errors.phone}
+                </p>
+              )}
             </div>
 
             {/* Multi-select: Nature des Matériaux */}
@@ -122,12 +256,13 @@ export default function Contact() {
               <label className="block text-sm font-medium text-gray-700 mb-3">
                 {t.contact.materialNature}
               </label>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3" role="group" aria-label={t.contact.materialNature}>
                 {materiaux.map((materiau) => (
                   <button
                     key={materiau}
                     type="button"
                     onClick={() => toggleMateriau(materiau)}
+                    aria-pressed={selectedMateriaux.includes(materiau)}
                     className={`px-4 py-2 min-h-[44px] rounded-lg border-2 transition-all text-sm font-medium active:scale-[0.98] ${
                       selectedMateriaux.includes(materiau)
                         ? 'border-primary bg-primary/10 text-primary'
@@ -148,12 +283,13 @@ export default function Contact() {
               <label className="block text-sm font-medium text-gray-700 mb-3">
                 {t.contact.applicationZone}
               </label>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3" role="group" aria-label={t.contact.applicationZone}>
                 {zones.map((zone) => (
                   <button
                     key={zone}
                     type="button"
                     onClick={() => toggleZone(zone)}
+                    aria-pressed={selectedZones.includes(zone)}
                     className={`px-4 py-2 min-h-[44px] rounded-lg border-2 transition-all text-sm font-medium active:scale-[0.98] ${
                       selectedZones.includes(zone)
                         ? 'border-primary bg-primary/10 text-primary'
@@ -171,16 +307,17 @@ export default function Contact() {
 
             {/* City Dropdown */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-2">
                 {t.contact.city}
               </label>
               <select
+                id="city"
                 required
                 value={ville}
                 onChange={(e) => setVille(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
               >
-                <option value="">{t.contact.selectCityPlaceholder}</option>
+                <option value="">{t.contact.selectCityPlaceholder || 'Select a city'}</option>
                 {villes.map((v) => (
                   <option key={v} value={v}>{v}</option>
                 ))}
@@ -190,38 +327,55 @@ export default function Contact() {
             {/* Conditional: Autre Ville */}
             {ville === 'Autre' && (
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t.contact.specifyCity}
+                <label htmlFor="autreVille" className="block text-sm font-medium text-gray-700 mb-2">
+                  {t.contact.specifyCity || 'Specify your city'}
                 </label>
                 <input
+                  id="autreVille"
                   type="text"
                   value={autreVille}
                   onChange={(e) => setAutreVille(e.target.value)}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                  placeholder={t.contact.cityPlaceholder}
+                  placeholder={t.contact.cityPlaceholder || 'Enter your city'}
                 />
               </div>
             )}
 
             {/* Message */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                 {t.contact.message}
               </label>
               <textarea
+                id="message"
+                name="message"
                 rows={5}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                required
+                value={formData.message}
+                onChange={handleInputChange}
+                aria-invalid={!!errors.message}
+                aria-describedby={errors.message ? 'message-error' : undefined}
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
+                  errors.message ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                }`}
                 placeholder={t.contact.messagePlaceholder}
               />
+              {errors.message && (
+                <p id="message-error" className="text-red-600 text-sm mt-1" role="alert">
+                  {errors.message}
+                </p>
+              )}
             </div>
 
             {/* Submit Button */}
             <Button 
               type="submit" 
               size="lg" 
-              className="w-full text-lg py-6 border-2 btn-brand"
+              disabled={isSubmitting}
+              className="w-full text-lg py-6 border-2 btn-brand disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-busy={isSubmitting}
             >
-              {t.contact.sendRequest}
+              {isSubmitting ? t.contact.submitting || 'Submitting...' : t.contact.sendRequest}
             </Button>
           </form>
         </div>
