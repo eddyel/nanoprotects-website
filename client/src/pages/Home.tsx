@@ -14,7 +14,7 @@ export default function Home() {
       
       {/* Hero Section with Static Background Image */}
       <section 
-        className="relative h-screen flex flex-col items-center justify-between w-full pt-20 pb-12"
+        className="relative h-screen flex flex-col items-center justify-between w-full pt-20"
         style={{
           backgroundImage: 'url(/images/hero-riad.webp)',
           backgroundSize: 'cover',
@@ -61,13 +61,13 @@ export default function Home() {
         </div>
 
         {/* Social Media Logos at Bottom of Hero */}
-        <div className="relative z-10 flex justify-center items-center gap-6 pb-8">
+        <div className="absolute bottom-6 left-0 right-0 z-10 flex justify-center items-center gap-6">
           {/* LinkedIn Logo */}
           <a
             href="https://www.linkedin.com/company/nanoprotects"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-transform duration-300 hover:rotate-12"
+            className="transition-all duration-300 hover:rotate-12 opacity-33 hover:opacity-100"
             aria-label="Visit NanoProtects on LinkedIn"
           >
             <img
@@ -82,7 +82,7 @@ export default function Home() {
             href="https://web.facebook.com/NanoProtects"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-transform duration-300 hover:rotate-12"
+            className="transition-all duration-300 hover:rotate-12 opacity-33 hover:opacity-100"
             aria-label="Visit NanoProtects on Facebook"
           >
             <img
@@ -97,7 +97,7 @@ export default function Home() {
             href="https://www.instagram.com/nanoprotects"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-transform duration-300 hover:rotate-12"
+            className="transition-all duration-300 hover:rotate-12 opacity-33 hover:opacity-100"
             aria-label="Visit NanoProtects on Instagram"
           >
             <img
