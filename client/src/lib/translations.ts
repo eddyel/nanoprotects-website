@@ -21,6 +21,7 @@ export interface Translations {
     title: string;
     subtitle: string;
     cta: string;
+    realizationsButton: string;
   };
   home: {
     benefit1Title: string;
@@ -254,6 +255,7 @@ export const translations: Record<Language, Translations> = {
       title: 'L\'Innovation au Service de l\'Excellence',
       subtitle: '<span style="font-weight: 600; color: #fef3c7;">Nettoyage</span> <span style="font-weight: 600; color: #fef3c7;">régénérant</span> et <span style="font-weight: 600; color: #fef3c7;">protection</span> <span style="font-weight: 600; color: #fef3c7;">nanotechnologique durable</span> pour les surfaces d\'exception. Nous révélons la beauté originelle de vos matériaux et la protégeons pour 3 à 5 ans grâce à des revêtements invisibles de dernière génération.',
       cta: 'Contactez Nous',
+      realizationsButton: 'Nos Réalisations',
     },
     home: {
       benefit1Title: 'Temps Libéré',
@@ -484,6 +486,7 @@ export const translations: Record<Language, Translations> = {
       title: 'الابتكار في خدمة التميز',
       subtitle: 'التنظيف المجدد والحماية النانوية المستدامة للأسطح الاستثنائية. نكشف الجمال الأصلي لمواد بناءك ونحميها لمدة 3 إلى 5 سنوات بفضل الطلاءات غير المرئية من الجيل الأخير.',
       cta: 'اتصل بنا',
+      realizationsButton: 'إنجازاتنا',
     },
     home: {
       benefit1Title: 'وقت محرر',
@@ -714,6 +717,7 @@ export const translations: Record<Language, Translations> = {
       title: 'La Innovación al Servicio de la Excelencia',
       subtitle: 'Limpieza regeneradora y protección nanotecnológica duradera para superficies excepcionales. Revelamos la belleza original de tus materiales y los protegemos durante 3 a 5 años con recubrimientos invisibles de última generación.',
       cta: 'Contáctanos',
+      realizationsButton: 'Nuestras Realizaciones',
     },
     home: {
       benefit1Title: 'Tiempo Liberado',
@@ -944,6 +948,7 @@ export const translations: Record<Language, Translations> = {
       title: 'Innovation in Service of Excellence',
       subtitle: 'Regenerative cleaning and sustainable nanotechnology protection for exceptional surfaces. We reveal the original beauty of your materials and protect them for 3 to 5 years with cutting-edge invisible coatings.',
       cta: 'Contact Us',
+      realizationsButton: 'Our Realizations',
     },
     home: {
       benefit1Title: 'Time Freed',

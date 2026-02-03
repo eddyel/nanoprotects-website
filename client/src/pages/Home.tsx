@@ -43,7 +43,7 @@ export default function Home() {
                 onClick={() => setLocation('/showroom')}
                 className="text-lg px-6 py-6 font-semibold justify-center whitespace-nowrap border-2 btn-brand md:text-lg text-base md:px-6 px-4 md:py-6 py-4"
               >
-                Nos Réalisations
+                {t.hero.realizationsButton}
               </Button>
               
               <Button 
