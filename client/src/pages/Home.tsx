@@ -67,7 +67,7 @@ export default function Home() {
             href="https://www.linkedin.com/company/nanoprotects"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-all duration-300 hover:rotate-12 opacity-33 hover:opacity-100"
+            className="transition-all duration-300 hover:rotate-12 opacity-50 hover:opacity-100"
             aria-label="Visit NanoProtects on LinkedIn"
           >
             <img
@@ -82,7 +82,7 @@ export default function Home() {
             href="https://web.facebook.com/NanoProtects"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-all duration-300 hover:rotate-12 opacity-33 hover:opacity-100"
+            className="transition-all duration-300 hover:rotate-12 opacity-50 hover:opacity-100"
             aria-label="Visit NanoProtects on Facebook"
           >
             <img
@@ -97,7 +97,7 @@ export default function Home() {
             href="https://www.instagram.com/nanoprotects"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-all duration-300 hover:rotate-12 opacity-33 hover:opacity-100"
+            className="transition-all duration-300 hover:rotate-12 opacity-50 hover:opacity-100"
             aria-label="Visit NanoProtects on Instagram"
           >
             <img
