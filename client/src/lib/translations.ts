@@ -121,6 +121,34 @@ export interface Translations {
     issuesLabel: string;
     actionsLabel: string;
     surfacesLabel: string;
+    category1Title: string;
+    category1Issues: string;
+    category1Actions: string;
+    category1Surfaces: string;
+    category2Title: string;
+    category2Issues: string;
+    category2Actions: string;
+    category2Surfaces: string;
+    category3Title: string;
+    category3Issues: string;
+    category3Actions: string;
+    category3Surfaces: string;
+    category4Title: string;
+    category4Issues: string;
+    category4Actions: string;
+    category4Surfaces: string;
+    category5Title: string;
+    category5Issues: string;
+    category5Actions: string;
+    category5Surfaces: string;
+    category6Title: string;
+    category6Subtitle: string;
+    category6Issues: string;
+    category6Actions: string;
+    category6Surfaces: string;
+    processStep1: string;
+    processStep2: string;
+    processStep3: string;
   };
   method: {
     title: string;
@@ -286,6 +314,34 @@ export const translations: Record<Language, Translations> = {
       issuesLabel: 'Enjeux',
       actionsLabel: 'Nos actions',
       surfacesLabel: 'Surfaces concernées',
+      category1Title: 'Pierres & Marbre',
+      category1Issues: 'Salissures organiques, efflorescences, taches, dégradations causées par la pollution et les UV.',
+      category1Actions: 'Nettoyage régénérant respectueux des matériaux & application à saturation de solutions nanotechnologiques de protection imprégnantes hydrofuge et oléofuge.',
+      category1Surfaces: 'Pierre de Taza, Marbre, Travertin, Pierres calcaire, Ardoise, Granit',
+      category2Title: 'Matériaux Traditionnels',
+      category2Issues: 'Porosité élevée, absorption eau, tâches de ciment, jaunissement et/ou écaillage d\'anciens vernis, encrassement, salissures grasses, perte de couleurs dû aux UV',
+      category2Actions: 'Décapage humide sans poussière, restauration des couleurs, imperméabilisation anti-tâches respirante non filmogène, protection anti-UV',
+      category2Surfaces: 'Bejmat, Carreaux de ciment Beldi, Zellige, Dess',
+      category3Title: 'Bois Composite',
+      category3Issues: 'Grisaillement, tâches organiques, décoloration UV, encrassement, écaillage film plastique ou vernis',
+      category3Actions: 'Nettoyage doux, restauration de la couleur origine, protection nanotechnologique imprégnante anti-UV et anti-tâches',
+      category3Surfaces: 'Terrasses, Plage de piscine, Mobilier , Bardages',
+      category4Title: 'Textiles',
+      category4Issues: 'Tâches organiques, odeurs, décoloration',
+      category4Actions: 'Nettoyage en profondeur par Injection / Extraction sous pression, traitement anti-tâches et anti-salissures, protection textile respirante',
+      category4Surfaces: 'Tapis, Moquettes, Rideaux, Tentures murales, Coussins',
+      category5Title: 'Traitement Anti-Dérapant',
+      category5Issues: 'Glissance excessive sur sols mouillés (piscines, douches, cuisines), risque de chute.',
+      category5Actions: 'Application d\'un traitement non corrosif durable dérivé du Silicium en phase aqueuse anti-dérapant NON ACIDE, qui augmente le coefficient de friction sans altérer l\'esthétique',
+      category5Surfaces: 'Marbre crystallisé, Carrelage vittrifié, Céramiques',
+      category6Title: 'Traitement Minéralisant',
+      category6Subtitle: 'Matériaux poreux friables',
+      category6Issues: 'Érosion, effritement, poussière',
+      category6Actions: 'Traitement pénétrant de minéralisation (durcissement et consolidation interne) avec protection hydrofuge non-filmogène, effet anti-poussière durable',
+      category6Surfaces: 'Briquettes en terre cuite, Stucs en plâtre, Pisé, Enduits, Mortiers, Bétons, Façades et Sols anciens',
+      processStep1: 'Préparation Intégrale',
+      processStep2: 'Application Nano-Technologique',
+      processStep3: 'Protection Durable',
     },
     method: {
       title: 'Notre Approche Méthodique : Révéler et Préserver la Beauté Originelle',
@@ -444,6 +500,34 @@ export const translations: Record<Language, Translations> = {
       issuesLabel: 'التحديات',
       actionsLabel: 'إجراءاتنا',
       surfacesLabel: 'الأسطح المعنية',
+    category1Title: 'الحجر والرخام',
+      category1Issues: 'الأوساخ العضوية، الترسبات، البقع، التدهور الناجم عن التلوث والأشعة فوق البنفسجية.',
+      category1Actions: 'التنظيف المجدد الاحترام للمواد وتطبيق مشبع لحلول الحماية النانوتكنولوجية الماصة والمماصة.',
+      category1Surfaces: 'حجر تازة، رخام، ترافرتين، أحجار كالكاري، الرخام الأردوازي، الجرانيت',
+      category2Title: 'المواد التقليدية',
+      category2Issues: 'مسامية عالية، امتصاص الماء، بقع الأسمنت، الاصفرار و/أو تقشر الورنيش القديم، الانسداد، الأوساخ الدهنية، فقدان الألوان بسبب الأشعة فوق البنفسجية',
+      category2Actions: 'الكشط الرطب بدون غبار، استعادة الألوان، العزل مضاد للبقع المسام غير الرقيقة، الحماية مضادة للأشعة فوق البنفسجية',
+      category2Surfaces: 'بيجمات، بلاط الأسمنت بلدي، زليج، ديس',
+      category3Title: 'الأخشاب المركبة',
+      category3Issues: 'الترابالذهبي، البقع العضوية، البهتان بالأشعة فوق البنفسجية، الانسداد، تقشر فيلم بلاستيكي أو ورنيش',
+      category3Actions: 'التنظيف اللطيف، استعادة اللون الأصلي، الحماية النانوتكنولوجية الماصة مضادة للأشعة فوق البنفسجية ومضادة للبقع',
+      category3Surfaces: 'الشرفات، شاطئ المسبح، الأثاث، الأرضيات',
+      category4Title: 'النسيج',
+      category4Issues: 'البقع العضوية، الروائح، البهتان',
+      category4Actions: 'التنظيف العميق بالحقن / الاستخراج تحت الضغط، معالجة مضادة للبقع ومضادة للاتساخ، الحماية النسيجية المسامية',
+      category4Surfaces: 'السجاد، السجاد الموبيلية، السترائر، المعلقات الجدرانية، الوسائد',
+      category5Title: 'معالجة مضادة للانزلاق',
+      category5Issues: 'انزلاق مفرط على الأرضيات الرطبة (مسابح، دوشات، مطابخ)، خطر السقوط.',
+      category5Actions: 'تطبيق معالجة غير ماصة دائمة مشتقة من السيليكون في مرحلة مائية مضادة للانزلاق غير حمضية، التي تزيد معامل الاحتكاك دون تغيير المظهر',
+      category5Surfaces: 'الرخام المبلور، البلاط الزجاجي، السيراميك',
+      category6Title: 'معالجة تمعدن',
+      category6Subtitle: 'مواد مسامية هشة',
+      category6Issues: 'التآكل، التفتت، الغبار',
+      category6Actions: 'معالجة التمعدن المخترقة (التصلب والتوحيد الداخلي) مع الحماية المائية غير الرقيقة، التأثير مضاد للغبار الدائم',
+      category6Surfaces: 'الطوب الطيني، الروق الجبسية، الطوب الطيني، الطلاءات، الملاط، الخرسانة، الواجهات والأرضيات القديمة',
+      processStep1: 'التحضير الشامل',
+      processStep2: 'التطبيق النانوتكنولوجي',
+      processStep3: 'الحماية الدائمة',
     },
     method: {
       title: 'نهجنا المنهجي: الكشف والحفاظ على الجمال الأصلي',
@@ -602,6 +686,34 @@ export const translations: Record<Language, Translations> = {
       issuesLabel: 'Desafíos',
       actionsLabel: 'Nuestras acciones',
       surfacesLabel: 'Superficies afectadas',
+    category1Title: 'Piedras & Mármol',
+      category1Issues: 'Suciedad orgánica, eflorescencias, manchas, degradaciones causadas por la contaminación y los rayos UV.',
+      category1Actions: 'Limpieza regeneradora respetuosa con los materiales y aplicación saturada de soluciones de protección nanotecnológica impermeables y oleófobas.',
+      category1Surfaces: 'Piedra de Taza, Mármol, Travertino, Piedras calcáreas, Pizarra, Granito',
+      category2Title: 'Materiales Tradicionales',
+      category2Issues: 'Porosidad elevada, absorción de agua, manchas de cemento, amarillamiento y/o descamación de barnices antiguos, ensuciamiento, suciedad grasa, pérdida de colores debido a los rayos UV',
+      category2Actions: 'Decapado húmedo sin polvo, restauración de colores, impermeabilización anti-manchas transpirable no filmógena, protección anti-UV',
+      category2Surfaces: 'Bejmat, Baldosas de cemento Beldi, Zellige, Dess',
+      category3Title: 'Madera Compuesta',
+      category3Issues: 'Grisáceo, manchas orgánicas, decoloración UV, ensuciamiento, descamación de película plástica o barniz',
+      category3Actions: 'Limpieza suave, restauración del color original, protección nanotecnológica impregnante anti-UV y anti-manchas',
+      category3Surfaces: 'Terrazas, Playa de piscina, Mobiliario, Revestimientos',
+      category4Title: 'Textiles',
+      category4Issues: 'Manchas orgánicas, olores, decoloración',
+      category4Actions: 'Limpieza profunda por inyección/extracción a presión, tratamiento anti-manchas y anti-suciedad, protección textil transpirable',
+      category4Surfaces: 'Alfombras, Moquetas, Cortinas, Colgaduras murales, Cojines',
+      category5Title: 'Tratamiento Antideslizante',
+      category5Issues: 'Deslizamiento excesivo en suelos mojados (piscinas, duchas, cocinas), riesgo de caída.',
+      category5Actions: 'Aplicación de un tratamiento no corrosivo duradero derivado del silicio en fase acuosa antideslizante NO ÁCIDO, que aumenta el coeficiente de fricción sin alterar la estética',
+      category5Surfaces: 'Mármol cristalizado, Baldosa vitrífica, Cerámica',
+      category6Title: 'Tratamiento Mineralizante',
+      category6Subtitle: 'Materiales porosos frágiles',
+      category6Issues: 'Erosión, desmenuzamiento, polvo',
+      category6Actions: 'Tratamiento mineralizante penetrante (endurecimiento y consolidación interna) con protección hidrófuga no filmógena, efecto anti-polvo duradero',
+      category6Surfaces: 'Ladrillos de barro cocido, Estucos de yeso, Pisé, Revestimientos, Morteros, Hormigones, Fachadas y Suelos antiguos',
+      processStep1: 'Preparación Integral',
+      processStep2: 'Aplicación Nanotecnológica',
+      processStep3: 'Protección Durable',
     },
     method: {
       title: 'Nuestro Enfoque Metodológico: Revelar y Preservar la Belleza Original',
@@ -760,6 +872,34 @@ export const translations: Record<Language, Translations> = {
       issuesLabel: 'Challenges',
       actionsLabel: 'Our Actions',
       surfacesLabel: 'Affected Surfaces',
+    category1Title: 'Stones & Marble',
+      category1Issues: 'Organic soiling, efflorescence, stains, degradation caused by pollution and UV rays.',
+      category1Actions: 'Regenerating cleaning respectful of materials & application saturated with nanotechnology protection solutions impregnable hydrophobic and oleophobic.',
+      category1Surfaces: 'Taza Stone, Marble, Travertine, Limestone Stones, Slate, Granite',
+      category2Title: 'Traditional Materials',
+      category2Issues: 'High porosity, water absorption, cement stains, yellowing and/or flaking of old varnishes, fouling, greasy soiling, loss of colors due to UV',
+      category2Actions: 'Wet stripping without dust, color restoration, breathable anti-stain waterproofing non-filmogenic, anti-UV protection',
+      category2Surfaces: 'Bejmat, Beldi cement tiles, Zellige, Dess',
+      category3Title: 'Composite Wood',
+      category3Issues: 'Graying, organic stains, UV discoloration, fouling, flaking plastic film or varnish',
+      category3Actions: 'Gentle cleaning, original color restoration, impregnating nanotechnology protection anti-UV and anti-stain',
+      category3Surfaces: 'Terraces, Swimming pool deck, Furniture, Cladding',
+      category4Title: 'Textiles',
+      category4Issues: 'Organic stains, odors, discoloration',
+      category4Actions: 'Deep cleaning by injection/extraction under pressure, anti-stain and anti-soiling treatment, breathable textile protection',
+      category4Surfaces: 'Carpets, Rugs, Curtains, Wall hangings, Cushions',
+      category5Title: 'Anti-Slip Treatment',
+      category5Issues: 'Excessive slipperiness on wet floors (pools, showers, kitchens), risk of falls.',
+      category5Actions: 'Application of a non-corrosive durable treatment derived from Silicon in aqueous phase anti-slip NON-ACID, which increases the coefficient of friction without altering aesthetics',
+      category5Surfaces: 'Crystallized Marble, Vitrified Tile, Ceramics',
+      category6Title: 'Mineralizing Treatment',
+      category6Subtitle: 'Friable porous materials',
+      category6Issues: 'Erosion, crumbling, dust',
+      category6Actions: 'Penetrating mineralization treatment (hardening and internal consolidation) with non-filmogenic water-repellent protection, lasting anti-dust effect',
+      category6Surfaces: 'Terracotta bricks, Plaster stuccos, Rammed earth, Coatings, Mortars, Concretes, Facades and Old floors',
+      processStep1: 'Integral Preparation',
+      processStep2: 'Nanotechnology Application',
+      processStep3: 'Durable Protection',
     },
     method: {
       title: 'Our Methodical Approach: Reveal and Preserve Original Beauty',
