@@ -133,12 +133,19 @@ export default function MateriauxExpertises() {
     <div className="min-h-screen bg-white">
       <Navigation />
       
-      <section className="py-16 px-4 md:px-8">
+      {/* Hero Section with Title */}
+      <section className="pt-32 pb-10" style={{ backgroundColor: '#f5f5f5' }}>
+        <div className="container max-w-5xl">
+          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-6 leading-tight" style={{ color: '#A33215' }}>
+            {t.materials.title}
+          </h1>
+        </div>
+      </section>
+
+      {/* Content Section */}
+      <section className="py-16 px-4 md:px-8" style={{ backgroundColor: '#f5f5f5' }}>
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
-            <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-8" style={{ color: '#A33215' }}>
-              {t.materials.title}
-            </h1>
             <p className="text-lg text-gray-600">
               {t.materials.subtitle}
             </p>
