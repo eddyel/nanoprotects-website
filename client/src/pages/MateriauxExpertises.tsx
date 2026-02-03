@@ -198,21 +198,21 @@ export default function MateriauxExpertises() {
               
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Enjeux</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">{t.materials.issuesLabel}</h3>
                   <p className="text-gray-700 leading-relaxed">
                     {activeCategory.enjeux}
                   </p>
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Nos actions</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">{t.materials.actionsLabel}</h3>
                   <p className="text-gray-700 leading-relaxed">
                     {activeCategory.action}
                   </p>
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Surfaces concernées</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">{t.materials.surfacesLabel}</h3>
                   <p className="text-gray-600 italic">
                     {activeCategory.surfaces}
                   </p>

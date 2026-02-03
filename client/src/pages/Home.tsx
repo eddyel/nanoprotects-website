@@ -69,7 +69,7 @@ export default function Home() {
             aria-label="Visit NanoProtects on LinkedIn"
           >
             <img
-              src="/linkedin.svg"
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
               alt="LinkedIn"
               className="h-12 w-12 object-contain"
             />
@@ -84,7 +84,7 @@ export default function Home() {
             aria-label="Visit NanoProtects on Facebook"
           >
             <img
-              src="/facebook.svg"
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
               alt="Facebook"
               className="h-12 w-12 object-contain"
             />
@@ -99,7 +99,7 @@ export default function Home() {
             aria-label="Visit NanoProtects on Instagram"
           >
             <img
-              src="/instagram.svg"
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/XVSxuBfKhOsWjxcz.png"
               alt="Instagram"
               className="h-12 w-12 object-contain"
             />

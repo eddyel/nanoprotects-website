@@ -94,6 +94,13 @@ export interface Translations {
     errorEmailInvalid: string;
     errorMessageRequired: string;
     errorSubmit: string;
+    describeProject: string;
+    selectCity: string;
+    sendRequest: string;
+    materialNature: string;
+    applicationZone: string;
+    city: string;
+    message: string;
   };
   about: {
     title: string;
@@ -107,10 +114,17 @@ export interface Translations {
   materials: {
     title: string;
     subtitle: string;
+    issuesLabel: string;
+    actionsLabel: string;
+    surfacesLabel: string;
   };
   method: {
     title: string;
     subtitle: string;
+    highTechTitle: string;
+    highTechDescription: string;
+    protectionTitle: string;
+    protectionDescription: string;
     phase1Title: string;
     phase1Description: string;
     phase1Point1: string;
@@ -126,6 +140,7 @@ export interface Translations {
     phase3Point1: string;
     phase3Point2: string;
     phase3Point3: string;
+    trustTitle: string;
   };
   footer: {
     tagline: string;
@@ -229,6 +244,13 @@ export const translations: Record<Language, Translations> = {
       errorEmailInvalid: 'Veuillez entrer une adresse email valide',
       errorMessageRequired: 'Le message est requis (minimum 10 caractères)',
       errorSubmit: 'Échec de l\'envoi du message. Veuillez réessayer.',
+      describeProject: 'Décrivez votre projet...',
+      selectCity: 'Sélectionnez une ville',
+      sendRequest: 'Envoyer votre Demande',
+      materialNature: 'Nature des Matériaux (sélection multiple)',
+      applicationZone: 'Zone d\'Application (sélection multiple)',
+      city: 'Ville',
+      message: 'Message',
     },
     footer: {
       tagline: 'Nettoyage & Protection Invisible ou Décorative Toutes Surfaces',
@@ -246,9 +268,16 @@ export const translations: Record<Language, Translations> = {
     materials: {
       title: 'Matériaux et Expertises',
       subtitle: 'Avec des solutions adaptées à chaque surface, nous intervenons sur une large gamme de matériaux :',
+      issuesLabel: 'Enjeux',
+      actionsLabel: 'Nos actions',
+      surfacesLabel: 'Surfaces concernées',
     },
     method: {
       title: 'Notre Approche Méthodique : Révéler et Préserver la Beauté Originelle',
+      highTechTitle: 'Nettoyage Haute Technologie',
+      highTechDescription: 'Diagnostic précis, nettoyage en profondeur de la surface, restauration de l\'éclat d\'origine et élimination des salissures tenaces grâce à des protocoles scientifiques et des agents écologiques.',
+      protectionTitle: 'Traitement de Protection',
+      protectionDescription: 'Application de revêtements nanotechnologiques invisibles (Nano-SiO₂) qui forment une barrière imperméable au niveau moléculaire, protégeant contre l\'eau, l\'huile et les taches pour 3 à 5 ans.',
       subtitle: 'Une approche complète pour révéler et protéger la beauté de vos surfaces',
       phase1Title: 'Diagnostic',
       phase1Description: 'Analyse experte de l\'état de vos surfaces afin de déterminer la nature exacte des salissures, des altérations et du potentiel de restauration.',
@@ -265,6 +294,7 @@ export const translations: Record<Language, Translations> = {
       phase3Point1: 'Application d\'une barrière invisible (Nano-SiO₂) au niveau moléculaire, parfaitement adhérente grâce à la surface préparée',
       phase3Point2: 'Protection active hydrophobe, oléophobe et anti-graffiti',
       phase3Point3: 'Durabilité durable (3 à 5 ans) et résistance aux UV, aux agents chimiques et à l\'usure',
+      trustTitle: 'Ils nous font confiance',
     },
   },
   ar: {
@@ -361,6 +391,13 @@ export const translations: Record<Language, Translations> = {
       errorEmailInvalid: 'يرجى إدخال عنوان بريد إلكتروني صحيح',
       errorMessageRequired: 'الرسالة مطلوبة (الحد الأدنى 10 أحرف)',
       errorSubmit: 'فشل إرسال الرسالة. يرجى المحاولة مرة أخرى.',
+      describeProject: 'صف مشروعك...',
+      selectCity: 'اختر مدينة',
+      sendRequest: 'أرسل طلبك',
+      materialNature: 'طبيعة المواد (اختيار متعدد)',
+      applicationZone: 'منطقة التطبيق (اختيار متعدد)',
+      city: 'المدينة',
+      message: 'الرسالة',
     },
     footer: {
       tagline: 'التنظيف والحماية غير المرئية أو الزخرفية جميع الأسطح',
@@ -378,10 +415,17 @@ export const translations: Record<Language, Translations> = {
     materials: {
       title: 'المواد والخبرات',
       subtitle: 'مع حلول مخصصة لكل سطح، نتدخل على نطاق واسع من المواد:',
+      issuesLabel: 'التحديات',
+      actionsLabel: 'إجراءاتنا',
+      surfacesLabel: 'الأسطح المعنية',
     },
     method: {
       title: 'نهجنا المنهجي: الكشف والحفاظ على الجمال الأصلي',
       subtitle: 'نهج شامل للكشف والحفاظ على جمال أسطحك',
+      highTechTitle: 'التنظيف عالي التقنية',
+      highTechDescription: 'تشخيص دقيق وتنظيف عميق للسطح واستعادة البريق الأصلي والقضاء على الأوساخ العنيدة بفضل البروتوكولات العلمية والعوامل البيئية.',
+      protectionTitle: 'معالجة الحماية',
+      protectionDescription: 'تطبيق طلاءات النانوتكنولوجيا غير المرئية (Nano-SiO₂) التي تشكل حاجزاً مقاوماً للماء على المستوى الجزيئي، محمية ضد الماء والزيت والبقع لمدة 3 إلى 5 سنوات.',
       phase1Title: 'التشخيص',
       phase1Description: 'تحليل خبير لحالة أسطحك لتحديد الطبيعة الدقيقة للتلوث والتدهور والإمكانات الترميمية.',
       phase1Point1: 'رسم خريطة شاملة للتدهور (البقع والبلى والخدوش الدقيقة)',
@@ -397,6 +441,7 @@ export const translations: Record<Language, Translations> = {
       phase3Point1: 'تطبيق حاجز غير مرئي (Nano-SiO₂) على المستوى الجزيئي، مع التصاق مثالي بفضل السطح المحضر',
       phase3Point2: 'حماية نشطة مقاومة للماء والزيت ومقاومة للكتابة بالجرافيتي',
       phase3Point3: 'متانة دائمة (3 إلى 5 سنوات) ومقاومة للأشعة فوق البنفسجية والعوامل الكيميائية والبلى',
+      trustTitle: 'يثقون بنا',
     },
   },
   es: {
@@ -488,11 +533,18 @@ export const translations: Record<Language, Translations> = {
       messagePlaceholder: 'Cuéntanos sobre tu proyecto',
       submit: 'Enviar',
       submitting: 'Enviando...',
-      successMessage: '¡Mensaje enviado con éxito! Te responderemos pronto.',
+      successMessage: '!Mensaje enviado con éxito! Te responderemos pronto.',
       errorNameRequired: 'El nombre es requerido (mínimo 2 caracteres)',
       errorEmailInvalid: 'Por favor ingresa un correo electrónico válido',
       errorMessageRequired: 'El mensaje es requerido (mínimo 10 caracteres)',
       errorSubmit: 'Error al enviar el mensaje. Por favor intenta de nuevo.',
+      describeProject: 'Describe tu proyecto...',
+      selectCity: 'Selecciona una ciudad',
+      sendRequest: 'Enviar tu Solicitud',
+      materialNature: 'Naturaleza de los Materiales (selección múltiple)',
+      applicationZone: 'Zona de Aplicación (selección múltiple)',
+      city: 'Ciudad',
+      message: 'Mensaje',
     },
     footer: {
       tagline: 'Limpieza y Protección Invisible o Decorativa Todas las Superficies',
@@ -510,10 +562,17 @@ export const translations: Record<Language, Translations> = {
     materials: {
       title: 'Materiales y Experiencias',
       subtitle: 'Con soluciones adaptadas a cada superficie, intervenimos en una amplia gama de materiales:',
+      issuesLabel: 'Desafíos',
+      actionsLabel: 'Nuestras acciones',
+      surfacesLabel: 'Superficies afectadas',
     },
     method: {
       title: 'Nuestro Enfoque Metodológico: Revelar y Preservar la Belleza Original',
       subtitle: 'Un enfoque completo para revelar y proteger la belleza de tus superficies',
+      highTechTitle: 'Limpieza de Alta Tecnología',
+      highTechDescription: 'Diagnóstico preciso, limpieza profunda de la superficie, restauración del brillo original y eliminación de manchas tenaces gracias a protocolos científicos y agentes ecológicos.',
+      protectionTitle: 'Tratamiento de Protección',
+      protectionDescription: 'Aplicación de recubrimientos nanotecnológicos invisibles (Nano-SiO₂) que forman una barrera impermeable a nivel molecular, protegiendo contra agua, aceite y manchas durante 3 a 5 años.',
       phase1Title: 'Diagnóstico',
       phase1Description: 'Análisis experto del estado de tus superficies para determinar la naturaleza exacta de la suciedad, alteraciones y potencial de restauración.',
       phase1Point1: 'Mapeo completo de degradaciones (manchas, desgaste, microrrayos)',
@@ -529,6 +588,7 @@ export const translations: Record<Language, Translations> = {
       phase3Point1: 'Aplicación de barrera invisible (Nano-SiO₂) a nivel molecular, perfectamente adherida gracias a la superficie preparada',
       phase3Point2: 'Protección activa hidrófoba, oleófoba y anti-graffiti',
       phase3Point3: 'Durabilidad duradera (3 a 5 años) y resistencia a UV, agentes químicos y desgaste',
+      trustTitle: 'Confían en nosotros',
     },
   },
   en: {
@@ -625,6 +685,13 @@ export const translations: Record<Language, Translations> = {
       errorEmailInvalid: 'Please enter a valid email address',
       errorMessageRequired: 'Message is required (minimum 10 characters)',
       errorSubmit: 'Failed to send message. Please try again.',
+      describeProject: 'Describe your project...',
+      selectCity: 'Select a city',
+      sendRequest: 'Send Your Request',
+      materialNature: 'Material Nature (multiple selection)',
+      applicationZone: 'Application Zone (multiple selection)',
+      city: 'City',
+      message: 'Message',
     },
     footer: {
       tagline: 'Invisible or Decorative Cleaning and Protection All Surfaces',
@@ -642,10 +709,17 @@ export const translations: Record<Language, Translations> = {
     materials: {
       title: 'Materials and Expertise',
       subtitle: 'With solutions adapted to each surface, we intervene on a wide range of materials:',
+      issuesLabel: 'Challenges',
+      actionsLabel: 'Our Actions',
+      surfacesLabel: 'Affected Surfaces',
     },
     method: {
       title: 'Our Methodical Approach: Reveal and Preserve Original Beauty',
       subtitle: 'A complete approach to reveal and protect the beauty of your surfaces',
+      highTechTitle: 'High-Tech Cleaning',
+      highTechDescription: 'Precise diagnosis, deep surface cleaning, restoration of original shine and elimination of stubborn stains thanks to scientific protocols and ecological agents.',
+      protectionTitle: 'Protection Treatment',
+      protectionDescription: 'Application of invisible nanotechnology coatings (Nano-SiO₂) that form a molecular-level impermeable barrier, protecting against water, oil and stains for 3 to 5 years.',
       phase1Title: 'Diagnosis',
       phase1Description: 'Expert analysis of your surfaces\' condition to determine the exact nature of soiling, alterations and restoration potential.',
       phase1Point1: 'Complete mapping of degradations (stains, wear, micro-scratches)',
@@ -661,6 +735,7 @@ export const translations: Record<Language, Translations> = {
       phase3Point1: 'Application of invisible barrier (Nano-SiO₂) at molecular level, perfectly adhered thanks to prepared surface',
       phase3Point2: 'Active hydrophobic, oleophobic and anti-graffiti protection',
       phase3Point3: 'Durable durability (3 to 5 years) and resistance to UV, chemical agents and wear',
+      trustTitle: 'Trust Us',
     },
   },
 };

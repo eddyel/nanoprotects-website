@@ -75,11 +75,11 @@ export default function APropos() {
                   <Sparkles className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="font-display text-[1.75rem] font-bold text-secondary">
-                  Nettoyage Haute Technologie
+                  {t.method.highTechTitle}
                 </h3>
               </div>
               <p className="text-gray-700 leading-relaxed">
-                Diagnostic précis, nettoyage en profondeur de la surface, restauration de l'éclat d'origine et élimination des salissures tenaces grâce à des protocoles scientifiques et des agents écologiques.
+                {t.method.highTechDescription}
               </p>
             </div>
 
@@ -90,11 +90,11 @@ export default function APropos() {
                   <Shield className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="font-display text-[1.75rem] font-bold text-secondary">
-                  Traitement de Protection
+                  {t.method.protectionTitle}
                 </h3>
               </div>
               <p className="text-gray-700 leading-relaxed">
-                Application de revêtements nanotechnologiques invisibles (Nano-SiO₂) qui forment une barrière imperméable au niveau moléculaire, protégeant contre l'eau, l'huile et les taches pour 3 à 5 ans.
+                {t.method.protectionDescription}
               </p>
             </div>
           </div>
