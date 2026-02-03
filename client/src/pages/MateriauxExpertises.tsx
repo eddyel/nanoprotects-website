@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Navigation from '@/components/Navigation';
 
 const categories = [
   {
     id: 'pierres',
-    title: 'Pierres',
+    title: 'Pierres & Marbre',
     showProcessIcons: true,
     processSteps: [
       { icon: 'prep', label: 'Préparation Intégrale' },
@@ -74,7 +74,33 @@ const categories = [
 
 export default function MateriauxExpertises() {
   const [activeTab, setActiveTab] = useState('pierres');
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
   const activeCategory = categories.find(cat => cat.id === activeTab);
+
+  const checkScroll = () => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = container;
+    setShowLeftArrow(scrollLeft > 0);
+    setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
+  };
+
+  useEffect(() => {
+    checkScroll();
+    const container = containerRef.current;
+    if (container) {
+      const handleScroll = () => checkScroll();
+      container.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleScroll);
+      return () => {
+        container.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('resize', handleScroll);
+      };
+    }
+  }, []);
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f5f5f5' }}>
@@ -82,31 +108,62 @@ export default function MateriauxExpertises() {
       
       <section className="pt-32 pb-20">
         <div className="container max-w-6xl">
-          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-16" style={{ color: '#A33215' }}>
-            Matiériaux et Expertises
+          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-4" style={{ color: '#A33215' }}>
+            Matériaux et Expertises
           </h1>
+          <p className="text-lg text-gray-700 mb-16 max-w-3xl">
+            Avec des solutions adaptées à chaque surface, nous intervenons sur une large gamme de matériaux :
+          </p>
           
-          {/* Sticky Tab Navigation */}
+          {/* Sticky Tab Navigation with Arrows */}
           <div className="sticky top-20 z-30 backdrop-blur-sm -mx-4 px-4 mb-12" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', borderBottomColor: '#A75C16', borderBottomWidth: '1px' }}>
-            <div className="flex overflow-x-auto gap-2 py-4 scrollbar-hide">
-              {categories.map((category) => (
+            <div className="flex items-center gap-2 py-4">
+              {showLeftArrow && (
                 <button
-                  key={category.id}
-                  onClick={() => setActiveTab(category.id)}
-                  className={`px-6 py-3 rounded-lg font-medium whitespace-nowrap transition-all ${
-                    activeTab === category.id
-                      ? 'text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                  style={activeTab === category.id ? { backgroundColor: '#A33215' } : {}}
+                  onClick={() => {
+                    if (containerRef.current) containerRef.current.scrollBy({ left: -200, behavior: 'smooth' });
+                  }}
+                  className="flex-shrink-0 p-2 hover:bg-gray-200 rounded-lg transition-colors hidden md:flex"
+                  id="scroll-left-btn"
                 >
-                  {category.title}
+                  <span className="text-2xl text-gray-700">◄</span>
                 </button>
-              ))}
+              )}
+              <div
+                ref={containerRef}
+                className="flex overflow-x-auto gap-2 scrollbar-hide flex-1 categories-scroll-container"
+                id="categories-container"
+              >
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => setActiveTab(category.id)}
+                    className={`px-6 py-3 rounded-lg font-medium whitespace-nowrap transition-all ${
+                      activeTab === category.id
+                        ? 'text-white shadow-lg'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                    style={activeTab === category.id ? { backgroundColor: '#A33215' } : {}}
+                  >
+                    {category.title}
+                  </button>
+                ))}
+              </div>
+              {showRightArrow && (
+                <button
+                  onClick={() => {
+                    if (containerRef.current) containerRef.current.scrollBy({ left: 200, behavior: 'smooth' });
+                  }}
+                  className="flex-shrink-0 p-2 hover:bg-gray-200 rounded-lg transition-colors hidden md:flex"
+                  id="scroll-right-btn"
+                >
+                  <span className="text-2xl text-gray-700">►</span>
+                </button>
+              )}
             </div>
           </div>
 
-              {/* Content */}
+          {/* Content */}
           {activeCategory && (
             <div className="max-w-4xl mx-auto animate-in fade-in duration-300">
                 <div className="mb-12">

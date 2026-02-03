@@ -35,9 +35,7 @@ export default function Home() {
               {t.hero.title}
             </h1>
             
-            <p className="text-white/90 text-[1.125rem] md:text-[1.5rem] max-w-3xl mb-12 leading-relaxed">
-              {t.hero.subtitle}
-            </p>
+            <p className="text-white/90 text-[1.125rem] md:text-[1.5rem] max-w-3xl mb-12 leading-relaxed" dangerouslySetInnerHTML={{ __html: t.hero.subtitle }} />
             
             <div className="flex flex-col gap-4 w-fit md:gap-4 gap-3">
               <Button 
