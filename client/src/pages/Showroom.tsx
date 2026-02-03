@@ -283,6 +283,7 @@ export default function Showroom() {
   const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('Tous');
   const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
+  const [lightboxImageIndex, setLightboxImageIndex] = useState(0);
   const [videoEnded, setVideoEnded] = useState(false);
   const [videoRef, setVideoRef] = useState<HTMLVideoElement | null>(null);
 
@@ -295,7 +296,24 @@ export default function Showroom() {
 
   const handleLightboxOpen = (image: GalleryImage) => {
     setLightboxImage(image);
+    setLightboxImageIndex(filteredImages.indexOf(image));
     setVideoEnded(false);
+  };
+
+  const handlePreviousImage = () => {
+    if (lightboxImageIndex > 0) {
+      setLightboxImage(filteredImages[lightboxImageIndex - 1]);
+      setLightboxImageIndex(lightboxImageIndex - 1);
+      setVideoEnded(false);
+    }
+  };
+
+  const handleNextImage = () => {
+    if (lightboxImageIndex < filteredImages.length - 1) {
+      setLightboxImage(filteredImages[lightboxImageIndex + 1]);
+      setLightboxImageIndex(lightboxImageIndex + 1);
+      setVideoEnded(false);
+    }
   };
 
   const handlePlayAgain = () => {
@@ -305,6 +323,9 @@ export default function Showroom() {
       setVideoEnded(false);
     }
   };
+
+  const isFirstImage = lightboxImageIndex === 0;
+  const isLastImage = lightboxImageIndex === filteredImages.length - 1;
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f5f5f5' }}>
@@ -485,16 +506,52 @@ export default function Showroom() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
             onClick={() => setLightboxImage(null)}
           >
             <motion.div
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
-              className="relative max-w-4xl w-full"
+              className="relative w-full max-h-[90vh] flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Left Arrow */}
+              <button
+                onClick={handlePreviousImage}
+                disabled={isFirstImage}
+                className={`absolute left-4 top-1/2 -translate-y-1/2 text-white transition-all z-10 ${
+                  isFirstImage
+                    ? 'opacity-50 cursor-not-allowed'
+                    : 'opacity-50 hover:opacity-100 cursor-pointer'
+                }`}
+                aria-label="Previous image"
+              >
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              {/* Right Arrow */}
+              <button
+                onClick={handleNextImage}
+                disabled={isLastImage}
+                className={`absolute right-4 top-1/2 -translate-y-1/2 text-white transition-all z-10 ${
+                  isLastImage
+                    ? 'opacity-50 cursor-not-allowed'
+                    : 'opacity-50 hover:opacity-100 cursor-pointer'
+                }`}
+                aria-label="Next image"
+              >
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              {/* Image Counter */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm font-medium bg-black/50 px-4 py-2 rounded-lg z-10">
+                {lightboxImageIndex + 1} / {filteredImages.length}
+              </div>
               {lightboxImage.isVideo ? (
                 /* Video Lightbox */
                 <div className="relative bg-black rounded-lg overflow-hidden">
@@ -572,7 +629,7 @@ export default function Showroom() {
               
               <button
                 onClick={() => setLightboxImage(null)}
-                className="absolute -top-10 right-0 text-white hover:text-gray-300 transition-colors"
+                className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10"
               >
                 <X size={32} />
               </button>
