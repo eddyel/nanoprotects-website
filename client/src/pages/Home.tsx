@@ -50,7 +50,7 @@ export default function Home() {
                 size="lg" 
                 variant="outline"
                 onClick={() => setLocation('/contact')}
-                className="text-lg px-6 py-6 bg-transparent hover:bg-white/10 text-white border-2 border-white/50 backdrop-blur-sm font-semibold justify-center whitespace-nowrap md:text-lg text-base md:px-6 px-4 md:py-6 py-4"
+                className="text-lg px-6 py-6 bg-transparent hover:bg-white/10 text-white border-2 border-[#A75C16] backdrop-blur-sm font-semibold justify-center whitespace-nowrap md:text-lg text-base md:px-6 px-4 md:py-6 py-4"
               >
                 {t.hero.cta}
               </Button>
@@ -69,7 +69,7 @@ export default function Home() {
             aria-label="Visit NanoProtects on LinkedIn"
           >
             <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/flWxAWaYuRyOYOUb.png"
+              src="/linkedin.svg"
               alt="LinkedIn"
               className="h-12 w-12 object-contain"
             />
@@ -84,7 +84,7 @@ export default function Home() {
             aria-label="Visit NanoProtects on Facebook"
           >
             <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/oiXWMMLIEqiMfpaq.png"
+              src="/facebook.svg"
               alt="Facebook"
               className="h-12 w-12 object-contain"
             />
@@ -99,7 +99,7 @@ export default function Home() {
             aria-label="Visit NanoProtects on Instagram"
           >
             <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/RfTqmYBPaYbPSvsA.png"
+              src="/instagram.svg"
               alt="Instagram"
               className="h-12 w-12 object-contain"
             />

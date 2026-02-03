@@ -1,0 +1,15 @@
+# NanoProtects - Robots Configuration
+# Allow all search engines to index the site
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /.git
+Disallow: /node_modules
+Disallow: /.env
+
+# Crawl delay to prevent server overload (in seconds)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://nanoprotects.manus.space/sitemap.xml

@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { Suspense, lazy, useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch } from "wouter";
@@ -32,14 +32,14 @@ function Router() {
   return (
     <Suspense fallback={<LoadingFallback />}>
       <Switch>
-        <Route path={"/"} component={Home} />
+        <Route path="/" component={Home} />
         <Route path="/showroom" component={Showroom} />
         <Route path="/a-propos" component={APropos} />
         <Route path="/pourquoi-nous-choisir" component={PourquoiNousChoisir} />
         <Route path="/notre-methode" component={NotreMethode} />
         <Route path="/materiaux-expertises" component={MateriauxExpertises} />
         <Route path="/contact" component={Contact} />
-        <Route path={"/404"} component={NotFound} />
+        <Route path="/404" component={NotFound} />
         {/* Final fallback route */}
         <Route component={NotFound} />
       </Switch>
@@ -47,26 +47,29 @@ function Router() {
   );
 }
 
+// Update page titles for SEO
+function usePageTitle(title: string) {
+  useEffect(() => {
+    document.title = `${title} | NanoProtects`;
+  }, [title]);
+}
+
 // NOTE: About Theme
 // - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
 //   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
+// - Then manage colors palette with CSS variables in client/src/index.css instead of hard-coding to keep global consistency.
 
-function App() {
+export default function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="dark"
-      >
+      <ThemeProvider>
         <LanguageProvider>
           <TooltipProvider>
-            <Toaster />
             <Router />
+            <Toaster />
           </TooltipProvider>
         </LanguageProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );
 }
-
-export default App;

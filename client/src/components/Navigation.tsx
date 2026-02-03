@@ -116,7 +116,7 @@ export default function Navigation() {
               aria-label="Visit NanoProtects on LinkedIn"
             >
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/flWxAWaYuRyOYOUb.png"
+                src="/linkedin.svg"
                 alt="LinkedIn"
                 className="h-10 w-10 object-contain"
               />
@@ -131,7 +131,7 @@ export default function Navigation() {
               aria-label="Visit NanoProtects on Facebook"
             >
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/oiXWMMLIEqiMfpaq.png"
+                src="/facebook.svg"
                 alt="Facebook"
                 className="h-10 w-10 object-contain"
               />
@@ -146,7 +146,7 @@ export default function Navigation() {
               aria-label="Visit NanoProtects on Instagram"
             >
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/BzmFgcmiGLTeRhZF.png"
+                src="/instagram.svg"
                 alt="Instagram"
                 className="h-10 w-10 object-contain"
               />
@@ -239,7 +239,7 @@ export default function Navigation() {
                     aria-label="Visit NanoProtects on LinkedIn"
                   >
                     <img
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/flWxAWaYuRyOYOUb.png"
+                      src="/linkedin.svg"
                       alt="LinkedIn"
                       className="h-10 w-10 object-contain"
                     />
@@ -252,7 +252,7 @@ export default function Navigation() {
                     aria-label="Visit NanoProtects on Facebook"
                   >
                     <img
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/oiXWMMLIEqiMfpaq.png"
+                      src="/facebook.svg"
                       alt="Facebook"
                       className="h-10 w-10 object-contain"
                     />
@@ -265,7 +265,7 @@ export default function Navigation() {
                     aria-label="Visit NanoProtects on Instagram"
                   >
                     <img
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/BzmFgcmiGLTeRhZF.png"
+                      src="/instagram.svg"
                       alt="Instagram"
                       className="h-10 w-10 object-contain"
                     />

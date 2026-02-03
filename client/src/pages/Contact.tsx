@@ -52,7 +52,7 @@ export default function Contact() {
             Demandez un Diagnostic Gratuit
           </h1>
           <p className="text-center text-gray-600 text-lg mb-12">
-            Remplissez ce formulaire et nous vous recontacterons sous 24h
+            Pour un patrimoine qui défie le temps, la première étape est un diagnostic sur mesure. Partagez-nous les détails de votre projet pour une analyse préliminaire gratuite et sans engagement.
           </p>
           
           <form onSubmit={handleSubmit} className="space-y-8">
@@ -87,11 +87,12 @@ export default function Contact() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Téléphone
+                Téléphone *
               </label>
               <input
                 type="tel"
                 inputMode="tel"
+                required
                 className="w-full px-4 py-3 min-h-[44px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="+212 6XX XXX XXX"
               />
