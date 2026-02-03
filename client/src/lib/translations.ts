@@ -41,6 +41,10 @@ export interface Translations {
     filterZellige: string;
     filterMetal: string;
     filterMineralization: string;
+    labelBefore: string;
+    labelAfter: string;
+    clickToEnlarge: string;
+    playAgain: string;
   };
   why: {
     title: string;
@@ -141,6 +145,13 @@ export interface Translations {
     phase3Point2: string;
     phase3Point3: string;
     trustTitle: string;
+    metric1Label: string;
+    metric1Description: string;
+    metric2Label: string;
+    metric2Description: string;
+    metric3Label: string;
+    metric3Subtitle: string;
+    metric3Description: string;
   };
   footer: {
     tagline: string;
@@ -191,6 +202,10 @@ export const translations: Record<Language, Translations> = {
       filterZellige: 'Zellige',
       filterMetal: 'Métal',
       filterMineralization: 'Minéralisation',
+      labelBefore: 'AVANT',
+      labelAfter: 'APRES',
+      clickToEnlarge: 'Cliquer pour agrandir',
+      playAgain: 'Rejouer',
     },
     why: {
       title: 'Pourquoi Nous Choisir ?',
@@ -295,6 +310,13 @@ export const translations: Record<Language, Translations> = {
       phase3Point2: 'Protection active hydrophobe, oléophobe et anti-graffiti',
       phase3Point3: 'Durabilité durable (3 à 5 ans) et résistance aux UV, aux agents chimiques et à l\'usure',
       trustTitle: 'Ils nous font confiance',
+      metric1Label: 'Temps Libéré',
+      metric1Description: 'Optimisation des processus de nettoyage pour votre personnel',
+      metric2Label: 'mois',
+      metric2Description: 'Retour d\'investissement prouvé grâce aux économies de coûts',
+      metric3Label: 'Partenariat',
+      metric3Subtitle: 'Durable',
+      metric3Description: 'Accompagnement continu et dialogue systématique',
     },
   },
   ar: {
@@ -338,6 +360,10 @@ export const translations: Record<Language, Translations> = {
       filterZellige: 'زليج',
       filterMetal: 'معدن',
       filterMineralization: 'تمعدن',
+      labelBefore: 'قبل',
+      labelAfter: 'بعد',
+      clickToEnlarge: 'انقر للتكبير',
+      playAgain: 'إعادة التشغيل',
     },
     why: {
       title: 'لماذا تختارنا؟',
@@ -442,6 +468,13 @@ export const translations: Record<Language, Translations> = {
       phase3Point2: 'حماية نشطة مقاومة للماء والزيت ومقاومة للكتابة بالجرافيتي',
       phase3Point3: 'متانة دائمة (3 إلى 5 سنوات) ومقاومة للأشعة فوق البنفسجية والعوامل الكيميائية والبلى',
       trustTitle: 'يثقون بنا',
+      metric1Label: 'وقت محرر',
+      metric1Description: 'تحسين عمليات التنظيف للموظفين لديك',
+      metric2Label: 'شهر',
+      metric2Description: 'عودة استثمار مثبوتة بفضل توفير التكاليف',
+      metric3Label: 'شراكة',
+      metric3Subtitle: 'دائمة',
+      metric3Description: 'المرافقة المستمرة والحوار المنهجي',
     },
   },
   es: {
@@ -485,6 +518,10 @@ export const translations: Record<Language, Translations> = {
       filterZellige: 'Zellige',
       filterMetal: 'Metal',
       filterMineralization: 'Mineralización',
+      labelBefore: 'ANTES',
+      labelAfter: 'DESPUÉS',
+      clickToEnlarge: 'Haz clic para ampliar',
+      playAgain: 'Reproducir de nuevo',
     },
     why: {
       title: '¿Por Qué Elegirnos?',
@@ -589,6 +626,13 @@ export const translations: Record<Language, Translations> = {
       phase3Point2: 'Protección activa hidrófoba, oleófoba y anti-graffiti',
       phase3Point3: 'Durabilidad duradera (3 a 5 años) y resistencia a UV, agentes químicos y desgaste',
       trustTitle: 'Confían en nosotros',
+      metric1Label: 'Tiempo Liberado',
+      metric1Description: 'Optimización de los procesos de limpieza para tu personal',
+      metric2Label: 'meses',
+      metric2Description: 'Retorno de inversión comprobado gracias al ahorro de costos',
+      metric3Label: 'Asociación',
+      metric3Subtitle: 'Sostenible',
+      metric3Description: 'Acompañamiento continuo y diálogo sistemático',
     },
   },
   en: {
@@ -632,6 +676,10 @@ export const translations: Record<Language, Translations> = {
       filterZellige: 'Zellige',
       filterMetal: 'Metal',
       filterMineralization: 'Mineralization',
+      labelBefore: 'BEFORE',
+      labelAfter: 'AFTER',
+      clickToEnlarge: 'Click to enlarge',
+      playAgain: 'Play again',
     },
     why: {
       title: 'Why Choose Us?',
@@ -736,6 +784,13 @@ export const translations: Record<Language, Translations> = {
       phase3Point2: 'Active hydrophobic, oleophobic and anti-graffiti protection',
       phase3Point3: 'Durable durability (3 to 5 years) and resistance to UV, chemical agents and wear',
       trustTitle: 'Trust Us',
+      metric1Label: 'Time Freed',
+      metric1Description: 'Optimization of cleaning processes for your staff',
+      metric2Label: 'months',
+      metric2Description: 'Proven return on investment through cost savings',
+      metric3Label: 'Partnership',
+      metric3Subtitle: 'Sustainable',
+      metric3Description: 'Continuous support and systematic dialogue',
     },
   },
 };

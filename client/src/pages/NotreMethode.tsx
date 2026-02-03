@@ -123,27 +123,27 @@ export default function NotreMethode() {
             <div className="bg-primary/5 rounded-2xl p-8 text-center">
               <Clock className="w-12 h-12 text-primary mx-auto mb-4" />
               <div className="font-display text-5xl font-bold text-primary mb-2">60%</div>
-              <p className="text-gray-700 font-semibold mb-2">Temps Libéré</p>
+              <p className="text-gray-700 font-semibold mb-2">{t.method.metric1Label}</p>
               <p className="text-sm text-gray-600">
-                Optimisation des processus de nettoyage pour votre personnel
+                {t.method.metric1Description}
               </p>
             </div>
 
             <div className="bg-primary/5 rounded-2xl p-8 text-center">
               <TrendingUp className="w-12 h-12 text-primary mx-auto mb-4" />
               <div className="font-display text-5xl font-bold text-primary mb-2">12-18</div>
-              <p className="text-gray-700 font-semibold mb-2">mois</p>
+              <p className="text-gray-700 font-semibold mb-2">{t.method.metric2Label}</p>
               <p className="text-sm text-gray-600">
-                Retour d'investissement prouvé grâce aux économies de coûts
+                {t.method.metric2Description}
               </p>
             </div>
 
             <div className="bg-primary/5 rounded-2xl p-8 text-center">
               <Handshake className="w-12 h-12 text-primary mx-auto mb-4" />
-              <div className="font-display text-4xl font-bold text-primary mb-2">Partenariat</div>
-              <p className="text-gray-700 font-semibold mb-2">Durable</p>
+              <div className="font-display text-4xl font-bold text-primary mb-2">{t.method.metric3Label}</div>
+              <p className="text-gray-700 font-semibold mb-2">{t.method.metric3Subtitle}</p>
               <p className="text-sm text-gray-600">
-                Accompagnement continu et dialogue systématique
+                {t.method.metric3Description}
               </p>
             </div>
           </div>

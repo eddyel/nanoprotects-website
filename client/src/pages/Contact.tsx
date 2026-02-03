@@ -206,7 +206,7 @@ export default function Contact() {
               size="lg" 
               className="w-full text-lg py-6 border-2 btn-brand"
             >
-              Envoyer votre Demande
+              {t.contact.sendRequest}
             </Button>
           </form>
         </div>

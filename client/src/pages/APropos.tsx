@@ -105,7 +105,7 @@ export default function APropos() {
       <section className="py-20">
         <div className="container max-w-5xl">
           <h2 className="font-display text-[2rem] md:text-[2.5rem] font-bold text-left text-secondary mb-12">
-            Ils nous font confiance
+            {t.method.trustTitle}
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
             {references.map((ref, index) => (

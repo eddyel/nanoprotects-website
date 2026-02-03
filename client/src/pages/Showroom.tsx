@@ -405,10 +405,10 @@ export default function Showroom() {
                         {!image.hideLabels && (
                           <>
                             <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
-                              AVANT
+                              {t.showroom.labelBefore}
                             </div>
                             <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
-                              APRES
+                              {t.showroom.labelAfter}
                             </div>
                           </>
                         )}
@@ -420,7 +420,7 @@ export default function Showroom() {
                           </div>
                         </div>
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                          <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">Cliquer pour agrandir</span>
+                          <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">{t.showroom.clickToEnlarge}</span>
                         </div>
                       </div>
                     ) : image.isSingleImage ? (
@@ -434,16 +434,16 @@ export default function Showroom() {
                         {!image.hideLabels && (
                           <>
                             <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
-                              AVANT
+                              {t.showroom.labelBefore}
                             </div>
                             <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
-                              APRES
+                              {t.showroom.labelAfter}
                             </div>
                           </>
                         )}
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                           <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
-                            Cliquer pour agrandir
+                            {t.showroom.clickToEnlarge}
                           </span>
                         </div>
                       </div>
@@ -459,7 +459,7 @@ export default function Showroom() {
                               className="w-full h-full object-cover"
                             />
                             <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
-                              AVANT
+                              {t.showroom.labelBefore}
                             </div>
                           </div>
                           {/* After */}
@@ -470,14 +470,14 @@ export default function Showroom() {
                               className="w-full h-full object-cover"
                             />
                             <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
-                              APRES
+                              {t.showroom.labelAfter}
                             </div>
                           </div>
                         </div>
                         {/* Hover Overlay */}
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                           <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
-                            Cliquer pour agrandir
+                            {t.showroom.clickToEnlarge}
                           </span>
                         </div>
                       </>
@@ -568,10 +568,10 @@ export default function Showroom() {
                     />
                     {/* AVANT/APRES Labels */}
                     <div className="absolute top-4 left-4 bg-black/70 text-white text-sm font-semibold px-4 py-2 rounded">
-                      AVANT
+                      {t.showroom.labelBefore}
                     </div>
                     <div className="absolute top-4 right-4 bg-primary text-white text-sm font-semibold px-4 py-2 rounded">
-                      APRES
+                      {t.showroom.labelAfter}
                     </div>
                     {/* Play Again Button */}
                     {videoEnded && (
@@ -580,7 +580,7 @@ export default function Showroom() {
                           onClick={handlePlayAgain}
                           className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
                         >
-                          Play again
+                          {t.showroom.playAgain}
                         </button>
                       </div>
                     )}
@@ -595,10 +595,10 @@ export default function Showroom() {
                     className="w-full h-auto rounded-lg"
                   />
                   <div className="absolute top-4 left-4 bg-black/70 text-white text-sm font-semibold px-4 py-2 rounded">
-                    AVANT
+                    {t.showroom.labelBefore}
                   </div>
                   <div className="absolute top-4 right-4 bg-primary text-white text-sm font-semibold px-4 py-2 rounded">
-                    APRES
+                    {t.showroom.labelAfter}
                   </div>
                 </div>
               ) : (
@@ -611,7 +611,7 @@ export default function Showroom() {
                       className="w-full h-auto"
                     />
                     <div className="absolute top-4 left-4 bg-black/70 text-white text-sm font-semibold px-4 py-2 rounded">
-                      AVANT
+                      {t.showroom.labelBefore}
                     </div>
                   </div>
                   <div className="relative">
@@ -621,7 +621,7 @@ export default function Showroom() {
                       className="w-full h-auto"
                     />
                     <div className="absolute top-4 right-4 bg-primary text-white text-sm font-semibold px-4 py-2 rounded">
-                      APRES
+                      {t.showroom.labelAfter}
                     </div>
                   </div>
                 </div>
