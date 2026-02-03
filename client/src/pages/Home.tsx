@@ -58,6 +58,56 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Social Media Footer Section */}
+      <section className="py-20" style={{ backgroundColor: '#f5f5f5' }}>
+        <div className="container max-w-5xl flex justify-center items-center gap-8">
+          {/* LinkedIn Logo */}
+          <a
+            href="https://www.linkedin.com/company/nanoprotects"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-transform duration-300 hover:rotate-12"
+            aria-label="Visit NanoProtects on LinkedIn"
+          >
+            <img
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/flWxAWaYuRyOYOUb.png"
+              alt="LinkedIn"
+              className="h-16 w-16 object-contain"
+            />
+          </a>
+
+          {/* Facebook Logo */}
+          <a
+            href="https://web.facebook.com/NanoProtects"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-transform duration-300 hover:rotate-12"
+            aria-label="Visit NanoProtects on Facebook"
+          >
+            <img
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/oiXWMMLIEqiMfpaq.png"
+              alt="Facebook"
+              className="h-16 w-16 object-contain"
+            />
+          </a>
+
+          {/* Instagram Logo */}
+          <a
+            href="https://www.instagram.com/nanoprotects"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-transform duration-300 hover:rotate-12"
+            aria-label="Visit NanoProtects on Instagram"
+          >
+            <img
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/BzmFgcmiGLTeRhZF.png"
+              alt="Instagram"
+              className="h-16 w-16 object-contain"
+            />
+          </a>
+        </div>
+      </section>
     </div>
   );
 }

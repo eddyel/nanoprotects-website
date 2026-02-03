@@ -137,6 +137,21 @@ export default function Navigation() {
               />
             </a>
 
+            {/* Instagram Logo */}
+            <a
+              href="https://www.instagram.com/nanoprotects"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform duration-300 hover:rotate-12"
+              aria-label="Visit NanoProtects on Instagram"
+            >
+              <img
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/BzmFgcmiGLTeRhZF.png"
+                alt="Instagram"
+                className="h-10 w-10 object-contain"
+              />
+            </a>
+
             {/* Language Switcher - Dropdown */}
             <Select value={language} onValueChange={(value) => setLanguage(value as any)}>
               <SelectTrigger className="w-auto border-0 bg-transparent text-white hover:bg-white/10 focus:ring-0 px-3 py-1.5 h-auto">
@@ -239,6 +254,19 @@ export default function Navigation() {
                     <img
                       src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/oiXWMMLIEqiMfpaq.png"
                       alt="Facebook"
+                      className="h-10 w-10 object-contain"
+                    />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/nanoprotects"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-transform duration-300 hover:rotate-12"
+                    aria-label="Visit NanoProtects on Instagram"
+                  >
+                    <img
+                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/BzmFgcmiGLTeRhZF.png"
+                      alt="Instagram"
                       className="h-10 w-10 object-contain"
                     />
                   </a>
