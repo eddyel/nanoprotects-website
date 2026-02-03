@@ -1,6 +1,14 @@
 export type Language = 'fr' | 'ar' | 'es' | 'en';
 
 export interface Translations {
+  seo: {
+    title: string;
+    description: string;
+    keywords: string;
+    ogImage: string;
+    ogType: string;
+    twitterHandle: string;
+  };
   nav: {
     philosophy: string;
     hospitality: string;
@@ -95,6 +103,15 @@ export interface Translations {
 
 export const translations: Record<Language, Translations> = {
   fr: {
+    // SEO Metadata
+    seo: {
+      title: 'NanoProtects - Nettoyage & Protection Nanotechnologique',
+      description: 'Nettoyage régénérant et protection nanotechnologique durable pour les surfaces d\'exception. Revêtements invisibles 3-5 ans pour hôtels, restaurants et espaces de luxe à Marrakech.',
+      keywords: 'nettoyage nanotechnologique, protection surfaces, marbre, pierre, bejmat, marrakech, hôtels, restaurants',
+      ogImage: '/images/hero-riad.webp',
+      ogType: 'website',
+      twitterHandle: '@nanoprotects',
+    },
     nav: {
       philosophy: 'À\nPropos',
       hospitality: 'Pourquoi\nNous Choisir ?',
@@ -105,7 +122,7 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
       title: 'L\'Innovation au Service de l\'Excellence',
-      subtitle: '<span style="font-weight: 600; color: #fef3c7;">Nettoyage</span> régénérant et <span style="font-weight: 600; color: #fef3c7;">protection</span> nanotechnologique durable pour les surfaces d\'exception. Nous révélons la beauté originelle de vos matériaux et la protégeons pour 3 à 5 ans grâce à des revêtements invisibles de dernière génération.',
+      subtitle: '<span style="font-weight: 600; color: #fef3c7;">Nettoyage</span> <span style="font-weight: 600; color: #fef3c7;">régénérant</span> et <span style="font-weight: 600; color: #fef3c7;">protection</span> <span style="font-weight: 600; color: #fef3c7;">nanotechnologique durable</span> pour les surfaces d\'exception. Nous révélons la beauté originelle de vos matériaux et la protégeons pour 3 à 5 ans grâce à des revêtements invisibles de dernière génération.',
       cta: 'Contactez Nous',
     },
     home: {
@@ -187,6 +204,14 @@ export const translations: Record<Language, Translations> = {
     },
   },
   ar: {
+    seo: {
+      title: 'NanoProtects - التنظيف والحماية النانوية',
+      description: 'التنظيف المجدد والحماية النانوية المستدامة للأسطح الاستثنائية. طلاءات غير مرئية لمدة 3-5 سنوات للفنادق والمطاعم والمساحات الفاخرة في مراكش.',
+      keywords: 'تنظيف نانوي، حماية الأسطح، رخام، حجر، بجمات، مراكش، فنادق، مطاعم',
+      ogImage: '/images/hero-riad.webp',
+      ogType: 'website',
+      twitterHandle: '@nanoprotects',
+    },
     nav: {
       philosophy: 'حول',
       hospitality: 'لماذا\nتختارنا؟',
@@ -279,6 +304,14 @@ export const translations: Record<Language, Translations> = {
     },
   },
   es: {
+    seo: {
+      title: 'NanoProtects - Limpieza y Protección Nanotecnológica',
+      description: 'Limpieza regeneradora y protección nanotecnológica duradera para superficies excepcionales. Recubrimientos invisibles 3-5 años para hoteles, restaurantes y espacios de lujo en Marrakech.',
+      keywords: 'limpieza nanotecnológica, protección de superficies, mármol, piedra, bejmat, marrakech, hoteles, restaurantes',
+      ogImage: '/images/hero-riad.webp',
+      ogType: 'website',
+      twitterHandle: '@nanoprotects',
+    },
     nav: {
       philosophy: 'Acerca de',
       hospitality: '¿Por Qué\nNosotros?',
@@ -371,6 +404,14 @@ export const translations: Record<Language, Translations> = {
     },
   },
   en: {
+    seo: {
+      title: 'NanoProtects - Nanotechnology Cleaning & Protection',
+      description: 'Regenerative cleaning and sustainable nanotechnology protection for exceptional surfaces. Invisible coatings 3-5 years for luxury hotels, restaurants and spaces in Marrakech.',
+      keywords: 'nanotechnology cleaning, surface protection, marble, stone, bejmat, marrakech, hotels, restaurants',
+      ogImage: '/images/hero-riad.webp',
+      ogType: 'website',
+      twitterHandle: '@nanoprotects',
+    },
     nav: {
       philosophy: 'About',
       hospitality: 'Why\nChoose Us?',

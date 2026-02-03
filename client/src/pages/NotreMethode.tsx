@@ -1,5 +1,5 @@
 import Navigation from '@/components/Navigation';
-import { Sparkles, Shield, Clock, TrendingUp, Handshake } from 'lucide-react';
+import { Sparkles, Shield, CheckCircle, Clock, TrendingUp, Handshake } from 'lucide-react';
 
 export default function NotreMethode() {
   return (
@@ -9,73 +9,105 @@ export default function NotreMethode() {
       <section className="pt-32 pb-20">
         <div className="container max-w-6xl">
           <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-8" style={{ color: '#A33215' }}>
-            Notre Méthode en Deux Phases
+            Notre Approche Méthodique : Révéler et Préserver la Beauté Originelle
           </h1>
           <p className="text-center text-gray-600 text-lg max-w-3xl mx-auto mb-20">
-            Une approche complète pour révéler et protéger la beauté de vos surfaces
+            {/* Subtitle removed as per new design */}
           </p>
           
-          {/* Two Phases */}
-          <div className="grid md:grid-cols-2 gap-12 mb-20">
-            {/* Phase 1: Révéler */}
+          {/* Three Phases */}
+          <div className="grid md:grid-cols-3 gap-8 mb-20 auto-rows-fr">
+            {/* Phase 1: Diagnostic */}
             <div className="relative">
               <div className="absolute -top-6 -left-6 w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white font-display text-3xl font-bold shadow-lg">
                 1
               </div>
-              <div className="bg-gradient-to-br from-gray-50 to-white border-2 rounded-2xl p-10 pt-16" style={{ borderColor: '#A75C16' }}>
+              <div className="bg-gradient-to-br from-gray-50 to-white border-2 rounded-2xl p-10 pt-16 h-full" style={{ borderColor: '#A75C16' }}>
                 <div className="flex items-center gap-4 mb-6">
-                  <Sparkles className="w-10 h-10 text-primary" />
-                  <h2 className="font-display text-[2rem] font-bold text-secondary">
-                    Révéler
+                  <CheckCircle className="w-10 h-10 text-primary" />
+                  <h2 className="font-display text-[1.75rem] font-bold text-secondary">
+                    Diagnostic
                   </h2>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  Nettoyage régénérant en profondeur qui restaure l'éclat d'origine de vos surfaces grâce à des protocoles scientifiques et des agents écologiques.
+                  Analyse experte de l'état de vos surfaces afin de déterminer la nature exacte des salissures, des altérations et du potentiel de restauration.
                 </p>
                 <ul className="space-y-3 text-gray-600">
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">•</span>
-                    <span>Diagnostic précis des salissures et dégradations</span>
+                    <span>Cartographie complète des dégradations (tâches, usure, micro-rayures)</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">•</span>
-                    <span>Décapage et restauration professionnelle</span>
+                    <span>Identification des types de surface et de leur sensibilité</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">•</span>
-                    <span>Élimination des taches tenaces</span>
+                    <span>Établissement d'un protocole d'intervention personnalisé et justifié</span>
                   </li>
                 </ul>
               </div>
             </div>
 
-            {/* Phase 2: Protéger */}
+            {/* Phase 2: Révéler */}
             <div className="relative">
               <div className="absolute -top-6 -left-6 w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white font-display text-3xl font-bold shadow-lg">
                 2
               </div>
-              <div className="bg-gradient-to-br from-gray-50 to-white border-2 rounded-2xl p-10 pt-16" style={{ borderColor: '#A75C16' }}>
+              <div className="bg-gradient-to-br from-gray-50 to-white border-2 rounded-2xl p-10 pt-16 h-full" style={{ borderColor: '#A75C16' }}>
                 <div className="flex items-center gap-4 mb-6">
-                  <Shield className="w-10 h-10 text-primary" />
-                  <h2 className="font-display text-[2rem] font-bold text-secondary">
-                    Protéger
+                  <Sparkles className="w-10 h-10 text-primary" />
+                  <h2 className="font-display text-[1.75rem] font-bold text-secondary">
+                    Révéler
                   </h2>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  Application de revêtements nanotechnologiques invisibles (Nano-SiO₂) qui forment une barrière imperméable au niveau moléculaire.
+                  Nettoyage et régénération en profondeur basés sur le diagnostic, pour restaurer l'éclat et l'intégrité originels de la surface.
                 </p>
                 <ul className="space-y-3 text-gray-600">
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">•</span>
-                    <span>Protection hydrophobe et oléophobe</span>
+                    <span>Décapage et nettoyage professionnel ciblé grâce aux conclusions du diagnostic</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">•</span>
-                    <span>Durabilité exceptionnelle (3-5 ans)</span>
+                    <span>Élimination scientifique des tâches, résidus et micro-organismes identifiés</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary font-bold">•</span>
-                    <span>Résistance aux UV et aux agents chimiques</span>
+                    <span>Restauration esthétique et préparatoire assurant une surface parfaitement saine et réceptive à la protection</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Phase 3: Protéger */}
+            <div className="relative">
+              <div className="absolute -top-6 -left-6 w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white font-display text-3xl font-bold shadow-lg">
+                3
+              </div>
+              <div className="bg-gradient-to-br from-gray-50 to-white border-2 rounded-2xl p-10 pt-16 h-full" style={{ borderColor: '#A75C16' }}>
+                <div className="flex items-center gap-4 mb-6">
+                  <Shield className="w-10 h-10 text-primary" />
+                  <h2 className="font-display text-[1.75rem] font-bold text-secondary">
+                    Protéger
+                  </h2>
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-6">
+                  Scellement durable du résultat par l'application de revêtements nanotechnologiques de dernière génération.
+                </p>
+                <ul className="space-y-3 text-gray-600">
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary font-bold">•</span>
+                    <span>Application d'une barrière invisible (Nano-SiO₂) au niveau moléculaire, parfaitement adhérente grâce à la surface préparée</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary font-bold">•</span>
+                    <span>Protection active hydrophobe, oléophobe et anti-graffiti</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary font-bold">•</span>
+                    <span>Durabilité durable (3 à 5 ans) et résistance aux UV, aux agents chimiques et à l'usure</span>
                   </li>
                 </ul>
               </div>
