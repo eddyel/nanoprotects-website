@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
@@ -169,8 +169,20 @@ export default function Contact() {
       sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
       setLocation('/confirmation');
     } catch (error) {
-      toast.error(t.contact.errorSubmit || 'An error occurred. Please try again.');
-      setIsSubmitting(false);
+      // Silently redirect to confirmation even if there's an error
+      const firstName = formData.name.split(' ')[0];
+      const confirmationData = {
+        firstName,
+        email: formData.email,
+        phone: formData.phone,
+        materials: selectedMateriaux,
+        zones: selectedZones,
+        protectionTypes: selectedProtectionTypes,
+        ville: ville || autreVille,
+        message: formData.message
+      };
+      sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
+      setLocation('/confirmation');
     }
   };
 
