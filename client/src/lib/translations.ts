@@ -72,6 +72,16 @@ export interface Translations {
   why: {
     title: string;
     subtitle: string;
+    comparisonProblemTitle: string;
+    comparisonProblemLabel: string;
+    comparisonProblemText: string;
+    comparisonImpactLabel: string;
+    comparisonImpactText: string;
+    comparisonSolutionTitle: string;
+    comparisonSolutionLabel: string;
+    comparisonSolutionText: string;
+    comparisonBenefitLabel: string;
+    comparisonBenefitText: string;
     reason1Title: string;
     reason1Description: string;
     reason2Title: string;
@@ -332,6 +342,16 @@ export const translations: Record<Language, Translations> = {
     why: {
       title: 'Pourquoi Nous Choisir ?',
       subtitle: 'Chaque surface raconte une histoire. Chaque matériau porte l\'âme de l\'artisan qui l\'a créé. Préserver cette beauté, c\'est honorer un héritage et garantir que vos espaces continuent d\'inspirer l\'émerveillement pour les générations à venir.',
+      comparisonProblemTitle: 'Protection Filmogène Courante',
+      comparisonProblemLabel: 'Problème :',
+      comparisonProblemText: 'Film de surface qui peut s\'écailler, jaunir.',
+      comparisonImpactLabel: 'Impact :',
+      comparisonImpactText: 'Altère l\'apparence, durée de vie limitée, entretien compliqué.',
+      comparisonSolutionTitle: 'Imprégnation NanoProtects',
+      comparisonSolutionLabel: 'Solution :',
+      comparisonSolutionText: 'Barrière nanotechnologique intégrée dans la matière.',
+      comparisonBenefitLabel: 'Bénéfice :',
+      comparisonBenefitText: 'Beauté originelle préservée, durabilité longue, entretien facilité.',
       reason1Title: 'Expertise Scientifique & Sur-Mesure',
       reason1Description: 'Notre diagnostic précis et nos protocoles scientifiques écologiques, appliqués par des équipes hautement qualifiées, garantissent une solution parfaitement adaptée à chaque matériau et à vos enjeux spécifiques.',
       reason2Title: 'Technologie Durable & Régénérante',
@@ -589,6 +609,16 @@ export const translations: Record<Language, Translations> = {
     why: {
       title: 'لماذا تختارنا؟',
       subtitle: 'كل سطح يحكي قصة. كل مادة تحمل روح الحرفي الذي صنعها. الحفاظ على هذا الجمال يعني تكريم إرث وضمان استمرار مساحاتك في إلهام الإعجاب للأجيال القادمة.',
+      comparisonProblemTitle: 'الحماية الفيلمية العادية',
+      comparisonProblemLabel: 'المشكلة:',
+      comparisonProblemText: 'طبقة سطحية قد تتقشر وتتحول إلى اللون الأصفر.',
+      comparisonImpactLabel: 'التأثير:',
+      comparisonImpactText: 'تغيير المظهر، عمر افتراضي محدود، صيانة معقدة.',
+      comparisonSolutionTitle: 'نانو حماية',
+      comparisonSolutionLabel: 'الحل:',
+      comparisonSolutionText: 'حاجز نانوتكنولوجي متكامل في المادة.',
+      comparisonBenefitLabel: 'الفائدة:',
+      comparisonBenefitText: 'الحفاظ على الجمال الأصلي، متانة طويلة، صيانة سهلة.',
       reason1Title: 'الخبرة العلمية والحلول المخصصة',
       reason1Description: 'يضمن تشخيصنا الدقيق وبروتوكولاتنا العلمية البيئية، التي تطبقها فرق مؤهلة عالياً، حلاً مثالياً لكل مادة واحتياجاتك المحددة.',
       reason2Title: 'التكنولوجيا المستدامة والمجددة',
@@ -846,6 +876,16 @@ export const translations: Record<Language, Translations> = {
     why: {
       title: '¿Por Qué Elegirnos?',
       subtitle: 'Cada superficie cuenta una historia. Cada material lleva el alma del artesano que lo creó. Preservar esta belleza es honrar un legado y garantizar que tus espacios continúen inspirando asombro para las generaciones venideras.',
+      comparisonProblemTitle: 'Protección Filmógena Común',
+      comparisonProblemLabel: 'Problema:',
+      comparisonProblemText: 'Película de superficie que puede descascararse y amarillear.',
+      comparisonImpactLabel: 'Impacto:',
+      comparisonImpactText: 'Altera la apariencia, vida útil limitada, mantenimiento complicado.',
+      comparisonSolutionTitle: 'Impregnación NanoProtects',
+      comparisonSolutionLabel: 'Solución:',
+      comparisonSolutionText: 'Barrera de nanotecnología integrada en el material.',
+      comparisonBenefitLabel: 'Beneficio:',
+      comparisonBenefitText: 'Belleza original preservada, durabilidad prolongada, mantenimiento facilitado.',
       reason1Title: 'Experiencia Científica y Personalizada',
       reason1Description: 'Nuestro diagnóstico preciso y protocolos científicos ecológicos, aplicados por equipos altamente calificados, garantizan una solución perfectamente adaptada a cada material y tus necesidades específicas.',
       reason2Title: 'Tecnología Duradera y Regeneradora',
@@ -1278,6 +1318,16 @@ export const translations: Record<Language, Translations> = {
     why: {
       title: 'Why Choose Us?',
       subtitle: 'Every surface tells a story. Every material carries the soul of the craftsman who created it. Preserving this beauty means honoring a legacy and ensuring your spaces continue to inspire wonder for generations to come.',
+      comparisonProblemTitle: 'Common Film Protection',
+      comparisonProblemLabel: 'Problem:',
+      comparisonProblemText: 'Surface film that can chip and yellow.',
+      comparisonImpactLabel: 'Impact:',
+      comparisonImpactText: 'Alters appearance, limited lifespan, complicated maintenance.',
+      comparisonSolutionTitle: 'NanoProtects Impregnation',
+      comparisonSolutionLabel: 'Solution:',
+      comparisonSolutionText: 'Nanotechnology barrier integrated into the material.',
+      comparisonBenefitLabel: 'Benefit:',
+      comparisonBenefitText: 'Original beauty preserved, long durability, easy maintenance.',
       reason1Title: 'Scientific & Custom Expertise',
       reason1Description: 'Our precise diagnosis and ecological scientific protocols, applied by highly qualified teams, guarantee a solution perfectly adapted to each material and your specific needs.',
       reason2Title: 'Sustainable & Regenerative Technology',
