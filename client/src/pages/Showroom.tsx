@@ -1,5 +1,3 @@
-'use client';
-
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
@@ -66,573 +64,422 @@ const categories = [
 ];
 
 const galleryImages: GalleryImage[] = [
-
+  // Bejmat
+  {
+    id: '1',
+    category: 'Bejmat',
+    beforeImage: '/images/showroom/bejmat-floor-before.webp',
+    afterImage: '/images/showroom/bejmat-floor-after.webp',
+    title: 'Sol en Bejmat - Riad',
+    descriptionKey: 'desc1',
+    isSingleImage: false
+  },
   {
     id: '2',
     category: 'Bejmat',
-    beforeImage: '/images/bejmat-corridor-riad.webp',
-    afterImage: '/images/bejmat-corridor-riad.webp',
-    title: 'Sol en Bejmat - Riad',
-    descriptionKey: 'desc1',
-    isSingleImage: true
-  },
-  {
-    id: '2b',
-    category: 'Bejmat',
-    beforeImage: '/images/bejmat-patio-riad.webp',
-    afterImage: '/images/bejmat-patio-riad.webp',
-    title: 'Patio en Bejmat - Riad',
+    beforeImage: '/images/showroom/bejmat-corridor-riad.webp',
+    afterImage: '/images/showroom/bejmat-corridor-riad.webp',
+    title: 'Corridor en Bejmat - Riad',
     descriptionKey: 'desc2',
     isSingleImage: true
   },
   {
-    id: '2c',
+    id: '3',
     category: 'Bejmat',
-    beforeImage: '/images/bejmat-entrance-riad.webp',
-    afterImage: '/images/bejmat-entrance-riad.webp',
+    beforeImage: '/images/showroom/bejmat-entrance-riad.webp',
+    afterImage: '/images/showroom/bejmat-entrance-riad.webp',
     title: 'Entrée en Bejmat - Riad',
     descriptionKey: 'desc3',
     isSingleImage: true
   },
   {
-    id: '2d',
+    id: '4',
     category: 'Bejmat',
-    beforeImage: '/images/bejmat-staircase-riad.webp',
-    afterImage: '/images/bejmat-staircase-riad.webp',
+    beforeImage: '/images/showroom/bejmat-staircase-riad.webp',
+    afterImage: '/images/showroom/bejmat-staircase-riad.webp',
     title: 'Escalier en Bejmat - Riad',
     descriptionKey: 'desc4',
     isSingleImage: true
   },
   {
-    id: '3',
-    category: 'Marbre',
-    beforeImage: '/images/marbre-table-ronde-av-ap.webp',
-    afterImage: '/images/marbre-table-ronde-av-ap.webp',
-    title: 'Table en Marbre - Hotel',
+    id: '5',
+    category: 'Bejmat',
+    beforeImage: '/images/showroom/bejmat-patio-riad.webp',
+    afterImage: '/images/showroom/bejmat-patio-riad.webp',
+    title: 'Patio en Bejmat - Riad',
     descriptionKey: 'desc5',
     isSingleImage: true
   },
 
-
-
+  // Marbre
+  {
+    id: '6',
+    category: 'Marbre',
+    beforeImage: '/images/showroom/marble-white-before.webp',
+    afterImage: '/images/showroom/marble-white-after.webp',
+    title: 'Marbre Blanc - Hotel',
+    descriptionKey: 'desc6',
+    isSingleImage: false
+  },
   {
     id: '7',
-    category: ['Marbre', 'Zellige'],
-    beforeImage: '/images/marbre-zellige-av-ap.webp',
-    afterImage: '/images/marbre-zellige-av-ap.webp',
-    title: 'Marbre Blanc de Carrare & Zellige Noir - Hotel',
-    descriptionKey: 'desc6',
+    category: 'Marbre',
+    beforeImage: '/images/showroom/marbre-table-ronde-av-ap.webp',
+    afterImage: '/images/showroom/marbre-table-ronde-av-ap.webp',
+    title: 'Table en Marbre - Hotel',
+    descriptionKey: 'desc7',
     isSingleImage: true
   },
+
+  // Zellige
   {
     id: '8',
     category: 'Zellige',
-    beforeImage: '/images/zellige-sol-mur-riad.webp',
-    afterImage: '/images/zellige-sol-mur-riad.webp',
-    title: 'Sol & Mur Zellige - Riad',
-    descriptionKey: 'desc6',
-    isSingleImage: true
+    beforeImage: '/images/showroom/zellige-traditional-before.webp',
+    afterImage: '/images/showroom/zellige-traditional-after.webp',
+    title: 'Sol Zellige Traditionnel - Riad',
+    descriptionKey: 'desc8',
+    isSingleImage: false
   },
   {
     id: '9',
     category: 'Zellige',
-    beforeImage: '/images/zellige-fontaine-hotel.webp',
-    afterImage: '/images/zellige-fontaine-hotel.webp',
-    title: 'Fontaine Zellige - Hotel',
-    descriptionKey: 'desc8',
+    beforeImage: '/images/showroom/zellige-sol-mur-riad.webp',
+    afterImage: '/images/showroom/zellige-sol-mur-riad.webp',
+    title: 'Sol & Mur Zellige - Riad',
+    descriptionKey: 'desc9',
     isSingleImage: true
   },
   {
     id: '10',
     category: 'Zellige',
-    beforeImage: '/images/zellige-sol-hotel.webp',
-    afterImage: '/images/zellige-sol-hotel.webp',
-    title: 'Sol Zellige - Hotel',
-    descriptionKey: 'desc9',
+    beforeImage: '/images/showroom/zellige-fontaine-hotel.webp',
+    afterImage: '/images/showroom/zellige-fontaine-hotel.webp',
+    title: 'Fontaine Zellige - Hotel',
+    descriptionKey: 'desc10',
     isSingleImage: true
   },
   {
     id: '11',
-    category: 'Pierre de Taza',
-    videoMp4: '/images/cabine-spa-av-ap.mp4',
-    videoWebm: '/images/cabine-spa-av-ap.webm',
-    videoPoster: '/images/cabine-spa-av-ap-poster.webp',
-    title: 'Sol Cabine Massage Pierre de Taza - Hotel',
-    descriptionKey: 'desc6',
-    isVideo: true
+    category: 'Zellige',
+    beforeImage: '/images/showroom/zellige-sol-hotel.webp',
+    afterImage: '/images/showroom/zellige-sol-hotel.webp',
+    title: 'Sol Zellige - Hotel',
+    descriptionKey: 'desc11',
+    isSingleImage: true
   },
+
+  // Pierre de Taza
   {
     id: '12',
     category: 'Pierre de Taza',
-    beforeImage: '/images/sol-pierre-taza-hotel.webp',
-    afterImage: '/images/sol-pierre-taza-hotel.webp',
+    beforeImage: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/WxCTgreYPojEgrOy.webp',
+    afterImage: '/images/showroom/pierre-taza-after.webp',
     title: 'Sol Pierre de Taza - Hotel',
-    descriptionKey: 'desc11',
-    isSingleImage: true,
-    hideLabels: true
+    descriptionKey: 'desc12',
+    isSingleImage: false
   },
   {
     id: '13',
     category: 'Pierre de Taza',
-    beforeImage: '/images/plage-piscine-pierre-taza.webp',
-    afterImage: '/images/plage-piscine-pierre-taza.webp',
-    title: 'Plage Piscine Pierre de Taza - Résidence',
-    descriptionKey: 'desc12',
-    isSingleImage: true
-  },
-  {
-    id: '14',
-    category: 'Pierre de Taza',
-    beforeImage: '/images/plage-piscine-pierre-taza-hotel.jpg',
-    afterImage: '/images/plage-piscine-pierre-taza-hotel.jpg',
-    title: 'Plage Piscine Pierre de Taza - Hotel',
+    beforeImage: '/images/showroom/sol-pierre-taza-hotel.webp',
+    afterImage: '/images/showroom/sol-pierre-taza-hotel.webp',
+    title: 'Sol Pierre de Taza - Hotel',
     descriptionKey: 'desc13',
     isSingleImage: true,
     hideLabels: true
   },
   {
+    id: '14',
+    category: 'Pierre de Taza',
+    beforeImage: '/images/showroom/plage-piscine-pierre-taza.webp',
+    afterImage: '/images/showroom/plage-piscine-pierre-taza.webp',
+    title: 'Plage Piscine Pierre de Taza - Résidence',
+    descriptionKey: 'desc14',
+    isSingleImage: true
+  },
+  {
     id: '15',
     category: 'Pierre de Taza',
-    beforeImage: '/images/sol-pierre-taza-particulier.jpg',
-    afterImage: '/images/sol-pierre-taza-particulier.jpg',
-    title: 'Sol Pierre de Taza - Particulier',
-    descriptionKey: 'desc12',
+    beforeImage: '/images/plage-piscine-pierre-taza-hotel.jpg',
+    afterImage: '/images/plage-piscine-pierre-taza-hotel.jpg',
+    title: 'Plage Piscine Pierre de Taza - Hotel',
+    descriptionKey: 'desc15',
     isSingleImage: true,
     hideLabels: true
   },
   {
     id: '16',
-    category: 'Marbre',
-    beforeImage: '/images/console-marbre-hotel.png',
-    afterImage: '/images/console-marbre-hotel.png',
-    title: 'Console Marbre - Hotel',
-    descriptionKey: 'desc15',
-    isSingleImage: true
+    category: 'Pierre de Taza',
+    beforeImage: '/images/sol-pierre-taza-particulier.jpg',
+    afterImage: '/images/sol-pierre-taza-particulier.jpg',
+    title: 'Sol Pierre de Taza - Particulier',
+    descriptionKey: 'desc16',
+    isSingleImage: true,
+    hideLabels: true
   },
+
+  // Carreaux Beldi
   {
     id: '17',
     category: 'Carreaux Beldi',
-    beforeImage: '/images/plage-piscine-carreaux-beldi-marbre.webp',
-    afterImage: '/images/plage-piscine-carreaux-beldi-marbre.webp',
-    title: 'Plage Piscine Carreaux Beldi, Marbre - Hotel',
-    descriptionKey: 'desc12',
+    beforeImage: '/images/showroom/plage-piscine-carreaux-beldi-marbre.webp',
+    afterImage: '/images/showroom/plage-piscine-carreaux-beldi-marbre.webp',
+    title: 'Plage Piscine Carreaux Beldi & Marbre - Hotel',
+    descriptionKey: 'desc17',
     isSingleImage: true,
     hideLabels: true
   },
   {
     id: '18',
     category: 'Carreaux Beldi',
-    beforeImage: '/images/sol-cuisine-carreaux-beldi-riad.png',
-    afterImage: '/images/sol-cuisine-carreaux-beldi-riad.png',
+    beforeImage: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/dDELTBipCGPPRtHU.png',
+    afterImage: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/dDELTBipCGPPRtHU.png',
     title: 'Sol Cuisine Carreaux Beldi - Riad',
-    descriptionKey: 'desc12',
+    descriptionKey: 'desc18',
     isSingleImage: true
   },
   {
     id: '19',
     category: ['Carreaux Beldi', 'Zellige'],
-    beforeImage: '/images/sol-restaurant-carreaux-beldi-zellige-riad.webp',
-    afterImage: '/images/sol-restaurant-carreaux-beldi-zellige-riad.webp',
-    title: 'Sol Restaurant Carreaux Beldi, Zellige - Riad',
-    descriptionKey: 'desc12',
+    beforeImage: '/images/showroom/sol-restaurant-carreaux-beldi-zellige-riad.webp',
+    afterImage: '/images/showroom/sol-restaurant-carreaux-beldi-zellige-riad.webp',
+    title: 'Sol Restaurant Carreaux Beldi & Zellige - Riad',
+    descriptionKey: 'desc19',
     isSingleImage: true
   },
+
+  // Métal
   {
     id: '20',
     category: 'Métal',
-    beforeImage: '/images/transat-alu-protected.png',
-    afterImage: '/images/transat-alu-protected.png',
-    title: 'Transat Aluminium - Particulier',
-    descriptionKey: 'desc12',
-    isSingleImage: true,
-    hideLabels: true
+    beforeImage: '/images/showroom/metal-brass-before.webp',
+    afterImage: '/images/showroom/metal-brass-after.webp',
+    title: 'Rampe Métal Laiton - Hotel',
+    descriptionKey: 'desc20',
+    isSingleImage: false
   },
+
+  // Minéralisation
   {
     id: '21',
     category: 'Minéralisation',
-    videoMp4: '/images/mur-briquettes.mpeg',
-    videoPoster: '/images/mur-briquettes-poster.webp',
-    title: 'Mur Briquettes - Hotel',
-    descriptionKey: 'desc20',
-    isVideo: true,
-    hideLabels: true
+    beforeImage: '/images/showroom/securite-sols-before.webp',
+    afterImage: '/images/showroom/securite-sols-after.webp',
+    title: 'Sécurité Sols - Particulier',
+    descriptionKey: 'desc21',
+    isSingleImage: false
   },
   {
     id: '22',
     category: 'Minéralisation',
-    videoMp4: '/images/mur-enduit.mp4',
-    videoPoster: '/images/mur-enduit-poster.webp',
-    title: 'Mur Enduit - Particulier',
-    descriptionKey: 'desc20',
+    videoMp4: '/images/mur-briquettes.mpeg',
+    videoPoster: '/images/mur-briquettes.mpeg',
+    title: 'Mur Briquettes - Hotel',
+    descriptionKey: 'desc22',
     isVideo: true,
     hideLabels: true
-  },
-  {
-    id: '23',
-    category: 'Minéralisation',
-    videoMp4: '/images/mur-pise.mp4',
-    videoPoster: '/images/mur-pise-poster.webp',
-    title: 'Mur en Pisé - Hotel',
-    descriptionKey: 'desc20',
-    isVideo: true,
-    hideLabels: true
-  },
+  }
 ];
 
 export default function Showroom() {
   const { t } = useLanguage();
-  const [activeFilter, setActiveFilter] = useState('Tous');
-  const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
-  const [lightboxImageIndex, setLightboxImageIndex] = useState(0);
-  const [videoEnded, setVideoEnded] = useState(false);
-  const [videoRef, setVideoRef] = useState<HTMLVideoElement | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState('Tous');
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  const filteredImages = activeFilter === 'Tous'
+  const filteredImages = selectedCategory === 'Tous'
     ? galleryImages
     : galleryImages.filter(img => {
-        const categories = Array.isArray(img.category) ? img.category : [img.category];
-        return categories.includes(activeFilter);
+        if (Array.isArray(img.category)) {
+          return img.category.includes(selectedCategory);
+        }
+        return img.category === selectedCategory;
       });
 
-  const handleLightboxOpen = (image: GalleryImage) => {
-    setLightboxImage(image);
-    setLightboxImageIndex(filteredImages.indexOf(image));
-    setVideoEnded(false);
-  };
-
-  const handlePreviousImage = () => {
-    if (lightboxImageIndex > 0) {
-      setLightboxImage(filteredImages[lightboxImageIndex - 1]);
-      setLightboxImageIndex(lightboxImageIndex - 1);
-      setVideoEnded(false);
-    }
-  };
-
-  const handleNextImage = () => {
-    if (lightboxImageIndex < filteredImages.length - 1) {
-      setLightboxImage(filteredImages[lightboxImageIndex + 1]);
-      setLightboxImageIndex(lightboxImageIndex + 1);
-      setVideoEnded(false);
-    }
-  };
-
   const handlePlayAgain = () => {
-    if (videoRef) {
-      videoRef.currentTime = 0;
-      videoRef.play();
-      setVideoEnded(false);
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play();
+      setIsPlaying(true);
     }
   };
-
-  const isFirstImage = lightboxImageIndex === 0;
-  const isLastImage = lightboxImageIndex === filteredImages.length - 1;
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#f5f5f5' }}>
+    <div className="min-h-screen bg-white">
       <Navigation />
       
-      <div className="container pt-20 pb-20">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold mb-4" style={{ color: '#A33215' }}>
+      {/* Page Title */}
+      <div className="bg-gray-100 py-20">
+        <div className="container max-w-5xl">
+          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left" style={{ color: '#A33215' }}>
             {t.showroom.title}
           </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto mb-6 text-lg md:text-xl">
-            {t.showroom.subtitle}
-          </p>
-          
-          {/* Certification Badges */}
-          <div className="flex justify-center items-center gap-16 mb-4">
-            <img src="/images/certified-safety.png" alt="Certified Safety" className="h-24 md:h-28 object-contain" />
-            <img src="/images/sustainable-solution.png" alt="Sustainable Solution" className="h-24 md:h-28 object-contain" />
-            <img src="/images/long-lasting-results.png" alt="Long-Lasting Results" className="h-24 md:h-28 object-contain" />
-          </div>
         </div>
+      </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => {
-            const translatedCategory = category === 'Tous' ? t.showroom.filterAll
-              : category === 'Bejmat' ? t.showroom.filterBejmat
-              : category === 'Pierre de Taza' ? t.showroom.filterPierreTaza
-              : category === 'Marbre' ? t.showroom.filterMarble
-              : category === 'Carreaux Beldi' ? t.showroom.filterCarreauxBeldi
-              : category === 'Zellige' ? t.showroom.filterZellige
-              : category === 'Métal' ? t.showroom.filterMetal
-              : category === 'Minéralisation' ? t.showroom.filterMineralization
-              : category;
-            
-            return (
-              <button
-                key={category}
-                onClick={() => setActiveFilter(category)}
-                className={`px-4 py-2 rounded-full font-medium transition-all ${
-                  activeFilter === category
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                {translatedCategory}
-              </button>
-            );
-          })}
+      {/* Filter Buttons */}
+      <div className="container max-w-5xl py-12">
+        <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+          {categories.map(category => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-6 py-2 rounded-lg font-medium transition-all ${
+                selectedCategory === category
+                  ? 'bg-orange-700 text-white'
+                  : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
         </div>
+      </div>
 
-        {/* Gallery Grid */}
-        <div className="masonry-grid">
-          <AnimatePresence>
-            {filteredImages.map((image) => (
-              <motion.div
-                key={image.id}
-                layout
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="masonry-item"
-                onClick={() => handleLightboxOpen(image)}
-              >
-                <div className="gallery-card group">
-                  {/* Before/After Image Container */}
-                  <div className="relative overflow-hidden rounded-lg aspect-[4/3]">
-                    {image.isVideo ? (
-                      <div className="relative w-full h-full bg-black">
-                        <LazyImage
-                          src={image.videoPoster || ''}
-                          alt={`${image.title} - Poster`}
-                          className="w-full h-full object-cover"
-                        />
-                        {!image.hideLabels && (
-                          <>
-                            <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
-                              {t.showroom.labelBefore}
-                            </div>
-                            <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
-                              {t.showroom.labelAfter}
-                            </div>
-                          </>
-                        )}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-16 h-16 rounded-full bg-white/50 flex items-center justify-center">
-                            <svg className="w-8 h-8 text-white/50" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M8 5v14l11-7z" />
-                            </svg>
-                          </div>
-                        </div>
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                          <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">{t.showroom.clickToEnlarge}</span>
-                        </div>
-                      </div>
-                    ) : image.isSingleImage ? (
-                      /* Single Combined Image */
-                      <div className="relative w-full h-full">
-                        <LazyImage
-                          src={image.beforeImage || ''}
-                          alt={`${image.title} - Avant et Après`}
-                          className="w-full h-full object-cover"
-                        />
-                        {!image.hideLabels && (
-                          <>
-                            <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
-                              {t.showroom.labelBefore}
-                            </div>
-                            <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
-                              {t.showroom.labelAfter}
-                            </div>
-                          </>
-                        )}
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                          <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
-                            {t.showroom.clickToEnlarge}
-                          </span>
-                        </div>
-                      </div>
-                    ) : (
-                      /* Split Before/After Layout */
-                      <>
-                        <div className="grid grid-cols-2 h-full">
-                          {/* Before */}
-                          <div className="relative">
-                            <LazyImage
-                              src={image.beforeImage || ''}
-                              alt={`${image.title} - Avant`}
-                              className="w-full h-full object-cover"
-                            />
-                            <div className="absolute top-3 left-3 bg-black/70 text-white text-xs font-semibold px-3 py-1 rounded">
-                              {t.showroom.labelBefore}
-                            </div>
-                          </div>
-                          {/* After */}
-                          <div className="relative">
-                            <LazyImage
-                              src={image.afterImage || ''}
-                              alt={`${image.title} - Après`}
-                              className="w-full h-full object-cover"
-                            />
-                            <div className="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded">
-                              {t.showroom.labelAfter}
-                            </div>
-                          </div>
-                        </div>
-                        {/* Hover Overlay */}
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                          <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
-                            {t.showroom.clickToEnlarge}
-                          </span>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                  {/* Caption */}
-                  <div className="p-4">
-                    <h3 className="font-semibold text-secondary text-[1rem] mb-1">
-                      {image.title}
-                    </h3>
-                    <p className="text-sm text-gray-600">
-                      {t.showroom[image.descriptionKey as keyof typeof t.showroom] || image.descriptionKey}
-                    </p>
+      {/* Gallery Grid */}
+      <div className="container max-w-5xl pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredImages.map((image) => (
+            <div
+              key={image.id}
+              className="group cursor-pointer relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all"
+              onClick={() => setSelectedImage(image)}
+            >
+              {image.isVideo ? (
+                <div className="relative w-full h-64 bg-black">
+                  <video
+                    src={image.videoPoster}
+                    poster={image.videoPoster}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition">
+                    <div className="text-white text-4xl">▶</div>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+              ) : image.isSingleImage ? (
+                <LazyImage
+                  src={image.beforeImage || ''}
+                  alt={image.title}
+                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              ) : (
+                <div className="relative w-full h-64 overflow-hidden">
+                  <LazyImage
+                    src={image.beforeImage || ''}
+                    alt={`${image.title} - ${t.showroom.labelBefore}`}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition">
+                    <div className="text-white text-center">
+                      <div className="text-sm font-semibold">{t.showroom.clickToEnlarge}</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div className="p-4 bg-white">
+                <h3 className="font-semibold text-gray-800">{image.title}</h3>
+                <p className="text-sm text-gray-600">{t.showroom[image.descriptionKey as keyof typeof t.showroom] || image.descriptionKey}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Lightbox Modal */}
       <AnimatePresence>
-        {lightboxImage && (
+        {selectedImage && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-            onClick={() => setLightboxImage(null)}
+            onClick={() => setSelectedImage(null)}
           >
             <motion.div
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
-              className="relative w-full max-h-[90vh] flex items-center justify-center"
-              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-4xl w-full"
+              onClick={e => e.stopPropagation()}
             >
-              {/* Left Arrow */}
               <button
-                onClick={handlePreviousImage}
-                disabled={isFirstImage}
-                className={`absolute left-4 top-1/2 -translate-y-1/2 text-white transition-all z-10 ${
-                  isFirstImage
-                    ? 'opacity-50 cursor-not-allowed'
-                    : 'opacity-50 hover:opacity-100 cursor-pointer'
-                }`}
-                aria-label="Previous image"
+                onClick={() => setSelectedImage(null)}
+                className="absolute -top-10 right-0 text-white hover:text-gray-300 z-10"
               >
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
+                <X size={32} />
               </button>
 
-              {/* Right Arrow */}
-              <button
-                onClick={handleNextImage}
-                disabled={isLastImage}
-                className={`absolute right-4 top-1/2 -translate-y-1/2 text-white transition-all z-10 ${
-                  isLastImage
-                    ? 'opacity-50 cursor-not-allowed'
-                    : 'opacity-50 hover:opacity-100 cursor-pointer'
-                }`}
-                aria-label="Next image"
-              >
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-
-              {/* Image Counter */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm font-medium bg-black/50 px-4 py-2 rounded-lg z-10">
-                {lightboxImageIndex + 1} / {filteredImages.length}
-              </div>
-              {lightboxImage.isVideo ? (
-                /* Video Lightbox */
-                <div className="relative bg-black rounded-lg overflow-hidden">
-                  <div className="relative">
-                    <video
-                      ref={setVideoRef}
-                      src={lightboxImage.videoMp4}
-                      className="w-full h-auto"
-                      controls
-                      preload="metadata"
-                      poster={lightboxImage.videoPoster}
-                      autoPlay
-                      onEnded={() => setVideoEnded(true)}
-                    />
-                    {/* AVANT/APRES Labels */}
-                    <div className="absolute top-4 left-4 bg-black/70 text-white text-sm font-semibold px-4 py-2 rounded">
-                      {t.showroom.labelBefore}
-                    </div>
-                    <div className="absolute top-4 right-4 bg-primary text-white text-sm font-semibold px-4 py-2 rounded">
-                      {t.showroom.labelAfter}
-                    </div>
-                    {/* Play Again Button */}
-                    {videoEnded && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg">
-                        <button
-                          onClick={handlePlayAgain}
-                          className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
-                        >
-                          {t.showroom.playAgain}
-                        </button>
-                      </div>
-                    )}
-                  </div>
+              {selectedImage.isVideo ? (
+                <div className="relative w-full bg-black rounded-lg overflow-hidden">
+                  <video
+                    ref={videoRef}
+                    src={selectedImage.videoMp4}
+                    poster={selectedImage.videoPoster}
+                    className="w-full h-auto"
+                    controls
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
+                    onEnded={() => setIsPlaying(false)}
+                  />
+                  {!isPlaying && (
+                    <button
+                      onClick={handlePlayAgain}
+                      className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition text-white text-6xl"
+                    >
+                      ▶
+                    </button>
+                  )}
                 </div>
-              ) : lightboxImage.isSingleImage ? (
-                /* Single Image Lightbox */
-                <div className="relative">
-                  <img
-                    src={lightboxImage.beforeImage}
-                    alt={`${lightboxImage.title} - Avant et Après`}
+              ) : selectedImage.isSingleImage ? (
+                <div className="relative w-full">
+                  <LazyImage
+                    src={selectedImage.beforeImage || ''}
+                    alt={selectedImage.title}
                     className="w-full h-auto rounded-lg"
                   />
-                  <div className="absolute top-4 left-4 bg-black/70 text-white text-sm font-semibold px-4 py-2 rounded">
-                    {t.showroom.labelBefore}
-                  </div>
-                  <div className="absolute top-4 right-4 bg-primary text-white text-sm font-semibold px-4 py-2 rounded">
-                    {t.showroom.labelAfter}
-                  </div>
-                </div>
-              ) : (
-                /* Split Image Lightbox */
-                <div className="grid grid-cols-2 gap-2 bg-black rounded-lg overflow-hidden relative">
-                  <div className="relative">
-                    <img
-                      src={lightboxImage.beforeImage}
-                      alt={`${lightboxImage.title} - Avant`}
-                      className="w-full h-auto"
-                    />
-                    <div className="absolute top-4 left-4 bg-black/70 text-white text-sm font-semibold px-4 py-2 rounded">
+                  {!selectedImage.hideLabels && (
+                    <div className="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded text-sm font-semibold text-gray-800">
                       {t.showroom.labelBefore}
                     </div>
-                  </div>
-                  <div className="relative">
-                    <img
-                      src={lightboxImage.afterImage}
-                      alt={`${lightboxImage.title} - Après`}
-                      className="w-full h-auto"
-                    />
-                    <div className="absolute top-4 right-4 bg-primary text-white text-sm font-semibold px-4 py-2 rounded">
-                      {t.showroom.labelAfter}
+                  )}
+                </div>
+              ) : (
+                <div className="relative w-full">
+                  <div className="flex gap-2 h-auto">
+                    <div className="flex-1 relative">
+                      <LazyImage
+                        src={selectedImage.beforeImage || ''}
+                        alt={`${selectedImage.title} - ${t.showroom.labelBefore}`}
+                        className="w-full h-auto rounded-l-lg"
+                      />
+                      {!selectedImage.hideLabels && (
+                        <div className="absolute top-4 left-4 bg-red-500/90 text-white px-3 py-1 rounded text-sm font-semibold">
+                          {t.showroom.labelBefore}
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex-1 relative">
+                      <LazyImage
+                        src={selectedImage.afterImage || ''}
+                        alt={`${selectedImage.title} - ${t.showroom.labelAfter}`}
+                        className="w-full h-auto rounded-r-lg"
+                      />
+                      {!selectedImage.hideLabels && (
+                        <div className="absolute top-4 right-4 bg-green-500/90 text-white px-3 py-1 rounded text-sm font-semibold">
+                          {t.showroom.labelAfter}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
               )}
-              
-              <button
-                onClick={() => setLightboxImage(null)}
-                className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10"
-              >
-                <X size={32} />
-              </button>
+
+              <div className="mt-6 bg-white/10 rounded-lg p-4 text-white">
+                <h2 className="text-2xl font-bold mb-2">{selectedImage.title}</h2>
+                <p className="text-gray-200">{t.showroom[selectedImage.descriptionKey as keyof typeof t.showroom] || selectedImage.descriptionKey}</p>
+              </div>
             </motion.div>
           </motion.div>
         )}
