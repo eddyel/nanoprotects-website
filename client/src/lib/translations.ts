@@ -150,6 +150,12 @@ export interface Translations {
     specifyCity: string;
     cityPlaceholder: string;
     phone: string;
+    protectionType: string;
+    protectionWater: string;
+    protectionOil: string;
+    protectionMineralization: string;
+    protectionAntiSlip: string;
+    diagnosticButton: string;
   };
   confirmation: {
     titlePrefix: string;
@@ -375,7 +381,7 @@ export const translations: Record<Language, Translations> = {
       zone2: 'Escaliers',
       zone3: 'Murs',
       zone4: 'Mobilier',
-      title: 'Commençons Ensemble',
+      title: 'Demande de Diagnostic Personnalisé',
       subtitle: 'Contactez-nous pour un diagnostic gratuit',
       namePlaceholder: 'Votre nom',
       emailPlaceholder: 'Votre email',
@@ -401,6 +407,12 @@ export const translations: Record<Language, Translations> = {
       specifyCity: 'Précisez la ville',
       cityPlaceholder: 'Nom de la ville',
       phone: 'Téléphone',
+    protectionType: 'Type de protection',
+    protectionWater: 'Hydrofuge (eau)',
+    protectionOil: 'Oléofuge (huile)',
+    protectionMineralization: 'Minéralisation (anti-effritement)',
+    protectionAntiSlip: 'Anti-Dérapant',
+    diagnosticButton: 'Demander mon diagnostic',
     },
     confirmation: {
       titlePrefix: 'Merci pour votre confiance',
@@ -623,7 +635,7 @@ export const translations: Record<Language, Translations> = {
       zone2: 'السلالم',
       zone3: 'الجدران',
       zone4: 'الأثاث',
-      title: 'لنبدأ معاً',
+      title: 'طلب تشخيص مخصص',
       subtitle: 'اتصل بنا للحصول على تشخيص مجاني',
       namePlaceholder: 'اسمك',
       emailPlaceholder: 'بريدك الإلكتروني',
@@ -649,6 +661,12 @@ export const translations: Record<Language, Translations> = {
       specifyCity: 'حدد المدينة',
       cityPlaceholder: 'اسم المدينة',
       phone: 'الهاتف',
+      protectionType: 'نوع الحماية',
+      protectionWater: 'مقاوم للماء',
+      protectionOil: 'مقاوم للزيت',
+      protectionMineralization: 'تمعدن (مقاوم للتفتت)',
+      protectionAntiSlip: 'مقاوم للانزلاق',
+      diagnosticButton: 'طلب التشخيص الخاص بي',
     },
     confirmation: {
       titlePrefix: 'شكراً لثقتك',
@@ -871,7 +889,7 @@ export const translations: Record<Language, Translations> = {
       zone2: 'Escaleras',
       zone3: 'Paredes',
       zone4: 'Muebles',
-      title: 'Comencemos Juntos',
+      title: 'Solicitud de Diagnóstico Personalizado',
       subtitle: 'Contáctanos para un diagnóstico gratuito',
       namePlaceholder: 'Tu nombre',
       emailPlaceholder: 'Tu correo electrónico',
@@ -897,6 +915,12 @@ export const translations: Record<Language, Translations> = {
       specifyCity: 'Especifica la ciudad',
       cityPlaceholder: 'Nombre de la ciudad',
       phone: 'Teléfono',
+    protectionType: 'Tipo de protección',
+    protectionWater: 'Hidrófugo (agua)',
+    protectionOil: 'Oleófobo (aceite)',
+    protectionMineralization: 'Mineralización (anti-desmoronamiento)',
+    protectionAntiSlip: 'Antideslizante',
+    diagnosticButton: 'Solicitar mi diagnóstico',
     },
     confirmation: {
       titlePrefix: 'Gracias por tu confianza',
@@ -1164,6 +1188,12 @@ export const translations: Record<Language, Translations> = {
       specifyCity: 'Specify the city',
       cityPlaceholder: 'City name',
       phone: 'Phone',
+    protectionType: 'Protection Type',
+    protectionWater: 'Water Repellent',
+    protectionOil: 'Oil Repellent',
+    protectionMineralization: 'Mineralization (anti-crumbling)',
+    protectionAntiSlip: 'Anti-Slip',
+    diagnosticButton: 'Request My Diagnostic',
     },
     confirmation: {
       titlePrefix: 'Thank you for your trust',

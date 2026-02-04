@@ -59,7 +59,7 @@ export default function Home() {
         </div>
 
         {/* Social Media Logos at Bottom of Hero */}
-        <div className="absolute bottom-16 left-0 right-0 z-10 flex justify-center items-center gap-4 md:gap-6 md:bottom-6">
+        <div className="absolute bottom-4 left-0 right-0 z-10 flex justify-center items-center gap-4 md:gap-6 md:bottom-2">
           {/* LinkedIn Logo */}
           <a
             href="https://www.linkedin.com/company/nanoprotects"

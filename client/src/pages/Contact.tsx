@@ -25,6 +25,7 @@ export default function Contact() {
   const [, setLocation] = useLocation();
   const [selectedMateriaux, setSelectedMateriaux] = useState<string[]>([]);
   const [selectedZones, setSelectedZones] = useState<string[]>([]);
+  const [selectedProtectionTypes, setSelectedProtectionTypes] = useState<string[]>([]);
   const [ville, setVille] = useState('');
   const [autreVille, setAutreVille] = useState('');
   const [formData, setFormData] = useState({
@@ -71,6 +72,14 @@ export default function Contact() {
       prev.includes(zone)
         ? prev.filter(z => z !== zone)
         : [...prev, zone]
+    );
+  };
+
+  const toggleProtectionType = (type: string) => {
+    setSelectedProtectionTypes(prev =>
+      prev.includes(type)
+        ? prev.filter(t => t !== type)
+        : [...prev, type]
     );
   };
 
@@ -149,6 +158,7 @@ export default function Contact() {
         phone: formData.phone,
         materials: selectedMateriaux,
         zones: selectedZones,
+        protectionTypes: selectedProtectionTypes,
         ville: ville || autreVille,
         message: formData.message
       };
@@ -311,6 +321,79 @@ export default function Contact() {
               </div>
             </div>
 
+            {/* Multi-select: Type de Protection */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-3">
+                {t.contact.protectionType}
+              </label>
+              <div className="grid grid-cols-2 md:grid-cols-2 gap-3" role="group" aria-label={t.contact.protectionType}>
+                <button
+                  key="water"
+                  type="button"
+                  onClick={() => toggleProtectionType(t.contact.protectionWater)}
+                  aria-pressed={selectedProtectionTypes.includes(t.contact.protectionWater)}
+                  className={`px-4 py-2 min-h-[44px] rounded-lg border-2 transition-all text-sm font-medium active:scale-[0.98] ${
+                    selectedProtectionTypes.includes(t.contact.protectionWater)
+                      ? 'border-primary bg-primary/10 text-primary'
+                      : 'border-gray-300 text-gray-700 hover:border-gray-400'
+                  }`}
+                >
+                  {selectedProtectionTypes.includes(t.contact.protectionWater) && (
+                    <Check className="w-4 h-4 inline mr-1" />
+                  )}
+                  {t.contact.protectionWater}
+                </button>
+                <button
+                  key="oil"
+                  type="button"
+                  onClick={() => toggleProtectionType(t.contact.protectionOil)}
+                  aria-pressed={selectedProtectionTypes.includes(t.contact.protectionOil)}
+                  className={`px-4 py-2 min-h-[44px] rounded-lg border-2 transition-all text-sm font-medium active:scale-[0.98] ${
+                    selectedProtectionTypes.includes(t.contact.protectionOil)
+                      ? 'border-primary bg-primary/10 text-primary'
+                      : 'border-gray-300 text-gray-700 hover:border-gray-400'
+                  }`}
+                >
+                  {selectedProtectionTypes.includes(t.contact.protectionOil) && (
+                    <Check className="w-4 h-4 inline mr-1" />
+                  )}
+                  {t.contact.protectionOil}
+                </button>
+                <button
+                  key="mineralization"
+                  type="button"
+                  onClick={() => toggleProtectionType(t.contact.protectionMineralization)}
+                  aria-pressed={selectedProtectionTypes.includes(t.contact.protectionMineralization)}
+                  className={`px-4 py-2 min-h-[44px] rounded-lg border-2 transition-all text-sm font-medium active:scale-[0.98] ${
+                    selectedProtectionTypes.includes(t.contact.protectionMineralization)
+                      ? 'border-primary bg-primary/10 text-primary'
+                      : 'border-gray-300 text-gray-700 hover:border-gray-400'
+                  }`}
+                >
+                  {selectedProtectionTypes.includes(t.contact.protectionMineralization) && (
+                    <Check className="w-4 h-4 inline mr-1" />
+                  )}
+                  {t.contact.protectionMineralization}
+                </button>
+                <button
+                  key="antiSlip"
+                  type="button"
+                  onClick={() => toggleProtectionType(t.contact.protectionAntiSlip)}
+                  aria-pressed={selectedProtectionTypes.includes(t.contact.protectionAntiSlip)}
+                  className={`px-4 py-2 min-h-[44px] rounded-lg border-2 transition-all text-sm font-medium active:scale-[0.98] ${
+                    selectedProtectionTypes.includes(t.contact.protectionAntiSlip)
+                      ? 'border-primary bg-primary/10 text-primary'
+                      : 'border-gray-300 text-gray-700 hover:border-gray-400'
+                  }`}
+                >
+                  {selectedProtectionTypes.includes(t.contact.protectionAntiSlip) && (
+                    <Check className="w-4 h-4 inline mr-1" />
+                  )}
+                  {t.contact.protectionAntiSlip}
+                </button>
+              </div>
+            </div>
+
             {/* City Dropdown */}
             <div>
               <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-2">
@@ -381,7 +464,7 @@ export default function Contact() {
               className="w-full text-lg py-6 border-2 btn-brand disabled:opacity-50 disabled:cursor-not-allowed"
               aria-busy={isSubmitting}
             >
-              {isSubmitting ? t.contact.submitting || 'Submitting...' : t.contact.sendRequest}
+              {isSubmitting ? t.contact.submitting || 'Submitting...' : t.contact.diagnosticButton}
             </Button>
           </form>
         </div>

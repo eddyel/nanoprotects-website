@@ -12,6 +12,7 @@ interface ConfirmationState {
   phone: string;
   materials: string[];
   zones: string[];
+  protectionTypes: string[];
   ville: string;
   message: string;
 }
@@ -138,6 +139,19 @@ export default function Confirmation() {
                         <span key={i}>
                           {z}
                           {i < confirmationData.zones.length - 1 ? ', ' : ''}
+                        </span>
+                      ))}
+                    </p>
+                  )}
+                  
+                  {confirmationData.protectionTypes.length > 0 && (
+                    <p>
+                      <span className="font-medium">Types de protection :</span>
+                      <br />
+                      {confirmationData.protectionTypes.map((pt, i) => (
+                        <span key={i}>
+                          {pt}
+                          {i < confirmationData.protectionTypes.length - 1 ? ', ' : ''}
                         </span>
                       ))}
                     </p>
