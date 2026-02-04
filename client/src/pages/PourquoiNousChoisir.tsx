@@ -125,13 +125,51 @@ export default function PourquoiNousChoisir() {
             {t.why.title}
           </h1>
           
-          {/* Comparison Section with Visual Mockup */}
-          <div className="mb-20">
-            <img 
-              src="https://cdn.manus.space/nanoprotects/comparison-mockup-v2.png" 
-              alt="Comparison: Film Protection vs NanoProtects Impregnation"
-              className="w-full rounded-lg shadow-lg"
-            />
+          {/* Comparison Section with Icons and Text */}
+          <div className="mb-20 grid md:grid-cols-2 gap-8">
+            {/* Left: Problem */}
+            <div className="p-8 bg-red-50 rounded-lg border-2 border-red-200">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-4xl">❌</span>
+                <h3 className="text-2xl font-semibold text-red-800">{t.why.comparisonProblemTitle}</h3>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <p className="font-semibold text-red-700 mb-2 flex items-center gap-2">
+                    <span className="text-xl">⚠️</span> {t.why.comparisonProblemLabel}
+                  </p>
+                  <p className="text-gray-700 ml-8">{t.why.comparisonProblemText}</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-red-700 mb-2 flex items-center gap-2">
+                    <span className="text-xl">📉</span> {t.why.comparisonImpactLabel}
+                  </p>
+                  <p className="text-gray-700 ml-8">{t.why.comparisonImpactText}</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right: Solution */}
+            <div className="p-8 bg-green-50 rounded-lg border-2 border-green-200">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-4xl">✅</span>
+                <h3 className="text-2xl font-semibold text-green-800">{t.why.comparisonSolutionTitle}</h3>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <p className="font-semibold text-green-700 mb-2 flex items-center gap-2">
+                    <span className="text-xl">🔬</span> {t.why.comparisonSolutionLabel}
+                  </p>
+                  <p className="text-gray-700 ml-8">{t.why.comparisonSolutionText}</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-green-700 mb-2 flex items-center gap-2">
+                    <span className="text-xl">💎</span> {t.why.comparisonBenefitLabel}
+                  </p>
+                  <p className="text-gray-700 ml-8">{t.why.comparisonBenefitText}</p>
+                </div>
+              </div>
+            </div>
           </div>
           
           {/* 4-column grid on desktop, 2 on tablet, 1 on mobile */}
