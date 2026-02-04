@@ -273,10 +273,30 @@ const galleryImages: GalleryImage[] = [
   {
     id: '22',
     category: 'Minéralisation',
-    videoMp4: '/images/mur-briquettes.mpeg',
-    videoPoster: '/images/mur-briquettes.mpeg',
+    videoMp4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PwAnpbCHRHTexxKs.mpeg',
+    videoPoster: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PwAnpbCHRHTexxKs.mpeg',
     title: 'Mur Briquettes - Hotel',
     descriptionKey: 'desc22',
+    isVideo: true,
+    hideLabels: true
+  },
+  {
+    id: '23',
+    category: 'Minéralisation',
+    videoMp4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/jPXDZdIxLKDvTMwd.mp4',
+    videoPoster: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/jPXDZdIxLKDvTMwd.mp4',
+    title: 'Mur Enduit - Particulier',
+    descriptionKey: 'desc23',
+    isVideo: true,
+    hideLabels: true
+  },
+  {
+    id: '24',
+    category: 'Minéralisation',
+    videoMp4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PaXedwwiKCwYIUps.mp4',
+    videoPoster: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PaXedwwiKCwYIUps.mp4',
+    title: 'Mur en Pisé - Hotel',
+    descriptionKey: 'desc24',
     isVideo: true,
     hideLabels: true
   }
