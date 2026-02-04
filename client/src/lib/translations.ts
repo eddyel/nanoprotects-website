@@ -68,6 +68,32 @@ export interface Translations {
     desc20: string;
     desc21: string;
     desc22: string;
+    desc23: string;
+    desc24: string;
+    title1: string;
+    title2: string;
+    title3: string;
+    title4: string;
+    title5: string;
+    title6: string;
+    title7: string;
+    title8: string;
+    title9: string;
+    title10: string;
+    title11: string;
+    title12: string;
+    title13: string;
+    title14: string;
+    title15: string;
+    title16: string;
+    title17: string;
+    title18: string;
+    title19: string;
+    title20: string;
+    title21: string;
+    title22: string;
+    title23: string;
+    title24: string;
   };
   why: {
     title: string;
@@ -338,6 +364,32 @@ export const translations: Record<Language, Translations> = {
       desc20: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
       desc21: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
       desc22: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
+      desc23: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
+      desc24: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
+      title1: 'Sol en Bejmat - Riad',
+      title2: 'Corridor en Bejmat - Riad',
+      title3: 'Entrée en Bejmat - Riad',
+      title4: 'Escalier en Bejmat - Riad',
+      title5: 'Patio en Bejmat - Riad',
+      title6: 'Marbre Blanc - Hotel',
+      title7: 'Table en Marbre - Hotel',
+      title8: 'Sol Zellige Traditionnel - Riad',
+      title9: 'Sol & Mur Zellige - Riad',
+      title10: 'Fontaine Zellige - Hotel',
+      title11: 'Sol Zellige - Hotel',
+      title12: 'Sol Pierre de Taza - Hotel',
+      title13: 'Sol Pierre de Taza - Hotel',
+      title14: 'Plage Piscine Pierre de Taza - Résidence',
+      title15: 'Plage Piscine Pierre de Taza - Hotel',
+      title16: 'Sol Pierre de Taza - Particulier',
+      title17: 'Plage Piscine Carreaux Beldi & Marbre - Hotel',
+      title18: 'Sol Cuisine Carreaux Beldi - Riad',
+      title19: 'Sol Restaurant Carreaux Beldi & Zellige - Riad',
+      title20: 'Rampe Métal Laiton - Hotel',
+      title21: 'Sécurité Sols - Particulier',
+      title22: 'Mur Briquettes - Hotel',
+      title23: 'Mur Enduit - Particulier',
+      title24: 'Mur en Pisé - Hotel',
     },
     why: {
       title: 'Pourquoi Nous Choisir ?',
@@ -605,6 +657,32 @@ export const translations: Record<Language, Translations> = {
       desc20: 'معالجة التمعدن المضادة للتفتت والحماية المقاومة للماء غير المرئية',
       desc21: 'معالجة التمعدن المضادة للتفتت والحماية المقاومة للماء غير المرئية',
       desc22: 'معالجة التمعدن المضادة للتفتت والحماية المقاومة للماء غير المرئية',
+      desc23: 'معالجة التمعدن المضادة للتفتت والحماية المقاومة للماء غير المرئية',
+      desc24: 'معالجة التمعدن المضادة للتفتت والحماية المقاومة للماء غير المرئية',
+      title1: 'أرضية بيجمات - رياد',
+      title2: 'ممر بيجمات - رياد',
+      title3: 'مدخل بيجمات - رياد',
+      title4: 'درج بيجمات - رياد',
+      title5: 'فناء بيجمات - رياد',
+      title6: 'رخام أبيض - فندق',
+      title7: 'طاولة رخام - فندق',
+      title8: 'أرضية زليج تقليدية - رياد',
+      title9: 'أرضية وجدران زليج - رياد',
+      title10: 'نافورة زليج - فندق',
+      title11: 'أرضية زليج - فندق',
+      title12: 'أرضية حجر تازة - فندق',
+      title13: 'أرضية حجر تازة - فندق',
+      title14: 'شاطئ برك حجر تازة - إقامة',
+      title15: 'شاطئ برك حجر تازة - فندق',
+      title16: 'أرضية حجر تازة - منزل',
+      title17: 'شاطئ برك بلاط بلدي ورخام - فندق',
+      title18: 'أرضية مطبخ بلاط بلدي - رياد',
+      title19: 'أرضية مطعم بلاط بلدي وزليج - رياد',
+      title20: 'درابزين معدن نحاس - فندق',
+      title21: 'أمان الأرضيات - منزل',
+      title22: 'جدران الطوب - فندق',
+      title23: 'جدران ملطوبة - منزل',
+      title24: 'جدران مادة الطين - فندق',
     },
     why: {
       title: 'لماذا تختارنا؟',
@@ -872,6 +950,32 @@ export const translations: Record<Language, Translations> = {
       desc20: 'Mineralización anti-desmenuzamiento y protección impermeable invisible',
       desc21: 'Mineralización anti-desmenuzamiento y protección impermeable invisible',
       desc22: 'Mineralización anti-desmenuzamiento y protección impermeable invisible',
+      desc23: 'Mineralización anti-desmenuzamiento y protección impermeable invisible',
+      desc24: 'Mineralización anti-desmenuzamiento y protección impermeable invisible',
+      title1: 'Piso Bejmat - Riad',
+      title2: 'Pasillo Bejmat - Riad',
+      title3: 'Entrada Bejmat - Riad',
+      title4: 'Escalera Bejmat - Riad',
+      title5: 'Patio Bejmat - Riad',
+      title6: 'Mármol Blanco - Hotel',
+      title7: 'Mesa Mármol - Hotel',
+      title8: 'Piso Zellige Tradicional - Riad',
+      title9: 'Piso y Muro Zellige - Riad',
+      title10: 'Fuente Zellige - Hotel',
+      title11: 'Piso Zellige - Hotel',
+      title12: 'Piso Piedra de Taza - Hotel',
+      title13: 'Piso Piedra de Taza - Hotel',
+      title14: 'Playa Piscina Piedra de Taza - Residencia',
+      title15: 'Playa Piscina Piedra de Taza - Hotel',
+      title16: 'Piso Piedra de Taza - Particular',
+      title17: 'Playa Piscina Azulejos Beldi y Mármol - Hotel',
+      title18: 'Piso Cocina Azulejos Beldi - Riad',
+      title19: 'Piso Restaurante Azulejos Beldi y Zellige - Riad',
+      title20: 'Pasamanos Metal Laton - Hotel',
+      title21: 'Seguridad Pisos - Particular',
+      title22: 'Muro Ladrillos - Hotel',
+      title23: 'Muro Revocado - Particular',
+      title24: 'Muro Tierra - Hotel',
     },
     why: {
       title: '¿Por Qué Elegirnos?',
@@ -1139,6 +1243,32 @@ export const translations: Record<Language, Translations> = {
       desc20: 'Anti-crumbling mineralization & invisible waterproof protection',
       desc21: 'Anti-crumbling mineralization & invisible waterproof protection',
       desc22: 'Anti-crumbling mineralization & invisible waterproof protection',
+      desc23: 'Anti-crumbling mineralization & invisible waterproof protection',
+      desc24: 'Anti-crumbling mineralization & invisible waterproof protection',
+      title1: 'Bejmat Floor - Riad',
+      title2: 'Bejmat Corridor - Riad',
+      title3: 'Bejmat Entrance - Riad',
+      title4: 'Bejmat Staircase - Riad',
+      title5: 'Bejmat Patio - Riad',
+      title6: 'White Marble - Hotel',
+      title7: 'Marble Table - Hotel',
+      title8: 'Traditional Zellige Floor - Riad',
+      title9: 'Zellige Floor & Wall - Riad',
+      title10: 'Zellige Fountain - Hotel',
+      title11: 'Zellige Floor - Hotel',
+      title12: 'Taza Stone Floor - Hotel',
+      title13: 'Taza Stone Floor - Hotel',
+      title14: 'Taza Stone Pool Beach - Residence',
+      title15: 'Taza Stone Pool Beach - Hotel',
+      title16: 'Taza Stone Floor - Private',
+      title17: 'Beldi Tiles & Marble Pool Beach - Hotel',
+      title18: 'Beldi Tiles Kitchen Floor - Riad',
+      title19: 'Beldi Tiles & Zellige Restaurant Floor - Riad',
+      title20: 'Brass Metal Railing - Hotel',
+      title21: 'Floor Safety - Private',
+      title22: 'Brick Wall - Hotel',
+      title23: 'Plastered Wall - Private',
+      title24: 'Clay Wall - Hotel',
     },
     method: {
       title: 'Our Methodical Approach: Reveal and Preserve Original Beauty',

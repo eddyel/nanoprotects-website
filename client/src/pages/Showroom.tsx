@@ -46,13 +46,27 @@ interface GalleryImage {
   videoWebm?: string;
   videoPoster?: string;
   title: string;
+  titleKey: string;
   descriptionKey: string;
   isSingleImage?: boolean;
   isVideo?: boolean;
   hideLabels?: boolean;
 }
 
-const categories = [
+// Category keys for translation
+const categoryKeys = [
+  'filterAll',
+  'filterBejmat',
+  'filterPierreTaza',
+  'filterMarble',
+  'filterCarreauxBeldi',
+  'filterZellige',
+  'filterMetal',
+  'filterMineralization'
+];
+
+// Internal category names (used for filtering)
+const internalCategories = [
   'Tous',
   'Bejmat',
   'Pierre de Taza',
@@ -71,6 +85,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/bejmat-floor-before.webp',
     afterImage: '/images/showroom/bejmat-floor-after.webp',
     title: 'Sol en Bejmat - Riad',
+    titleKey: 'title1',
     descriptionKey: 'desc1',
     isSingleImage: false
   },
@@ -80,6 +95,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/bejmat-corridor-riad.webp',
     afterImage: '/images/showroom/bejmat-corridor-riad.webp',
     title: 'Corridor en Bejmat - Riad',
+    titleKey: 'title2',
     descriptionKey: 'desc2',
     isSingleImage: true
   },
@@ -89,6 +105,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/bejmat-entrance-riad.webp',
     afterImage: '/images/showroom/bejmat-entrance-riad.webp',
     title: 'Entrée en Bejmat - Riad',
+    titleKey: 'title3',
     descriptionKey: 'desc3',
     isSingleImage: true
   },
@@ -98,6 +115,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/bejmat-staircase-riad.webp',
     afterImage: '/images/showroom/bejmat-staircase-riad.webp',
     title: 'Escalier en Bejmat - Riad',
+    titleKey: 'title4',
     descriptionKey: 'desc4',
     isSingleImage: true
   },
@@ -107,6 +125,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/bejmat-patio-riad.webp',
     afterImage: '/images/showroom/bejmat-patio-riad.webp',
     title: 'Patio en Bejmat - Riad',
+    titleKey: 'title5',
     descriptionKey: 'desc5',
     isSingleImage: true
   },
@@ -118,6 +137,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/marble-white-before.webp',
     afterImage: '/images/showroom/marble-white-after.webp',
     title: 'Marbre Blanc - Hotel',
+    titleKey: 'title6',
     descriptionKey: 'desc6',
     isSingleImage: false
   },
@@ -127,6 +147,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/marbre-table-ronde-av-ap.webp',
     afterImage: '/images/showroom/marbre-table-ronde-av-ap.webp',
     title: 'Table en Marbre - Hotel',
+    titleKey: 'title7',
     descriptionKey: 'desc7',
     isSingleImage: true
   },
@@ -138,6 +159,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/zellige-traditional-before.webp',
     afterImage: '/images/showroom/zellige-traditional-after.webp',
     title: 'Sol Zellige Traditionnel - Riad',
+    titleKey: 'title8',
     descriptionKey: 'desc8',
     isSingleImage: false
   },
@@ -147,6 +169,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/zellige-sol-mur-riad.webp',
     afterImage: '/images/showroom/zellige-sol-mur-riad.webp',
     title: 'Sol & Mur Zellige - Riad',
+    titleKey: 'title9',
     descriptionKey: 'desc9',
     isSingleImage: true
   },
@@ -156,6 +179,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/zellige-fontaine-hotel.webp',
     afterImage: '/images/showroom/zellige-fontaine-hotel.webp',
     title: 'Fontaine Zellige - Hotel',
+    titleKey: 'title10',
     descriptionKey: 'desc10',
     isSingleImage: true
   },
@@ -165,6 +189,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/zellige-sol-hotel.webp',
     afterImage: '/images/showroom/zellige-sol-hotel.webp',
     title: 'Sol Zellige - Hotel',
+    titleKey: 'title11',
     descriptionKey: 'desc11',
     isSingleImage: true
   },
@@ -176,6 +201,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/WxCTgreYPojEgrOy.webp',
     afterImage: '/images/showroom/pierre-taza-after.webp',
     title: 'Sol Pierre de Taza - Hotel',
+    titleKey: 'title12',
     descriptionKey: 'desc12',
     isSingleImage: false
   },
@@ -185,6 +211,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/sol-pierre-taza-hotel.webp',
     afterImage: '/images/showroom/sol-pierre-taza-hotel.webp',
     title: 'Sol Pierre de Taza - Hotel',
+    titleKey: 'title13',
     descriptionKey: 'desc13',
     isSingleImage: true,
     hideLabels: true
@@ -195,6 +222,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/plage-piscine-pierre-taza.webp',
     afterImage: '/images/showroom/plage-piscine-pierre-taza.webp',
     title: 'Plage Piscine Pierre de Taza - Résidence',
+    titleKey: 'title14',
     descriptionKey: 'desc14',
     isSingleImage: true
   },
@@ -204,6 +232,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/plage-piscine-pierre-taza-hotel.jpg',
     afterImage: '/images/plage-piscine-pierre-taza-hotel.jpg',
     title: 'Plage Piscine Pierre de Taza - Hotel',
+    titleKey: 'title15',
     descriptionKey: 'desc15',
     isSingleImage: true,
     hideLabels: true
@@ -214,6 +243,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/sol-pierre-taza-particulier.jpg',
     afterImage: '/images/sol-pierre-taza-particulier.jpg',
     title: 'Sol Pierre de Taza - Particulier',
+    titleKey: 'title16',
     descriptionKey: 'desc16',
     isSingleImage: true,
     hideLabels: true
@@ -226,6 +256,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/plage-piscine-carreaux-beldi-marbre.webp',
     afterImage: '/images/showroom/plage-piscine-carreaux-beldi-marbre.webp',
     title: 'Plage Piscine Carreaux Beldi & Marbre - Hotel',
+    titleKey: 'title17',
     descriptionKey: 'desc17',
     isSingleImage: true,
     hideLabels: true
@@ -236,6 +267,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/dDELTBipCGPPRtHU.png',
     afterImage: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/dDELTBipCGPPRtHU.png',
     title: 'Sol Cuisine Carreaux Beldi - Riad',
+    titleKey: 'title18',
     descriptionKey: 'desc18',
     isSingleImage: true
   },
@@ -245,6 +277,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/sol-restaurant-carreaux-beldi-zellige-riad.webp',
     afterImage: '/images/showroom/sol-restaurant-carreaux-beldi-zellige-riad.webp',
     title: 'Sol Restaurant Carreaux Beldi & Zellige - Riad',
+    titleKey: 'title19',
     descriptionKey: 'desc19',
     isSingleImage: true
   },
@@ -256,6 +289,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/metal-brass-before.webp',
     afterImage: '/images/showroom/metal-brass-after.webp',
     title: 'Rampe Métal Laiton - Hotel',
+    titleKey: 'title20',
     descriptionKey: 'desc20',
     isSingleImage: false
   },
@@ -267,6 +301,7 @@ const galleryImages: GalleryImage[] = [
     beforeImage: '/images/showroom/securite-sols-before.webp',
     afterImage: '/images/showroom/securite-sols-after.webp',
     title: 'Sécurité Sols - Particulier',
+    titleKey: 'title21',
     descriptionKey: 'desc21',
     isSingleImage: false
   },
@@ -276,6 +311,7 @@ const galleryImages: GalleryImage[] = [
     videoMp4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PwAnpbCHRHTexxKs.mpeg',
     videoPoster: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PwAnpbCHRHTexxKs.mpeg',
     title: 'Mur Briquettes - Hotel',
+    titleKey: 'title22',
     descriptionKey: 'desc22',
     isVideo: true,
     hideLabels: true
@@ -286,6 +322,7 @@ const galleryImages: GalleryImage[] = [
     videoMp4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/jPXDZdIxLKDvTMwd.mp4',
     videoPoster: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/jPXDZdIxLKDvTMwd.mp4',
     title: 'Mur Enduit - Particulier',
+    titleKey: 'title23',
     descriptionKey: 'desc23',
     isVideo: true,
     hideLabels: true
@@ -296,6 +333,7 @@ const galleryImages: GalleryImage[] = [
     videoMp4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PaXedwwiKCwYIUps.mp4',
     videoPoster: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PaXedwwiKCwYIUps.mp4',
     title: 'Mur en Pisé - Hotel',
+    titleKey: 'title24',
     descriptionKey: 'desc24',
     isVideo: true,
     hideLabels: true
@@ -326,6 +364,16 @@ export default function Showroom() {
     }
   };
 
+  // Get translated category name
+  const getCategoryLabel = (internalName: string): string => {
+    const index = internalCategories.indexOf(internalName);
+    if (index >= 0 && index < categoryKeys.length) {
+      const key = categoryKeys[index] as keyof typeof t.showroom;
+      return t.showroom[key] || internalName;
+    }
+    return internalName;
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -336,13 +384,14 @@ export default function Showroom() {
           <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left" style={{ color: '#A33215' }}>
             {t.showroom.title}
           </h1>
+          <p className="text-gray-600 mt-4 text-lg">{t.showroom.subtitle}</p>
         </div>
       </div>
 
       {/* Filter Buttons */}
       <div className="container max-w-5xl py-12">
         <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-          {categories.map(category => (
+          {internalCategories.map(category => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
@@ -352,7 +401,7 @@ export default function Showroom() {
                   : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
               }`}
             >
-              {category}
+              {getCategoryLabel(category)}
             </button>
           ))}
         </div>
