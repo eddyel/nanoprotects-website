@@ -50,6 +50,8 @@ export default function Contact() {
     t.contact.material9,
     t.contact.material10,
     t.contact.material11,
+    t.contact.material12,
+    t.contact.material13,
   ];
 
   const zones = [
@@ -324,7 +326,7 @@ export default function Contact() {
             {/* Multi-select: Type de Protection */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
-                {t.contact.protectionType}
+                {t.contact.protectionType} ({t.contact.multipleSelection})
               </label>
               <div className="grid grid-cols-2 md:grid-cols-2 gap-3" role="group" aria-label={t.contact.protectionType}>
                 <button

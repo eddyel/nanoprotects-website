@@ -125,6 +125,45 @@ export default function PourquoiNousChoisir() {
             {t.why.title}
           </h1>
           
+          {/* Comparison Section */}
+          <div className="mb-20 p-8 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Left: Problem */}
+              <div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                  <span className="text-2xl">❌</span> Protection Filmogène Courante
+                </h3>
+                <div className="space-y-3 text-gray-700">
+                  <div>
+                    <p className="font-medium text-sm text-gray-600 mb-1">Problème :</p>
+                    <p className="text-sm">Film de surface qui peut s'écailler, jaunir.</p>
+                  </div>
+                  <div>
+                    <p className="font-medium text-sm text-gray-600 mb-1">Impact :</p>
+                    <p className="text-sm">Altère l'apparence, durée de vie limitée, entretien compliqué.</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Right: Solution */}
+              <div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                  <span className="text-2xl">✅</span> Imprégnation NanoProtects
+                </h3>
+                <div className="space-y-3 text-gray-700">
+                  <div>
+                    <p className="font-medium text-sm text-gray-600 mb-1">Solution :</p>
+                    <p className="text-sm">Barrière nanotechnologique intégrée dans la matière.</p>
+                  </div>
+                  <div>
+                    <p className="font-medium text-sm text-gray-600 mb-1">Bénéfice :</p>
+                    <p className="text-sm">Beauté originelle préservée, durabilité longue, entretien facilité.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
           {/* 4-column grid on desktop, 2 on tablet, 1 on mobile */}
           <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {reasons.map((reason, index) => (

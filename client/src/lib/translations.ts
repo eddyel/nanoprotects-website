@@ -122,6 +122,8 @@ export interface Translations {
     material9: string;
     material10: string;
     material11: string;
+    material12: string;
+    material13: string;
     zone1: string;
     zone2: string;
     zone3: string;
@@ -156,6 +158,7 @@ export interface Translations {
     protectionMineralization: string;
     protectionAntiSlip: string;
     diagnosticButton: string;
+    multipleSelection: string;
   };
   confirmation: {
     titlePrefix: string;
@@ -377,12 +380,14 @@ export const translations: Record<Language, Translations> = {
       material9: 'Textile',
       material10: 'Sanitaire',
       material11: 'Vitres',
+      material12: 'Céramique',
+      material13: 'Carreaux Ciment Beldi',
       zone1: 'Sols',
       zone2: 'Escaliers',
       zone3: 'Murs',
       zone4: 'Mobilier',
       title: 'Demande de Diagnostic Personnalisé',
-      subtitle: 'Contactez-nous pour un diagnostic gratuit',
+      subtitle: 'Pour un patrimoine qui défie le temps, la première étape est un diagnostic sur mesure. Partagez-nous les détails de votre projet pour une analyse préliminaire gratuite et sans engagement.',
       namePlaceholder: 'Votre nom',
       emailPlaceholder: 'Votre email',
       messagePlaceholder: 'Parlez-nous de votre projet',
@@ -413,6 +418,7 @@ export const translations: Record<Language, Translations> = {
     protectionMineralization: 'Minéralisation (anti-effritement)',
     protectionAntiSlip: 'Anti-Dérapant',
     diagnosticButton: 'Demander mon diagnostic',
+    multipleSelection: 'sélection multiple',
     },
     confirmation: {
       titlePrefix: 'Merci pour votre confiance',
@@ -631,12 +637,14 @@ export const translations: Record<Language, Translations> = {
       material9: 'النسيج',
       material10: 'الصحي',
       material11: 'الزجاج',
+      material12: 'السيراميك',
+      material13: 'بلاط الإسمنت البلدي',
       zone1: 'الأرضيات',
       zone2: 'السلالم',
       zone3: 'الجدران',
       zone4: 'الأثاث',
       title: 'طلب تشخيص مخصص',
-      subtitle: 'اتصل بنا للحصول على تشخيص مجاني',
+      subtitle: 'لحماية تراثك الذي يتحدى الزمن، الخطوة الأولى هي تشخيص مخصص. شارك معنا تفاصيل مشروعك للحصول على تحليل أولي مجاني وبدون التزام.',
       namePlaceholder: 'اسمك',
       emailPlaceholder: 'بريدك الإلكتروني',
       messagePlaceholder: 'حدثنا عن مشروعك',
@@ -667,6 +675,7 @@ export const translations: Record<Language, Translations> = {
       protectionMineralization: 'تمعدن (مقاوم للتفتت)',
       protectionAntiSlip: 'مقاوم للانزلاق',
       diagnosticButton: 'طلب التشخيص الخاص بي',
+    multipleSelection: 'اختيار متعدد',
     },
     confirmation: {
       titlePrefix: 'شكراً لثقتك',
@@ -885,12 +894,14 @@ export const translations: Record<Language, Translations> = {
       material9: 'Textil',
       material10: 'Sanitario',
       material11: 'Vidrio',
+      material12: 'Cerámica',
+      material13: 'Baldosas de Cemento Beldi',
       zone1: 'Pisos',
       zone2: 'Escaleras',
       zone3: 'Paredes',
       zone4: 'Muebles',
       title: 'Solicitud de Diagnóstico Personalizado',
-      subtitle: 'Contáctanos para un diagnóstico gratuito',
+      subtitle: 'Para un patrimonio que desafía el tiempo, el primer paso es un diagnóstico personalizado. Comparta los detalles de su proyecto para un análisis preliminar gratuito y sin compromiso.',
       namePlaceholder: 'Tu nombre',
       emailPlaceholder: 'Tu correo electrónico',
       messagePlaceholder: 'Cuéntanos sobre tu proyecto',
@@ -921,6 +932,7 @@ export const translations: Record<Language, Translations> = {
     protectionMineralization: 'Mineralización (anti-desmoronamiento)',
     protectionAntiSlip: 'Antideslizante',
     diagnosticButton: 'Solicitar mi diagnóstico',
+    multipleSelection: 'selección múltiple',
     },
     confirmation: {
       titlePrefix: 'Gracias por tu confianza',
@@ -1158,12 +1170,14 @@ export const translations: Record<Language, Translations> = {
       material9: 'Textile',
       material10: 'Sanitary',
       material11: 'Glass',
+      material12: 'Ceramic',
+      material13: 'Beldi Cement Tiles',
       zone1: 'Floors',
       zone2: 'Stairs',
       zone3: 'Walls',
       zone4: 'Furniture',
-      title: 'Let\'s Start Together',
-      subtitle: 'Contact us for a free diagnosis',
+       title: 'Personalized Diagnostic Request',
+      subtitle: 'For a heritage that defies time, the first step is a tailored diagnostic. Share the details of your project with us for a free preliminary analysis with no commitment.',
       namePlaceholder: 'Your name',
       emailPlaceholder: 'Your email',
       messagePlaceholder: 'Tell us about your project',
@@ -1194,6 +1208,7 @@ export const translations: Record<Language, Translations> = {
     protectionMineralization: 'Mineralization (anti-crumbling)',
     protectionAntiSlip: 'Anti-Slip',
     diagnosticButton: 'Request My Diagnostic',
+    multipleSelection: 'multiple selection',
     },
     confirmation: {
       titlePrefix: 'Thank you for your trust',
