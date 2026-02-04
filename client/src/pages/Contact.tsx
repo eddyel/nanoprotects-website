@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useLocation } from 'wouter';
 import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
@@ -36,36 +36,6 @@ export default function Contact() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [recaptchaToken, setRecaptchaToken] = useState<string>('');
-
-  // Initialize reCAPTCHA
-  useEffect(() => {
-    const executeRecaptcha = async () => {
-      if (typeof window !== 'undefined' && (window as any).grecaptcha) {
-        try {
-          const token = await (window as any).grecaptcha.execute('6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI', { action: 'submit' });
-          setRecaptchaToken(token);
-        } catch (error) {
-          console.error('reCAPTCHA error:', error);
-        }
-      }
-    };
-    executeRecaptcha();
-  }, []);
-
-  // Refresh reCAPTCHA token before submission
-  const getRecaptchaToken = async () => {
-    if (typeof window !== 'undefined' && (window as any).grecaptcha) {
-      try {
-        const token = await (window as any).grecaptcha.execute('6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI', { action: 'submit' });
-        return token;
-      } catch (error) {
-        console.error('reCAPTCHA error:', error);
-        return '';
-      }
-    }
-    return '';
-  };
 
   // Get material and zone translations
   const materiaux = [
@@ -177,14 +147,6 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      // Get fresh reCAPTCHA token
-      const token = await getRecaptchaToken();
-      if (!token) {
-        toast.error('Security verification failed. Please refresh and try again.');
-        setIsSubmitting(false);
-        return;
-      }
-
       // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 1000));
       
