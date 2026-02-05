@@ -204,26 +204,6 @@ export default function Navigation() {
               className="lg:hidden bg-secondary border-t border-white/10 relative z-50"
             >
               <div className="container py-4 space-y-3">
-                {menuItems.map((item, index) => (
-                  <motion.div
-                    key={item.path}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05, duration: 0.2 }}
-                  >
-                    <Link
-                      href={item.path}
-                      className={`block py-2 min-h-[44px] flex items-center text-sm font-medium transition-colors ${
-                        location === item.path
-                          ? 'text-primary'
-                          : 'text-white/90'
-                      }`}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  </motion.div>
-                ))}
                 {/* Social Media Icons */}
                 <motion.div
                   initial={{ opacity: 0 }}
