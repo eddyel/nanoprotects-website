@@ -79,7 +79,7 @@ export default function Navigation() {
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <Link href="/" className="logo-link flex items-center gap-2">
             <img
               src="/images/nanoprotects-logo-new.png"
               alt="NanoProtects Logo"

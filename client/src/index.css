@@ -115,6 +115,16 @@
   }
 }
 
+/* Logo hover - desktop only */
+@media (min-width: 1024px) {
+  .logo-link {
+    transition: transform 0.3s ease;
+  }
+  .logo-link:hover {
+    transform: scale(1.05);
+  }
+}
+
 /* Masonry Grid Layout */
 .masonry-grid {
   display: grid;

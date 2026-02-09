@@ -17,6 +17,7 @@ interface FormErrors {
   email?: string;
   phone?: string;
   message?: string;
+  autreMateriau?: string;
 }
 
 export default function Contact() {
@@ -32,7 +33,8 @@ export default function Contact() {
     name: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    autreMateriau: ''
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,7 +54,11 @@ export default function Contact() {
     t.contact.material11,
     t.contact.material12,
     t.contact.material13,
+    t.contact.material14,
+    t.contact.material15,
+    t.contact.material16,
   ];
+  const isAutreSelected = selectedMateriaux.includes(t.contact.material16);
 
   const zones = [
     t.contact.zone1,
@@ -92,8 +98,8 @@ export default function Contact() {
   };
 
   const validatePhone = (phone: string): boolean => {
-    const phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/;
-    return phoneRegex.test(phone);
+    const phoneRegex = /^\d{1,3}\s\d{9,15}$/;
+    return phoneRegex.test(phone.trim());
   };
 
   const validateForm = (): boolean => {
@@ -110,9 +116,13 @@ export default function Contact() {
     }
 
     if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
+      newErrors.phone = t.contact.errorPhoneInvalid ?? 'Phone number is required';
     } else if (!validatePhone(formData.phone)) {
-      newErrors.phone = 'Invalid phone number format';
+      newErrors.phone = t.contact.errorPhoneInvalid ?? 'Invalid phone format';
+    }
+
+    if (isAutreSelected && !formData.autreMateriau.trim()) {
+      newErrors.autreMateriau = t.contact.autreMateriauLabel;
     }
 
     // Message is optional - no validation needed
@@ -138,7 +148,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       toast.error(t.contact.errorSubmit || 'Please fix the errors above');
       return;
@@ -146,44 +156,49 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
+    const firstName = formData.name.trim().split(/\s+/)[0];
+    const confirmationData = {
+      firstName,
+      email: formData.email,
+      phone: formData.phone,
+      materials: selectedMateriaux,
+      autreMateriau: formData.autreMateriau,
+      zones: selectedZones,
+      protectionTypes: selectedProtectionTypes,
+      ville: ville || autreVille,
+      message: formData.message
+    };
+
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Extract first name from full name
-      const firstName = formData.name.split(' ')[0];
-      
-      // Prepare confirmation data
-      const confirmationData = {
-        firstName,
-        email: formData.email,
-        phone: formData.phone,
-        materials: selectedMateriaux,
-        zones: selectedZones,
-        protectionTypes: selectedProtectionTypes,
-        ville: ville || autreVille,
-        message: formData.message
-      };
-      
-      // Store in sessionStorage and redirect
-      sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
-      setLocation('/confirmation');
-    } catch (error) {
-      // Silently redirect to confirmation even if there's an error
-      const firstName = formData.name.split(' ')[0];
-      const confirmationData = {
-        firstName,
-        email: formData.email,
-        phone: formData.phone,
-        materials: selectedMateriaux,
-        zones: selectedZones,
-        protectionTypes: selectedProtectionTypes,
-        ville: ville || autreVille,
-        message: formData.message
-      };
-      sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
-      setLocation('/confirmation');
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          materials: selectedMateriaux,
+          autreMateriau: formData.autreMateriau || undefined,
+          zones: selectedZones,
+          protectionTypes: selectedProtectionTypes,
+          ville: ville || autreVille,
+          message: formData.message,
+          language
+        })
+      });
+
+      if (res.ok) {
+        toast.success(
+          t.contact.confirmationEmailSent?.replace('{email}', formData.email) ??
+            `Un email de confirmation vous sera envoyé à : ${formData.email}`
+        );
+      }
+    } catch (_err) {
+      // Network or other error: still redirect, form data stored below
     }
+
+    sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
+    setLocation('/confirmation');
   };
 
   return (
@@ -272,7 +287,7 @@ export default function Contact() {
                 className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
                   errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300'
                 }`}
-                placeholder="+212 6XX XXX XXX"
+                placeholder="Ex: 212 675987890"
               />
               {errors.phone && (
                 <p id="phone-error" className="text-red-600 text-sm mt-1" role="alert">
@@ -306,6 +321,32 @@ export default function Contact() {
                   </button>
                 ))}
               </div>
+              {isAutreSelected && (
+                <div className="mt-4">
+                  <label htmlFor="autreMateriau" className="block text-sm font-medium text-gray-700 mb-2">
+                    {t.contact.autreMateriauLabel}
+                  </label>
+                  <input
+                    id="autreMateriau"
+                    type="text"
+                    name="autreMateriau"
+                    value={formData.autreMateriau}
+                    onChange={handleInputChange}
+                    maxLength={100}
+                    aria-required={isAutreSelected}
+                    aria-invalid={!!errors.autreMateriau}
+                    className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
+                      errors.autreMateriau ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                    }`}
+                    placeholder="Ex: Béton ciré, Terre cuite..."
+                  />
+                  {errors.autreMateriau && (
+                    <p className="text-red-600 text-sm mt-1" role="alert">
+                      {errors.autreMateriau}
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Multi-select: Zone d'Application */}

@@ -11,6 +11,7 @@ interface ConfirmationState {
   email: string;
   phone: string;
   materials: string[];
+  autreMateriau?: string;
   zones: string[];
   protectionTypes: string[];
   ville: string;

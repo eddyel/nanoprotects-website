@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import LazyImage from '@/components/LazyImage';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -80,16 +80,6 @@ const internalCategories = [
 const galleryImages: GalleryImage[] = [
   // Bejmat
   {
-    id: '1',
-    category: 'Bejmat',
-    beforeImage: '/images/showroom/bejmat-floor-before.webp',
-    afterImage: '/images/showroom/bejmat-floor-after.webp',
-    title: 'Sol en Bejmat - Riad',
-    titleKey: 'title1',
-    descriptionKey: 'desc1',
-    isSingleImage: false
-  },
-  {
     id: '2',
     category: 'Bejmat',
     beforeImage: '/images/showroom/bejmat-corridor-riad.webp',
@@ -132,16 +122,6 @@ const galleryImages: GalleryImage[] = [
 
   // Marbre
   {
-    id: '6',
-    category: 'Marbre',
-    beforeImage: '/images/showroom/marble-white-before.webp',
-    afterImage: '/images/showroom/marble-white-after.webp',
-    title: 'Marbre Blanc - Hotel',
-    titleKey: 'title6',
-    descriptionKey: 'desc6',
-    isSingleImage: false
-  },
-  {
     id: '7',
     category: 'Marbre',
     beforeImage: '/images/showroom/marbre-table-ronde-av-ap.webp',
@@ -153,16 +133,6 @@ const galleryImages: GalleryImage[] = [
   },
 
   // Zellige
-  {
-    id: '8',
-    category: 'Zellige',
-    beforeImage: '/images/showroom/zellige-traditional-before.webp',
-    afterImage: '/images/showroom/zellige-traditional-after.webp',
-    title: 'Sol Zellige Traditionnel - Riad',
-    titleKey: 'title8',
-    descriptionKey: 'desc8',
-    isSingleImage: false
-  },
   {
     id: '9',
     category: 'Zellige',
@@ -196,21 +166,11 @@ const galleryImages: GalleryImage[] = [
 
   // Pierre de Taza
   {
-    id: '12',
-    category: 'Pierre de Taza',
-    beforeImage: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/WxCTgreYPojEgrOy.webp',
-    afterImage: '/images/showroom/pierre-taza-after.webp',
-    title: 'Sol Pierre de Taza - Hotel',
-    titleKey: 'title12',
-    descriptionKey: 'desc12',
-    isSingleImage: false
-  },
-  {
     id: '13',
     category: 'Pierre de Taza',
     beforeImage: '/images/showroom/sol-pierre-taza-hotel.webp',
     afterImage: '/images/showroom/sol-pierre-taza-hotel.webp',
-    title: 'Sol Pierre de Taza - Hotel',
+    title: 'Sol Pierre de Taza – Hôtel Relais Châteaux',
     titleKey: 'title13',
     descriptionKey: 'desc13',
     isSingleImage: true,
@@ -282,29 +242,7 @@ const galleryImages: GalleryImage[] = [
     isSingleImage: true
   },
 
-  // Métal
-  {
-    id: '20',
-    category: 'Métal',
-    beforeImage: '/images/showroom/metal-brass-before.webp',
-    afterImage: '/images/showroom/metal-brass-after.webp',
-    title: 'Rampe Métal Laiton - Hotel',
-    titleKey: 'title20',
-    descriptionKey: 'desc20',
-    isSingleImage: false
-  },
-
   // Minéralisation
-  {
-    id: '21',
-    category: 'Minéralisation',
-    beforeImage: '/images/showroom/securite-sols-before.webp',
-    afterImage: '/images/showroom/securite-sols-after.webp',
-    title: 'Sécurité Sols - Particulier',
-    titleKey: 'title21',
-    descriptionKey: 'desc21',
-    isSingleImage: false
-  },
   {
     id: '22',
     category: 'Minéralisation',
@@ -364,6 +302,21 @@ export default function Showroom() {
     }
   };
 
+  const selectedIndex = selectedImage ? filteredImages.findIndex((i) => i.id === selectedImage.id) : -1;
+  const hasPrev = selectedIndex > 0;
+  const hasNext = selectedIndex >= 0 && selectedIndex < filteredImages.length - 1;
+
+  useEffect(() => {
+    if (!selectedImage) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft' && hasPrev) setSelectedImage(filteredImages[selectedIndex - 1]);
+      if (e.key === 'ArrowRight' && hasNext) setSelectedImage(filteredImages[selectedIndex + 1]);
+      if (e.key === 'Escape') setSelectedImage(null);
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [selectedImage, selectedIndex, hasPrev, hasNext, filteredImages]);
+
   // Get translated category name
   const getCategoryLabel = (internalName: string): string => {
     const index = internalCategories.indexOf(internalName);
@@ -418,6 +371,12 @@ export default function Showroom() {
             >
               {image.isVideo ? (
                 <div className="relative w-full h-64 bg-black">
+                  <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">
+                    {t.showroom.labelBefore}
+                  </span>
+                  <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(0,204,102,0.9)]">
+                    {t.showroom.labelAfter}
+                  </span>
                   <video
                     src={image.videoPoster}
                     poster={image.videoPoster}
@@ -428,13 +387,27 @@ export default function Showroom() {
                   </div>
                 </div>
               ) : image.isSingleImage ? (
-                <LazyImage
-                  src={image.beforeImage || ''}
-                  alt={image.title}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
+                <div className="relative w-full h-64 overflow-hidden">
+                  <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">
+                    {t.showroom.labelBefore}
+                  </span>
+                  <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(0,204,102,0.9)]">
+                    {t.showroom.labelAfter}
+                  </span>
+                  <LazyImage
+                    src={image.beforeImage || ''}
+                    alt={image.title}
+                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
               ) : (
                 <div className="relative w-full h-64 overflow-hidden">
+                  <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">
+                    {t.showroom.labelBefore}
+                  </span>
+                  <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(0,204,102,0.9)]">
+                    {t.showroom.labelAfter}
+                  </span>
                   <LazyImage
                     src={image.beforeImage || ''}
                     alt={`${image.title} - ${t.showroom.labelBefore}`}
@@ -448,7 +421,7 @@ export default function Showroom() {
                 </div>
               )}
               <div className="p-4 bg-white">
-                <h3 className="font-semibold text-gray-800">{image.title}</h3>
+                <h3 className="font-semibold text-gray-800">{t.showroom[image.titleKey as keyof typeof t.showroom] || image.title}</h3>
                 <p className="text-sm text-gray-600">{t.showroom[image.descriptionKey as keyof typeof t.showroom] || image.descriptionKey}</p>
               </div>
             </div>
@@ -470,84 +443,110 @@ export default function Showroom() {
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
-              className="relative max-w-4xl w-full"
+              className="relative max-w-4xl w-full flex flex-col max-h-[90vh]"
               onClick={e => e.stopPropagation()}
             >
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute -top-10 right-0 text-white hover:text-gray-300 z-10"
+                className="absolute -top-10 right-0 text-white hover:text-gray-300 z-[1001]"
               >
                 <X size={32} />
               </button>
 
-              {selectedImage.isVideo ? (
-                <div className="relative w-full bg-black rounded-lg overflow-hidden">
-                  <video
-                    ref={videoRef}
-                    src={selectedImage.videoMp4}
-                    poster={selectedImage.videoPoster}
-                    className="w-full h-auto"
-                    controls
-                    onPlay={() => setIsPlaying(true)}
-                    onPause={() => setIsPlaying(false)}
-                    onEnded={() => setIsPlaying(false)}
-                  />
-                  {!isPlaying && (
-                    <button
-                      onClick={handlePlayAgain}
-                      className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition text-white text-6xl"
-                    >
-                      ▶
-                    </button>
-                  )}
-                </div>
-              ) : selectedImage.isSingleImage ? (
-                <div className="relative w-full">
-                  <LazyImage
-                    src={selectedImage.beforeImage || ''}
-                    alt={selectedImage.title}
-                    className="w-full h-auto rounded-lg"
-                  />
-                  {!selectedImage.hideLabels && (
-                    <div className="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded text-sm font-semibold text-gray-800">
-                      {t.showroom.labelBefore}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div className="relative w-full">
-                  <div className="flex gap-2 h-auto">
-                    <div className="flex-1 relative">
-                      <LazyImage
-                        src={selectedImage.beforeImage || ''}
-                        alt={`${selectedImage.title} - ${t.showroom.labelBefore}`}
-                        className="w-full h-auto rounded-l-lg"
-                      />
-                      {!selectedImage.hideLabels && (
-                        <div className="absolute top-4 left-4 bg-red-500/90 text-white px-3 py-1 rounded text-sm font-semibold">
-                          {t.showroom.labelBefore}
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex-1 relative">
-                      <LazyImage
-                        src={selectedImage.afterImage || ''}
-                        alt={`${selectedImage.title} - ${t.showroom.labelAfter}`}
-                        className="w-full h-auto rounded-r-lg"
-                      />
-                      {!selectedImage.hideLabels && (
-                        <div className="absolute top-4 right-4 bg-green-500/90 text-white px-3 py-1 rounded text-sm font-semibold">
-                          {t.showroom.labelAfter}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
+              {hasPrev && (
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); setSelectedImage(filteredImages[selectedIndex - 1]); }}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-[1001] bg-black/50 hover:bg-black/80 text-white border-0 py-5 px-4 rounded transition-colors"
+                  aria-label="Previous"
+                >
+                  <ChevronLeft size={28} />
+                </button>
+              )}
+              {hasNext && (
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); setSelectedImage(filteredImages[selectedIndex + 1]); }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-[1001] bg-black/50 hover:bg-black/80 text-white border-0 py-5 px-4 rounded transition-colors"
+                  aria-label="Next"
+                >
+                  <ChevronRight size={28} />
+                </button>
               )}
 
-              <div className="mt-6 bg-white/10 rounded-lg p-4 text-white">
-                <h2 className="text-2xl font-bold mb-2">{selectedImage.title}</h2>
-                <p className="text-gray-200">{t.showroom[selectedImage.descriptionKey as keyof typeof t.showroom] || selectedImage.descriptionKey}</p>
+              <div className="flex-1 min-h-0 flex flex-col max-h-[70vh]">
+                {selectedImage.isVideo ? (
+                  <div className="relative w-full bg-black rounded-lg overflow-hidden">
+                    <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">
+                      {t.showroom.labelBefore}
+                    </span>
+                    <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(0,204,102,0.9)]">
+                      {t.showroom.labelAfter}
+                    </span>
+                    <video
+                      ref={videoRef}
+                      src={selectedImage.videoMp4}
+                      poster={selectedImage.videoPoster}
+                      className="w-full h-auto max-h-[70vh] object-contain"
+                      controls
+                      onPlay={() => setIsPlaying(true)}
+                      onPause={() => setIsPlaying(false)}
+                      onEnded={() => setIsPlaying(false)}
+                    />
+                    {!isPlaying && (
+                      <button
+                        onClick={handlePlayAgain}
+                        className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition text-white text-6xl"
+                      >
+                        ▶
+                      </button>
+                    )}
+                  </div>
+                ) : selectedImage.isSingleImage ? (
+                  <div className="relative w-full">
+                    <LazyImage
+                      src={selectedImage.beforeImage || ''}
+                      alt={selectedImage.title}
+                      className="w-full h-auto max-h-[70vh] object-contain rounded-lg"
+                    />
+                    <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">
+                      {t.showroom.labelBefore}
+                    </span>
+                    <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(0,204,102,0.9)]">
+                      {t.showroom.labelAfter}
+                    </span>
+                  </div>
+                ) : (
+                  <div className="relative w-full">
+                    <div className="flex gap-2 h-auto">
+                      <div className="flex-1 relative">
+                        <LazyImage
+                          src={selectedImage.beforeImage || ''}
+                          alt={`${selectedImage.title} - ${t.showroom.labelBefore}`}
+                          className="w-full h-auto max-h-[70vh] object-contain rounded-l-lg"
+                        />
+                        <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">
+                          {t.showroom.labelBefore}
+                        </span>
+                      </div>
+                      <div className="flex-1 relative">
+                        <LazyImage
+                          src={selectedImage.afterImage || ''}
+                          alt={`${selectedImage.title} - ${t.showroom.labelAfter}`}
+                          className="w-full h-auto max-h-[70vh] object-contain rounded-r-lg"
+                        />
+                        <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(0,204,102,0.9)]">
+                          {t.showroom.labelAfter}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-4 flex-shrink-0 max-h-[20vh] overflow-y-auto rounded-lg p-4 bg-white/10 text-white">
+                <h2 className="text-xl font-bold mb-2">{t.showroom[selectedImage.titleKey as keyof typeof t.showroom] || selectedImage.title}</h2>
+                <p className="text-gray-200 text-sm">{t.showroom[selectedImage.descriptionKey as keyof typeof t.showroom] || selectedImage.descriptionKey}</p>
               </div>
             </motion.div>
           </motion.div>
