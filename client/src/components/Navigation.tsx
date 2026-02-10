@@ -167,21 +167,23 @@ export default function Navigation() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="lg:hidden fixed inset-0 top-20 bg-black/50 z-40"
+              className="lg:hidden fixed inset-0 top-20 z-40"
+              style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
               onClick={handleBackdropClick}
               aria-hidden="true"
             />
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu Panel - fixed below nav */}
             <motion.div
               ref={mobileMenuRef}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
-              className="lg:hidden bg-secondary border-t border-white/10 relative z-50"
+              className="lg:hidden fixed top-20 left-0 right-0 z-50 overflow-y-auto"
+              style={{ backgroundColor: '#2D2D2D', maxHeight: 'calc(100vh - 5rem)', borderTop: '1px solid rgba(255,255,255,0.1)' }}
             >
-              <div className="container py-4 space-y-3">
+              <div className="px-4 py-4 space-y-1">
                 {/* Page Navigation Links */}
                 {menuItems.map((item, index) => (
                   <motion.div
@@ -193,11 +195,12 @@ export default function Navigation() {
                     <Link
                       href={item.path}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block py-3 px-4 rounded-lg text-sm font-semibold transition-colors min-h-[44px] flex items-center ${
+                      className={`block py-3 px-4 rounded-lg text-sm font-semibold min-h-[44px] ${
                         location === item.path
-                          ? 'text-white bg-white/15'
-                          : 'text-white/90 hover:bg-white/10'
+                          ? 'bg-white/15'
+                          : 'hover:bg-white/10'
                       }`}
+                      style={{ color: location === item.path ? '#ffffff' : 'rgba(255,255,255,0.9)' }}
                     >
                       {item.label.replace('\n', ' ')}
                     </Link>
@@ -209,34 +212,32 @@ export default function Navigation() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.25, duration: 0.2 }}
-                  className="pt-4 border-t border-white/10 flex gap-4"
+                  className="pt-4 flex gap-4"
+                  style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}
                 >
                   <a
                     href="https://www.linkedin.com/company/nanoprotects"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-transform duration-300 hover:rotate-12"
                     aria-label="LinkedIn"
                   >
-                    <span className="social-logo-linkedin" />
+                    <img src="/linkedin.svg" alt="LinkedIn" className="h-10 w-10" />
                   </a>
                   <a
                     href="https://web.facebook.com/NanoProtects"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-transform duration-300 hover:rotate-12"
                     aria-label="Facebook"
                   >
-                    <span className="social-logo-facebook" />
+                    <img src="/facebook.svg" alt="Facebook" className="h-10 w-10" />
                   </a>
                   <a
                     href="https://www.instagram.com/nanoprotects"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-transform duration-300 hover:rotate-12"
                     aria-label="Instagram"
                   >
-                    <span className="social-logo-instagram" />
+                    <img src="/instagram.svg" alt="Instagram" className="h-10 w-10" />
                   </a>
                 </motion.div>
 
