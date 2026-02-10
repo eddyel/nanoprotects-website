@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'wouter';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -15,17 +15,7 @@ export default function Navigation() {
   const [location] = useLocation();
   const { language, setLanguage, t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-
-  // Handle scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Prevent body scroll when menu is open
   useEffect(() => {
@@ -78,8 +68,8 @@ export default function Navigation() {
     >
       <div className="container">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          {/* Logo - hover effect is desktop-only via CSS */}
+          <Link href="/" className="logo-link flex items-center gap-2 transition-opacity">
             <img
               src="/images/nanoprotects-logo-new.png"
               alt="NanoProtects Logo"
@@ -91,8 +81,8 @@ export default function Navigation() {
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-12">
             {menuItems.map((item) => (
-              <Link 
-                key={item.path} 
+              <Link
+                key={item.path}
                 href={item.path}
                 className={`text-xs font-bold transition-colors text-center leading-tight whitespace-pre-line ${
                   location === item.path
@@ -107,49 +97,37 @@ export default function Navigation() {
 
           {/* Social Media Icons + Language Switcher */}
           <div className="hidden lg:flex items-center gap-6">
-            {/* LinkedIn Logo */}
+            {/* LinkedIn */}
             <a
               href="https://www.linkedin.com/company/nanoprotects"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-transform duration-300 hover:rotate-12"
-              aria-label="Visit NanoProtects on LinkedIn"
+              aria-label="LinkedIn"
             >
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
-                alt="LinkedIn"
-                className="h-10 w-10 object-contain"
-              />
+              <span className="social-logo-linkedin" />
             </a>
 
-            {/* Facebook Logo */}
+            {/* Facebook */}
             <a
               href="https://web.facebook.com/NanoProtects"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-transform duration-300 hover:rotate-12"
-              aria-label="Visit NanoProtects on Facebook"
+              aria-label="Facebook"
             >
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
-                alt="Facebook"
-                className="h-10 w-10 object-contain"
-              />
+              <span className="social-logo-facebook" />
             </a>
 
-            {/* Instagram Logo */}
+            {/* Instagram */}
             <a
               href="https://www.instagram.com/nanoprotects"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-transform duration-300 hover:rotate-12"
-              aria-label="Visit NanoProtects on Instagram"
+              aria-label="Instagram"
             >
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/XVSxuBfKhOsWjxcz.png"
-                alt="Instagram"
-                className="h-10 w-10 object-contain"
-              />
+              <span className="social-logo-instagram" />
             </a>
 
             {/* Language Switcher - Dropdown */}
@@ -204,6 +182,28 @@ export default function Navigation() {
               className="lg:hidden bg-secondary border-t border-white/10 relative z-50"
             >
               <div className="container py-4 space-y-3">
+                {/* Page Navigation Links */}
+                {menuItems.map((item, index) => (
+                  <motion.div
+                    key={item.path}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 * index, duration: 0.2 }}
+                  >
+                    <Link
+                      href={item.path}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`block py-3 px-4 rounded-lg text-sm font-semibold transition-colors min-h-[44px] flex items-center ${
+                        location === item.path
+                          ? 'text-white bg-white/15'
+                          : 'text-white/90 hover:bg-white/10'
+                      }`}
+                    >
+                      {item.label.replace('\n', ' ')}
+                    </Link>
+                  </motion.div>
+                ))}
+
                 {/* Social Media Icons */}
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -216,39 +216,27 @@ export default function Navigation() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition-transform duration-300 hover:rotate-12"
-                    aria-label="Visit NanoProtects on LinkedIn"
+                    aria-label="LinkedIn"
                   >
-                    <img
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
-                      alt="LinkedIn"
-                      className="h-10 w-10 object-contain"
-                    />
+                    <span className="social-logo-linkedin" />
                   </a>
                   <a
                     href="https://web.facebook.com/NanoProtects"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition-transform duration-300 hover:rotate-12"
-                    aria-label="Visit NanoProtects on Facebook"
+                    aria-label="Facebook"
                   >
-                    <img
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
-                      alt="Facebook"
-                      className="h-10 w-10 object-contain"
-                    />
+                    <span className="social-logo-facebook" />
                   </a>
                   <a
                     href="https://www.instagram.com/nanoprotects"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition-transform duration-300 hover:rotate-12"
-                    aria-label="Visit NanoProtects on Instagram"
+                    aria-label="Instagram"
                   >
-                    <img
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/XVSxuBfKhOsWjxcz.png"
-                      alt="Instagram"
-                      className="h-10 w-10 object-contain"
-                    />
+                    <span className="social-logo-instagram" />
                   </a>
                 </motion.div>
 

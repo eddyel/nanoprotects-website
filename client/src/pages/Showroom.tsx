@@ -1,41 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import LazyImage from '@/components/LazyImage';
 import { useLanguage } from '@/contexts/LanguageContext';
-
-// Custom hook for lazy loading images with Intersection Observer
-const useLazyImage = (ref: React.RefObject<HTMLImageElement>) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && ref.current) {
-          const img = ref.current;
-          const src = img.dataset.src;
-          if (src) {
-            img.src = src;
-            img.onload = () => setIsLoaded(true);
-            observer.unobserve(img);
-          }
-        }
-      },
-      { rootMargin: '50px' }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
-  }, [ref]);
-
-  return isLoaded;
-};
 
 interface GalleryImage {
   id: string;
@@ -346,6 +314,7 @@ export default function Showroom() {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const touchStartX = useRef(0);
 
   const filteredImages = selectedCategory === 'Tous'
     ? galleryImages
@@ -364,6 +333,40 @@ export default function Showroom() {
     }
   };
 
+  // Lightbox navigation
+  const currentIndex = selectedImage
+    ? filteredImages.findIndex(img => img.id === selectedImage.id)
+    : -1;
+
+  const showNext = useCallback(() => {
+    if (currentIndex < filteredImages.length - 1) {
+      setSelectedImage(filteredImages[currentIndex + 1]);
+      setIsPlaying(false);
+    }
+  }, [currentIndex, filteredImages]);
+
+  const showPrevious = useCallback(() => {
+    if (currentIndex > 0) {
+      setSelectedImage(filteredImages[currentIndex - 1]);
+      setIsPlaying(false);
+    }
+  }, [currentIndex, filteredImages]);
+
+  // Touch swipe handlers for lightbox
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+    const swipeThreshold = 50;
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) showNext();
+      else showPrevious();
+    }
+  };
+
   // Get translated category name
   const getCategoryLabel = (internalName: string): string => {
     const index = internalCategories.indexOf(internalName);
@@ -377,7 +380,7 @@ export default function Showroom() {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      
+
       {/* Page Title */}
       <div className="bg-gray-100 py-20">
         <div className="container max-w-5xl">
@@ -424,7 +427,7 @@ export default function Showroom() {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition">
-                    <div className="text-white text-4xl">▶</div>
+                    <div className="text-white text-4xl">&#9654;</div>
                   </div>
                 </div>
               ) : image.isSingleImage ? (
@@ -440,6 +443,12 @@ export default function Showroom() {
                     alt={`${image.title} - ${t.showroom.labelBefore}`}
                     className="w-full h-full object-cover"
                   />
+                  {/* Badges on grid cards for before/after items */}
+                  {!image.hideLabels && (
+                    <div className="absolute top-3 left-3 bg-red-500/90 text-white px-2 py-0.5 rounded text-xs font-semibold">
+                      {t.showroom.labelBefore} / {t.showroom.labelAfter}
+                    </div>
+                  )}
                   <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition">
                     <div className="text-white text-center">
                       <div className="text-sm font-semibold">{t.showroom.clickToEnlarge}</div>
@@ -465,6 +474,8 @@ export default function Showroom() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
             onClick={() => setSelectedImage(null)}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           >
             <motion.div
               initial={{ scale: 0.9 }}
@@ -473,12 +484,35 @@ export default function Showroom() {
               className="relative max-w-4xl w-full"
               onClick={e => e.stopPropagation()}
             >
+              {/* Close button */}
               <button
                 onClick={() => setSelectedImage(null)}
                 className="absolute -top-10 right-0 text-white hover:text-gray-300 z-10"
               >
                 <X size={32} />
               </button>
+
+              {/* Previous button */}
+              {currentIndex > 0 && (
+                <button
+                  onClick={(e) => { e.stopPropagation(); showPrevious(); }}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 text-white hover:text-gray-300 z-10 hidden md:block"
+                  aria-label="Previous"
+                >
+                  <ChevronLeft size={40} />
+                </button>
+              )}
+
+              {/* Next button */}
+              {currentIndex < filteredImages.length - 1 && (
+                <button
+                  onClick={(e) => { e.stopPropagation(); showNext(); }}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 text-white hover:text-gray-300 z-10 hidden md:block"
+                  aria-label="Next"
+                >
+                  <ChevronRight size={40} />
+                </button>
+              )}
 
               {selectedImage.isVideo ? (
                 <div className="relative w-full bg-black rounded-lg overflow-hidden">
@@ -497,7 +531,7 @@ export default function Showroom() {
                       onClick={handlePlayAgain}
                       className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition text-white text-6xl"
                     >
-                      ▶
+                      &#9654;
                     </button>
                   )}
                 </div>
@@ -548,6 +582,10 @@ export default function Showroom() {
               <div className="mt-6 bg-white/10 rounded-lg p-4 text-white">
                 <h2 className="text-2xl font-bold mb-2">{selectedImage.title}</h2>
                 <p className="text-gray-200">{t.showroom[selectedImage.descriptionKey as keyof typeof t.showroom] || selectedImage.descriptionKey}</p>
+                {/* Image counter */}
+                <p className="text-gray-400 text-sm mt-2">
+                  {currentIndex + 1} / {filteredImages.length}
+                </p>
               </div>
             </motion.div>
           </motion.div>

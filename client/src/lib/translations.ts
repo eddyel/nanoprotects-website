@@ -195,6 +195,14 @@ export interface Translations {
     protectionAntiSlip: string;
     diagnosticButton: string;
     multipleSelection: string;
+    material14: string;
+    material15: string;
+    material16: string;
+    phonePlaceholder: string;
+    phoneValidationError: string;
+    otherMaterialLabel: string;
+    otherMaterialPlaceholder: string;
+    errorOtherMaterialRequired: string;
   };
   confirmation: {
     titlePrefix: string;
@@ -212,6 +220,18 @@ export interface Translations {
     reassuranceMessage: string;
     urgentPrefix: string;
     backHome: string;
+    summaryTitle: string;
+    yourInfoTitle: string;
+    labelName: string;
+    labelEmail: string;
+    labelPhone: string;
+    labelCity: string;
+    projectDetailsTitle: string;
+    labelMaterials: string;
+    labelZones: string;
+    labelProtectionTypes: string;
+    yourMessageTitle: string;
+    defaultProjectLabel: string;
   };
   about: {
     title: string;
@@ -315,7 +335,7 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
       title: 'L\'Innovation au Service de l\'Excellence',
-      subtitle: '<span style="font-weight: 600; color: #fef3c7;">Nettoyage</span> <span style="font-weight: 600; color: #fef3c7;">régénérant</span> et <span style="font-weight: 600; color: #fef3c7;">protection</span> <span style="font-weight: 600; color: #fef3c7;">nanotechnologique durable</span> pour les surfaces d\'exception. Nous révélons la beauté originelle de vos matériaux et la protégeons pour 3 à 5 ans grâce à des revêtements invisibles de dernière génération.',
+      subtitle: '<span class="highlight-text">Nettoyage régénérant</span> et <span class="highlight-text">protection nanotechnologique durable</span> pour les surfaces d\'exception. Nous révélons la beauté originelle de vos matériaux et la protégeons pour 3 à 5 ans grâce à des revêtements invisibles de dernière génération.',
       cta: 'Contactez Nous',
       realizationsButton: 'Nos Réalisations',
     },
@@ -491,6 +511,14 @@ export const translations: Record<Language, Translations> = {
     protectionAntiSlip: 'Anti-Dérapant',
     diagnosticButton: 'Demander mon diagnostic',
     multipleSelection: 'sélection multiple',
+    material14: 'Pisé',
+    material15: 'Stuc en Plâtre',
+    material16: 'Autre',
+    phonePlaceholder: '+212 6XX XXX XXX',
+    phoneValidationError: 'Format invalide (ex: +212 6XX XXX XXX)',
+    otherMaterialLabel: 'Précisez le matériau',
+    otherMaterialPlaceholder: 'Décrivez votre matériau',
+    errorOtherMaterialRequired: 'Veuillez préciser le matériau',
     },
     confirmation: {
       titlePrefix: 'Merci pour votre confiance',
@@ -508,6 +536,18 @@ export const translations: Record<Language, Translations> = {
       reassuranceMessage: 'Votre diagnostic préliminaire est gratuit et sans engagement. Notre mission : préserver durablement la beauté et la valeur de votre patrimoine.',
       urgentPrefix: 'Pour toute question urgente, vous pouvez nous joindre au',
       backHome: 'Retour à l\'accueil',
+      summaryTitle: 'Récapitulatif de votre demande',
+      yourInfoTitle: 'Vos informations',
+      labelName: 'Nom :',
+      labelEmail: 'Email :',
+      labelPhone: 'Téléphone :',
+      labelCity: 'Ville :',
+      projectDetailsTitle: 'Détails du projet',
+      labelMaterials: 'Matériaux :',
+      labelZones: 'Zones :',
+      labelProtectionTypes: 'Types de protection :',
+      yourMessageTitle: 'Votre message',
+      defaultProjectLabel: 'votre projet',
     },
     footer: {
       tagline: 'Nettoyage & Protection Invisible ou Décorative Toutes Surfaces',
@@ -608,7 +648,7 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
       title: 'الابتكار في خدمة التميز',
-      subtitle: 'التنظيف المجدد والحماية النانوية المستدامة للأسطح الاستثنائية. نكشف الجمال الأصلي لمواد بناءك ونحميها لمدة 3 إلى 5 سنوات بفضل الطلاءات غير المرئية من الجيل الأخير.',
+      subtitle: '<span class="highlight-text">تنظيف متجدد</span> و<span class="highlight-text">حماية نانوية دائمة</span> للأسطح الاستثنائية. نكشف الجمال الأصلي لمواد بناءك ونحميها لمدة 3 إلى 5 سنوات بفضل الطلاءات غير المرئية من الجيل الأخير.',
       cta: 'اتصل بنا',
       realizationsButton: 'إنجازاتنا',
     },
@@ -784,6 +824,14 @@ export const translations: Record<Language, Translations> = {
       protectionAntiSlip: 'مقاوم للانزلاق',
       diagnosticButton: 'طلب التشخيص الخاص بي',
     multipleSelection: 'اختيار متعدد',
+    material14: 'الطابية',
+    material15: 'الجص',
+    material16: 'أخرى',
+    phonePlaceholder: '+212 6XX XXX XXX',
+    phoneValidationError: 'تنسيق غير صالح (مثال: +212 6XX XXX XXX)',
+    otherMaterialLabel: 'حدد المادة',
+    otherMaterialPlaceholder: 'صف المادة الخاصة بك',
+    errorOtherMaterialRequired: 'يرجى تحديد المادة',
     },
     confirmation: {
       titlePrefix: 'شكراً لثقتك',
@@ -801,6 +849,18 @@ export const translations: Record<Language, Translations> = {
       reassuranceMessage: 'التشخيص الأولي الخاص بك مجاني وبدون التزام. مهمتنا: الحفاظ على جمال وقيمة تراثك بشكل دائم.',
       urgentPrefix: 'لأي سؤال عاجل، يمكنك الاتصال بنا على',
       backHome: 'العودة إلى الصفحة الرئيسية',
+      summaryTitle: 'ملخص طلبك',
+      yourInfoTitle: 'معلوماتك',
+      labelName: 'الاسم:',
+      labelEmail: 'البريد الإلكتروني:',
+      labelPhone: 'الهاتف:',
+      labelCity: 'المدينة:',
+      projectDetailsTitle: 'تفاصيل المشروع',
+      labelMaterials: 'المواد:',
+      labelZones: 'المناطق:',
+      labelProtectionTypes: 'أنواع الحماية:',
+      yourMessageTitle: 'رسالتك',
+      defaultProjectLabel: 'مشروعك',
     },
     footer: {
       tagline: 'التنظيف والحماية غير المرئية أو الزخرفية جميع الأسطح',
@@ -901,7 +961,7 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
       title: 'La Innovación al Servicio de la Excelencia',
-      subtitle: 'Limpieza regeneradora y protección nanotecnológica duradera para superficies excepcionales. Revelamos la belleza original de tus materiales y los protegemos durante 3 a 5 años con recubrimientos invisibles de última generación.',
+      subtitle: '<span class="highlight-text">Limpieza regeneradora</span> y <span class="highlight-text">protección nanotecnológica duradera</span> para superficies excepcionales. Revelamos la belleza original de tus materiales y los protegemos durante 3 a 5 años con recubrimientos invisibles de última generación.',
       cta: 'Contáctanos',
       realizationsButton: 'Nuestras Realizaciones',
     },
@@ -1077,6 +1137,14 @@ export const translations: Record<Language, Translations> = {
     protectionAntiSlip: 'Antideslizante',
     diagnosticButton: 'Solicitar mi diagnóstico',
     multipleSelection: 'selección múltiple',
+    material14: 'Pisé',
+    material15: 'Estuco de Yeso',
+    material16: 'Otro',
+    phonePlaceholder: '+212 6XX XXX XXX',
+    phoneValidationError: 'Formato inválido (ej: +212 6XX XXX XXX)',
+    otherMaterialLabel: 'Especifique el material',
+    otherMaterialPlaceholder: 'Describa su material',
+    errorOtherMaterialRequired: 'Por favor especifique el material',
     },
     confirmation: {
       titlePrefix: 'Gracias por tu confianza',
@@ -1094,6 +1162,18 @@ export const translations: Record<Language, Translations> = {
       reassuranceMessage: 'Tu diagnóstico preliminar es gratuito y sin compromiso. Nuestra misión: preservar duraderas la belleza y el valor de tu patrimonio.',
       urgentPrefix: 'Para cualquier pregunta urgente, puedes contactarnos en',
       backHome: 'Volver a inicio',
+      summaryTitle: 'Resumen de su solicitud',
+      yourInfoTitle: 'Su información',
+      labelName: 'Nombre:',
+      labelEmail: 'Email:',
+      labelPhone: 'Teléfono:',
+      labelCity: 'Ciudad:',
+      projectDetailsTitle: 'Detalles del proyecto',
+      labelMaterials: 'Materiales:',
+      labelZones: 'Zonas:',
+      labelProtectionTypes: 'Tipos de protección:',
+      yourMessageTitle: 'Su mensaje',
+      defaultProjectLabel: 'su proyecto',
     },
     footer: {
       tagline: 'Limpieza y Protección Invisible o Decorativa Todas las Superficies',
@@ -1194,7 +1274,7 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
       title: 'Innovation in Service of Excellence',
-      subtitle: 'Regenerative cleaning and sustainable nanotechnology protection for exceptional surfaces. We reveal the original beauty of your materials and protect them for 3 to 5 years with cutting-edge invisible coatings.',
+      subtitle: '<span class="highlight-text">Regenerative cleaning</span> and <span class="highlight-text">durable nanotechnology protection</span> for exceptional surfaces. We reveal the original beauty of your materials and protect them for 3 to 5 years with cutting-edge invisible coatings.',
       cta: 'Contact Us',
       realizationsButton: 'Our Realizations',
     },
@@ -1379,6 +1459,14 @@ export const translations: Record<Language, Translations> = {
     protectionAntiSlip: 'Anti-Slip',
     diagnosticButton: 'Request My Diagnostic',
     multipleSelection: 'multiple selection',
+    material14: 'Pisé (Rammed Earth)',
+    material15: 'Plaster Stucco',
+    material16: 'Other',
+    phonePlaceholder: '+212 6XX XXX XXX',
+    phoneValidationError: 'Invalid format (e.g. +212 6XX XXX XXX)',
+    otherMaterialLabel: 'Specify the material',
+    otherMaterialPlaceholder: 'Describe your material',
+    errorOtherMaterialRequired: 'Please specify the material',
     },
     confirmation: {
       titlePrefix: 'Thank you for your trust',
@@ -1396,6 +1484,18 @@ export const translations: Record<Language, Translations> = {
       reassuranceMessage: 'Your preliminary diagnosis is free and without commitment. Our mission: to sustainably preserve the beauty and value of your heritage.',
       urgentPrefix: 'For any urgent questions, you can reach us at',
       backHome: 'Back to home',
+      summaryTitle: 'Request Summary',
+      yourInfoTitle: 'Your Information',
+      labelName: 'Name:',
+      labelEmail: 'Email:',
+      labelPhone: 'Phone:',
+      labelCity: 'City:',
+      projectDetailsTitle: 'Project Details',
+      labelMaterials: 'Materials:',
+      labelZones: 'Zones:',
+      labelProtectionTypes: 'Protection Types:',
+      yourMessageTitle: 'Your Message',
+      defaultProjectLabel: 'your project',
     },
     footer: {
       tagline: 'Invisible or Decorative Cleaning and Protection All Surfaces',

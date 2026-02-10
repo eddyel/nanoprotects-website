@@ -334,6 +334,23 @@
   }
 }
 
+/* Desktop-only logo hover effect */
+@media (min-width: 1024px) {
+  .logo-link:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+}
+
+/* Hero highlight text class */
+.highlight-text {
+  background-color: rgba(0, 204, 102, 0.15);
+  font-weight: 600;
+  padding: 2px 4px;
+  border-radius: 3px;
+  color: inherit;
+}
+
 /* Protected Social Media Logos - Using background-image to prevent direct access */
 .social-logo-linkedin {
   display: inline-block;

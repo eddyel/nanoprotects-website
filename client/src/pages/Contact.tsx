@@ -1,14 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useLocation } from 'wouter';
 import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { translations } from '@/lib/translations';
 import { toast } from 'sonner';
 
 const villes = [
-  'Marrakech', 'Casablanca', 'Essaouira', 'Agadir', 
+  'Marrakech', 'Casablanca', 'Essaouira', 'Agadir',
   'Rabat', 'El Jadida', 'Tanger', 'Autre'
 ];
 
@@ -17,17 +16,18 @@ interface FormErrors {
   email?: string;
   phone?: string;
   message?: string;
+  autreMateriau?: string;
 }
 
 export default function Contact() {
-  const { language } = useLanguage();
-  const t = translations[language];
+  const { t, language } = useLanguage();
   const [, setLocation] = useLocation();
   const [selectedMateriaux, setSelectedMateriaux] = useState<string[]>([]);
   const [selectedZones, setSelectedZones] = useState<string[]>([]);
   const [selectedProtectionTypes, setSelectedProtectionTypes] = useState<string[]>([]);
   const [ville, setVille] = useState('');
   const [autreVille, setAutreVille] = useState('');
+  const [autreMateriau, setAutreMateriau] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -37,7 +37,7 @@ export default function Contact() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Get material and zone translations
+  // Get material and zone translations (including new: Pisé, Stuc en Plâtre, Autre)
   const materiaux = [
     t.contact.material1,
     t.contact.material2,
@@ -52,7 +52,13 @@ export default function Contact() {
     t.contact.material11,
     t.contact.material12,
     t.contact.material13,
+    t.contact.material14,
+    t.contact.material15,
+    t.contact.material16,
   ];
+
+  // The last material is "Autre" - used to trigger conditional field
+  const autreMaterialLabel = t.contact.material16;
 
   const zones = [
     t.contact.zone1,
@@ -67,6 +73,10 @@ export default function Contact() {
         ? prev.filter(m => m !== materiau)
         : [...prev, materiau]
     );
+    // Clear "autre" text if user deselects "Autre"
+    if (materiau === autreMaterialLabel && selectedMateriaux.includes(materiau)) {
+      setAutreMateriau('');
+    }
   };
 
   const toggleZone = (zone: string) => {
@@ -92,30 +102,34 @@ export default function Contact() {
   };
 
   const validatePhone = (phone: string): boolean => {
-    const phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/;
-    return phoneRegex.test(phone);
+    // Accept international format: country code + 9-15 digits, with optional spaces/dashes
+    const phoneRegex = /^\+?\d{1,4}[\s.-]?\(?\d{1,4}\)?[\s.-]?\d{3,15}$/;
+    return phoneRegex.test(phone.replace(/\s+/g, ' ').trim());
   };
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = t.contact.errorNameRequired || 'Name is required';
+      newErrors.name = t.contact.errorNameRequired;
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = t.contact.errorEmailInvalid || 'Email is required';
+      newErrors.email = t.contact.errorEmailInvalid;
     } else if (!validateEmail(formData.email)) {
-      newErrors.email = t.contact.errorEmailInvalid || 'Invalid email format';
+      newErrors.email = t.contact.errorEmailInvalid;
     }
 
     if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
+      newErrors.phone = t.contact.phoneValidationError || 'Phone number is required';
     } else if (!validatePhone(formData.phone)) {
-      newErrors.phone = 'Invalid phone number format';
+      newErrors.phone = t.contact.phoneValidationError || 'Invalid phone number format (e.g. +212 6XX XXX XXX)';
     }
 
-    // Message is optional - no validation needed
+    // If "Autre" material is selected, the text field is required
+    if (selectedMateriaux.includes(autreMaterialLabel) && !autreMateriau.trim()) {
+      newErrors.autreMateriau = t.contact.errorOtherMaterialRequired || 'Please specify the material';
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -138,7 +152,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       toast.error(t.contact.errorSubmit || 'Please fix the errors above');
       return;
@@ -147,13 +161,54 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Extract first name from full name
       const firstName = formData.name.split(' ')[0];
-      
-      // Prepare confirmation data
+
+      // Build materials list, replacing "Autre" label with actual text
+      const finalMaterials = selectedMateriaux.map(m =>
+        m === autreMaterialLabel && autreMateriau.trim()
+          ? `${m}: ${autreMateriau.trim()}`
+          : m
+      );
+
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        materials: finalMaterials,
+        zones: selectedZones,
+        protectionTypes: selectedProtectionTypes,
+        ville: ville === 'Autre' ? autreVille : ville,
+        message: formData.message,
+        language,
+      };
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error('Submission failed');
+      }
+
+      // Store confirmation data and redirect
+      const confirmationData = {
+        firstName,
+        email: formData.email,
+        phone: formData.phone,
+        materials: finalMaterials,
+        zones: selectedZones,
+        protectionTypes: selectedProtectionTypes,
+        ville: ville === 'Autre' ? autreVille : ville,
+        message: formData.message
+      };
+
+      sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
+      setLocation('/confirmation');
+    } catch {
+      // Fallback: store data locally and redirect even if API fails
+      const firstName = formData.name.split(' ')[0];
       const confirmationData = {
         firstName,
         email: formData.email,
@@ -161,35 +216,20 @@ export default function Contact() {
         materials: selectedMateriaux,
         zones: selectedZones,
         protectionTypes: selectedProtectionTypes,
-        ville: ville || autreVille,
-        message: formData.message
-      };
-      
-      // Store in sessionStorage and redirect
-      sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
-      setLocation('/confirmation');
-    } catch (error) {
-      // Silently redirect to confirmation even if there's an error
-      const firstName = formData.name.split(' ')[0];
-      const confirmationData = {
-        firstName,
-        email: formData.email,
-        phone: formData.phone,
-        materials: selectedMateriaux,
-        zones: selectedZones,
-        protectionTypes: selectedProtectionTypes,
-        ville: ville || autreVille,
+        ville: ville === 'Autre' ? autreVille : ville,
         message: formData.message
       };
       sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
       setLocation('/confirmation');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f5f5f5' }}>
       <Navigation />
-      
+
       <section className="pt-32 pb-20">
         <div className="container max-w-3xl">
           <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-8" style={{ color: '#A33215' }}>
@@ -198,7 +238,7 @@ export default function Contact() {
           <p className="text-center text-gray-600 text-lg mb-12">
             {t.contact.subtitle}
           </p>
-          
+
           <form onSubmit={handleSubmit} className="space-y-8" noValidate>
             {/* Standard Fields */}
             <div className="grid md:grid-cols-2 gap-6">
@@ -227,7 +267,7 @@ export default function Contact() {
                   </p>
                 )}
               </div>
-              
+
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                   {t.contact.emailLabel}
@@ -267,12 +307,20 @@ export default function Contact() {
                 required
                 value={formData.phone}
                 onChange={handleInputChange}
+                onBlur={() => {
+                  if (formData.phone.trim() && !validatePhone(formData.phone)) {
+                    setErrors(prev => ({
+                      ...prev,
+                      phone: t.contact.phoneValidationError || 'Invalid phone number format (e.g. +212 6XX XXX XXX)'
+                    }));
+                  }
+                }}
                 aria-invalid={!!errors.phone}
                 aria-describedby={errors.phone ? 'phone-error' : undefined}
                 className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
                   errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300'
                 }`}
-                placeholder="+212 6XX XXX XXX"
+                placeholder={t.contact.phonePlaceholder || '+212 6XX XXX XXX'}
               />
               {errors.phone && (
                 <p id="phone-error" className="text-red-600 text-sm mt-1" role="alert">
@@ -281,7 +329,7 @@ export default function Contact() {
               )}
             </div>
 
-            {/* Multi-select: Nature des Matériaux */}
+            {/* Multi-select: Nature des Materiaux */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
                 {t.contact.materialNature}
@@ -306,6 +354,38 @@ export default function Contact() {
                   </button>
                 ))}
               </div>
+
+              {/* Conditional: Autre materiau text field */}
+              {selectedMateriaux.includes(autreMaterialLabel) && (
+                <div className="mt-3">
+                  <label htmlFor="autre-materiau" className="block text-sm font-medium text-gray-700 mb-2">
+                    {t.contact.otherMaterialLabel || 'Specify the material'}
+                  </label>
+                  <input
+                    id="autre-materiau"
+                    type="text"
+                    value={autreMateriau}
+                    onChange={(e) => {
+                      setAutreMateriau(e.target.value);
+                      if (errors.autreMateriau) {
+                        setErrors(prev => ({ ...prev, autreMateriau: undefined }));
+                      }
+                    }}
+                    required
+                    aria-invalid={!!errors.autreMateriau}
+                    aria-describedby={errors.autreMateriau ? 'autre-materiau-error' : undefined}
+                    className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
+                      errors.autreMateriau ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                    }`}
+                    placeholder={t.contact.otherMaterialPlaceholder || 'Describe your material'}
+                  />
+                  {errors.autreMateriau && (
+                    <p id="autre-materiau-error" className="text-red-600 text-sm mt-1" role="alert">
+                      {errors.autreMateriau}
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Multi-select: Zone d'Application */}
@@ -471,9 +551,9 @@ export default function Contact() {
             </div>
 
             {/* Submit Button */}
-            <Button 
-              type="submit" 
-              size="lg" 
+            <Button
+              type="submit"
+              size="lg"
               disabled={isSubmitting}
               className="w-full text-lg py-6 border-2 btn-brand disabled:opacity-50 disabled:cursor-not-allowed"
               aria-busy={isSubmitting}
