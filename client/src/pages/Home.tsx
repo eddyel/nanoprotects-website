@@ -70,7 +70,7 @@ export default function Home() {
           >
             <img
               src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
-              alt="LinkedIn"
+              alt="Visit NanoProtects on LinkedIn"
               className="h-12 w-12 object-contain"
             />
           </a>
@@ -85,7 +85,7 @@ export default function Home() {
           >
             <img
               src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
-              alt="Facebook"
+              alt="Visit NanoProtects on Facebook"
               className="h-12 w-12 object-contain"
             />
           </a>
@@ -100,7 +100,7 @@ export default function Home() {
           >
             <img
               src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/XVSxuBfKhOsWjxcz.png"
-              alt="Instagram"
+              alt="Visit NanoProtects on Instagram"
               className="h-12 w-12 object-contain"
             />
           </a>

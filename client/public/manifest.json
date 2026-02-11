@@ -1,0 +1,28 @@
+{
+  "name": "NanoProtects - Nettoyage & Protection Nanotechnologique",
+  "short_name": "NanoProtects",
+  "description": "Nettoyage régénérant et protection nanotechnologique durable pour les surfaces d'exception",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0066CC",
+  "theme_color": "#0066CC",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["business", "lifestyle"],
+  "screenshots": []
+}

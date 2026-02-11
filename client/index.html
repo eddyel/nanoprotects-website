@@ -106,17 +106,23 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
   </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Analytics - Commented out until proper credentials are configured post-launch
     <script
       defer
       src="%VITE_ANALYTICS_ENDPOINT%/umami"
       data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"
       data-domains="nanoprotects.manus.space"></script>
-    
+    -->
+
     <!-- No-script fallback for accessibility -->
     <noscript>
       <p>Ce site nécessite JavaScript pour fonctionner correctement. Veuillez activer JavaScript dans votre navigateur.</p>

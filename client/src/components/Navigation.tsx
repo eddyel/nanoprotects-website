@@ -117,7 +117,7 @@ export default function Navigation() {
             >
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
-                alt="LinkedIn"
+                alt="Visit NanoProtects on LinkedIn"
                 className="h-10 w-10 object-contain"
               />
             </a>
@@ -132,7 +132,7 @@ export default function Navigation() {
             >
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
-                alt="Facebook"
+                alt="Visit NanoProtects on Facebook"
                 className="h-10 w-10 object-contain"
               />
             </a>
@@ -147,7 +147,7 @@ export default function Navigation() {
             >
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/XVSxuBfKhOsWjxcz.png"
-                alt="Instagram"
+                alt="Visit NanoProtects on Instagram"
                 className="h-10 w-10 object-contain"
               />
             </a>
@@ -220,7 +220,7 @@ export default function Navigation() {
                   >
                     <img
                       src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
-                      alt="LinkedIn"
+                      alt="Visit NanoProtects on LinkedIn"
                       className="h-10 w-10 object-contain"
                     />
                   </a>
@@ -233,7 +233,7 @@ export default function Navigation() {
                   >
                     <img
                       src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
-                      alt="Facebook"
+                      alt="Visit NanoProtects on Facebook"
                       className="h-10 w-10 object-contain"
                     />
                   </a>
@@ -246,7 +246,7 @@ export default function Navigation() {
                   >
                     <img
                       src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/XVSxuBfKhOsWjxcz.png"
-                      alt="Instagram"
+                      alt="Visit NanoProtects on Instagram"
                       className="h-10 w-10 object-contain"
                     />
                   </a>
