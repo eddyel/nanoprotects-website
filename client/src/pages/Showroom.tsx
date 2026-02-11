@@ -379,12 +379,6 @@ export default function Showroom() {
             >
               {image.isVideo ? (
                 <div className="relative w-full h-64 bg-black">
-                  <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">
-                    {t.showroom.labelBefore}
-                  </span>
-                  <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(0,204,102,0.9)]">
-                    {t.showroom.labelAfter}
-                  </span>
                   <video
                     src={image.videoPoster}
                     poster={image.videoPoster}
@@ -399,7 +393,7 @@ export default function Showroom() {
                   <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">
                     {t.showroom.labelBefore}
                   </span>
-                  <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(0,204,102,0.9)]">
+                  <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(163,50,21,0.9)]">
                     {t.showroom.labelAfter}
                   </span>
                   <LazyImage
@@ -413,7 +407,7 @@ export default function Showroom() {
                   <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">
                     {t.showroom.labelBefore}
                   </span>
-                  <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(0,204,102,0.9)]">
+                  <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(163,50,21,0.9)]">
                     {t.showroom.labelAfter}
                   </span>
                   <LazyImage
@@ -485,12 +479,6 @@ export default function Showroom() {
               <div className="flex-1 min-h-0 flex flex-col max-h-[70vh]">
                 {selectedImage.isVideo ? (
                   <div className="relative w-full bg-black rounded-lg overflow-hidden">
-                    <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">
-                      {t.showroom.labelBefore}
-                    </span>
-                    <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(0,204,102,0.9)]">
-                      {t.showroom.labelAfter}
-                    </span>
                     <video
                       ref={videoRef}
                       src={selectedImage.videoMp4}
@@ -520,7 +508,7 @@ export default function Showroom() {
                     <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">
                       {t.showroom.labelBefore}
                     </span>
-                    <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(0,204,102,0.9)]">
+                    <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(163,50,21,0.9)]">
                       {t.showroom.labelAfter}
                     </span>
                   </div>
@@ -543,7 +531,7 @@ export default function Showroom() {
                           alt={`${selectedImage.title} - ${t.showroom.labelAfter}`}
                           className="w-full h-auto max-h-[70vh] object-contain rounded-r-lg"
                         />
-                        <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(0,204,102,0.9)]">
+                        <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(163,50,21,0.9)]">
                           {t.showroom.labelAfter}
                         </span>
                       </div>
