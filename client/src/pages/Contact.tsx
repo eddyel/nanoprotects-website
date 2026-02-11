@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'wouter';
 import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
@@ -18,6 +18,7 @@ interface FormErrors {
   phone?: string;
   message?: string;
   autreMateriau?: string;
+  autreVille?: string;
 }
 
 export default function Contact() {
@@ -38,6 +39,7 @@ export default function Contact() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const autreVilleRef = useRef<HTMLInputElement>(null);
 
   // Get material and zone translations
   const materiaux = [
@@ -59,6 +61,15 @@ export default function Contact() {
     t.contact.material16,
   ];
   const isAutreSelected = selectedMateriaux.includes(t.contact.material16);
+
+  // Focus management: auto-focus autreVille field when "Autre" city is selected
+  useEffect(() => {
+    if (ville === 'Autre' && autreVilleRef.current) {
+      setTimeout(() => {
+        autreVilleRef.current?.focus();
+      }, 100);
+    }
+  }, [ville]);
 
   const zones = [
     t.contact.zone1,
@@ -123,6 +134,10 @@ export default function Contact() {
 
     if (isAutreSelected && !formData.autreMateriau.trim()) {
       newErrors.autreMateriau = t.contact.autreMateriauLabel;
+    }
+
+    if (ville === 'Autre' && !autreVille.trim()) {
+      newErrors.autreVille = t.contact.specifyCity || 'Please specify your city';
     }
 
     // Message is optional - no validation needed
@@ -213,7 +228,38 @@ export default function Contact() {
           <p className="text-center text-gray-600 text-lg mb-12">
             {t.contact.subtitle}
           </p>
-          
+
+          {/* Error Summary */}
+          {Object.keys(errors).length > 0 && (
+            <div
+              role="alert"
+              aria-live="assertive"
+              className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 rounded"
+            >
+              <h3 className="text-red-800 font-semibold mb-2">
+                {Object.keys(errors).length === 1
+                  ? 'Veuillez corriger l\'erreur suivante :'
+                  : `Veuillez corriger les ${Object.keys(errors).length} erreurs suivantes :`}
+              </h3>
+              <ul className="list-disc list-inside text-red-700 space-y-1">
+                {Object.entries(errors).map(([field, message]) => (
+                  <li key={field}>
+                    <a
+                      href={`#${field}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document.getElementById(field)?.focus();
+                      }}
+                      className="underline hover:text-red-900"
+                    >
+                      {message}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-8" noValidate>
             {/* Standard Fields */}
             <div className="grid md:grid-cols-2 gap-6">
@@ -475,13 +521,30 @@ export default function Contact() {
                   {t.contact.specifyCity || 'Specify your city'}
                 </label>
                 <input
+                  ref={autreVilleRef}
                   id="autreVille"
                   type="text"
                   value={autreVille}
-                  onChange={(e) => setAutreVille(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  onChange={(e) => {
+                    setAutreVille(e.target.value);
+                    // Clear error when user starts typing
+                    if (errors.autreVille) {
+                      setErrors(prev => ({ ...prev, autreVille: undefined }));
+                    }
+                  }}
+                  aria-required="true"
+                  aria-invalid={!!errors.autreVille}
+                  aria-describedby={errors.autreVille ? 'autreVille-error' : undefined}
+                  className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
+                    errors.autreVille ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                  }`}
                   placeholder={t.contact.cityPlaceholder || 'Enter your city'}
                 />
+                {errors.autreVille && (
+                  <p id="autreVille-error" className="text-red-600 text-sm mt-1" role="alert">
+                    {errors.autreVille}
+                  </p>
+                )}
               </div>
             )}
 

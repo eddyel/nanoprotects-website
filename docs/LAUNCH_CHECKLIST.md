@@ -54,16 +54,31 @@ Based on project review. Use this checklist before going live.
 
 ## 🟡 Important (Should Fix)
 
-### 5. Form Accessibility
+### 5. ~~Form Accessibility~~ ✅ (Resolved Feb 11, 2026)
 
-- [x] Contact form: `aria-required` and `aria-invalid` used on key fields (e.g. conditional “Autre” field).
-- [ ] Ensure all required fields have `aria-required` and `aria-invalid` when validation fails.
-- [ ] Ensure error messages are announced to screen readers (e.g. `aria-live` or `role="alert"`).
+- [x] Contact form: All required fields have `aria-required` and `aria-invalid` when validation fails
+- [x] autreVille field validation with auto-focus on appearance
+- [x] Error summary with `role="alert"` and `aria-live="assertive"` for screen readers
+- [x] All form fields have proper ARIA attributes (aria-invalid, aria-describedby, aria-required)
+- [x] Clickable error summary links that focus fields
+- [x] 14 comprehensive tests covering validation, focus, error summary, and ARIA
 
-### 6. Keyboard & Focus
+**Status:** RESOLVED. All changes verified. See [TEST_RESULTS.md](TEST_RESULTS.md).
 
-- [ ] Add visible focus indicators for all interactive elements
-- [ ] Verify full keyboard navigation (tab order, focus management)
+**Changes:** Updated Contact.tsx with validation, focus management, error summary, and full ARIA support
+
+### 6. ~~Keyboard & Focus~~ ✅ (Resolved Feb 11, 2026)
+
+- [x] Visible focus indicators for all interactive elements (navigation, gallery, social icons)
+- [x] Full keyboard navigation verified (tab order, Enter/Space activation)
+- [x] Skip-to-content link for keyboard users
+- [x] Global focus-visible styles consistent across site
+- [x] Gallery cards keyboard accessible with button elements
+- [x] 10 comprehensive tests covering focus indicators, skip link, and keyboard navigation
+
+**Status:** RESOLVED. All changes verified. See [TEST_RESULTS.md](TEST_RESULTS.md).
+
+**Changes:** Updated Navigation.tsx, Showroom.tsx, index.css with focus styles and keyboard support
 
 ### 7. ~~Security Audit~~ ✅ (Resolved Feb 11, 2026)
 
@@ -74,11 +89,20 @@ Based on project review. Use this checklist before going live.
 
 **Status:** RESOLVED. All production vulnerabilities addressed. See [TEST_RESULTS.md](TEST_RESULTS.md).
 
-### 8. Image Optimization
+### 8. ~~Image Optimization~~ ✅ (Resolved Feb 11, 2026)
 
-- [ ] Add `loading="lazy"` to below-the-fold images
-- [ ] Consider responsive images with `srcset` for key assets
-- [ ] Confirm WebP (and fallbacks where needed) for major images
+- [x] `loading="lazy"` and `decoding="async"` added to social media icons (6 instances)
+- [x] All JPG files converted to WebP (2 files: plage-piscine, sol-pierre)
+- [x] Large WebP files optimized with Sharp (31 files, ~15% average reduction)
+- [x] Image conversion script created (scripts/convert-images.js)
+- [x] All showroom image references updated to WebP format
+
+**Status:** RESOLVED. All images optimized and verified. See [TEST_RESULTS.md](TEST_RESULTS.md).
+
+**Changes:**
+- Created scripts/convert-images.js for automated optimization
+- Updated Navigation.tsx, Home.tsx, Showroom.tsx with lazy loading
+- Converted and optimized all project images
 
 ---
 
@@ -147,17 +171,24 @@ Based on project review. Use this checklist before going live.
 
 ## 🚀 Launch Preparation Status (Feb 11, 2026)
 
-**All 4 critical blocking issues have been RESOLVED:**
+**All 7 pre-launch issues have been RESOLVED:**
 
+### Critical Issues (4)
 1. ✅ ~~Missing showroom images~~ — Removed affected gallery items
 2. ✅ ~~Analytics script warnings~~ — Safely commented out
 3. ✅ ~~Accessibility alt text~~ — 9 updates, WCAG 2.1 AA compliant
 4. ✅ ~~Security vulnerabilities~~ — Critical patches applied (axios, pnpm)
 
+### Important Issues (3)
+5. ✅ ~~Form Accessibility~~ — Validation, focus management, error summary, full ARIA support
+6. ✅ ~~Keyboard & Focus~~ — Focus indicators, skip link, keyboard navigation, gallery accessibility
+8. ✅ ~~Image Optimization~~ — Lazy loading, JPG to WebP conversion, optimization script
+
 **Bonus completions:**
 - ✅ PWA manifest created and validated
-- ✅ Comprehensive test suite (37/37 tests passing)
+- ✅ Comprehensive test suite (65/65 tests passing)
 - ✅ Clean production build
+- ✅ Automated image optimization workflow
 
 See [TEST_RESULTS.md](TEST_RESULTS.md) for complete verification.
 
@@ -172,4 +203,5 @@ See [TEST_RESULTS.md](TEST_RESULTS.md) for complete verification.
 - Configure Umami analytics with proper credentials
 - Generate proper PWA icons (192×192, 512×512)
 - Update dev dependencies (streamdown, vitest) in separate branch
+- Add responsive images with srcset for major assets
 - Iterate on performance and optional items

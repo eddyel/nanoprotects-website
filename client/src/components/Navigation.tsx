@@ -76,6 +76,14 @@ export default function Navigation() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}
       style={{ backgroundColor: '#A33215' }}
     >
+      {/* Skip to main content link - only visible on keyboard focus */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+      >
+        Aller au contenu principal
+      </a>
+
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -91,10 +99,10 @@ export default function Navigation() {
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-12">
             {menuItems.map((item) => (
-              <Link 
-                key={item.path} 
+              <Link
+                key={item.path}
                 href={item.path}
-                className={`text-xs font-bold transition-colors text-center leading-tight whitespace-pre-line ${
+                className={`text-xs font-bold transition-colors text-center leading-tight whitespace-pre-line focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded px-2 py-1 ${
                   location === item.path
                     ? 'text-white border-b-2 border-b-amber-600 pb-2'
                     : 'text-white border-b-2 border-b-amber-600/40 hover:border-b-amber-600 pb-2'
@@ -112,13 +120,15 @@ export default function Navigation() {
               href="https://www.linkedin.com/company/nanoprotects"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-transform duration-300 hover:rotate-12"
+              className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
               aria-label="Visit NanoProtects on LinkedIn"
             >
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
                 alt="Visit NanoProtects on LinkedIn"
                 className="h-10 w-10 object-contain"
+                loading="lazy"
+                decoding="async"
               />
             </a>
 
@@ -127,13 +137,15 @@ export default function Navigation() {
               href="https://web.facebook.com/NanoProtects"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-transform duration-300 hover:rotate-12"
+              className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
               aria-label="Visit NanoProtects on Facebook"
             >
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
                 alt="Visit NanoProtects on Facebook"
                 className="h-10 w-10 object-contain"
+                loading="lazy"
+                decoding="async"
               />
             </a>
 
@@ -142,13 +154,15 @@ export default function Navigation() {
               href="https://www.instagram.com/nanoprotects"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-transform duration-300 hover:rotate-12"
+              className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
               aria-label="Visit NanoProtects on Instagram"
             >
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/XVSxuBfKhOsWjxcz.png"
                 alt="Visit NanoProtects on Instagram"
                 className="h-10 w-10 object-contain"
+                loading="lazy"
+                decoding="async"
               />
             </a>
 
@@ -215,7 +229,7 @@ export default function Navigation() {
                     href="https://www.linkedin.com/company/nanoprotects"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-transform duration-300 hover:rotate-12"
+                    className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
                     aria-label="Visit NanoProtects on LinkedIn"
                   >
                     <img
@@ -228,7 +242,7 @@ export default function Navigation() {
                     href="https://web.facebook.com/NanoProtects"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-transform duration-300 hover:rotate-12"
+                    className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
                     aria-label="Visit NanoProtects on Facebook"
                   >
                     <img
@@ -241,7 +255,7 @@ export default function Navigation() {
                     href="https://www.instagram.com/nanoprotects"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-transform duration-300 hover:rotate-12"
+                    className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
                     aria-label="Visit NanoProtects on Instagram"
                   >
                     <img

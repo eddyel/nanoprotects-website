@@ -189,8 +189,8 @@ const galleryImages: GalleryImage[] = [
   {
     id: '15',
     category: 'Pierre de Taza',
-    beforeImage: '/images/plage-piscine-pierre-taza-hotel.jpg',
-    afterImage: '/images/plage-piscine-pierre-taza-hotel.jpg',
+    beforeImage: '/images/plage-piscine-pierre-taza-hotel.webp',
+    afterImage: '/images/plage-piscine-pierre-taza-hotel.webp',
     title: 'Plage Piscine Pierre de Taza - Hotel',
     titleKey: 'title15',
     descriptionKey: 'desc15',
@@ -200,8 +200,8 @@ const galleryImages: GalleryImage[] = [
   {
     id: '16',
     category: 'Pierre de Taza',
-    beforeImage: '/images/sol-pierre-taza-particulier.jpg',
-    afterImage: '/images/sol-pierre-taza-particulier.jpg',
+    beforeImage: '/images/sol-pierre-taza-particulier.webp',
+    afterImage: '/images/sol-pierre-taza-particulier.webp',
     title: 'Sol Pierre de Taza - Particulier',
     titleKey: 'title16',
     descriptionKey: 'desc16',
@@ -364,10 +364,18 @@ export default function Showroom() {
       <div className="container max-w-5xl pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredImages.map((image) => (
-            <div
+            <button
               key={image.id}
-              className="group cursor-pointer relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all"
+              type="button"
+              className="group cursor-pointer relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
               onClick={() => setSelectedImage(image)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedImage(image);
+                }
+              }}
+              aria-label={`View details of ${t.showroom[image.titleKey as keyof typeof t.showroom] || image.title}`}
             >
               {image.isVideo ? (
                 <div className="relative w-full h-64 bg-black">
@@ -424,7 +432,7 @@ export default function Showroom() {
                 <h3 className="font-semibold text-gray-800">{t.showroom[image.titleKey as keyof typeof t.showroom] || image.title}</h3>
                 <p className="text-sm text-gray-600">{t.showroom[image.descriptionKey as keyof typeof t.showroom] || image.descriptionKey}</p>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </div>

@@ -5,7 +5,9 @@ import Navigation from './Navigation';
 // Mock wouter
 vi.mock('wouter', () => ({
   useLocation: () => ['/', vi.fn()],
-  Link: ({ children, href }: any) => <a href={href}>{children}</a>,
+  Link: ({ children, href, className, ...props }: any) => (
+    <a href={href} className={className} {...props}>{children}</a>
+  ),
 }));
 
 // Mock LanguageContext
@@ -120,6 +122,86 @@ describe('Navigation Component - Social Media Alt Text', () => {
       linkedinLinks.forEach(link => {
         const img = link.querySelector('img');
         expect(img).toHaveAttribute('alt', 'Visit NanoProtects on LinkedIn');
+      });
+    });
+  });
+
+  describe('Skip to Content Link', () => {
+    it('should have a skip-to-content link', () => {
+      render(<Navigation />);
+
+      const skipLink = screen.getByText(/aller au contenu principal/i);
+      expect(skipLink).toBeInTheDocument();
+      expect(skipLink).toHaveAttribute('href', '#main-content');
+    });
+
+    it('skip link should have sr-only class to hide by default', () => {
+      render(<Navigation />);
+
+      const skipLink = screen.getByText(/aller au contenu principal/i);
+      expect(skipLink.className).toContain('sr-only');
+    });
+
+    it('skip link should become visible on focus', () => {
+      render(<Navigation />);
+
+      const skipLink = screen.getByText(/aller au contenu principal/i);
+      expect(skipLink.className).toContain('focus:not-sr-only');
+    });
+
+    it('skip link should have proper focus styles', () => {
+      render(<Navigation />);
+
+      const skipLink = screen.getByText(/aller au contenu principal/i);
+      expect(skipLink.className).toContain('focus:absolute');
+      expect(skipLink.className).toContain('focus:bg-blue-600');
+    });
+  });
+
+  describe('Keyboard Navigation - Focus Indicators', () => {
+    it('should have focus-visible ring styles on navigation links', () => {
+      render(<Navigation />);
+
+      const navLinks = screen.getAllByRole('link', { name: /hospitality|materials|projects/i });
+
+      navLinks.forEach(link => {
+        expect(link.className).toContain('focus-visible:ring');
+      });
+    });
+
+    it('should have focus-visible ring styles on social media links', () => {
+      render(<Navigation />);
+
+      const socialLinks = screen.getAllByLabelText(/Visit NanoProtects on/i);
+
+      socialLinks.forEach(link => {
+        expect(link.className).toContain('focus-visible:ring');
+      });
+    });
+
+    it('should have focus:outline-none to use custom focus styles', () => {
+      render(<Navigation />);
+
+      // Check navigation links (not logo)
+      const navLinks = screen.getAllByRole('link', { name: /hospitality|materials|projects|realizations|philosophy|contact/i });
+      navLinks.forEach(link => {
+        expect(link.className).toContain('focus:outline-none');
+      });
+
+      // Check social links
+      const socialLinks = screen.getAllByLabelText(/Visit NanoProtects on/i);
+      socialLinks.forEach(link => {
+        expect(link.className).toContain('focus:outline-none');
+      });
+    });
+
+    it('should have proper ring offset for visibility on dark background', () => {
+      render(<Navigation />);
+
+      const navLinks = screen.getAllByRole('link', { name: /hospitality|materials|projects/i });
+
+      navLinks.forEach(link => {
+        expect(link.className).toContain('focus-visible:ring-offset');
       });
     });
   });
