@@ -96,11 +96,11 @@ describe('Home Page - Social Media Alt Text', () => {
 
     // Check URLs for links in Home component (filter by opacity class to identify hero section)
     linkedinLinks.forEach(link => {
-      expect(link).toHaveAttribute('href', 'https://www.linkedin.com/company/nanoprotects');
+      expect(link).toHaveAttribute('href', 'https://web.facebook.com/NanoProtects');
     });
 
     facebookLinks.forEach(link => {
-      expect(link).toHaveAttribute('href', 'https://web.facebook.com/NanoProtects');
+      expect(link).toHaveAttribute('href', 'https://www.linkedin.com/company/nanoprotects');
     });
 
     instagramLinks.forEach(link => {
