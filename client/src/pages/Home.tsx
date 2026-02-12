@@ -62,7 +62,7 @@ export default function Home() {
         <div className="absolute bottom-4 left-0 right-0 z-10 flex justify-center items-center gap-4 md:gap-6 md:bottom-2">
           {/* LinkedIn Logo */}
           <a
-            href="https://www.linkedin.com/company/nanoprotects"
+            href="https://web.facebook.com/NanoProtects"
             target="_blank"
             rel="noopener noreferrer"
             className="transition-all duration-300 hover:rotate-12 opacity-75 hover:opacity-100"
@@ -77,7 +77,7 @@ export default function Home() {
 
           {/* Facebook Logo */}
           <a
-            href="https://web.facebook.com/NanoProtects"
+            href="https://www.linkedin.com/company/nanoprotects"
             target="_blank"
             rel="noopener noreferrer"
             className="transition-all duration-300 hover:rotate-12 opacity-75 hover:opacity-100"
