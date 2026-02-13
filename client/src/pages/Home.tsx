@@ -2,6 +2,7 @@ import { useLocation } from 'wouter';
 import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { SiFacebook, SiLinkedin, SiInstagram } from 'react-icons/si';
 
 export default function Home() {
   const [, setLocation] = useLocation();
@@ -59,20 +60,16 @@ export default function Home() {
         </div>
 
         {/* Social Media Logos at Bottom of Hero */}
-        <div className="absolute bottom-4 left-0 right-0 z-10 flex justify-center items-center gap-4 md:gap-6 md:bottom-2">
+        <div className="absolute bottom-4 left-0 right-0 z-10 flex justify-center items-center gap-6 md:gap-8 md:bottom-2">
           {/* Facebook Logo */}
           <a
             href="https://web.facebook.com/NanoProtects"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-all duration-300 hover:rotate-12 opacity-75 hover:opacity-100"
+            className="text-white/75 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 p-1"
             aria-label="Visit NanoProtects on Facebook"
           >
-            <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
-              alt="Visit NanoProtects on Facebook"
-              className="h-12 w-12 object-contain"
-            />
+            <SiFacebook className="w-10 h-10" />
           </a>
 
           {/* LinkedIn Logo */}
@@ -80,14 +77,10 @@ export default function Home() {
             href="https://www.linkedin.com/company/nanoprotects"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-all duration-300 hover:rotate-12 opacity-75 hover:opacity-100"
+            className="text-white/75 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 p-1"
             aria-label="Visit NanoProtects on LinkedIn"
           >
-            <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
-              alt="Visit NanoProtects on LinkedIn"
-              className="h-12 w-12 object-contain"
-            />
+            <SiLinkedin className="w-10 h-10" />
           </a>
 
           {/* Instagram Logo */}
@@ -95,14 +88,10 @@ export default function Home() {
             href="https://www.instagram.com/nanoprotects"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-all duration-300 hover:rotate-12 opacity-75 hover:opacity-100"
+            className="text-white/75 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 p-1"
             aria-label="Visit NanoProtects on Instagram"
           >
-            <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/XVSxuBfKhOsWjxcz.png"
-              alt="Visit NanoProtects on Instagram"
-              className="h-12 w-12 object-contain"
-            />
+            <SiInstagram className="w-10 h-10" />
           </a>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'wouter';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { SiFacebook, SiLinkedin, SiInstagram } from 'react-icons/si';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -120,16 +121,10 @@ export default function Navigation() {
               href="https://web.facebook.com/NanoProtects"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
+              className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded p-1"
               aria-label="Visit NanoProtects on Facebook"
             >
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
-                alt="Visit NanoProtects on Facebook"
-                className="h-10 w-10 object-contain"
-                loading="lazy"
-                decoding="async"
-              />
+              <SiFacebook className="w-8 h-8" />
             </a>
 
             {/* LinkedIn Logo */}
@@ -137,16 +132,10 @@ export default function Navigation() {
               href="https://www.linkedin.com/company/nanoprotects"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
+              className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded p-1"
               aria-label="Visit NanoProtects on LinkedIn"
             >
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
-                alt="Visit NanoProtects on LinkedIn"
-                className="h-10 w-10 object-contain"
-                loading="lazy"
-                decoding="async"
-              />
+              <SiLinkedin className="w-8 h-8" />
             </a>
 
             {/* Instagram Logo */}
@@ -154,16 +143,10 @@ export default function Navigation() {
               href="https://www.instagram.com/nanoprotects"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
+              className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded p-1"
               aria-label="Visit NanoProtects on Instagram"
             >
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/XVSxuBfKhOsWjxcz.png"
-                alt="Visit NanoProtects on Instagram"
-                className="h-10 w-10 object-contain"
-                loading="lazy"
-                decoding="async"
-              />
+              <SiInstagram className="w-8 h-8" />
             </a>
 
             {/* Language Switcher - Dropdown */}
@@ -252,46 +235,34 @@ export default function Navigation() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.25, duration: 0.2 }}
-                  className="pt-4 border-t border-white/10 flex gap-4"
+                  className="pt-4 border-t border-white/10 flex gap-6"
                 >
                   <a
                     href="https://web.facebook.com/NanoProtects"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
+                    className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded p-1"
                     aria-label="Visit NanoProtects on Facebook"
                   >
-                    <img
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
-                      alt="Visit NanoProtects on Facebook"
-                      className="h-10 w-10 object-contain"
-                    />
+                    <SiFacebook className="w-9 h-9" />
                   </a>
                   <a
                     href="https://www.linkedin.com/company/nanoprotects"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
+                    className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded p-1"
                     aria-label="Visit NanoProtects on LinkedIn"
                   >
-                    <img
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
-                      alt="Visit NanoProtects on LinkedIn"
-                      className="h-10 w-10 object-contain"
-                    />
+                    <SiLinkedin className="w-9 h-9" />
                   </a>
                   <a
                     href="https://www.instagram.com/nanoprotects"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
+                    className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded p-1"
                     aria-label="Visit NanoProtects on Instagram"
                   >
-                    <img
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/XVSxuBfKhOsWjxcz.png"
-                      alt="Visit NanoProtects on Instagram"
-                      className="h-10 w-10 object-contain"
-                    />
+                    <SiInstagram className="w-9 h-9" />
                   </a>
                 </motion.div>
 
