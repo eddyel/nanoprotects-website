@@ -218,6 +218,35 @@ export default function Navigation() {
               className="lg:hidden bg-secondary border-t border-white/10 relative z-50"
             >
               <div className="container py-4 space-y-3">
+                {/* Navigation Links */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.1, duration: 0.2 }}
+                  className="flex flex-col space-y-2"
+                >
+                  {menuItems.map((item, index) => (
+                    <motion.div
+                      key={item.path}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 + index * 0.05, duration: 0.2 }}
+                    >
+                      <Link
+                        href={item.path}
+                        className={`block text-lg py-3 px-4 rounded transition-colors w-full text-left min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] ${
+                          location === item.path
+                            ? 'text-white bg-white/10 font-semibold'
+                            : 'text-white/90 hover:bg-white/5 hover:text-white'
+                        }`}
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </motion.div>
+
                 {/* Social Media Icons */}
                 <motion.div
                   initial={{ opacity: 0 }}

@@ -12,6 +12,12 @@ export default function LazyImage({ src, alt, className = '', onLoad }: LazyImag
   const [isLoaded, setIsLoaded] = useState(false);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
 
+  // Reset image source when src prop changes to allow loading new images
+  useEffect(() => {
+    setImageSrc(null);
+    setIsLoaded(false);
+  }, [src]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {

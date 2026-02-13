@@ -247,7 +247,7 @@ const galleryImages: GalleryImage[] = [
     id: '22',
     category: 'Minéralisation',
     videoMp4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PwAnpbCHRHTexxKs.mpeg',
-    videoPoster: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PwAnpbCHRHTexxKs.mpeg',
+    videoPoster: undefined,
     title: 'Mur Briquettes - Hotel',
     titleKey: 'title22',
     descriptionKey: 'desc22',
@@ -258,7 +258,7 @@ const galleryImages: GalleryImage[] = [
     id: '23',
     category: 'Minéralisation',
     videoMp4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/jPXDZdIxLKDvTMwd.mp4',
-    videoPoster: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/jPXDZdIxLKDvTMwd.mp4',
+    videoPoster: undefined,
     title: 'Mur Enduit - Particulier',
     titleKey: 'title23',
     descriptionKey: 'desc23',
@@ -269,7 +269,7 @@ const galleryImages: GalleryImage[] = [
     id: '24',
     category: 'Minéralisation',
     videoMp4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PaXedwwiKCwYIUps.mp4',
-    videoPoster: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PaXedwwiKCwYIUps.mp4',
+    videoPoster: undefined,
     title: 'Mur en Pisé - Hotel',
     titleKey: 'title24',
     descriptionKey: 'desc24',
@@ -380,9 +380,12 @@ export default function Showroom() {
               {image.isVideo ? (
                 <div className="relative w-full h-64 bg-black">
                   <video
-                    src={image.videoPoster}
+                    src={image.videoMp4}
                     poster={image.videoPoster}
                     className="w-full h-full object-cover"
+                    preload="metadata"
+                    playsInline
+                    muted
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition">
                     <div className="text-white text-4xl">▶</div>
@@ -485,6 +488,8 @@ export default function Showroom() {
                       poster={selectedImage.videoPoster}
                       className="w-full h-auto max-h-[70vh] object-contain"
                       controls
+                      preload="metadata"
+                      playsInline
                       onPlay={() => setIsPlaying(true)}
                       onPause={() => setIsPlaying(false)}
                       onEnded={() => setIsPlaying(false)}
