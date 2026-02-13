@@ -381,13 +381,12 @@ export default function Showroom() {
                 <div className="relative w-full h-64 bg-black">
                   <video
                     src={image.videoMp4}
-                    poster={image.videoPoster}
                     className="w-full h-full object-cover"
                     preload="metadata"
                     playsInline
                     muted
                   />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition">
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition pointer-events-none">
                     <div className="text-white text-4xl">▶</div>
                   </div>
                 </div>
@@ -483,13 +482,14 @@ export default function Showroom() {
                 {selectedImage.isVideo ? (
                   <div className="relative w-full bg-black rounded-lg overflow-hidden">
                     <video
+                      key={selectedImage.id}
                       ref={videoRef}
                       src={selectedImage.videoMp4}
-                      poster={selectedImage.videoPoster}
                       className="w-full h-auto max-h-[70vh] object-contain"
                       controls
-                      preload="metadata"
+                      autoPlay
                       playsInline
+                      preload="auto"
                       onPlay={() => setIsPlaying(true)}
                       onPause={() => setIsPlaying(false)}
                       onEnded={() => setIsPlaying(false)}
@@ -497,7 +497,8 @@ export default function Showroom() {
                     {!isPlaying && (
                       <button
                         onClick={handlePlayAgain}
-                        className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition text-white text-6xl"
+                        className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition text-white text-6xl cursor-pointer"
+                        aria-label="Play video"
                       >
                         ▶
                       </button>
