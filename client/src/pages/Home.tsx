@@ -29,7 +29,7 @@ export default function Home() {
         />
         
         {/* Centered Hero Content */}
-        <div className="relative z-10 container max-w-5xl px-6 text-center md:text-left flex-1 flex items-center">
+        <div className="relative z-10 container max-w-5xl px-6 text-left flex-1 flex items-center">
           <div>
             <h1 className="font-display text-[1.75rem] sm:text-[2.5rem] md:text-[3.5rem] font-bold text-white mb-8 leading-tight">
               {t.hero.title}
@@ -62,7 +62,7 @@ export default function Home() {
         <div className="absolute bottom-4 left-0 right-0 z-10 flex justify-center items-center gap-4 md:gap-6 md:bottom-2">
           {/* LinkedIn Logo */}
           <a
-            href="https://web.facebook.com/NanoProtects"
+            href="https://www.linkedin.com/company/nanoprotects"
             target="_blank"
             rel="noopener noreferrer"
             className="transition-all duration-300 hover:rotate-12 opacity-75 hover:opacity-100"
@@ -77,7 +77,7 @@ export default function Home() {
 
           {/* Facebook Logo */}
           <a
-            href="https://www.linkedin.com/company/nanoprotects"
+            href="https://web.facebook.com/NanoProtects"
             target="_blank"
             rel="noopener noreferrer"
             className="transition-all duration-300 hover:rotate-12 opacity-75 hover:opacity-100"
