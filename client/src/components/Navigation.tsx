@@ -115,23 +115,6 @@ export default function Navigation() {
 
           {/* Social Media Icons + Language Switcher */}
           <div className="hidden lg:flex items-center gap-6">
-            {/* LinkedIn Logo */}
-            <a
-              href="https://www.linkedin.com/company/nanoprotects"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
-              aria-label="Visit NanoProtects on LinkedIn"
-            >
-              <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
-                alt="Visit NanoProtects on LinkedIn"
-                className="h-10 w-10 object-contain"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-
             {/* Facebook Logo */}
             <a
               href="https://web.facebook.com/NanoProtects"
@@ -141,8 +124,25 @@ export default function Navigation() {
               aria-label="Visit NanoProtects on Facebook"
             >
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
                 alt="Visit NanoProtects on Facebook"
+                className="h-10 w-10 object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+
+            {/* LinkedIn Logo */}
+            <a
+              href="https://www.linkedin.com/company/nanoprotects"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
+              aria-label="Visit NanoProtects on LinkedIn"
+            >
+              <img
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
+                alt="Visit NanoProtects on LinkedIn"
                 className="h-10 w-10 object-contain"
                 loading="lazy"
                 decoding="async"
@@ -255,19 +255,6 @@ export default function Navigation() {
                   className="pt-4 border-t border-white/10 flex gap-4"
                 >
                   <a
-                    href="https://www.linkedin.com/company/nanoprotects"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
-                    aria-label="Visit NanoProtects on LinkedIn"
-                  >
-                    <img
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
-                      alt="Visit NanoProtects on LinkedIn"
-                      className="h-10 w-10 object-contain"
-                    />
-                  </a>
-                  <a
                     href="https://web.facebook.com/NanoProtects"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -275,8 +262,21 @@ export default function Navigation() {
                     aria-label="Visit NanoProtects on Facebook"
                   >
                     <img
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
+                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
                       alt="Visit NanoProtects on Facebook"
+                      className="h-10 w-10 object-contain"
+                    />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/company/nanoprotects"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
+                    aria-label="Visit NanoProtects on LinkedIn"
+                  >
+                    <img
+                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
+                      alt="Visit NanoProtects on LinkedIn"
                       className="h-10 w-10 object-contain"
                     />
                   </a>

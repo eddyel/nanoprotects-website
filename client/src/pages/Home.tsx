@@ -60,21 +60,6 @@ export default function Home() {
 
         {/* Social Media Logos at Bottom of Hero */}
         <div className="absolute bottom-4 left-0 right-0 z-10 flex justify-center items-center gap-4 md:gap-6 md:bottom-2">
-          {/* LinkedIn Logo */}
-          <a
-            href="https://www.linkedin.com/company/nanoprotects"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-all duration-300 hover:rotate-12 opacity-75 hover:opacity-100"
-            aria-label="Visit NanoProtects on LinkedIn"
-          >
-            <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
-              alt="Visit NanoProtects on LinkedIn"
-              className="h-12 w-12 object-contain"
-            />
-          </a>
-
           {/* Facebook Logo */}
           <a
             href="https://web.facebook.com/NanoProtects"
@@ -84,8 +69,23 @@ export default function Home() {
             aria-label="Visit NanoProtects on Facebook"
           >
             <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/AiHOKqCgyvAriTei.png"
               alt="Visit NanoProtects on Facebook"
+              className="h-12 w-12 object-contain"
+            />
+          </a>
+
+          {/* LinkedIn Logo */}
+          <a
+            href="https://www.linkedin.com/company/nanoprotects"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-all duration-300 hover:rotate-12 opacity-75 hover:opacity-100"
+            aria-label="Visit NanoProtects on LinkedIn"
+          >
+            <img
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/sbRQGaemFkCXerSO.png"
+              alt="Visit NanoProtects on LinkedIn"
               className="h-12 w-12 object-contain"
             />
           </a>
