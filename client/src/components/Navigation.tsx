@@ -117,7 +117,7 @@ export default function Navigation() {
           <div className="hidden lg:flex items-center gap-6">
             {/* LinkedIn Logo */}
             <a
-              href="https://web.facebook.com/NanoProtects"
+              href="https://www.linkedin.com/company/nanoprotects"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
@@ -134,7 +134,7 @@ export default function Navigation() {
 
             {/* Facebook Logo */}
             <a
-              href="https://www.linkedin.com/company/nanoprotects"
+              href="https://web.facebook.com/NanoProtects"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-transform duration-300 hover:rotate-12 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded"
