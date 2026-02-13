@@ -69,7 +69,7 @@ export default function Home() {
             className="text-white/75 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 p-1"
             aria-label="Visit NanoProtects on Facebook"
           >
-            <SiFacebook className="w-10 h-10" />
+            <SiFacebook className="w-7 h-7" />
           </a>
 
           {/* LinkedIn Logo */}
@@ -80,7 +80,7 @@ export default function Home() {
             className="text-white/75 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 p-1"
             aria-label="Visit NanoProtects on LinkedIn"
           >
-            <SiLinkedin className="w-10 h-10" />
+            <SiLinkedin className="w-7 h-7" />
           </a>
 
           {/* Instagram Logo */}
@@ -91,7 +91,7 @@ export default function Home() {
             className="text-white/75 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 p-1"
             aria-label="Visit NanoProtects on Instagram"
           >
-            <SiInstagram className="w-10 h-10" />
+            <SiInstagram className="w-7 h-7" />
           </a>
         </div>
       </section>

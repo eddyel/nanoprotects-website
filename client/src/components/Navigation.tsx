@@ -124,7 +124,7 @@ export default function Navigation() {
               className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded p-1"
               aria-label="Visit NanoProtects on Facebook"
             >
-              <SiFacebook className="w-8 h-8" />
+              <SiFacebook className="w-6 h-6" />
             </a>
 
             {/* LinkedIn Logo */}
@@ -135,7 +135,7 @@ export default function Navigation() {
               className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded p-1"
               aria-label="Visit NanoProtects on LinkedIn"
             >
-              <SiLinkedin className="w-8 h-8" />
+              <SiLinkedin className="w-6 h-6" />
             </a>
 
             {/* Instagram Logo */}
@@ -146,7 +146,7 @@ export default function Navigation() {
               className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded p-1"
               aria-label="Visit NanoProtects on Instagram"
             >
-              <SiInstagram className="w-8 h-8" />
+              <SiInstagram className="w-6 h-6" />
             </a>
 
             {/* Language Switcher - Dropdown */}
@@ -244,7 +244,7 @@ export default function Navigation() {
                     className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded p-1"
                     aria-label="Visit NanoProtects on Facebook"
                   >
-                    <SiFacebook className="w-9 h-9" />
+                    <SiFacebook className="w-7 h-7" />
                   </a>
                   <a
                     href="https://www.linkedin.com/company/nanoprotects"
@@ -253,7 +253,7 @@ export default function Navigation() {
                     className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded p-1"
                     aria-label="Visit NanoProtects on LinkedIn"
                   >
-                    <SiLinkedin className="w-9 h-9" />
+                    <SiLinkedin className="w-7 h-7" />
                   </a>
                   <a
                     href="https://www.instagram.com/nanoprotects"
@@ -262,7 +262,7 @@ export default function Navigation() {
                     className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded p-1"
                     aria-label="Visit NanoProtects on Instagram"
                   >
-                    <SiInstagram className="w-9 h-9" />
+                    <SiInstagram className="w-7 h-7" />
                   </a>
                 </motion.div>
 
