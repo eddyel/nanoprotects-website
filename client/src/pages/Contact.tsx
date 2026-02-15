@@ -158,15 +158,21 @@ export default function Contact() {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    // Don't prevent default - let the form submit naturally to Netlify
+    // Only prevent if validation fails
     
     if (!validateForm()) {
+      e.preventDefault();
       toast.error(t.contact.errorSubmit || 'Please fix the errors above');
       return;
     }
 
     setIsSubmitting(true);
 
+    // The form will now submit naturally to Netlify
+    // No fetch call needed - Netlify handles it
+    
+    // For confirmation page, we need to store data before submit
     const firstName = formData.name.trim().split(/\s+/)[0];
     const confirmationData = {
       firstName,
@@ -181,7 +187,9 @@ export default function Contact() {
     };
 
     sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
-    setLocation('/confirmation');
+    
+    // Let the form submit - don't redirect manually
+    // The form's action will handle the redirect to /confirmation
   };
 
   return (
@@ -235,7 +243,17 @@ export default function Contact() {
             name="contact"
             method="POST"
             data-netlify="true"
+            action="/confirmation"
           >
+            {/* Honeypot field for spam prevention */}
+            <p className="hidden">
+              <label>
+                Don't fill this out if you're human: <input name="bot-field" />
+              </label>
+            </p>
+            
+            <input type="hidden" name="form-name" value="contact" />
+            
             {/* Standard Fields */}
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -477,6 +495,7 @@ export default function Contact() {
               </label>
               <select
                 id="city"
+                name="city"
                 required
                 value={ville}
                 onChange={(e) => setVille(e.target.value)}
@@ -499,6 +518,7 @@ export default function Contact() {
                   ref={autreVilleRef}
                   id="autreVille"
                   type="text"
+                  name="autreVille"
                   value={autreVille}
                   onChange={(e) => {
                     setAutreVille(e.target.value);
