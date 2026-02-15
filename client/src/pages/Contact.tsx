@@ -112,14 +112,20 @@ export default function Contact() {
 
     if (!formData.email.trim()) {
       newErrors.email = t.contact.errorEmailInvalid || 'Email is required';
-    } else if (!validateEmail(formData.email)) {
-      newErrors.email = t.contact.errorEmailInvalid || 'Invalid email format';
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        newErrors.email = t.contact.errorEmailInvalid || 'Invalid email format';
+      }
     }
 
     if (!formData.phone.trim()) {
       newErrors.phone = t.contact.errorPhoneInvalid ?? 'Phone number is required';
-    } else if (!validatePhone(formData.phone)) {
-      newErrors.phone = t.contact.errorPhoneInvalid ?? 'Invalid phone format';
+    } else {
+      const phoneRegex = /^\d{1,3}\s\d{9,15}$/;
+      if (!phoneRegex.test(formData.phone.trim())) {
+        newErrors.phone = t.contact.errorPhoneInvalid ?? 'Invalid phone format';
+      }
     }
 
     if (isAutreSelected && !formData.autreMateriau.trim()) {
@@ -151,32 +157,13 @@ export default function Contact() {
     }
   };
 
- const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  
-  if (!validateForm()) {
-    toast.error(t.contact.errorSubmit || 'Please fix the errors above');
-    return;
-  }
-
-  setIsSubmitting(true);
-
-  const firstName = formData.name.trim().split(/\s+/)[0];
-  const confirmationData = {
-    firstName,
-    email: formData.email,
-    phone: formData.phone,
-    materials: selectedMateriaux,
-    autreMateriau: formData.autreMateriau,
-    zones: selectedZones,
-    protectionTypes: selectedProtectionTypes,
-    ville: ville || autreVille,
-    message: formData.message
-  };
-
-  sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
-  setLocation('/confirmation');
-};
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      toast.error(t.contact.errorSubmit || 'Please fix the errors above');
+      return;
+    }
 
     setIsSubmitting(true);
 
@@ -192,34 +179,6 @@ export default function Contact() {
       ville: ville || autreVille,
       message: formData.message
     };
-
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          materials: selectedMateriaux,
-          autreMateriau: formData.autreMateriau || undefined,
-          zones: selectedZones,
-          protectionTypes: selectedProtectionTypes,
-          ville: ville || autreVille,
-          message: formData.message,
-          language
-        })
-      });
-
-      if (res.ok) {
-        toast.success(
-          t.contact.confirmationEmailSent?.replace('{email}', formData.email) ??
-            `Un email de confirmation vous sera envoyé à : ${formData.email}`
-        );
-      }
-    } catch (_err) {
-      // Network or other error: still redirect, form data stored below
-    }
 
     sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
     setLocation('/confirmation');
@@ -269,8 +228,14 @@ export default function Contact() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-8" noValidate>
-  <input type="hidden" name="form-name" value="contact" />
+          <form 
+            onSubmit={handleSubmit} 
+            className="space-y-8" 
+            noValidate
+            name="contact"
+            method="POST"
+            data-netlify="true"
+          >
             {/* Standard Fields */}
             <div className="grid md:grid-cols-2 gap-6">
               <div>
