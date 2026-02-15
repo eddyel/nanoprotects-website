@@ -103,16 +103,6 @@ export default function Contact() {
   };
 
   // Validation functions
-  const validateEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const validatePhone = (phone: string): boolean => {
-    const phoneRegex = /^\d{1,3}\s\d{9,15}$/;
-    return phoneRegex.test(phone.trim());
-  };
-
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
@@ -161,13 +151,32 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  
+  if (!validateForm()) {
+    toast.error(t.contact.errorSubmit || 'Please fix the errors above');
+    return;
+  }
 
-    if (!validateForm()) {
-      toast.error(t.contact.errorSubmit || 'Please fix the errors above');
-      return;
-    }
+  setIsSubmitting(true);
+
+  const firstName = formData.name.trim().split(/\s+/)[0];
+  const confirmationData = {
+    firstName,
+    email: formData.email,
+    phone: formData.phone,
+    materials: selectedMateriaux,
+    autreMateriau: formData.autreMateriau,
+    zones: selectedZones,
+    protectionTypes: selectedProtectionTypes,
+    ville: ville || autreVille,
+    message: formData.message
+  };
+
+  sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
+  setLocation('/confirmation');
+};
 
     setIsSubmitting(true);
 
