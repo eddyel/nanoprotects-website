@@ -261,6 +261,7 @@ export default function Contact() {
           )}
 
           <form onSubmit={handleSubmit} className="space-y-8" noValidate>
+  <input type="hidden" name="form-name" value="contact" />
             {/* Standard Fields */}
             <div className="grid md:grid-cols-2 gap-6">
               <div>
