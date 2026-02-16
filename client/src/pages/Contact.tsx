@@ -157,22 +157,16 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    // Don't prevent default - let the form submit naturally to Netlify
-    // Only prevent if validation fails
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     
     if (!validateForm()) {
-      e.preventDefault();
       toast.error(t.contact.errorSubmit || 'Please fix the errors above');
       return;
     }
 
     setIsSubmitting(true);
 
-    // The form will now submit naturally to Netlify
-    // No fetch call needed - Netlify handles it
-    
-    // For confirmation page, we need to store data before submit
     const firstName = formData.name.trim().split(/\s+/)[0];
     const confirmationData = {
       firstName,
@@ -187,9 +181,7 @@ export default function Contact() {
     };
 
     sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
-    
-    // Let the form submit - don't redirect manually
-    // The form's action will handle the redirect to /confirmation
+    setLocation('/confirmation');
   };
 
   return (
@@ -236,22 +228,7 @@ export default function Contact() {
             </div>
           )}
 
-          <form 
-            onSubmit={handleSubmit} 
-            className="space-y-8" 
-            noValidate
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            action="/confirmation"
-          >
-            {/* Honeypot field for spam prevention */}
-            <p className="hidden">
-              <label>
-                Don't fill this out if you're human: <input name="bot-field" />
-              </label>
-            </p>
-            
+          <form onSubmit={handleSubmit} className="space-y-8" noValidate>
             <input type="hidden" name="form-name" value="contact" />
             
             {/* Standard Fields */}
