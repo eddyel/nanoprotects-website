@@ -86,6 +86,18 @@ export default function MateriauxExpertises() {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const bgImages: Record<string, string> = {
+    pierres:    '/images/BackgroundImages/bg-pierres-marbres.png',
+    maconnerie: '/images/BackgroundImages/bg-maconnerie.png',
+    bois:       '/images/BackgroundImages/bg-bois.png',
+    textiles:   '/images/BackgroundImages/bg-textile.png',
+    securite:   '/images/BackgroundImages/bg-anti-derapant.png',
+    metaux:     '/images/BackgroundImages/bg-mineralisant.png',
+  };
+  const [bgImage, setBgImage] = useState(bgImages['pierres']);
+  const [bgOpacity, setBgOpacity] = useState(0.18);
+  const fadeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   
   const categories = getCategoriesData(t);
   const activeCategory = categories.find(cat => cat.id === activeTab);
@@ -109,6 +121,20 @@ export default function MateriauxExpertises() {
     }
   }, []);
 
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+    setBgOpacity(0);
+    if (fadeRef.current) clearTimeout(fadeRef.current);
+    fadeRef.current = setTimeout(() => {
+      setBgImage(bgImages[tab]);
+      setBgOpacity(0.18);
+    }, 300);
+  };
+
+  useEffect(() => () => {
+    if (fadeRef.current) clearTimeout(fadeRef.current);
+  }, []);
+
   const scroll = (direction: 'left' | 'right') => {
     const container = containerRef.current;
     if (container) {
@@ -130,11 +156,26 @@ export default function MateriauxExpertises() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ position: 'relative' }}>
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 0,
+          backgroundImage: `url('${bgImage}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: bgOpacity,
+          transition: 'opacity 0.3s ease',
+          pointerEvents: 'none',
+        }}
+      />
       <Navigation />
       
       {/* Hero Section with Title */}
-      <section className="pt-32 pb-10" style={{ backgroundColor: '#f5f5f5' }}>
+      <section className="pt-32 pb-10" style={{ backgroundColor: 'rgba(245,245,245,0.88)', position: 'relative', zIndex: 1 }}>
         <div className="container max-w-5xl">
           <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-6 leading-tight" style={{ color: '#A33215' }}>
             {t.materials.title}
@@ -143,7 +184,7 @@ export default function MateriauxExpertises() {
       </section>
 
       {/* Content Section */}
-      <section className="py-16 px-4 md:px-8" style={{ backgroundColor: '#f5f5f5' }}>
+      <section className="py-16 px-4 md:px-8" style={{ backgroundColor: 'rgba(245,245,245,0.88)', position: 'relative', zIndex: 1 }}>
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
             <p className="text-lg text-gray-600">
@@ -170,7 +211,7 @@ export default function MateriauxExpertises() {
               {categories.map((category) => (
                 <button
                   key={category.id}
-                  onClick={() => setActiveTab(category.id)}
+                  onClick={() => handleTabChange(category.id)}
                   className={`flex-shrink-0 px-6 py-3 rounded-lg font-semibold transition-all whitespace-nowrap ${
                     activeTab === category.id
                       ? 'bg-primary text-white shadow-lg'

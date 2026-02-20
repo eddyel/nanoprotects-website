@@ -185,7 +185,9 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#f5f5f5' }}>
+    <div className="min-h-screen" style={{ position: 'relative' }}>
+      <div aria-hidden="true" style={{ position: 'fixed', inset: 0, zIndex: 0, backgroundImage: `url('/images/BackgroundImages/bg-contact.png')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', opacity: 0.18, pointerEvents: 'none' }} />
+      <div style={{ position: 'relative', zIndex: 1 }}>
       <Navigation />
       
       <section className="pt-32 pb-20">
@@ -559,6 +561,7 @@ export default function Contact() {
           </form>
         </div>
       </section>
+      </div>
     </div>
   );
 }

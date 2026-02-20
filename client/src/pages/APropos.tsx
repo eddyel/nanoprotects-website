@@ -17,11 +17,13 @@ export default function APropos() {
   ];
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#f5f5f5' }}>
+    <div className="min-h-screen" style={{ position: 'relative' }}>
+      <div aria-hidden="true" style={{ position: 'fixed', inset: 0, zIndex: 0, backgroundImage: `url('/images/BackgroundImages/bg-a-propos.png')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', opacity: 0.18, pointerEvents: 'none' }} />
+      <div style={{ position: 'relative', zIndex: 1 }}>
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-10" style={{ backgroundColor: '#f5f5f5' }}>
+      <section className="pt-32 pb-10" style={{ backgroundColor: 'transparent' }}>
         <div className="container max-w-5xl">
           <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-6 leading-tight" style={{ color: '#A33215' }}>
             {t.about.title}
@@ -65,7 +67,7 @@ export default function APropos() {
       </section>
 
       {/* Two Pillars */}
-      <section className="py-20" style={{ backgroundColor: '#f5f5f5' }}>
+      <section className="py-20" style={{ backgroundColor: 'transparent' }}>
         <div className="container max-w-6xl">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Pillar 1 */}
@@ -124,6 +126,7 @@ export default function APropos() {
           </div>
         </div>
       </section>
+      </div>
     </div>
   );
 }
