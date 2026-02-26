@@ -8,7 +8,8 @@ export default function NotreMethode() {
   const t = translations[language];
   return (
     <div className="min-h-screen" style={{ position: 'relative' }}>
-      <div aria-hidden="true" style={{ position: 'fixed', inset: 0, zIndex: 0, backgroundImage: `url('/images/BackgroundImages/bg-notre-methode.png')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', opacity: 0.18, pointerEvents: 'none' }} />
+      {/* DO NOT CHANGE - backgroundSize must stay '100% auto' */}
+      <div aria-hidden="true" style={{ position: 'fixed', inset: 0, zIndex: 0, backgroundImage: `url('/images/BackgroundImages/bg-notre-methode.png')`, backgroundSize: '100% auto', backgroundPosition: 'center top', backgroundRepeat: 'no-repeat', opacity: 0.18, pointerEvents: 'none' }} />
       <div style={{ position: 'relative', zIndex: 1 }}>
       <Navigation />
       
