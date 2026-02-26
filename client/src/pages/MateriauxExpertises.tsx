@@ -157,6 +157,7 @@ export default function MateriauxExpertises() {
 
   return (
     <div className="min-h-screen" style={{ position: 'relative' }}>
+      {/* DO NOT CHANGE - backgroundSize must stay '100% auto' */}
       <div
         aria-hidden="true"
         style={{
@@ -164,8 +165,8 @@ export default function MateriauxExpertises() {
           inset: 0,
           zIndex: 0,
           backgroundImage: `url('${bgImage}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundSize: '100% auto',
+          backgroundPosition: 'center top',
           backgroundRepeat: 'no-repeat',
           opacity: bgOpacity,
           transition: 'opacity 0.3s ease',
@@ -175,7 +176,7 @@ export default function MateriauxExpertises() {
       <Navigation />
       
       {/* Hero Section with Title */}
-      <section className="pt-32 pb-10" style={{ backgroundColor: 'rgba(245,245,245,0.88)', position: 'relative', zIndex: 1 }}>
+      <section className="pt-32 pb-10" style={{ backgroundColor: 'rgba(245,245,245,0.18)', position: 'relative', zIndex: 1 }}>
         <div className="container max-w-5xl">
           <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-6 leading-tight" style={{ color: '#A33215' }}>
             {t.materials.title}
@@ -184,7 +185,7 @@ export default function MateriauxExpertises() {
       </section>
 
       {/* Content Section */}
-      <section className="py-16 px-4 md:px-8" style={{ backgroundColor: 'rgba(245,245,245,0.88)', position: 'relative', zIndex: 1 }}>
+      <section className="py-16 px-4 md:px-8" style={{ backgroundColor: 'rgba(245,245,245,0.18)', position: 'relative', zIndex: 1 }}>
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
             <p className="text-lg text-gray-600">
