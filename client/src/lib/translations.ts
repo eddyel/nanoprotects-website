@@ -526,11 +526,11 @@ export const translations: Record<Language, Translations> = {
     about: {
       title: 'Nanotechnologies au service de l\'excellence',
       section1Title: 'Notre Approche Méthodique : Révéler et Préserver la Beauté Originelle',
-      section1Text: 'Chaque surface raconte une histoire. Chaque matériau porte l\'âme de l\'artisan qui l\'a créé. Préserver cette beauté, c\'est honorer un héritage et garantir que vos espaces continuent d\'inspirer l\'émerveillement pour les générations à venir. Depuis 2019, chez NanoProtects, nous sommes bien plus qu\'un prestataire de nettoyage. Nous sommes les gardiens de votre patrimoine. Animés par une quête de perfection si aboutie qu\'elle en devient invisible, nous œuvrons pour que la beauté des lieux et la qualité de l accueil défient le temps.',
+      section1Text: 'Fondée en 2019, NanoProtects propose aux professionnels et particuliers des solutions de nettoyage, rénovation et protection efficaces, respectueuses des matériaux. Nous accompagnons plus de 50 établissements partenaires ainsi que de nombreux particuliers à travers le Maroc.',
       section2Title: 'Notre Méthode',
-      section2Text: 'Nous développons et déployons des processus d\'intervention à la fois ultra-efficients et parfaitement discrets, conçus pour s\'insérer sans perturbation dans l\'exploitation de nos clients. Notre engagement repose sur un dialogue systématique, une exécution agile et fiable, et une discrétion protectrice, pour préserver et sublimer durablement les matériaux.',
-      section3Title: 'Notre Expertise',
-      section3Text: 'Nous combinons la culture du soin méticuleux et l\'intention authentique à une recherche permanente de solutions nanotechnologiques de pointe. Notre expertise repose sur deux piliers complémentaires qui forment un écosystème de protection durable pour vos surfaces d\'exception.',
+      section2Text: 'Nous développons des processus d\'intervention ultra-efficients et parfaitement discrets, conçus pour s\'insérer sans perturbation dans l\'exploitation de nos clients. Notre engagement repose sur un dialogue systématique, une exécution agile et fiable.',
+      section3Title: 'Nos Valeurs',
+      section3Text: 'Authenticité, Excellence, Engagement, Proximité — quatre valeurs qui guident chacune de nos interventions pour préserver durablement votre patrimoine.',
     },
     materials: {
       title: 'Matériaux et Expertises',
@@ -824,11 +824,11 @@ export const translations: Record<Language, Translations> = {
     about: {
       title: 'النانوتكنولوجيا في خدمة التميز',
       section1Title: 'نهجنا المنهجي: الكشف والحفاظ على الجمال الأصلي',
-      section1Text: 'كل سطح يحكي قصة. كل مادة تحمل روح الحرفي الذي أنشأها. الحفاظ على هذا الجمال يعني تكريم إرث وضمان أن تستمر مساحاتك في إلهام الدهشة للأجيال القادمة. منذ عام 2019، نحن في NanoProtects أكثر من مجرد مزود خدمة تنظيف. نحن حراس تراثك. مدفوعون بسعي للكمال أصبح غير مرئي لدرجة أنه يصبح غير مرئي، نعمل لكي يتحدى جمال الأماكن وجودة الاستقبال الزمن.',
+      section1Text: 'تأسست NanoProtects عام 2019، وتقدم للمهنيين والأفراد حلول تنظيف وتجديد وحماية فعالة تحترم المواد. نرافق أكثر من 50 مؤسسة شريكة بالإضافة إلى العديد من الأفراد في جميع أنحاء المغرب.',
       section2Title: 'طريقتنا',
-      section2Text: 'نطور ونطبق عمليات تدخل فعالة للغاية وسرية تماماً، مصممة للاندماج دون إزعاج في عمليات عملائنا. يعتمد التزامنا على الحوار المنهجي والتنفيذ الرشيق والموثوق والسرية الحامية، للحفاظ على المواد وتحسينها بشكل دائم.',
-      section3Title: 'خبرتنا',
-      section3Text: 'نجمع بين ثقافة الرعاية الدقيقة والنية الحقيقية مع البحث المستمر عن حلول النانوتكنولوجيا المتقدمة. تعتمد خبرتنا على عمودين متكاملين يشكلان نظاماً بيئياً للحماية المستدامة لأسطحك الاستثنائية.',
+      section2Text: 'نطور عمليات تدخل فعالة للغاية وسرية تماماً، مصممة للاندماج دون إزعاج في عمليات عملائنا. يعتمد التزامنا على الحوار المنهجي والتنفيذ الرشيق والموثوق.',
+      section3Title: 'قيمنا',
+      section3Text: 'الأصالة، التميز، الالتزام، القرب — أربع قيم توجه كل تدخل من تدخلاتنا للحفاظ على تراثكم بشكل دائم.',
     },
     materials: {
       title: 'المواد والخبرات',
@@ -1122,11 +1122,11 @@ export const translations: Record<Language, Translations> = {
     about: {
       title: 'Nanotecnologías al Servicio de la Excelencia',
       section1Title: 'Nuestro Enfoque Metodológico: Revelar y Preservar la Belleza Original',
-      section1Text: 'Cada superficie cuenta una historia. Cada material lleva el alma del artesano que lo creó. Preservar esta belleza es honrar un legado y garantizar que tus espacios continúen inspirando asombro para las generaciones venideras. Desde 2019, en NanoProtects somos más que un proveedor de servicios de limpieza. Somos los guardianes de tu patrimonio. Impulsados por una búsqueda de perfección tan lograda que se vuelve invisible, trabajamos para que la belleza de los lugares y la calidad de la acogida desafíen el tiempo.',
+      section1Text: 'Fundada en 2019, NanoProtects ofrece a profesionales y particulares soluciones de limpieza, renovación y protección eficaces y respetuosas con los materiales. Acompañamos a más de 50 establecimientos asociados así como a numerosos particulares en todo Marruecos.',
       section2Title: 'Nuestro Método',
-      section2Text: 'Desarrollamos e implementamos procesos de intervención ultra eficientes y perfectamente discretos, diseñados para integrarse sin perturbación en la operación de nuestros clientes. Nuestro compromiso se basa en un diálogo sistemático, una ejecución ágil y confiable, y una discreción protectora, para preservar y mejorar duradéramente los materiales.',
-      section3Title: 'Nuestra Experiencia',
-      section3Text: 'Combinamos la cultura del cuidado meticuloso y la intención auténtica con la búsqueda permanente de soluciones nanotecnológicas de vanguardia. Nuestra experiencia se basa en dos pilares complementarios que forman un ecosistema de protección sostenible para tus superficies excepcionales.',
+      section2Text: 'Desarrollamos procesos de intervención ultra eficientes y perfectamente discretos, diseñados para integrarse sin perturbación en la operación de nuestros clientes. Nuestro compromiso se basa en un diálogo sistemático, una ejecución ágil y confiable.',
+      section3Title: 'Nuestros Valores',
+      section3Text: 'Autenticidad, Excelencia, Compromiso, Proximidad — cuatro valores que guían cada una de nuestras intervenciones para preservar de manera sostenible su patrimonio.',
     },
     materials: {
       title: 'Materiales y Experiencias',
@@ -1429,11 +1429,11 @@ export const translations: Record<Language, Translations> = {
     about: {
       title: 'Nanotechnologies in Service of Excellence',
       section1Title: 'Our Methodical Approach: Reveal and Preserve Original Beauty',
-      section1Text: 'Every surface tells a story. Every material carries the soul of the craftsman who created it. Preserving this beauty means honoring a legacy and ensuring your spaces continue to inspire wonder for generations to come. Since 2019, at NanoProtects we are more than a cleaning service provider. We are the guardians of your heritage. Driven by a pursuit of perfection so accomplished it becomes invisible, we work to ensure the beauty of places and quality of hospitality defy time.',
+      section1Text: 'Founded in 2019, NanoProtects offers professionals and individuals effective cleaning, renovation and protection solutions that are respectful of materials. We support more than 50 partner establishments as well as many individuals throughout Morocco.',
       section2Title: 'Our Method',
-      section2Text: 'We develop and deploy intervention processes that are ultra-efficient and perfectly discreet, designed to integrate without disruption into our clients\' operations. Our commitment is based on systematic dialogue, agile and reliable execution, and protective discretion, to preserve and sustainably enhance materials.',
-      section3Title: 'Our Expertise',
-      section3Text: 'We combine the culture of meticulous care and authentic intention with the permanent pursuit of cutting-edge nanotechnology solutions. Our expertise is based on two complementary pillars that form an ecosystem of sustainable protection for your exceptional surfaces.',
+      section2Text: 'We develop ultra-efficient and perfectly discreet intervention processes, designed to integrate without disruption into our clients\' operations. Our commitment is based on systematic dialogue, agile and reliable execution.',
+      section3Title: 'Our Values',
+      section3Text: 'Authenticity, Excellence, Commitment, Proximity — four values that guide each of our interventions to sustainably preserve your heritage.',
     },
     materials: {
       title: 'Materials and Expertise',
