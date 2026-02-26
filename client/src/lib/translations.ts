@@ -319,10 +319,10 @@ export const translations: Record<Language, Translations> = {
       contact: 'Contact',
     },
     hero: {
-      title: 'L\'Innovation au Service de l\'Excellence',
-      subtitle: '<span style="font-weight: 600; color: #fef3c7;">Nettoyage</span> <span style="font-weight: 600; color: #fef3c7;">régénérant</span> et <span style="font-weight: 600; color: #fef3c7;">protection</span> <span style="font-weight: 600; color: #fef3c7;">nanotechnologique durable</span> pour les surfaces d\'exception. Nous révélons la beauté originelle de vos matériaux et la protégeons pour 3 à 5 ans grâce à des revêtements invisibles de dernière génération.',
-      cta: 'Contactez Nous',
-      realizationsButton: 'Nos Réalisations',
+      title: 'Nanotechnologie Certifiée',
+  subtitle: 'Pour <span style="font-weight: 600; color: #fef3c7;">Bejmat</span>, <span style="font-weight: 600; color: #fef3c7;">Marbre</span>, <span style="font-weight: 600; color: #fef3c7;">Zellige</span>, <span style="font-weight: 600; color: #fef3c7;">Pierres Naturelles</span> et toutes surfaces nobles. Diagnostic gratuit, protection 3-5 ans garantie.',
+  cta: 'Contactez Nous',
+  realizationsButton: 'Nos Réalisations',
     },
     home: {
       benefit1Title: 'Temps Libéré',
@@ -617,10 +617,10 @@ export const translations: Record<Language, Translations> = {
       contact: 'اتصل بنا',
     },
     hero: {
-      title: 'الابتكار في خدمة التميز',
-      subtitle: '<span style="font-weight: 600; color: #fef3c7;">التنظيف المجدد</span> و<span style="font-weight: 600; color: #fef3c7;">الحماية النانوية الدائمة</span> للأسطح الاستثنائية. نكشف الجمال الأصلي لمواد بناءك ونحميها لمدة 3 إلى 5 سنوات بفضل الطلاءات غير المرئية من الجيل الأخير.',
-      cta: 'اتصل بنا',
-      realizationsButton: 'إنجازاتنا',
+  title: 'تكنولوجيا النانو المعتمدة',
+  subtitle: 'للبيجمات والرخام والزليج والحجر الطبيعي وجميع الأسطح النبيلة. تشخيص مجاني، حماية 3-5 سنوات مضمونة.',
+  cta: 'اتصل بنا',
+  realizationsButton: 'إنجازاتنا',
     },
     home: {
       benefit1Title: 'وقت محرر',
@@ -915,10 +915,10 @@ export const translations: Record<Language, Translations> = {
       contact: 'Contacto',
     },
     hero: {
-      title: 'La Innovación al Servicio de la Excelencia',
-      subtitle: '<span style="font-weight: 600; color: #fef3c7;">Limpieza regenerativa</span> y <span style="font-weight: 600; color: #fef3c7;">protección nanotecnológica duradera</span> para superficies excepcionales. Revelamos la belleza original de tus materiales y los protegemos durante 3 a 5 años con recubrimientos invisibles de última generación.',
-      cta: 'Contáctanos',
-      realizationsButton: 'Nuestras Realizaciones',
+        title: 'Nanotecnología certificada',
+  subtitle: 'Para <span style="font-weight: 600; color: #fef3c7;">Bejmat</span>, <span style="font-weight: 600; color: #fef3c7;">Mármol</span>, <span style="font-weight: 600; color: #fef3c7;">Zellige</span>, <span style="font-weight: 600; color: #fef3c7;">Piedras Naturales</span> y todas las superficies nobles. Diagnóstico gratuito, protección 3-5 años garantizada.',
+  cta: 'Contáctanos',
+  realizationsButton: 'Nuestras Realizaciones',
     },
     home: {
       benefit1Title: 'Tiempo Liberado',
@@ -1213,10 +1213,10 @@ export const translations: Record<Language, Translations> = {
       contact: 'Contact',
     },
     hero: {
-      title: 'Innovation in Service of Excellence',
-      subtitle: '<span style="font-weight: 600; color: #fef3c7;">Regenerative cleaning</span> and <span style="font-weight: 600; color: #fef3c7;">durable nanotechnology protection</span> for exceptional surfaces. We reveal the original beauty of your materials and protect them for 3 to 5 years with cutting-edge invisible coatings.',
-      cta: 'Contact Us',
-      realizationsButton: 'Our Realizations',
+      title: 'Certified Nanotechnology',
+  subtitle: 'For <span style="font-weight: 600; color: #fef3c7;">Bejmat</span>, <span style="font-weight: 600; color: #fef3c7;">Marble</span>, <span style="font-weight: 600; color: #fef3c7;">Zellige</span>, <span style="font-weight: 600; color: #fef3c7;">Natural Stones</span> and all noble surfaces. Free diagnosis, 3-5 year guaranteed protection.',
+  cta: 'Contact Us',
+  realizationsButton: 'Our Realizations',
     },
     home: {
       benefit1Title: 'Time Freed',
