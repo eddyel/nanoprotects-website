@@ -157,9 +157,9 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       toast.error(t.contact.errorSubmit || 'Please fix the errors above');
       return;
@@ -167,21 +167,80 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    const firstName = formData.name.trim().split(/\s+/)[0];
-    const confirmationData = {
-      firstName,
-      email: formData.email,
-      phone: formData.phone,
-      materials: selectedMateriaux,
-      autreMateriau: formData.autreMateriau,
-      zones: selectedZones,
-      protectionTypes: selectedProtectionTypes,
-      ville: ville || autreVille,
-      message: formData.message
-    };
+    const finalCity = ville === 'Autre' ? autreVille : ville;
+    const materialsStr = selectedMateriaux.join(', ');
+    const zonesStr = selectedZones.join(', ');
+    const protectionsStr = selectedProtectionTypes.join(', ');
 
-    sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
-    setLocation('/confirmation');
+    try {
+      // Submit to Netlify Forms
+      const formBody = new URLSearchParams({
+        'form-name': 'contact',
+        'bot-field': '',
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        city: finalCity,
+        materials: materialsStr,
+        autreMateriau: formData.autreMateriau,
+        zones: zonesStr,
+        protections: protectionsStr,
+        message: formData.message,
+      });
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formBody.toString(),
+      });
+
+      if (!response.ok) {
+        throw new Error('Form submission failed');
+      }
+
+      // Send to Integrately webhook for Zoho CRM lead creation
+      const webhookUrl = import.meta.env.VITE_INTEGRATELY_WEBHOOK_URL;
+      if (webhookUrl) {
+        try {
+          await fetch(webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: formData.name,
+              email: formData.email,
+              phone: formData.phone,
+              city: finalCity,
+              materials: materialsStr,
+              zones: zonesStr,
+              protections: protectionsStr,
+              message: formData.message,
+            }),
+          });
+        } catch {
+          // Webhook failure should not block the user experience
+        }
+      }
+
+      // Store confirmation data and redirect
+      const firstName = formData.name.trim().split(/\s+/)[0];
+      const confirmationData = {
+        firstName,
+        email: formData.email,
+        phone: formData.phone,
+        materials: selectedMateriaux,
+        autreMateriau: formData.autreMateriau,
+        zones: selectedZones,
+        protectionTypes: selectedProtectionTypes,
+        ville: finalCity,
+        message: formData.message,
+      };
+
+      sessionStorage.setItem('confirmationData', JSON.stringify(confirmationData));
+      setLocation('/confirmation');
+    } catch {
+      toast.error(t.contact.errorSubmit || 'Submission failed. Please try again.');
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -230,8 +289,21 @@ export default function Contact() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-8" noValidate>
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-8"
+            noValidate
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
             <input type="hidden" name="form-name" value="contact" />
+            <p className="hidden">
+              <label>
+                Don't fill this out if you're human: <input name="bot-field" />
+              </label>
+            </p>
             
             {/* Standard Fields */}
             <div className="grid md:grid-cols-2 gap-6">
