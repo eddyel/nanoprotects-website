@@ -320,7 +320,7 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
       title: 'Nanotechnologie Certifiée',
-  subtitle: 'Pour <span style="font-weight: 600; color: #fef3c7;">Bejmat</span>, <span style="font-weight: 600; color: #fef3c7;">Marbre</span>, <span style="font-weight: 600; color: #fef3c7;">Zellige</span>, <span style="font-weight: 600; color: #fef3c7;">Pierres Naturelles</span> et toutes surfaces nobles. Diagnostic gratuit, protection 3-5 ans garantie.',
+  subtitle: 'Pour <span style="font-weight: 600; color: #fef3c7;">Bejmat</span>, <span style="font-weight: 600; color: #fef3c7;">Marbre</span>, <span style="font-weight: 600; color: #fef3c7;">Zellige</span>, <span style="font-weight: 600; color: #fef3c7;">Pierres Naturelles</span> et toutes surfaces nobles. Diagnostic gratuit, <span style="font-weight: 600; color: #fef3c7;">protection 3-5 ans garantie</span>.',
   cta: 'Contactez Nous',
   realizationsButton: 'Nos Réalisations',
     },
@@ -618,7 +618,7 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
   title: 'تكنولوجيا النانو المعتمدة',
-  subtitle: 'للبيجمات والرخام والزليج والحجر الطبيعي وجميع الأسطح النبيلة. تشخيص مجاني، حماية 3-5 سنوات مضمونة.',
+  subtitle: 'للبيجمات والرخام والزليج والحجر الطبيعي وجميع الأسطح النبيلة. تشخيص مجاني، <span style="font-weight: 600; color: #fef3c7;">حماية 3-5 سنوات مضمونة</span>.',
   cta: 'اتصل بنا',
   realizationsButton: 'إنجازاتنا',
     },
@@ -916,7 +916,7 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
         title: 'Nanotecnología certificada',
-  subtitle: 'Para <span style="font-weight: 600; color: #fef3c7;">Bejmat</span>, <span style="font-weight: 600; color: #fef3c7;">Mármol</span>, <span style="font-weight: 600; color: #fef3c7;">Zellige</span>, <span style="font-weight: 600; color: #fef3c7;">Piedras Naturales</span> y todas las superficies nobles. Diagnóstico gratuito, protección 3-5 años garantizada.',
+  subtitle: 'Para <span style="font-weight: 600; color: #fef3c7;">Bejmat</span>, <span style="font-weight: 600; color: #fef3c7;">Mármol</span>, <span style="font-weight: 600; color: #fef3c7;">Zellige</span>, <span style="font-weight: 600; color: #fef3c7;">Piedras Naturales</span> y todas las superficies nobles. Diagnóstico gratuito, <span style="font-weight: 600; color: #fef3c7;">protección 3-5 años garantizada</span>.',
   cta: 'Contáctanos',
   realizationsButton: 'Nuestras Realizaciones',
     },
@@ -1214,7 +1214,7 @@ export const translations: Record<Language, Translations> = {
     },
     hero: {
       title: 'Certified Nanotechnology',
-  subtitle: 'For <span style="font-weight: 600; color: #fef3c7;">Bejmat</span>, <span style="font-weight: 600; color: #fef3c7;">Marble</span>, <span style="font-weight: 600; color: #fef3c7;">Zellige</span>, <span style="font-weight: 600; color: #fef3c7;">Natural Stones</span> and all noble surfaces. Free diagnosis, 3-5 year guaranteed protection.',
+  subtitle: 'For <span style="font-weight: 600; color: #fef3c7;">Bejmat</span>, <span style="font-weight: 600; color: #fef3c7;">Marble</span>, <span style="font-weight: 600; color: #fef3c7;">Zellige</span>, <span style="font-weight: 600; color: #fef3c7;">Natural Stones</span> and all noble surfaces. Free diagnosis, <span style="font-weight: 600; color: #fef3c7;">3-5 year guaranteed protection</span>.',
   cta: 'Contact Us',
   realizationsButton: 'Our Realizations',
     },
