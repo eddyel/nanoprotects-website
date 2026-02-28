@@ -7,6 +7,93 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 import { toast } from 'sonner';
 
+// ===========================================
+// LISTE COMPLÈTE DES PAYS
+// ===========================================
+const countries = [
+  // Maroc en premier (défaut)
+  { code: "+212", flag: "🇲🇦", name: "Maroc", search: "maroc +212" },
+  
+  // Europe + UK
+  { code: "+33", flag: "🇫🇷", name: "France", search: "france +33" },
+  { code: "+34", flag: "🇪🇸", name: "Espagne", search: "espagne spain +34" },
+  { code: "+49", flag: "🇩🇪", name: "Allemagne", search: "allemagne germany +49" },
+  { code: "+39", flag: "🇮🇹", name: "Italie", search: "italie italy +39" },
+  { code: "+44", flag: "🇬🇧", name: "Royaume-Uni", search: "royaume uni united kingdom uk +44" },
+  { code: "+32", flag: "🇧🇪", name: "Belgique", search: "belgique belgium +32" },
+  { code: "+41", flag: "🇨🇭", name: "Suisse", search: "suisse switzerland +41" },
+  { code: "+31", flag: "🇳🇱", name: "Pays-Bas", search: "pays bas netherlands +31" },
+  { code: "+351", flag: "🇵🇹", name: "Portugal", search: "portugal +351" },
+  { code: "+46", flag: "🇸🇪", name: "Suède", search: "suede sweden +46" },
+  { code: "+47", flag: "🇳🇴", name: "Norvège", search: "norvege norway +47" },
+  { code: "+45", flag: "🇩🇰", name: "Danemark", search: "danemark denmark +45" },
+  { code: "+358", flag: "🇫🇮", name: "Finlande", search: "finlande finland +358" },
+  { code: "+43", flag: "🇦🇹", name: "Autriche", search: "autriche austria +43" },
+  { code: "+48", flag: "🇵🇱", name: "Pologne", search: "pologne poland +48" },
+  { code: "+30", flag: "🇬🇷", name: "Grèce", search: "grece greece +30" },
+  { code: "+420", flag: "🇨🇿", name: "République tchèque", search: "republique tcheque czech +420" },
+  { code: "+40", flag: "🇷🇴", name: "Roumanie", search: "roumanie romania +40" },
+  { code: "+36", flag: "🇭🇺", name: "Hongrie", search: "hongrie hungary +36" },
+  { code: "+90", flag: "🇹🇷", name: "Turquie", search: "turquie turkey +90" },
+  { code: "+7", flag: "🇷🇺", name: "Russie", search: "russie russia +7" },
+  { code: "+380", flag: "🇺🇦", name: "Ukraine", search: "ukraine +380" },
+  
+  // Amériques
+  { code: "+1", flag: "🇺🇸", name: "États-Unis", search: "etats unis usa america +1" },
+  { code: "+1", flag: "🇨🇦", name: "Canada", search: "canada +1" },
+  { code: "+52", flag: "🇲🇽", name: "Mexique", search: "mexique mexico +52" },
+  { code: "+55", flag: "🇧🇷", name: "Brésil", search: "bresil brazil +55" },
+  { code: "+54", flag: "🇦🇷", name: "Argentine", search: "argentine argentina +54" },
+  { code: "+57", flag: "🇨🇴", name: "Colombie", search: "colombie colombia +57" },
+  { code: "+56", flag: "🇨🇱", name: "Chili", search: "chili chile +56" },
+  { code: "+51", flag: "🇵🇪", name: "Pérou", search: "perou peru +51" },
+  { code: "+58", flag: "🇻🇪", name: "Venezuela", search: "venezuela +58" },
+  
+  // Moyen-Orient
+  { code: "+971", flag: "🇦🇪", name: "Émirats Arabes Unis", search: "emirats arabes unis uae +971" },
+  { code: "+966", flag: "🇸🇦", name: "Arabie Saoudite", search: "arabie saoudite saudi +966" },
+  { code: "+974", flag: "🇶🇦", name: "Qatar", search: "qatar +974" },
+  { code: "+965", flag: "🇰🇼", name: "Koweït", search: "koweit kuwait +965" },
+  { code: "+973", flag: "🇧🇭", name: "Bahreïn", search: "bahrein bahrain +973" },
+  { code: "+968", flag: "🇴🇲", name: "Oman", search: "oman +968" },
+  { code: "+962", flag: "🇯🇴", name: "Jordanie", search: "jordanie jordan +962" },
+  { code: "+961", flag: "🇱🇧", name: "Liban", search: "liban lebanon +961" },
+  { code: "+964", flag: "🇮🇶", name: "Irak", search: "irak iraq +964" },
+  { code: "+963", flag: "🇸🇾", name: "Syrie", search: "syrie syria +963" },
+  { code: "+972", flag: "🇮🇱", name: "Israël", search: "israel +972" },
+  { code: "+967", flag: "🇾🇪", name: "Yémen", search: "yemen +967" },
+  { code: "+218", flag: "🇱🇾", name: "Libye", search: "libye libya +218" },
+  { code: "+249", flag: "🇸🇩", name: "Soudan", search: "soudan sudan +249" },
+  
+  // Afrique (hors Maroc déjà en tête)
+  { code: "+213", flag: "🇩🇿", name: "Algérie", search: "algerie algeria +213" },
+  { code: "+216", flag: "🇹🇳", name: "Tunisie", search: "tunisie tunisia +216" },
+  { code: "+20", flag: "🇪🇬", name: "Égypte", search: "egypte egypt +20" },
+  { code: "+221", flag: "🇸🇳", name: "Sénégal", search: "senegal +221" },
+  { code: "+225", flag: "🇨🇮", name: "Côte d'Ivoire", search: "cote d ivoire +225" },
+  { code: "+237", flag: "🇨🇲", name: "Cameroun", search: "cameroun cameroon +237" },
+  { code: "+27", flag: "🇿🇦", name: "Afrique du Sud", search: "afrique du sud south africa +27" },
+  { code: "+234", flag: "🇳🇬", name: "Nigeria", search: "nigeria +234" },
+  { code: "+254", flag: "🇰🇪", name: "Kenya", search: "kenya +254" },
+  { code: "+251", flag: "🇪🇹", name: "Éthiopie", search: "ethiopie ethiopia +251" },
+  { code: "+233", flag: "🇬🇭", name: "Ghana", search: "ghana +233" },
+  { code: "+255", flag: "🇹🇿", name: "Tanzanie", search: "tanzanie tanzania +255" },
+  
+  // Asie-Pacifique
+  { code: "+86", flag: "🇨🇳", name: "Chine", search: "chine china +86" },
+  { code: "+81", flag: "🇯🇵", name: "Japon", search: "japon japan +81" },
+  { code: "+91", flag: "🇮🇳", name: "Inde", search: "inde india +91" },
+  { code: "+82", flag: "🇰🇷", name: "Corée du Sud", search: "coree du sud south korea +82" },
+  { code: "+61", flag: "🇦🇺", name: "Australie", search: "australie australia +61" },
+  { code: "+64", flag: "🇳🇿", name: "Nouvelle-Zélande", search: "nouvelle zelande new zealand +64" },
+  { code: "+65", flag: "🇸🇬", name: "Singapour", search: "singapour singapore +65" },
+  { code: "+60", flag: "🇲🇾", name: "Malaisie", search: "malaisie malaysia +60" },
+  { code: "+62", flag: "🇮🇩", name: "Indonésie", search: "indonesie indonesia +62" },
+  { code: "+66", flag: "🇹🇭", name: "Thaïlande", search: "thailande thailand +66" },
+  { code: "+92", flag: "🇵🇰", name: "Pakistan", search: "pakistan +92" },
+  { code: "+880", flag: "🇧🇩", name: "Bangladesh", search: "bangladesh +880" },
+];
+
 const villes = [
   'Marrakech', 'Casablanca', 'Essaouira', 'Agadir', 
   'Rabat', 'El Jadida', 'Tanger', 'Autre'
@@ -37,9 +124,41 @@ export default function Contact() {
     message: '',
     autreMateriau: ''
   });
+  
+  // États pour le champ téléphone
+  const [countryCode, setCountryCode] = useState('+212');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const autreVilleRef = useRef<HTMLInputElement>(null);
+
+  // Filtrer les pays selon la recherche
+  const filteredCountries = countries.filter(country => 
+    country.search.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Fermer le dropdown quand on clique en dehors
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+        setSearchQuery('');
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Auto-focus sur la recherche quand le dropdown s'ouvre
+  useEffect(() => {
+    if (isDropdownOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [isDropdownOpen]);
 
   // Get material and zone translations
   const materiaux = [
@@ -157,6 +276,22 @@ export default function Contact() {
     }
   };
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Ne garder que les chiffres, max 9, et formater avec espace
+    const numbers = e.target.value.replace(/\D/g, '').slice(0, 9);
+    const formatted = numbers.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3');
+    setFormData(prev => ({ ...prev, phone: formatted }));
+    if (errors.phone) {
+      setErrors(prev => ({ ...prev, phone: undefined }));
+    }
+  };
+
+  const handleCountrySelect = (code: string) => {
+    setCountryCode(code);
+    setIsDropdownOpen(false);
+    setSearchQuery('');
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -179,7 +314,7 @@ export default function Contact() {
         'bot-field': '',
         name: formData.name,
         email: formData.email,
-        phone: formData.phone,
+        phone: `${countryCode} ${formData.phone}`,
         city: finalCity,
         materials: materialsStr,
         autreMateriau: formData.autreMateriau,
@@ -208,7 +343,7 @@ export default function Contact() {
             body: JSON.stringify({
               name: formData.name,
               email: formData.email,
-              phone: formData.phone,
+              phone: `${countryCode} ${formData.phone}`,
               city: finalCity,
               materials: materialsStr,
               zones: zonesStr,
@@ -226,7 +361,7 @@ export default function Contact() {
       const confirmationData = {
         firstName,
         email: formData.email,
-        phone: formData.phone,
+        phone: `${countryCode} ${formData.phone}`,
         materials: selectedMateriaux,
         autreMateriau: formData.autreMateriau,
         zones: selectedZones,
@@ -360,25 +495,100 @@ export default function Contact() {
               </div>
             </div>
 
+            {/* Champ Téléphone avec sélecteur de pays amélioré */}
             <div>
               <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                 {t.contact.phoneLabel}
               </label>
-              <input
-                id="phone"
-                type="tel"
-                name="phone"
-                inputMode="tel"
-                required
-                value={formData.phone}
-                onChange={handleInputChange}
-                aria-invalid={!!errors.phone}
-                aria-describedby={errors.phone ? 'phone-error' : undefined}
-                className={`w-full px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
-                  errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300'
-                }`}
-                placeholder="Ex: 212 675987890"
-              />
+              <div className="flex gap-2">
+                {/* Dropdown pays personnalisé */}
+                <div className="relative w-40" ref={dropdownRef}>
+                  <button
+                    type="button"
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    className="w-full h-[44px] px-3 py-2 border border-gray-300 rounded-lg bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent flex items-center justify-between"
+                  >
+                    <span className="flex items-center gap-2">
+                      <span className="text-xl">
+                        {countries.find(c => c.code === countryCode)?.flag}
+                      </span>
+                      <span className="text-sm font-medium">{countryCode}</span>
+                    </span>
+                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                  {/* Dropdown déroulant avec recherche */}
+                  {isDropdownOpen && (
+                    <div className="absolute z-50 mt-1 w-80 bg-white border border-gray-200 rounded-lg shadow-lg">
+                      {/* Barre de recherche */}
+                      <div className="p-2 border-b border-gray-200">
+                        <div className="relative">
+                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
+                          <input
+                            ref={searchInputRef}
+                            type="text"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            placeholder="Rechercher un pays..."
+                            className="w-full pl-9 pr-8 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                          />
+                          {searchQuery && (
+                            <button
+                              type="button"
+                              onClick={() => setSearchQuery('')}
+                              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                            >
+                              ✕
+                            </button>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Liste des pays */}
+                      <div className="max-h-64 overflow-y-auto">
+                        {filteredCountries.length > 0 ? (
+                          filteredCountries.map((country, index) => (
+                            <button
+                              key={`${country.code}-${country.name}-${index}`}
+                              type="button"
+                              onClick={() => handleCountrySelect(country.code)}
+                              className={`w-full flex items-center gap-3 px-3 py-2 text-left hover:bg-amber-50 transition-colors ${
+                                countryCode === country.code ? 'bg-primary/10' : ''
+                              }`}
+                            >
+                              <span className="text-xl">{country.flag}</span>
+                              <span className="text-sm font-mono text-gray-500 w-12">{country.code}</span>
+                              <span className="text-sm text-gray-700">{country.name}</span>
+                            </button>
+                          ))
+                        ) : (
+                          <div className="px-3 py-4 text-center text-sm text-gray-500">
+                            Aucun pays trouvé
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <input
+                  id="phone"
+                  type="tel"
+                  name="phone"
+                  inputMode="tel"
+                  required
+                  value={formData.phone}
+                  onChange={handlePhoneChange}
+                  aria-invalid={!!errors.phone}
+                  aria-describedby={errors.phone ? 'phone-error' : undefined}
+                  className={`flex-1 px-4 py-3 min-h-[44px] border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
+                    errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                  }`}
+                  placeholder="612 345 678"
+                />
+              </div>
               {errors.phone && (
                 <p id="phone-error" className="text-red-600 text-sm mt-1" role="alert">
                   {errors.phone}
