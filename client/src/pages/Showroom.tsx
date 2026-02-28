@@ -275,7 +275,40 @@ const galleryImages: GalleryImage[] = [
     descriptionKey: 'desc24',
     isVideo: true,
     hideLabels: true
-  }
+  },
+  // Marbre & Zellige Avant/Après
+{
+  id: '25',
+  category: ['Marbre', 'Zellige'],
+  beforeImage: '/images/showroom/Marbre, Zellige Av-Ap.png',
+  afterImage: '/images/showroom/Marbre, Zellige Av-Ap.png',
+  title: 'Fontaine Marbre & Zellige - Relais Châteaux',
+  titleKey: 'title25',
+  descriptionKey: 'desc25',
+  isSingleImage: true
+},
+// Console Marbre Noir
+{
+  id: '26',
+  category: 'Marbre',
+  beforeImage: '/images/showroom/2 Console Marbre Noir.png',
+  afterImage: '/images/showroom/2 Console Marbre Noir.png',
+  title: 'Console Marbre Noir - Relais Châteaux',
+  titleKey: 'title26',
+  descriptionKey: 'desc26',
+  isSingleImage: true
+},
+// Transat Aluminium
+{
+  id: '27',
+  category: 'Métal',
+  beforeImage: '/images/showroom/Transat Allu Protected.png',
+  afterImage: '/images/showroom/Transat Allu Protected.png',
+  title: 'Transat Aluminium - Particulier',
+  titleKey: 'title27',
+  descriptionKey: 'desc27',
+  isSingleImage: true
+}
 ];
 
 export default function Showroom() {
