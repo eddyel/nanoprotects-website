@@ -70,6 +70,9 @@ export interface Translations {
     desc22: string;
     desc23: string;
     desc24: string;
+    desc25: string;
+    desc26: string;
+    desc27: string;
     title1: string;
     title2: string;
     title3: string;
@@ -94,6 +97,9 @@ export interface Translations {
     title22: string;
     title23: string;
     title24: string;
+    title25: string;
+    title26: string;
+    title27: string;
   };
   why: {
     title: string;
@@ -371,6 +377,9 @@ export const translations: Record<Language, Translations> = {
       desc22: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
       desc23: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
       desc24: 'Minéralisation Anti-Effritement & Protection Hydrofuge Invisible',
+      desc25: 'Décapage, Polissage, Crystallisation & Protection Sublimée',
+      desc26: 'Nettoyage profond, Polissage, Crystallisation & Protection Sublimée',
+      desc27: 'Nettoyage profond & Protection Sublimée',
       title1: 'Sol en Bejmat - Riad',
       title2: 'Corridor en Bejmat - Riad',
       title3: 'Entrée en Bejmat - Riad',
@@ -395,6 +404,9 @@ export const translations: Record<Language, Translations> = {
       title22: 'Mur Briquettes - Hotel',
       title23: 'Mur Enduit - Particulier',
       title24: 'Mur en Pisé - Hotel',
+      title25: 'Fontaine Marbre & Zellige - Relais Châteaux',
+      title26: 'Console Marbre Noir - Relais Châteaux',
+      title27: 'Transat Aluminium - Particulier',
     },
     why: {
       title: 'Pourquoi Choisir NanoProtects',
@@ -669,6 +681,9 @@ export const translations: Record<Language, Translations> = {
       desc22: 'معالجة التمعدن المضادة للتفتت والحماية المقاومة للماء غير المرئية',
       desc23: 'معالجة التمعدن المضادة للتفتت والحماية المقاومة للماء غير المرئية',
       desc24: 'معالجة التمعدن المضادة للتفتت والحماية المقاومة للماء غير المرئية',
+      desc25: 'إزالة الطبقات، تلميع، تبلور وحماية متعالية',
+      desc26: 'تنظيف عميق، تلميع، تبلور وحماية متعالية',
+      desc27: 'تنظيف عميق وحماية متعالية',
       title1: 'أرضية بيجمات - رياد',
       title2: 'ممر بيجمات - رياد',
       title3: 'مدخل بيجمات - رياد',
@@ -693,6 +708,9 @@ export const translations: Record<Language, Translations> = {
       title22: 'جدران الطوب - فندق',
       title23: 'جدران ملطوبة - منزل',
       title24: 'جدران مادة الطين - فندق',
+      title25: 'نافورة رخام وزليج - ريليه شاتو',
+      title26: 'كونسول رخام أسود - ريليه شاتو',
+      title27: 'كرسي ألومنيوم - خاص',
     },
     why: {
       title: 'لماذا تختار NanoProtects',
@@ -967,6 +985,9 @@ export const translations: Record<Language, Translations> = {
       desc22: 'Mineralización anti-desmenuzamiento y protección impermeable invisible',
       desc23: 'Mineralización anti-desmenuzamiento y protección impermeable invisible',
       desc24: 'Mineralización anti-desmenuzamiento y protección impermeable invisible',
+      desc25: 'Decapado, Pulido, Cristalización y Protección Sublime',
+      desc26: 'Limpieza profunda, Pulido, Cristalización y Protección Sublime',
+      desc27: 'Limpieza profunda y Protección Sublime',
       title1: 'Piso Bejmat - Riad',
       title2: 'Pasillo Bejmat - Riad',
       title3: 'Entrada Bejmat - Riad',
@@ -991,6 +1012,9 @@ export const translations: Record<Language, Translations> = {
       title22: 'Muro Ladrillos - Hotel',
       title23: 'Muro Revocado - Particular',
       title24: 'Muro Tierra - Hotel',
+      title25: 'Fuente Mármol & Zellige - Relais Châteaux',
+      title26: 'Consola Mármol Negro - Relais Châteaux',
+      title27: 'Tumbona Aluminio - Particular',
     },
     why: {
       title: '¿Por Qué Elegir NanoProtects?',
@@ -1265,6 +1289,9 @@ export const translations: Record<Language, Translations> = {
       desc22: 'Anti-crumbling mineralization & invisible waterproof protection',
       desc23: 'Anti-crumbling mineralization & invisible waterproof protection',
       desc24: 'Anti-crumbling mineralization & invisible waterproof protection',
+      desc25: 'Stripping, Polishing, Crystallisation & Sublime Protection',
+      desc26: 'Deep Cleaning, Polishing, Crystallisation & Sublime Protection',
+      desc27: 'Deep Cleaning & Sublime Protection',
       title1: 'Bejmat Floor - Riad',
       title2: 'Bejmat Corridor - Riad',
       title3: 'Bejmat Entrance - Riad',
@@ -1289,6 +1316,9 @@ export const translations: Record<Language, Translations> = {
       title22: 'Brick Wall - Hotel',
       title23: 'Plastered Wall - Private',
       title24: 'Clay Wall - Hotel',
+      title25: 'Marble & Zellige Fountain - Relais Châteaux',
+      title26: 'Black Marble Console - Relais Châteaux',
+      title27: 'Aluminium Lounger - Private',
     },
     method: {
       title: 'Our Methodical Approach: Reveal and Preserve Original Beauty',
