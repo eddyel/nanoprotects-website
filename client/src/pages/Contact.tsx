@@ -43,11 +43,27 @@ const countries: Country[] = [
   { id: 'ma', code: "+212", flag: "🇲🇦", name: "Maroc", search: "maroc +212", phoneDigits: 9 },
   { id: 'fr', code: "+33",  flag: "🇫🇷", name: "France", search: "france +33", phoneDigits: 9 },
   { id: 'es', code: "+34",  flag: "🇪🇸", name: "Espagne", search: "espagne spain +34", phoneDigits: 9 },
+  { id: 'de', code: "+49",  flag: "🇩🇪", name: "Allemagne", search: "allemagne germany +49", phoneDigits: 10 },
+  { id: 'it', code: "+39",  flag: "🇮🇹", name: "Italie", search: "italie italy +39", phoneDigits: 10 },
+  { id: 'gb', code: "+44",  flag: "🇬🇧", name: "Royaume-Uni", search: "royaume uni united kingdom uk +44", phoneDigits: 10 },
+  { id: 'be', code: "+32",  flag: "🇧🇪", name: "Belgique", search: "belgique belgium +32", phoneDigits: 9 },
+  { id: 'ch', code: "+41",  flag: "🇨🇭", name: "Suisse", search: "suisse switzerland +41", phoneDigits: 9 },
   { id: 'us', code: "+1",   flag: "🇺🇸", name: "États-Unis", search: "etats unis usa america +1", phoneDigits: 10 },
   { id: 'ca', code: "+1",   flag: "🇨🇦", name: "Canada", search: "canada +1", phoneDigits: 10 },
+  { id: 'mx', code: "+52",  flag: "🇲🇽", name: "Mexique", search: "mexique mexico +52", phoneDigits: 10 },
+  { id: 'br', code: "+55",  flag: "🇧🇷", name: "Brésil", search: "bresil brazil +55", phoneDigits: 11 },
+  { id: 'ar', code: "+54",  flag: "🇦🇷", name: "Argentine", search: "argentine argentina +54", phoneDigits: 10 },
+  { id: 'jp', code: "+81",  flag: "🇯🇵", name: "Japon", search: "japon japan +81", phoneDigits: 10 },
+  { id: 'cn', code: "+86",  flag: "🇨🇳", name: "Chine", search: "chine china +86", phoneDigits: 11 },
+  { id: 'in', code: "+91",  flag: "🇮🇳", name: "Inde", search: "inde india +91", phoneDigits: 10 },
+  { id: 'au', code: "+61",  flag: "🇦🇺", name: "Australie", search: "australie australia +61", phoneDigits: 9 },
+  { id: 'nz', code: "+64",  flag: "🇳🇿", name: "Nouvelle-Zélande", search: "nouvelle zelande new zealand +64", phoneDigits: 9 },
 ];
 
-const VILLES = ['Marrakech', 'Casablanca', 'Essaouira', 'Agadir', 'Rabat', 'El Jadida', 'Tanger', 'Autre'];
+const VILLES = [
+  'Marrakech', 'Casablanca', 'Essaouira', 'Agadir',
+  'Rabat', 'El Jadida', 'Tanger', 'Fès', 'Autre'
+];
 
 // ===========================================
 // COMPOSANT TOGGLE BUTTON
@@ -57,6 +73,7 @@ function ToggleButton({ label, selected, onToggle }: { label: string; selected: 
     <button
       type="button"
       onClick={onToggle}
+      aria-pressed={selected}
       className={`px-4 py-2 rounded-lg border-2 transition-all text-sm font-medium flex items-center justify-center gap-1 ${
         selected
           ? 'border-primary bg-primary/10 text-primary'
@@ -97,9 +114,9 @@ export default function Contact() {
   
   // Formulaire
   const [errors, setErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const autreVilleRef = useRef<HTMLInputElement>(null);
-  const [touched, setTouched] = useState<Record<string, boolean>>({});
 
   // Dérivés
   const selectedCountry = countries.find(c => c.id === selectedCountryId) ?? countries[0];
@@ -135,7 +152,9 @@ export default function Contact() {
   }, []);
 
   useEffect(() => {
-    if (isDropdownOpen) searchInputRef.current?.focus();
+    if (isDropdownOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
   }, [isDropdownOpen]);
 
   useEffect(() => {
@@ -144,45 +163,71 @@ export default function Contact() {
     }
   }, [ville]);
 
+  useEffect(() => {
+    setFormData(prev => ({ ...prev, phone: '' }));
+    setErrors(prev => ({ ...prev, phone: undefined }));
+  }, [selectedCountryId]);
+
   // Handlers
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    // ✅ Marquer le champ comme touché mais NE PAS valider maintenant
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
     setTouched(prev => ({ ...prev, [name]: true }));
-    // ✅ Supprimer l'erreur immédiatement pour améliorer l'UX
-    setErrors(prev => ({ ...prev, [name]: undefined }));
+    
+    if (name === 'name') {
+      setErrors(prev => ({ ...prev, name: value.trim() ? undefined : 'Le nom est requis' }));
+    }
+
+    if (name === 'email') {
+      if (!value.trim()) {
+        setErrors(prev => ({ ...prev, email: "L'email est requis" }));
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+        setErrors(prev => ({ ...prev, email: 'Format: nom@domaine.com' }));
+      } else {
+        setErrors(prev => ({ ...prev, email: undefined }));
+      }
+    }
+
+    if (name === 'message') {
+      setErrors(prev => ({ ...prev, message: value.trim() ? undefined : 'Le message est requis' }));
+    }
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const digits = e.target.value.replace(/\D/g, '').slice(0, expectedDigits);
-    let formatted = digits;
-    if (digits.length > 3) {
-      formatted = digits.match(/.{1,3}/g)?.join(' ') ?? digits;
-    }
+    const formatted = digits.replace(/(\d{3})(?=\d)/g, '$1 ').trimEnd();
     setFormData(prev => ({ ...prev, phone: formatted }));
+  };
+
+  const handlePhoneBlur = () => {
     setTouched(prev => ({ ...prev, phone: true }));
-    // ✅ Supprimer l'erreur immédiatement
-    setErrors(prev => ({ ...prev, phone: undefined }));
+    if (!formData.phone.trim()) {
+      setErrors(prev => ({ ...prev, phone: 'Le téléphone est requis' }));
+    } else {
+      const digits = formData.phone.replace(/\s/g, '');
+      if (digits.length !== expectedDigits) {
+        setErrors(prev => ({ ...prev, phone: `${expectedDigits} chiffres requis` }));
+      } else {
+        setErrors(prev => ({ ...prev, phone: undefined }));
+      }
+    }
   };
 
   const handleCountrySelect = (id: string) => {
     setSelectedCountryId(id);
-    setFormData(prev => ({ ...prev, phone: '' }));
-    setTouched(prev => ({ ...prev, phone: false }));
-    setErrors(prev => ({ ...prev, phone: undefined }));
     setIsDropdownOpen(false);
     setSearchQuery('');
   };
 
-  // Validation UNIQUEMENT à la soumission
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
-    if (!formData.name.trim()) {
-      newErrors.name = 'Le nom est requis';
-    }
-
+    if (!formData.name.trim()) newErrors.name = 'Le nom est requis';
+    
     if (!formData.email.trim()) {
       newErrors.email = "L'email est requis";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -198,9 +243,7 @@ export default function Contact() {
       }
     }
 
-    if (!formData.message.trim()) {
-      newErrors.message = 'Le message est requis';
-    }
+    if (!formData.message.trim()) newErrors.message = 'Le message est requis';
 
     if (isAutreSelected && !formData.autreMateriau.trim()) {
       newErrors.autreMateriau = 'Précisez le matériau';
@@ -217,6 +260,8 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    setTouched({ name: true, email: true, phone: true, message: true });
+
     if (!validateForm()) {
       toast.error('Veuillez remplir tous les champs requis');
       return;
@@ -280,15 +325,15 @@ export default function Contact() {
           <h1 className="text-4xl md:text-5xl font-bold text-[#A33215] mb-8">{t.contact.title}</h1>
           <p className="text-center text-gray-600 text-lg mb-12">{t.contact.subtitle}</p>
 
-          {/* Résumé d'erreurs - UNIQUEMENT visible s'il y a des erreurs */}
+          {/* Résumé d'erreurs */}
           {Object.keys(errors).length > 0 && (
             <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 rounded">
               <h3 className="text-red-800 font-semibold mb-2">
                 {Object.keys(errors).length === 1 ? '1 erreur à corriger' : `${Object.keys(errors).length} erreurs à corriger`}
               </h3>
               <ul className="list-disc list-inside text-red-700">
-                {Object.values(errors).map((msg, i) => (
-                  <li key={i}>{msg}</li>
+                {Object.entries(errors).map(([field, msg]) => (
+                  <li key={field}>{msg}</li>
                 ))}
               </ul>
             </div>
@@ -314,13 +359,13 @@ export default function Contact() {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
+                onBlur={handleBlur}
                 className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary ${
-                  errors.name ? 'border-red-500' : 'border-gray-300'
+                  touched.name && errors.name ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder={t.contact.namePlaceholder}
               />
-              {/* Afficher l'erreur seulement si elle existe */}
-              {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
+              {touched.name && errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
             </div>
 
             {/* Email */}
@@ -332,12 +377,13 @@ export default function Contact() {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
+                onBlur={handleBlur}
                 className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary ${
-                  errors.email ? 'border-red-500' : 'border-gray-300'
+                  touched.email && errors.email ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder={t.contact.emailPlaceholder}
               />
-              {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>}
+              {touched.email && errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>}
             </div>
 
             {/* Téléphone */}
@@ -358,7 +404,7 @@ export default function Contact() {
                   </button>
 
                   {isDropdownOpen && (
-                    <div className="absolute z-50 mt-1 w-64 bg-white border rounded-lg shadow-lg">
+                    <div className="absolute z-50 mt-1 w-80 bg-white border rounded-lg shadow-lg">
                       <div className="p-2 border-b">
                         <div className="relative">
                           <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -367,8 +413,8 @@ export default function Contact() {
                             type="text"
                             value={searchQuery}
                             onChange={e => setSearchQuery(e.target.value)}
-                            placeholder="Rechercher..."
-                            className="w-full pl-8 pr-2 py-1 text-sm border rounded"
+                            placeholder="Rechercher un pays..."
+                            className="w-full pl-8 pr-2 py-1 text-sm border rounded focus:ring-2 focus:ring-primary"
                           />
                         </div>
                       </div>
@@ -378,11 +424,12 @@ export default function Contact() {
                             key={c.id}
                             type="button"
                             onClick={() => handleCountrySelect(c.id)}
-                            className="w-full flex items-center gap-2 px-3 py-2 hover:bg-gray-100 text-left"
+                            className="w-full flex items-center gap-3 px-3 py-2 hover:bg-amber-50 text-left"
                           >
                             <span className="text-xl">{c.flag}</span>
-                            <span className="text-sm text-gray-600 w-12">{c.code}</span>
-                            <span className="text-sm">{c.name}</span>
+                            <span className="text-sm font-mono text-gray-600 w-12">{c.code}</span>
+                            <span className="text-sm text-gray-700 flex-1">{c.name}</span>
+                            {selectedCountryId === c.id && <Check className="w-4 h-4 text-primary shrink-0" />}
                           </button>
                         ))}
                       </div>
@@ -396,14 +443,14 @@ export default function Contact() {
                   name="phone"
                   value={formData.phone}
                   onChange={handlePhoneChange}
+                  onBlur={handlePhoneBlur}
                   className={`flex-1 px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary ${
-                    errors.phone ? 'border-red-500' : 'border-gray-300'
+                    touched.phone && errors.phone ? 'border-red-500' : 'border-gray-300'
                   }`}
                   placeholder={`${expectedDigits} chiffres`}
                 />
               </div>
-              {/* Message d'erreur seulement si nécessaire */}
-              {errors.phone && <p className="text-red-600 text-sm mt-1">{errors.phone}</p>}
+              {touched.phone && errors.phone && <p className="text-red-600 text-sm mt-1">{errors.phone}</p>}
               <p className="text-xs text-gray-500 mt-1">{selectedCountry.code} - {expectedDigits} chiffres</p>
             </div>
 
@@ -417,6 +464,9 @@ export default function Contact() {
                     label={m}
                     selected={selectedMateriaux.includes(m)}
                     onToggle={() => {
+                      if (m === t.contact.material16 && selectedMateriaux.includes(m)) {
+                        setFormData(prev => ({ ...prev, autreMateriau: '' }));
+                      }
                       setSelectedMateriaux(prev =>
                         prev.includes(m) ? prev.filter(x => x !== m) : [...prev, m]
                       );
@@ -424,6 +474,22 @@ export default function Contact() {
                   />
                 ))}
               </div>
+              {isAutreSelected && (
+                <div className="mt-4">
+                  <label htmlFor="autreMateriau" className="block text-sm font-medium text-gray-700 mb-2">
+                    {t.contact.autreMateriauLabel}
+                  </label>
+                  <input
+                    id="autreMateriau"
+                    type="text"
+                    name="autreMateriau"
+                    value={formData.autreMateriau}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
+                    placeholder="Ex: Béton ciré, Terre cuite..."
+                  />
+                </div>
+              )}
             </div>
 
             {/* Zones */}
@@ -474,10 +540,32 @@ export default function Contact() {
                 onChange={e => setVille(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
               >
-                <option value="">Sélectionnez</option>
-                {VILLES.map(v => <option key={v}>{v}</option>)}
+                <option value="">Sélectionnez une ville</option>
+                {VILLES.map(v => <option key={v} value={v}>{v}</option>)}
               </select>
             </div>
+
+            {/* Autre ville */}
+            {ville === 'Autre' && (
+              <div>
+                <label htmlFor="autreVille" className="block text-sm font-medium mb-2">
+                  {t.contact.specifyCity ?? 'Précisez votre ville'}
+                </label>
+                <input
+                  ref={autreVilleRef}
+                  id="autreVille"
+                  type="text"
+                  name="autreVille"
+                  value={autreVille}
+                  onChange={e => setAutreVille(e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
+                  placeholder="Nom de votre ville"
+                />
+                {touched.autreVille && errors.autreVille && (
+                  <p className="text-red-600 text-sm mt-1">{errors.autreVille}</p>
+                )}
+              </div>
+            )}
 
             {/* Message */}
             <div>
@@ -488,16 +576,22 @@ export default function Contact() {
                 rows={4}
                 value={formData.message}
                 onChange={handleInputChange}
+                onBlur={handleBlur}
                 className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary ${
-                  errors.message ? 'border-red-500' : 'border-gray-300'
+                  touched.message && errors.message ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder={t.contact.messagePlaceholder}
               />
-              {errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
+              {touched.message && errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
             </div>
 
-            <Button type="submit" disabled={isSubmitting} className="w-full py-4 text-lg">
-              {isSubmitting ? 'Envoi...' : t.contact.diagnosticButton}
+            <Button
+              type="submit"
+              size="lg"
+              disabled={isSubmitting}
+              className="w-full py-4 text-lg bg-[#A33215] hover:bg-[#A33215]/90 text-white"
+            >
+              {isSubmitting ? 'Envoi en cours...' : t.contact.diagnosticButton}
             </Button>
           </form>
         </div>
