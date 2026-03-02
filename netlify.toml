@@ -1,7 +1,13 @@
 [build]
-  command = "npm run build"
-  publish = "dist/public"
+  command = "cd client && npm run build"
+  publish = "client/dist"
 
+# Configuration des fonctions Netlify
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Redirection SPA (Single Page Application)
 [[redirects]]
   from = "/*"
   to = "/index.html"
