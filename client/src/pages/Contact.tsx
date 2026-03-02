@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'wouter';
 import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
-import { Check, ChevronDown, X, Search } from 'lucide-react';
+import { Check, ChevronDown, Search } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 import { toast } from 'sonner';
@@ -218,7 +218,7 @@ export default function Contact() {
   };
 
   // ===========================================
-  // HANDLE SUBMIT CORRIGÉ (Solution optimale)
+  // HANDLE SUBMIT CORRIGÉ AVEC APPEL À LA FONCTION
   // ===========================================
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -239,14 +239,12 @@ export default function Contact() {
     const zonesStr = selectedZones.length ? selectedZones.join(', ') : 'Aucune';
     const protectionsStr = selectedProtectionTypes.length ? selectedProtectionTypes.join(', ') : 'Aucune';
 
-    // ✅ CRÉATION DU FORMDATA (solution standard Netlify)
+    // ===========================================
+    // 1. ENVOI À NETLIFY FORMS
+    // ===========================================
     const formDataToSend = new FormData();
-    
-    // ✅ CHAMPS OBLIGATOIRES POUR NETLIFY
     formDataToSend.append('form-name', 'contact');
     formDataToSend.append('bot-field', '');
-    
-    // ✅ TOUS LES CHAMPS DU FORMULAIRE
     formDataToSend.append('name', formData.name);
     formDataToSend.append('email', formData.email);
     formDataToSend.append('phone', fullPhone);
@@ -259,38 +257,41 @@ export default function Contact() {
     formDataToSend.append('message', formData.message);
 
     try {
-      // ✅ ENVOI VERS NETLIFY (sans headers Content-Type)
-      const response = await fetch('/', {
+      // Envoi à Netlify Forms
+      await fetch('/', {
         method: 'POST',
         body: formDataToSend,
       });
 
-      if (!response.ok) {
-        throw new Error(`Erreur Netlify: ${response.status}`);
-      }
+      // ===========================================
+      // 2. ENVOI À LA FONCTION NETLIFY POUR LES EMAILS
+      // ===========================================
+      console.log('📧 Envoi à la fonction contact...');
+      
+      const functionResponse = await fetch('/.netlify/functions/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: fullPhone,
+          city: finalCity,
+          country: `${selectedCountry.flag} ${selectedCountry.name}`,
+          materials: selectedMateriaux,      // Tableau
+          zones: selectedZones,              // Tableau
+          protections: selectedProtectionTypes, // Tableau
+          autreMateriau: formData.autreMateriau || '',
+          message: formData.message,
+          language: language,
+        }),
+      });
 
-      // ✅ WEBHOOK OPTIONNEL (pour sauvegarde externe)
-      const webhookUrl = import.meta.env.VITE_INTEGRATELY_WEBHOOK_URL;
-      if (webhookUrl) {
-        // On envoie en arrière-plan, pas besoin d'attendre
-        fetch(webhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: fullPhone,
-            city: finalCity,
-            country: `${selectedCountry.flag} ${selectedCountry.name}`,
-            materials: materialsStr,
-            zones: zonesStr,
-            protections: protectionsStr,
-            message: formData.message,
-          }),
-        }).catch(err => console.warn('Webhook error (non bloquant):', err));
-      }
+      const result = await functionResponse.json();
+      console.log('✅ Résultat fonction:', result);
 
-      // ✅ PRÉPARATION DES DONNÉES POUR LA PAGE DE CONFIRMATION
+      // ===========================================
+      // 3. REDIRECTION VERS CONFIRMATION
+      // ===========================================
       const firstName = formData.name.trim().split(/\s+/)[0];
       sessionStorage.setItem('confirmationData', JSON.stringify({
         firstName,
@@ -303,11 +304,10 @@ export default function Contact() {
         message: formData.message,
       }));
 
-      // ✅ REDIRECTION VERS LA PAGE DE CONFIRMATION
       setLocation('/confirmation');
       
     } catch (error) {
-      console.error('Erreur soumission:', error);
+      console.error('❌ Erreur soumission:', error);
       toast.error('Erreur lors de l\'envoi du formulaire');
       setIsSubmitting(false);
     }
@@ -332,13 +332,6 @@ export default function Contact() {
             </div>
           )}
 
-          {/* 
-            ⚠️ IMPORTANT : 
-            - L'attribut data-netlify="true" est PRÉSENT mais c'est NOTRE handleSubmit 
-              qui prend le contrôle avec e.preventDefault()
-            - Le formulaire traditionnel Netlify ne sera PAS utilisé
-            - C'est notre fetch avec FormData qui enverra les données
-          */}
           <form
             onSubmit={handleSubmit}
             className="space-y-8"
@@ -347,21 +340,10 @@ export default function Contact() {
             method="POST"
             data-netlify="true"
           >
-            {/* ✅ CHAMPS CACHÉS OBLIGATOIRES POUR NETLIFY */}
             <input type="hidden" name="form-name" value="contact" />
             <input type="hidden" name="bot-field" />
-            
-            {/* ✅ CHAMPS CACHÉS POUR LES DONNÉES DYNAMIQUES */}
-            {/* Ces champs sont optionnels pour notre envoi fetch, 
-                mais les laisser ne pose pas de problème */}
-            <input type="hidden" name="city" value={ville === 'Autre' ? autreVille : ville} />
-            <input type="hidden" name="country" value={`${selectedCountry.flag} ${selectedCountry.name}`} />
-            <input type="hidden" name="materials" value={selectedMateriaux.join(', ') || 'Aucun'} />
-            <input type="hidden" name="zones" value={selectedZones.join(', ') || 'Aucune'} />
-            <input type="hidden" name="protections" value={selectedProtectionTypes.join(', ') || 'Aucune'} />
-            <input type="hidden" name="autreMateriau" value={formData.autreMateriau || ''} />
 
-            {/* NOM */}
+            {/* Nom */}
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2">{t.contact.nameLabel}</label>
               <input
@@ -381,7 +363,7 @@ export default function Contact() {
               )}
             </div>
 
-            {/* EMAIL */}
+            {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-2">{t.contact.emailLabel}</label>
               <input
@@ -401,7 +383,7 @@ export default function Contact() {
               )}
             </div>
 
-            {/* TÉLÉPHONE */}
+            {/* Téléphone */}
             <div>
               <label htmlFor="phone" className="block text-sm font-medium mb-2">{t.contact.phoneLabel}</label>
               <div className="flex gap-2">
@@ -470,7 +452,7 @@ export default function Contact() {
               )}
             </div>
 
-            {/* MATÉRIAUX */}
+            {/* Matériaux */}
             <div>
               <label className="block text-sm font-medium mb-3">{t.contact.materialNature}</label>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -485,7 +467,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* ZONES */}
+            {/* Zones */}
             <div>
               <label className="block text-sm font-medium mb-3">{t.contact.applicationZone}</label>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -500,7 +482,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* PROTECTIONS */}
+            {/* Protections */}
             <div>
               <label className="block text-sm font-medium mb-3">{t.contact.protectionType}</label>
               <div className="grid grid-cols-2 gap-3">
@@ -515,7 +497,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* VILLE */}
+            {/* Ville */}
             <div>
               <label htmlFor="city" className="block text-sm font-medium mb-2">{t.contact.city}</label>
               <select
@@ -530,7 +512,7 @@ export default function Contact() {
               </select>
             </div>
 
-            {/* AUTRE VILLE */}
+            {/* Autre ville */}
             {ville === 'Autre' && (
               <div>
                 <label htmlFor="autreVille" className="block text-sm font-medium mb-2">
@@ -554,7 +536,7 @@ export default function Contact() {
               </div>
             )}
 
-            {/* MESSAGE */}
+            {/* Message */}
             <div>
               <label htmlFor="message" className="block text-sm font-medium mb-2">{t.contact.message}</label>
               <textarea
@@ -574,7 +556,7 @@ export default function Contact() {
               )}
             </div>
 
-            {/* BOUTON DE SOUMISSION */}
+            {/* Bouton de soumission */}
             <Button
               type="submit"
               size="lg"
