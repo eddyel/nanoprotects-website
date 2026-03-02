@@ -1,20 +1,14 @@
 [build]
-  # IMPORTANT: Se déplacer dans le dossier client avant d'exécuter les commandes
-  base = "client"
-  
-  # Commande de build (exécutée depuis client/)
-  command = "npm run build"
-  
-  # Dossier à publier (relatif à base, donc client/dist)
-  publish = "dist"
+  # SUPPRIMER base = "client" - on travaille depuis la racine
+  command = "cd client && npm run build && cd .."
+  publish = "client/dist"
 
 # Configuration des fonctions Netlify
 [functions]
-  # Chemin des fonctions (relatif à la racine, PAS à base)
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
-# Redirection SPA (pour le routing React)
+# Redirection SPA
 [[redirects]]
   from = "/*"
   to = "/index.html"
