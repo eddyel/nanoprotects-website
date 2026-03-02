@@ -98,7 +98,7 @@ export default function Contact() {
   // Formulaire
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false); // ← Flag de soumission
+  const [submitted, setSubmitted] = useState(false);
   const autreVilleRef = useRef<HTMLInputElement>(null);
 
   // Dérivés
@@ -143,7 +143,6 @@ export default function Contact() {
     }
   }, [ville]);
 
-  // Reset phone when country changes
   useEffect(() => {
     setFormData(prev => ({ ...prev, phone: '' }));
   }, [selectedCountryId]);
@@ -166,12 +165,29 @@ export default function Contact() {
     setSearchQuery('');
   };
 
-  // Validation UNIQUEMENT à la soumission
+  const toggleMateriau = (materiau: string) => {
+    setSelectedMateriaux(prev =>
+      prev.includes(materiau) ? prev.filter(x => x !== materiau) : [...prev, materiau]
+    );
+  };
+
+  const toggleZone = (zone: string) => {
+    setSelectedZones(prev =>
+      prev.includes(zone) ? prev.filter(x => x !== zone) : [...prev, zone]
+    );
+  };
+
+  const toggleProtection = (prot: string) => {
+    setSelectedProtectionTypes(prev =>
+      prev.includes(prot) ? prev.filter(x => x !== prot) : [...prev, prot]
+    );
+  };
+
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
     if (!formData.name.trim()) newErrors.name = 'Le nom est requis';
-
+    
     if (!formData.email.trim()) {
       newErrors.email = "L'email est requis";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -203,7 +219,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true); // ← Marque que l'utilisateur a tenté d'envoyer
+    setSubmitted(true);
 
     if (!validateForm()) {
       toast.error('Veuillez corriger les erreurs');
@@ -219,26 +235,39 @@ export default function Contact() {
     const zonesStr = selectedZones.length ? selectedZones.join(', ') : 'Aucune';
     const protectionsStr = selectedProtectionTypes.length ? selectedProtectionTypes.join(', ') : 'Aucune';
 
+    // ✅ Construction du payload pour Netlify
     const payload = {
       'form-name': 'contact',
       'bot-field': '',
       name: formData.name,
       email: formData.email,
       phone: fullPhone,
-      country: `${selectedCountry.flag} ${selectedCountry.name}`,
       city: finalCity,
+      country: `${selectedCountry.flag} ${selectedCountry.name}`,
       materials: materialsStr,
       zones: zonesStr,
       protections: protectionsStr,
+      autreMateriau: formData.autreMateriau || '',
       message: formData.message,
     };
 
     try {
-      await fetch('/', {
+      const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(payload).toString(),
       });
+
+      if (!response.ok) throw new Error('Erreur Netlify');
+
+      const webhookUrl = import.meta.env.VITE_INTEGRATELY_WEBHOOK_URL;
+      if (webhookUrl) {
+        fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        }).catch(err => console.warn('Webhook error:', err));
+      }
 
       const firstName = formData.name.trim().split(/\s+/)[0];
       sessionStorage.setItem('confirmationData', JSON.stringify({
@@ -259,7 +288,6 @@ export default function Contact() {
     }
   };
 
-  // Nombre d'erreurs pour le résumé
   const errorCount = Object.keys(errors).length;
 
   return (
@@ -271,7 +299,6 @@ export default function Contact() {
           <h1 className="text-4xl md:text-5xl font-bold text-[#A33215] mb-8">{t.contact.title}</h1>
           <p className="text-center text-gray-600 text-lg mb-12">{t.contact.subtitle}</p>
 
-          {/* Résumé d'erreurs - UNIQUEMENT après tentative de soumission */}
           {submitted && errorCount > 0 && (
             <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 rounded">
               <h3 className="text-red-800 font-semibold mb-2">
@@ -280,16 +307,26 @@ export default function Contact() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-8" noValidate>
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-8"
+            noValidate
+            name="contact"
+            method="POST"
+            data-netlify="true"
+          >
             <input type="hidden" name="form-name" value="contact" />
-            <p className="hidden"><label>Bot: <input name="bot-field" /></label></p>
+            <p className="hidden">
+              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </p>
 
-            {/* Hidden inputs pour Netlify */}
+            {/* ✅ CHAMPS CACHÉS POUR NETLIFY - TOUS LES CHAMPS */}
             <input type="hidden" name="city" value={ville === 'Autre' ? autreVille : ville} />
-            <input type="hidden" name="materials" value={selectedMateriaux.join(', ')} />
-            <input type="hidden" name="zones" value={selectedZones.join(', ')} />
-            <input type="hidden" name="protections" value={selectedProtectionTypes.join(', ')} />
             <input type="hidden" name="country" value={`${selectedCountry.flag} ${selectedCountry.name}`} />
+            <input type="hidden" name="materials" value={selectedMateriaux.join(', ') || 'Aucun'} />
+            <input type="hidden" name="zones" value={selectedZones.join(', ') || 'Aucune'} />
+            <input type="hidden" name="protections" value={selectedProtectionTypes.join(', ') || 'Aucune'} />
+            <input type="hidden" name="autreMateriau" value={formData.autreMateriau || ''} />
 
             {/* Nom */}
             <div>
@@ -397,11 +434,7 @@ export default function Contact() {
                     key={m}
                     label={m}
                     selected={selectedMateriaux.includes(m)}
-                    onToggle={() => {
-                      setSelectedMateriaux(prev =>
-                        prev.includes(m) ? prev.filter(x => x !== m) : [...prev, m]
-                      );
-                    }}
+                    onToggle={() => toggleMateriau(m)}
                   />
                 ))}
               </div>
@@ -416,11 +449,7 @@ export default function Contact() {
                     key={z}
                     label={z}
                     selected={selectedZones.includes(z)}
-                    onToggle={() => {
-                      setSelectedZones(prev =>
-                        prev.includes(z) ? prev.filter(x => x !== z) : [...prev, z]
-                      );
-                    }}
+                    onToggle={() => toggleZone(z)}
                   />
                 ))}
               </div>
@@ -435,11 +464,7 @@ export default function Contact() {
                     key={p}
                     label={p}
                     selected={selectedProtectionTypes.includes(p)}
-                    onToggle={() => {
-                      setSelectedProtectionTypes(prev =>
-                        prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p]
-                      );
-                    }}
+                    onToggle={() => toggleProtection(p)}
                   />
                 ))}
               </div>
@@ -459,6 +484,25 @@ export default function Contact() {
                 {VILLES.map(v => <option key={v}>{v}</option>)}
               </select>
             </div>
+
+            {/* Autre ville */}
+            {ville === 'Autre' && (
+              <div>
+                <label htmlFor="autreVille" className="block text-sm font-medium mb-2">
+                  {t.contact.specifyCity ?? 'Précisez votre ville'}
+                </label>
+                <input
+                  ref={autreVilleRef}
+                  id="autreVille"
+                  type="text"
+                  name="autreVille"
+                  value={autreVille}
+                  onChange={e => setAutreVille(e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
+                  placeholder="Nom de votre ville"
+                />
+              </div>
+            )}
 
             {/* Message */}
             <div>
