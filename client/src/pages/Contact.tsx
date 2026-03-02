@@ -217,6 +217,9 @@ export default function Contact() {
     return Object.keys(newErrors).length === 0;
   };
 
+  // ===========================================
+  // HANDLE SUBMIT CORRIGÉ (Solution optimale)
+  // ===========================================
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
@@ -228,6 +231,7 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
+    // Préparation des données
     const finalCity = ville === 'Autre' ? autreVille : ville;
     const cleanPhone = formData.phone.replace(/\s/g, '');
     const fullPhone = `${selectedCountry.code} ${cleanPhone}`;
@@ -235,40 +239,58 @@ export default function Contact() {
     const zonesStr = selectedZones.length ? selectedZones.join(', ') : 'Aucune';
     const protectionsStr = selectedProtectionTypes.length ? selectedProtectionTypes.join(', ') : 'Aucune';
 
-    // ✅ Construction du payload pour Netlify
-    const payload = {
-      'form-name': 'contact',
-      'bot-field': '',
-      name: formData.name,
-      email: formData.email,
-      phone: fullPhone,
-      city: finalCity,
-      country: `${selectedCountry.flag} ${selectedCountry.name}`,
-      materials: materialsStr,
-      zones: zonesStr,
-      protections: protectionsStr,
-      autreMateriau: formData.autreMateriau || '',
-      message: formData.message,
-    };
+    // ✅ CRÉATION DU FORMDATA (solution standard Netlify)
+    const formDataToSend = new FormData();
+    
+    // ✅ CHAMPS OBLIGATOIRES POUR NETLIFY
+    formDataToSend.append('form-name', 'contact');
+    formDataToSend.append('bot-field', '');
+    
+    // ✅ TOUS LES CHAMPS DU FORMULAIRE
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('email', formData.email);
+    formDataToSend.append('phone', fullPhone);
+    formDataToSend.append('city', finalCity);
+    formDataToSend.append('country', `${selectedCountry.flag} ${selectedCountry.name}`);
+    formDataToSend.append('materials', materialsStr);
+    formDataToSend.append('zones', zonesStr);
+    formDataToSend.append('protections', protectionsStr);
+    formDataToSend.append('autreMateriau', formData.autreMateriau || '');
+    formDataToSend.append('message', formData.message);
 
     try {
+      // ✅ ENVOI VERS NETLIFY (sans headers Content-Type)
       const response = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(payload).toString(),
+        body: formDataToSend,
       });
 
-      if (!response.ok) throw new Error('Erreur Netlify');
+      if (!response.ok) {
+        throw new Error(`Erreur Netlify: ${response.status}`);
+      }
 
+      // ✅ WEBHOOK OPTIONNEL (pour sauvegarde externe)
       const webhookUrl = import.meta.env.VITE_INTEGRATELY_WEBHOOK_URL;
       if (webhookUrl) {
+        // On envoie en arrière-plan, pas besoin d'attendre
         fetch(webhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        }).catch(err => console.warn('Webhook error:', err));
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: fullPhone,
+            city: finalCity,
+            country: `${selectedCountry.flag} ${selectedCountry.name}`,
+            materials: materialsStr,
+            zones: zonesStr,
+            protections: protectionsStr,
+            message: formData.message,
+          }),
+        }).catch(err => console.warn('Webhook error (non bloquant):', err));
       }
 
+      // ✅ PRÉPARATION DES DONNÉES POUR LA PAGE DE CONFIRMATION
       const firstName = formData.name.trim().split(/\s+/)[0];
       sessionStorage.setItem('confirmationData', JSON.stringify({
         firstName,
@@ -281,9 +303,12 @@ export default function Contact() {
         message: formData.message,
       }));
 
+      // ✅ REDIRECTION VERS LA PAGE DE CONFIRMATION
       setLocation('/confirmation');
+      
     } catch (error) {
-      toast.error('Erreur lors de l\'envoi');
+      console.error('Erreur soumission:', error);
+      toast.error('Erreur lors de l\'envoi du formulaire');
       setIsSubmitting(false);
     }
   };
@@ -307,6 +332,13 @@ export default function Contact() {
             </div>
           )}
 
+          {/* 
+            ⚠️ IMPORTANT : 
+            - L'attribut data-netlify="true" est PRÉSENT mais c'est NOTRE handleSubmit 
+              qui prend le contrôle avec e.preventDefault()
+            - Le formulaire traditionnel Netlify ne sera PAS utilisé
+            - C'est notre fetch avec FormData qui enverra les données
+          */}
           <form
             onSubmit={handleSubmit}
             className="space-y-8"
@@ -315,12 +347,13 @@ export default function Contact() {
             method="POST"
             data-netlify="true"
           >
+            {/* ✅ CHAMPS CACHÉS OBLIGATOIRES POUR NETLIFY */}
             <input type="hidden" name="form-name" value="contact" />
-            <p className="hidden">
-              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-            </p>
-
-            {/* ✅ CHAMPS CACHÉS POUR NETLIFY - TOUS LES CHAMPS */}
+            <input type="hidden" name="bot-field" />
+            
+            {/* ✅ CHAMPS CACHÉS POUR LES DONNÉES DYNAMIQUES */}
+            {/* Ces champs sont optionnels pour notre envoi fetch, 
+                mais les laisser ne pose pas de problème */}
             <input type="hidden" name="city" value={ville === 'Autre' ? autreVille : ville} />
             <input type="hidden" name="country" value={`${selectedCountry.flag} ${selectedCountry.name}`} />
             <input type="hidden" name="materials" value={selectedMateriaux.join(', ') || 'Aucun'} />
@@ -328,7 +361,7 @@ export default function Contact() {
             <input type="hidden" name="protections" value={selectedProtectionTypes.join(', ') || 'Aucune'} />
             <input type="hidden" name="autreMateriau" value={formData.autreMateriau || ''} />
 
-            {/* Nom */}
+            {/* NOM */}
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2">{t.contact.nameLabel}</label>
               <input
@@ -341,10 +374,14 @@ export default function Contact() {
                   submitted && errors.name ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder={t.contact.namePlaceholder}
+                required
               />
+              {submitted && errors.name && (
+                <p className="mt-1 text-sm text-red-500">{errors.name}</p>
+              )}
             </div>
 
-            {/* Email */}
+            {/* EMAIL */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-2">{t.contact.emailLabel}</label>
               <input
@@ -357,10 +394,14 @@ export default function Contact() {
                   submitted && errors.email ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder={t.contact.emailPlaceholder}
+                required
               />
+              {submitted && errors.email && (
+                <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+              )}
             </div>
 
-            {/* Téléphone */}
+            {/* TÉLÉPHONE */}
             <div>
               <label htmlFor="phone" className="block text-sm font-medium mb-2">{t.contact.phoneLabel}</label>
               <div className="flex gap-2">
@@ -420,12 +461,16 @@ export default function Contact() {
                     submitted && errors.phone ? 'border-red-500' : 'border-gray-300'
                   }`}
                   placeholder={`${expectedDigits} chiffres`}
+                  required
                 />
               </div>
               <p className="text-xs text-gray-500 mt-1">{selectedCountry.code} - {expectedDigits} chiffres</p>
+              {submitted && errors.phone && (
+                <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
+              )}
             </div>
 
-            {/* Matériaux */}
+            {/* MATÉRIAUX */}
             <div>
               <label className="block text-sm font-medium mb-3">{t.contact.materialNature}</label>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -440,7 +485,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Zones */}
+            {/* ZONES */}
             <div>
               <label className="block text-sm font-medium mb-3">{t.contact.applicationZone}</label>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -455,7 +500,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Protections */}
+            {/* PROTECTIONS */}
             <div>
               <label className="block text-sm font-medium mb-3">{t.contact.protectionType}</label>
               <div className="grid grid-cols-2 gap-3">
@@ -470,7 +515,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Ville */}
+            {/* VILLE */}
             <div>
               <label htmlFor="city" className="block text-sm font-medium mb-2">{t.contact.city}</label>
               <select
@@ -485,7 +530,7 @@ export default function Contact() {
               </select>
             </div>
 
-            {/* Autre ville */}
+            {/* AUTRE VILLE */}
             {ville === 'Autre' && (
               <div>
                 <label htmlFor="autreVille" className="block text-sm font-medium mb-2">
@@ -498,13 +543,18 @@ export default function Contact() {
                   name="autreVille"
                   value={autreVille}
                   onChange={e => setAutreVille(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary ${
+                    submitted && errors.autreVille ? 'border-red-500' : 'border-gray-300'
+                  }`}
                   placeholder="Nom de votre ville"
                 />
+                {submitted && errors.autreVille && (
+                  <p className="mt-1 text-sm text-red-500">{errors.autreVille}</p>
+                )}
               </div>
             )}
 
-            {/* Message */}
+            {/* MESSAGE */}
             <div>
               <label htmlFor="message" className="block text-sm font-medium mb-2">{t.contact.message}</label>
               <textarea
@@ -517,16 +567,21 @@ export default function Contact() {
                   submitted && errors.message ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder={t.contact.messagePlaceholder}
+                required
               />
+              {submitted && errors.message && (
+                <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+              )}
             </div>
 
+            {/* BOUTON DE SOUMISSION */}
             <Button
               type="submit"
               size="lg"
               disabled={isSubmitting}
               className="w-full py-4 text-lg bg-[#A33215] hover:bg-[#A33215]/90 text-white"
             >
-              {isSubmitting ? 'Envoi...' : t.contact.diagnosticButton}
+              {isSubmitting ? 'Envoi en cours...' : t.contact.diagnosticButton}
             </Button>
           </form>
         </div>
