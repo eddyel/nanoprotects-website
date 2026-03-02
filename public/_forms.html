@@ -1,7 +1,23 @@
-<form name="contact" method="POST" data-netlify="true" netlify hidden>
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <!-- Champ obligatoire pour Netlify Forms -->
     <input type="hidden" name="form-name" value="contact" />
+    
+    <!-- Honeypot anti-spam -->
+    <p hidden>
+        <label>Ne pas remplir si vous êtes humain: 
+            <input name="bot-field" />
+        </label>
+    </p>
+
+    <!-- TOUS les champs du formulaire DOIVENT être déclarés ici -->
     <input type="text" name="name" />
     <input type="email" name="email" />
     <input type="tel" name="phone" />
+    <input type="text" name="city" />
+    <input type="text" name="country" />
+    <input type="text" name="materials" />
+    <input type="text" name="zones" />
+    <input type="text" name="protections" />
+    <input type="text" name="autreMateriau" />
     <textarea name="message"></textarea>
 </form>
