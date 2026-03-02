@@ -234,7 +234,7 @@ export default function Confirmation() {
               {t.confirmation.reassuranceMessage}
             </p>
             <p className="text-gray-600 text-sm">
-              {t.confirmation.urgentPrefix} <a href="tel:+212XXXXXXXXX" className="text-primary font-semibold hover:underline">+212 XXX-XXXXXX</a>
+              {t.confirmation.urgentPrefix} <a href="tel:+212XXXXXXXXX" className="text-primary font-semibold hover:underline">+212 675-971971</a>
             </p>
           </div>
 
