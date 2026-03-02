@@ -1,14 +1,16 @@
 [build]
-  # SUPPRIMER base = "client" - on travaille depuis la racine
-  command = "cd client && npm run build && cd .."
-  publish = "client/dist"
+  # Commande de build depuis la racine (pas de cd client)
+  command = "npm run build"
+  
+  # Dossier de publication = dist/public (tel que configuré dans vite.config.ts)
+  publish = "dist/public"
 
 # Configuration des fonctions Netlify
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
-# Redirection SPA
+# Redirection SPA (pour le routing React)
 [[redirects]]
   from = "/*"
   to = "/index.html"
