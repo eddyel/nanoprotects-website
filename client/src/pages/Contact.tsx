@@ -99,6 +99,7 @@ export default function Contact() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const autreVilleRef = useRef<HTMLInputElement>(null);
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
 
   // Dérivés
   const selectedCountry = countries.find(c => c.id === selectedCountryId) ?? countries[0];
@@ -147,10 +148,10 @@ export default function Contact() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    // ✅ Supprimer l'erreur immédiatement quand l'utilisateur tape
-    if (errors[name as keyof FormErrors]) {
-      setErrors(prev => ({ ...prev, [name]: undefined }));
-    }
+    // ✅ Marquer le champ comme touché mais NE PAS valider maintenant
+    setTouched(prev => ({ ...prev, [name]: true }));
+    // ✅ Supprimer l'erreur immédiatement pour améliorer l'UX
+    setErrors(prev => ({ ...prev, [name]: undefined }));
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -160,19 +161,21 @@ export default function Contact() {
       formatted = digits.match(/.{1,3}/g)?.join(' ') ?? digits;
     }
     setFormData(prev => ({ ...prev, phone: formatted }));
-    // ✅ Supprimer l'erreur téléphone
+    setTouched(prev => ({ ...prev, phone: true }));
+    // ✅ Supprimer l'erreur immédiatement
     setErrors(prev => ({ ...prev, phone: undefined }));
   };
 
   const handleCountrySelect = (id: string) => {
     setSelectedCountryId(id);
     setFormData(prev => ({ ...prev, phone: '' }));
+    setTouched(prev => ({ ...prev, phone: false }));
     setErrors(prev => ({ ...prev, phone: undefined }));
     setIsDropdownOpen(false);
     setSearchQuery('');
   };
 
-  // Validation simplifiée
+  // Validation UNIQUEMENT à la soumission
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
@@ -277,7 +280,7 @@ export default function Contact() {
           <h1 className="text-4xl md:text-5xl font-bold text-[#A33215] mb-8">{t.contact.title}</h1>
           <p className="text-center text-gray-600 text-lg mb-12">{t.contact.subtitle}</p>
 
-          {/* Résumé d'erreurs */}
+          {/* Résumé d'erreurs - UNIQUEMENT visible s'il y a des erreurs */}
           {Object.keys(errors).length > 0 && (
             <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 rounded">
               <h3 className="text-red-800 font-semibold mb-2">
@@ -316,6 +319,7 @@ export default function Contact() {
                 }`}
                 placeholder={t.contact.namePlaceholder}
               />
+              {/* Afficher l'erreur seulement si elle existe */}
               {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
             </div>
 
@@ -398,6 +402,7 @@ export default function Contact() {
                   placeholder={`${expectedDigits} chiffres`}
                 />
               </div>
+              {/* Message d'erreur seulement si nécessaire */}
               {errors.phone && <p className="text-red-600 text-sm mt-1">{errors.phone}</p>}
               <p className="text-xs text-gray-500 mt-1">{selectedCountry.code} - {expectedDigits} chiffres</p>
             </div>
