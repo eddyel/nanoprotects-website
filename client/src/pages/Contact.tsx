@@ -341,22 +341,32 @@ export default function Contact() {
 
       if (!response.ok) throw new Error('Netlify submission failed');
 
+      // Netlify Function — SMTP email notification (fire-and-forget)
+      const emailPayload = JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        phone: `${countryCode} ${cleanPhone}`,
+        city: finalCity,
+        materials: materialsStr,
+        zones: zonesStr,
+        protections: protectionsStr,
+        autreMateriau: formData.autreMateriau,
+        message: formData.message,
+        language,
+      });
+      fetch('/.netlify/functions/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: emailPayload,
+      }).catch(() => {});
+
       // Integrately webhook
       const webhookUrl = import.meta.env.VITE_INTEGRATELY_WEBHOOK_URL;
       if (webhookUrl) {
         fetch(webhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: `${countryCode} ${cleanPhone}`,
-            city: finalCity,
-            materials: materialsStr,
-            zones: zonesStr,
-            protections: protectionsStr,
-            message: formData.message,
-          }),
+          body: emailPayload,
         }).catch(() => {});
       }
 

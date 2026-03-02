@@ -1,6 +1,13 @@
-<form name="contact" method="POST" data-netlify="true" netlify hidden>
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="contact" />
+    <p hidden><label>Ne pas remplir: <input name="bot-field" /></label></p>
     <input type="text" name="name" />
     <input type="email" name="email" />
     <input type="tel" name="phone" />
+    <input type="text" name="city" />
+    <input type="text" name="materials" />
+    <input type="text" name="zones" />
+    <input type="text" name="protections" />
+    <input type="text" name="autreMateriau" />
     <textarea name="message"></textarea>
 </form>
