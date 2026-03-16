@@ -5,35 +5,22 @@ import Navigation from '@/components/Navigation';
 import LazyImage from '@/components/LazyImage';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-// Custom hook for lazy loading images with Intersection Observer
 const useLazyImage = (ref: React.RefObject<HTMLImageElement>) => {
   const [isLoaded, setIsLoaded] = useState(false);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && ref.current) {
           const img = ref.current;
           const src = img.dataset.src;
-          if (src) {
-            img.src = src;
-            img.onload = () => setIsLoaded(true);
-            observer.unobserve(img);
-          }
+          if (src) { img.src = src; img.onload = () => setIsLoaded(true); observer.unobserve(img); }
         }
       },
       { rootMargin: '50px' }
     );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
+    if (ref.current) observer.observe(ref.current);
+    return () => { if (ref.current) observer.unobserve(ref.current); };
   }, [ref]);
-
   return isLoaded;
 };
 
@@ -53,286 +40,105 @@ interface GalleryImage {
   hideLabels?: boolean;
 }
 
-// Category keys for translation
-const categoryKeys = [
-  'filterAll',
-  'filterBejmat',
-  'filterPierreTaza',
-  'filterMarble',
-  'filterCarreauxBeldi',
-  'filterZellige',
-  'filterMetal',
-  'filterMineralization'
-];
-
-// Internal category names (used for filtering)
-const internalCategories = [
-  'Tous',
-  'Bejmat',
-  'Pierre de Taza',
-  'Marbre',
-  'Carreaux Beldi',
-  'Zellige',
-  'Métal',
-  'Minéralisation'
-];
+const categoryKeys = ['filterAll','filterBejmat','filterPierreTaza','filterMarble','filterCarreauxBeldi','filterZellige','filterMetal','filterMineralization'];
+const internalCategories = ['Tous','Bejmat','Pierre de Taza','Marbre','Carreaux Beldi','Zellige','Métal','Minéralisation'];
 
 const galleryImages: GalleryImage[] = [
-  // Bejmat
-  {
-    id: '2',
-    category: 'Bejmat',
-    beforeImage: '/images/showroom/bejmat-corridor-riad.webp',
-    afterImage: '/images/showroom/bejmat-corridor-riad.webp',
-    title: 'Corridor en Bejmat - Riad',
-    titleKey: 'title2',
-    descriptionKey: 'desc2',
-    isSingleImage: true
-  },
-  {
-    id: '3',
-    category: 'Bejmat',
-    beforeImage: '/images/showroom/bejmat-entrance-riad.webp',
-    afterImage: '/images/showroom/bejmat-entrance-riad.webp',
-    title: 'Entrée en Bejmat - Riad',
-    titleKey: 'title3',
-    descriptionKey: 'desc3',
-    isSingleImage: true
-  },
-  {
-    id: '4',
-    category: 'Bejmat',
-    beforeImage: '/images/showroom/bejmat-staircase-riad.webp',
-    afterImage: '/images/showroom/bejmat-staircase-riad.webp',
-    title: 'Escalier en Bejmat - Riad',
-    titleKey: 'title4',
-    descriptionKey: 'desc4',
-    isSingleImage: true
-  },
-  {
-    id: '5',
-    category: 'Bejmat',
-    beforeImage: '/images/showroom/bejmat-patio-riad.webp',
-    afterImage: '/images/showroom/bejmat-patio-riad.webp',
-    title: 'Patio en Bejmat - Riad',
-    titleKey: 'title5',
-    descriptionKey: 'desc5',
-    isSingleImage: true
-  },
-
-  // Marbre
-  {
-    id: '7',
-    category: 'Marbre',
-    beforeImage: '/images/showroom/marbre-table-ronde-av-ap.webp',
-    afterImage: '/images/showroom/marbre-table-ronde-av-ap.webp',
-    title: 'Table en Marbre - Hotel',
-    titleKey: 'title7',
-    descriptionKey: 'desc7',
-    isSingleImage: true
-  },
-
-  // Zellige
-  {
-    id: '9',
-    category: 'Zellige',
-    beforeImage: '/images/showroom/zellige-sol-mur-riad.webp',
-    afterImage: '/images/showroom/zellige-sol-mur-riad.webp',
-    title: 'Sol & Mur Zellige - Riad',
-    titleKey: 'title9',
-    descriptionKey: 'desc9',
-    isSingleImage: true
-  },
-  {
-    id: '10',
-    category: 'Zellige',
-    beforeImage: '/images/showroom/zellige-fontaine-hotel.webp',
-    afterImage: '/images/showroom/zellige-fontaine-hotel.webp',
-    title: 'Fontaine Zellige - Hotel',
-    titleKey: 'title10',
-    descriptionKey: 'desc10',
-    isSingleImage: true
-  },
-  {
-    id: '11',
-    category: 'Zellige',
-    beforeImage: '/images/showroom/zellige-sol-hotel.webp',
-    afterImage: '/images/showroom/zellige-sol-hotel.webp',
-    title: 'Sol Zellige - Hotel',
-    titleKey: 'title11',
-    descriptionKey: 'desc11',
-    isSingleImage: true
-  },
-
-  // Pierre de Taza
-  {
-    id: '13',
-    category: 'Pierre de Taza',
-    beforeImage: '/images/showroom/sol-pierre-taza-hotel.webp',
-    afterImage: '/images/showroom/sol-pierre-taza-hotel.webp',
-    title: 'Sol Pierre de Taza – Hôtel Relais Châteaux',
-    titleKey: 'title13',
-    descriptionKey: 'desc13',
-    isSingleImage: true,
-    hideLabels: true
-  },
-  {
-    id: '14',
-    category: 'Pierre de Taza',
-    beforeImage: '/images/showroom/plage-piscine-pierre-taza.webp',
-    afterImage: '/images/showroom/plage-piscine-pierre-taza.webp',
-    title: 'Plage Piscine Pierre de Taza - Résidence',
-    titleKey: 'title14',
-    descriptionKey: 'desc14',
-    isSingleImage: true
-  },
-  {
-    id: '15',
-    category: 'Pierre de Taza',
-    beforeImage: '/images/plage-piscine-pierre-taza-hotel.webp',
-    afterImage: '/images/plage-piscine-pierre-taza-hotel.webp',
-    title: 'Plage Piscine Pierre de Taza - Hotel',
-    titleKey: 'title15',
-    descriptionKey: 'desc15',
-    isSingleImage: true,
-    hideLabels: true
-  },
-  {
-    id: '16',
-    category: 'Pierre de Taza',
-    beforeImage: '/images/sol-pierre-taza-particulier.webp',
-    afterImage: '/images/sol-pierre-taza-particulier.webp',
-    title: 'Sol Pierre de Taza - Particulier',
-    titleKey: 'title16',
-    descriptionKey: 'desc16',
-    isSingleImage: true,
-    hideLabels: true
-  },
-
-  // Carreaux Beldi
-  {
-    id: '17',
-    category: 'Carreaux Beldi',
-    beforeImage: '/images/showroom/plage-piscine-carreaux-beldi-marbre.webp',
-    afterImage: '/images/showroom/plage-piscine-carreaux-beldi-marbre.webp',
-    title: 'Plage Piscine Carreaux Beldi & Marbre - Hotel',
-    titleKey: 'title17',
-    descriptionKey: 'desc17',
-    isSingleImage: true,
-    hideLabels: true
-  },
-  {
-    id: '18',
-    category: 'Carreaux Beldi',
-    beforeImage: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/dDELTBipCGPPRtHU.png',
-    afterImage: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/dDELTBipCGPPRtHU.png',
-    title: 'Sol Cuisine Carreaux Beldi - Riad',
-    titleKey: 'title18',
-    descriptionKey: 'desc18',
-    isSingleImage: true
-  },
-  {
-    id: '19',
-    category: ['Carreaux Beldi', 'Zellige'],
-    beforeImage: '/images/showroom/sol-restaurant-carreaux-beldi-zellige-riad.webp',
-    afterImage: '/images/showroom/sol-restaurant-carreaux-beldi-zellige-riad.webp',
-    title: 'Sol Restaurant Carreaux Beldi & Zellige - Riad',
-    titleKey: 'title19',
-    descriptionKey: 'desc19',
-    isSingleImage: true
-  },
-
-  // Minéralisation
-  {
-    id: '22',
-    category: 'Minéralisation',
-    videoMp4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PwAnpbCHRHTexxKs.mpeg',
-    videoPoster: undefined,
-    title: 'Mur Briquettes - Hotel',
-    titleKey: 'title22',
-    descriptionKey: 'desc22',
-    isVideo: true,
-    hideLabels: true
-  },
-  {
-    id: '23',
-    category: 'Minéralisation',
-    videoMp4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/jPXDZdIxLKDvTMwd.mp4',
-    videoPoster: undefined,
-    title: 'Mur Enduit - Particulier',
-    titleKey: 'title23',
-    descriptionKey: 'desc23',
-    isVideo: true,
-    hideLabels: true
-  },
-  {
-    id: '24',
-    category: 'Minéralisation',
-    videoMp4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PaXedwwiKCwYIUps.mp4',
-    videoPoster: undefined,
-    title: 'Mur en Pisé - Hotel',
-    titleKey: 'title24',
-    descriptionKey: 'desc24',
-    isVideo: true,
-    hideLabels: true
-  },
-  // Marbre & Zellige Avant/Après
-{
-  id: '25',
-  category: ['Marbre', 'Zellige'],
-  beforeImage: '/images/showroom/Marbre, Zellige Av-Ap.png',
-  afterImage: '/images/showroom/Marbre, Zellige Av-Ap.png',
-  title: 'Fontaine Marbre & Zellige - Relais Châteaux',
-  titleKey: 'title25',
-  descriptionKey: 'desc25',
-  isSingleImage: true
-},
-// Console Marbre Noir
-{
-  id: '26',
-  category: 'Marbre',
-  beforeImage: '/images/showroom/2 Console Marbre Noir.png',
-  afterImage: '/images/showroom/2 Console Marbre Noir.png',
-  title: 'Console Marbre Noir - Relais Châteaux',
-  titleKey: 'title26',
-  descriptionKey: 'desc26',
-  isSingleImage: true
-},
-// Transat Aluminium
-{
-  id: '27',
-  category: 'Métal',
-  beforeImage: '/images/showroom/Transat Allu Protected.png',
-  afterImage: '/images/showroom/Transat Allu Protected.png',
-  title: 'Transat Aluminium - Particulier',
-  titleKey: 'title27',
-  descriptionKey: 'desc27',
-  isSingleImage: true
-}
+  { id: '2', category: 'Bejmat', beforeImage: '/images/showroom/bejmat-corridor-riad.webp', afterImage: '/images/showroom/bejmat-corridor-riad.webp', title: 'Corridor en Bejmat - Riad', titleKey: 'title2', descriptionKey: 'desc2', isSingleImage: true },
+  { id: '3', category: 'Bejmat', beforeImage: '/images/showroom/bejmat-entrance-riad.webp', afterImage: '/images/showroom/bejmat-entrance-riad.webp', title: 'Entrée en Bejmat - Riad', titleKey: 'title3', descriptionKey: 'desc3', isSingleImage: true },
+  { id: '4', category: 'Bejmat', beforeImage: '/images/showroom/bejmat-staircase-riad.webp', afterImage: '/images/showroom/bejmat-staircase-riad.webp', title: 'Escalier en Bejmat - Riad', titleKey: 'title4', descriptionKey: 'desc4', isSingleImage: true },
+  { id: '5', category: 'Bejmat', beforeImage: '/images/showroom/bejmat-patio-riad.webp', afterImage: '/images/showroom/bejmat-patio-riad.webp', title: 'Patio en Bejmat - Riad', titleKey: 'title5', descriptionKey: 'desc5', isSingleImage: true },
+  { id: '7', category: 'Marbre', beforeImage: '/images/showroom/marbre-table-ronde-av-ap.webp', afterImage: '/images/showroom/marbre-table-ronde-av-ap.webp', title: 'Table en Marbre - Hotel', titleKey: 'title7', descriptionKey: 'desc7', isSingleImage: true },
+  { id: '9', category: 'Zellige', beforeImage: '/images/showroom/zellige-sol-mur-riad.webp', afterImage: '/images/showroom/zellige-sol-mur-riad.webp', title: 'Sol & Mur Zellige - Riad', titleKey: 'title9', descriptionKey: 'desc9', isSingleImage: true },
+  { id: '10', category: 'Zellige', beforeImage: '/images/showroom/zellige-fontaine-hotel.webp', afterImage: '/images/showroom/zellige-fontaine-hotel.webp', title: 'Fontaine Zellige - Hotel', titleKey: 'title10', descriptionKey: 'desc10', isSingleImage: true },
+  { id: '11', category: 'Zellige', beforeImage: '/images/showroom/zellige-sol-hotel.webp', afterImage: '/images/showroom/zellige-sol-hotel.webp', title: 'Sol Zellige - Hotel', titleKey: 'title11', descriptionKey: 'desc11', isSingleImage: true },
+  { id: '13', category: 'Pierre de Taza', beforeImage: '/images/showroom/sol-pierre-taza-hotel.webp', afterImage: '/images/showroom/sol-pierre-taza-hotel.webp', title: 'Sol Pierre de Taza – Hôtel Relais Châteaux', titleKey: 'title13', descriptionKey: 'desc13', isSingleImage: true, hideLabels: true },
+  { id: '14', category: 'Pierre de Taza', beforeImage: '/images/showroom/plage-piscine-pierre-taza.webp', afterImage: '/images/showroom/plage-piscine-pierre-taza.webp', title: 'Plage Piscine Pierre de Taza - Résidence', titleKey: 'title14', descriptionKey: 'desc14', isSingleImage: true },
+  { id: '15', category: 'Pierre de Taza', beforeImage: '/images/plage-piscine-pierre-taza-hotel.webp', afterImage: '/images/plage-piscine-pierre-taza-hotel.webp', title: 'Plage Piscine Pierre de Taza - Hotel', titleKey: 'title15', descriptionKey: 'desc15', isSingleImage: true, hideLabels: true },
+  { id: '16', category: 'Pierre de Taza', beforeImage: '/images/sol-pierre-taza-particulier.webp', afterImage: '/images/sol-pierre-taza-particulier.webp', title: 'Sol Pierre de Taza - Particulier', titleKey: 'title16', descriptionKey: 'desc16', isSingleImage: true, hideLabels: true },
+  { id: '17', category: 'Carreaux Beldi', beforeImage: '/images/showroom/plage-piscine-carreaux-beldi-marbre.webp', afterImage: '/images/showroom/plage-piscine-carreaux-beldi-marbre.webp', title: 'Plage Piscine Carreaux Beldi & Marbre - Hotel', titleKey: 'title17', descriptionKey: 'desc17', isSingleImage: true, hideLabels: true },
+  { id: '18', category: 'Carreaux Beldi', beforeImage: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/dDELTBipCGPPRtHU.png', afterImage: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/dDELTBipCGPPRtHU.png', title: 'Sol Cuisine Carreaux Beldi - Riad', titleKey: 'title18', descriptionKey: 'desc18', isSingleImage: true },
+  { id: '19', category: ['Carreaux Beldi', 'Zellige'], beforeImage: '/images/showroom/sol-restaurant-carreaux-beldi-zellige-riad.webp', afterImage: '/images/showroom/sol-restaurant-carreaux-beldi-zellige-riad.webp', title: 'Sol Restaurant Carreaux Beldi & Zellige - Riad', titleKey: 'title19', descriptionKey: 'desc19', isSingleImage: true },
+  { id: '22', category: 'Minéralisation', videoMp4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PwAnpbCHRHTexxKs.mpeg', videoPoster: undefined, title: 'Mur Briquettes - Hotel', titleKey: 'title22', descriptionKey: 'desc22', isVideo: true, hideLabels: true },
+  { id: '23', category: 'Minéralisation', videoMp4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/jPXDZdIxLKDvTMwd.mp4', videoPoster: undefined, title: 'Mur Enduit - Particulier', titleKey: 'title23', descriptionKey: 'desc23', isVideo: true, hideLabels: true },
+  { id: '24', category: 'Minéralisation', videoMp4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/PaXedwwiKCwYIUps.mp4', videoPoster: undefined, title: 'Mur en Pisé - Hotel', titleKey: 'title24', descriptionKey: 'desc24', isVideo: true, hideLabels: true },
+  { id: '25', category: ['Marbre', 'Zellige'], beforeImage: '/images/showroom/Marbre, Zellige Av-Ap.png', afterImage: '/images/showroom/Marbre, Zellige Av-Ap.png', title: 'Fontaine Marbre & Zellige - Relais Châteaux', titleKey: 'title25', descriptionKey: 'desc25', isSingleImage: true },
+  { id: '26', category: 'Marbre', beforeImage: '/images/showroom/2 Console Marbre Noir.png', afterImage: '/images/showroom/2 Console Marbre Noir.png', title: 'Console Marbre Noir - Relais Châteaux', titleKey: 'title26', descriptionKey: 'desc26', isSingleImage: true },
+  { id: '27', category: 'Métal', beforeImage: '/images/showroom/Transat Allu Protected.png', afterImage: '/images/showroom/Transat Allu Protected.png', title: 'Transat Aluminium - Particulier', titleKey: 'title27', descriptionKey: 'desc27', isSingleImage: true },
 ];
 
 export default function Showroom() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState('Tous');
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // SEO — title dynamique par langue
+  useEffect(() => {
+    const pageTitles: Record<string, string> = {
+      fr: 'Nos Réalisations – Avant/Après Bejmat, Zellige, Pierre Taza, Marbre | NanoProtects Marrakech',
+      en: 'Our Projects – Before/After Bejmat, Zellige, Taza Stone, Marble | NanoProtects Marrakech',
+      ar: 'إنجازاتنا – قبل وبعد البيجمات والزليج وحجر تازة والرخام | NanoProtects مراكش',
+      es: 'Nuestros Proyectos – Antes/Después Bejmat, Zellige, Piedra Taza, Mármol | NanoProtects Marrakech',
+    };
+    document.title = pageTitles[language] || pageTitles['fr'];
+  }, [language]);
+
+  // SEO — Schema.org ImageGallery
+  useEffect(() => {
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "name": language === 'fr' ? "Galerie avant/après – Nettoyage bejmat, zellige, pierre taza, marbre à Marrakech"
+        : language === 'en' ? "Before/after gallery – Bejmat, zellige, taza stone, marble cleaning in Marrakech"
+        : language === 'ar' ? "معرض قبل/بعد – تنظيف البيجمات والزليج وحجر تازة والرخام في مراكش"
+        : "Galería antes/después – Limpieza bejmat, zellige, piedra taza, mármol en Marrakech",
+      "url": "https://nanoprotects.com/showroom",
+      "description": language === 'fr' ? "Découvrez les transformations spectaculaires de NanoProtects : nettoyage et protection du bejmat, zellige, carreaux de ciment beldi, pierre taza et marbre dans les hôtels et riads de Marrakech."
+        : language === 'en' ? "Discover NanoProtects spectacular transformations: cleaning and protection of bejmat, zellige, beldi cement tiles, taza stone and marble in Marrakech hotels and riads."
+        : language === 'ar' ? "اكتشف التحولات المذهلة لـ NanoProtects: تنظيف وحماية البيجمات والزليج وبلاط الإسمنت البلدي وحجر تازة والرخام في فنادق ورياض مراكش."
+        : "Descubra las transformaciones espectaculares de NanoProtects: limpieza y protección de bejmat, zellige, baldosas de cemento beldi, piedra taza y mármol en hoteles y riads de Marrakech.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "NanoProtects",
+        "telephone": "+212675971971",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Q.I. Sidi Ghanem, N°158, B44",
+          "addressLocality": "Marrakech",
+          "addressRegion": "Marrakech-Safi",
+          "postalCode": "40000",
+          "addressCountry": "MA"
+        }
+      },
+      "image": galleryImages
+        .filter(img => img.beforeImage && !img.isVideo)
+        .slice(0, 10)
+        .map(img => ({
+          "@type": "ImageObject",
+          "url": `https://nanoprotects.com${img.beforeImage}`,
+          "name": img.title,
+          "description": img.descriptionKey
+        }))
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'showroom-schema-ld';
+    script.textContent = JSON.stringify(schemaData);
+    const existing = document.getElementById('showroom-schema-ld');
+    if (existing) existing.remove();
+    document.head.appendChild(script);
+    return () => { const el = document.getElementById('showroom-schema-ld'); if (el) el.remove(); };
+  }, [language]);
+
   const filteredImages = selectedCategory === 'Tous'
     ? galleryImages
-    : galleryImages.filter(img => {
-        if (Array.isArray(img.category)) {
-          return img.category.includes(selectedCategory);
-        }
-        return img.category === selectedCategory;
-      });
+    : galleryImages.filter(img => Array.isArray(img.category) ? img.category.includes(selectedCategory) : img.category === selectedCategory);
 
   const handlePlayAgain = () => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
+    if (videoRef.current) { videoRef.current.currentTime = 0; videoRef.current.play(); setIsPlaying(true); }
   };
 
   const selectedIndex = selectedImage ? filteredImages.findIndex((i) => i.id === selectedImage.id) : -1;
@@ -350,7 +156,6 @@ export default function Showroom() {
     return () => window.removeEventListener('keydown', handler);
   }, [selectedImage, selectedIndex, hasPrev, hasNext, filteredImages]);
 
-  // Get translated category name
   const getCategoryLabel = (internalName: string): string => {
     const index = internalCategories.indexOf(internalName);
     if (index >= 0 && index < categoryKeys.length) {
@@ -364,7 +169,6 @@ export default function Showroom() {
     <div className="min-h-screen bg-white">
       <Navigation />
       
-      {/* Page Title */}
       <div className="bg-gray-100 py-20">
         <div className="container max-w-5xl">
           <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left" style={{ color: '#A33215' }}>
@@ -374,7 +178,6 @@ export default function Showroom() {
         </div>
       </div>
 
-      {/* Filter Buttons */}
       <div className="container max-w-5xl py-12">
         <div className="flex flex-wrap gap-3 justify-center md:justify-start">
           {internalCategories.map(category => (
@@ -382,9 +185,7 @@ export default function Showroom() {
               key={category}
               onClick={() => setSelectedCategory(category)}
               className={`px-6 py-2 rounded-lg font-medium transition-all ${
-                selectedCategory === category
-                  ? 'bg-orange-700 text-white'
-                  : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+                selectedCategory === category ? 'bg-orange-700 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
               }`}
             >
               {getCategoryLabel(category)}
@@ -393,7 +194,6 @@ export default function Showroom() {
         </div>
       </div>
 
-      {/* Gallery Grid */}
       <div className="container max-w-5xl pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredImages.map((image) => (
@@ -402,58 +202,29 @@ export default function Showroom() {
               type="button"
               className="group cursor-pointer relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
               onClick={() => setSelectedImage(image)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  setSelectedImage(image);
-                }
-              }}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedImage(image); } }}
               aria-label={`View details of ${t.showroom[image.titleKey as keyof typeof t.showroom] || image.title}`}
             >
               {image.isVideo ? (
                 <div className="relative w-full h-64 bg-black">
-                  <video
-                    src={image.videoMp4}
-                    className="w-full h-full object-cover"
-                    preload="metadata"
-                    playsInline
-                    muted
-                  />
+                  <video src={image.videoMp4} className="w-full h-full object-cover" preload="metadata" playsInline muted />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition pointer-events-none">
                     <div className="text-white text-4xl">▶</div>
                   </div>
                 </div>
               ) : image.isSingleImage ? (
                 <div className="relative w-full h-64 overflow-hidden">
-                  <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">
-                    {t.showroom.labelBefore}
-                  </span>
-                  <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(163,50,21,0.9)]">
-                    {t.showroom.labelAfter}
-                  </span>
-                  <LazyImage
-                    src={image.beforeImage || ''}
-                    alt={image.title}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                  <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">{t.showroom.labelBefore}</span>
+                  <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(163,50,21,0.9)]">{t.showroom.labelAfter}</span>
+                  <LazyImage src={image.beforeImage || ''} alt={`${t.showroom[image.titleKey as keyof typeof t.showroom] || image.title} - NanoProtects Marrakech`} className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
               ) : (
                 <div className="relative w-full h-64 overflow-hidden">
-                  <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">
-                    {t.showroom.labelBefore}
-                  </span>
-                  <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(163,50,21,0.9)]">
-                    {t.showroom.labelAfter}
-                  </span>
-                  <LazyImage
-                    src={image.beforeImage || ''}
-                    alt={`${image.title} - ${t.showroom.labelBefore}`}
-                    className="w-full h-full object-cover"
-                  />
+                  <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">{t.showroom.labelBefore}</span>
+                  <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(163,50,21,0.9)]">{t.showroom.labelAfter}</span>
+                  <LazyImage src={image.beforeImage || ''} alt={`${t.showroom[image.titleKey as keyof typeof t.showroom] || image.title} avant - NanoProtects`} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition">
-                    <div className="text-white text-center">
-                      <div className="text-sm font-semibold">{t.showroom.clickToEnlarge}</div>
-                    </div>
+                    <div className="text-white text-center"><div className="text-sm font-semibold">{t.showroom.clickToEnlarge}</div></div>
                   </div>
                 </div>
               )}
@@ -466,119 +237,46 @@ export default function Showroom() {
         </div>
       </div>
 
-      {/* Lightbox Modal */}
       <AnimatePresence>
         {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-            onClick={() => setSelectedImage(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-              className="relative max-w-4xl w-full flex flex-col max-h-[90vh]"
-              onClick={e => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute -top-10 right-0 text-white hover:text-gray-300 z-[1001]"
-              >
-                <X size={32} />
-              </button>
-
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4" onClick={() => setSelectedImage(null)}>
+            <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9 }} className="relative max-w-4xl w-full flex flex-col max-h-[90vh]" onClick={e => e.stopPropagation()}>
+              <button onClick={() => setSelectedImage(null)} className="absolute -top-10 right-0 text-white hover:text-gray-300 z-[1001]"><X size={32} /></button>
               {hasPrev && (
-                <button
-                  type="button"
-                  onClick={(e) => { e.stopPropagation(); setSelectedImage(filteredImages[selectedIndex - 1]); }}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-[1001] bg-black/50 hover:bg-black/80 text-white border-0 py-5 px-4 rounded transition-colors"
-                  aria-label="Previous"
-                >
-                  <ChevronLeft size={28} />
-                </button>
+                <button type="button" onClick={(e) => { e.stopPropagation(); setSelectedImage(filteredImages[selectedIndex - 1]); }} className="absolute left-4 top-1/2 -translate-y-1/2 z-[1001] bg-black/50 hover:bg-black/80 text-white border-0 py-5 px-4 rounded transition-colors" aria-label="Previous"><ChevronLeft size={28} /></button>
               )}
               {hasNext && (
-                <button
-                  type="button"
-                  onClick={(e) => { e.stopPropagation(); setSelectedImage(filteredImages[selectedIndex + 1]); }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-[1001] bg-black/50 hover:bg-black/80 text-white border-0 py-5 px-4 rounded transition-colors"
-                  aria-label="Next"
-                >
-                  <ChevronRight size={28} />
-                </button>
+                <button type="button" onClick={(e) => { e.stopPropagation(); setSelectedImage(filteredImages[selectedIndex + 1]); }} className="absolute right-4 top-1/2 -translate-y-1/2 z-[1001] bg-black/50 hover:bg-black/80 text-white border-0 py-5 px-4 rounded transition-colors" aria-label="Next"><ChevronRight size={28} /></button>
               )}
-
               <div className="flex-1 min-h-0 flex flex-col max-h-[70vh]">
                 {selectedImage.isVideo ? (
                   <div className="relative w-full bg-black rounded-lg overflow-hidden">
-                    <video
-                      key={selectedImage.id}
-                      ref={videoRef}
-                      src={selectedImage.videoMp4}
-                      className="w-full h-auto max-h-[70vh] object-contain"
-                      controls
-                      autoPlay
-                      playsInline
-                      preload="auto"
-                      onPlay={() => setIsPlaying(true)}
-                      onPause={() => setIsPlaying(false)}
-                      onEnded={() => setIsPlaying(false)}
-                    />
+                    <video key={selectedImage.id} ref={videoRef} src={selectedImage.videoMp4} className="w-full h-auto max-h-[70vh] object-contain" controls autoPlay playsInline preload="auto" onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} onEnded={() => setIsPlaying(false)} />
                     {!isPlaying && (
-                      <button
-                        onClick={handlePlayAgain}
-                        className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition text-white text-6xl cursor-pointer"
-                        aria-label="Play video"
-                      >
-                        ▶
-                      </button>
+                      <button onClick={handlePlayAgain} className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition text-white text-6xl cursor-pointer" aria-label="Play video">▶</button>
                     )}
                   </div>
                 ) : selectedImage.isSingleImage ? (
                   <div className="relative w-full">
-                    <LazyImage
-                      src={selectedImage.beforeImage || ''}
-                      alt={selectedImage.title}
-                      className="w-full h-auto max-h-[70vh] object-contain rounded-lg"
-                    />
-                    <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">
-                      {t.showroom.labelBefore}
-                    </span>
-                    <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(163,50,21,0.9)]">
-                      {t.showroom.labelAfter}
-                    </span>
+                    <LazyImage src={selectedImage.beforeImage || ''} alt={`${t.showroom[selectedImage.titleKey as keyof typeof t.showroom] || selectedImage.title} - NanoProtects Marrakech`} className="w-full h-auto max-h-[70vh] object-contain rounded-lg" />
+                    <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">{t.showroom.labelBefore}</span>
+                    <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(163,50,21,0.9)]">{t.showroom.labelAfter}</span>
                   </div>
                 ) : (
                   <div className="relative w-full">
                     <div className="flex gap-2 h-auto">
                       <div className="flex-1 relative">
-                        <LazyImage
-                          src={selectedImage.beforeImage || ''}
-                          alt={`${selectedImage.title} - ${t.showroom.labelBefore}`}
-                          className="w-full h-auto max-h-[70vh] object-contain rounded-l-lg"
-                        />
-                        <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">
-                          {t.showroom.labelBefore}
-                        </span>
+                        <LazyImage src={selectedImage.beforeImage || ''} alt={`${t.showroom[selectedImage.titleKey as keyof typeof t.showroom] || selectedImage.title} avant`} className="w-full h-auto max-h-[70vh] object-contain rounded-l-lg" />
+                        <span className="absolute top-2.5 left-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-black/75">{t.showroom.labelBefore}</span>
                       </div>
                       <div className="flex-1 relative">
-                        <LazyImage
-                          src={selectedImage.afterImage || ''}
-                          alt={`${selectedImage.title} - ${t.showroom.labelAfter}`}
-                          className="w-full h-auto max-h-[70vh] object-contain rounded-r-lg"
-                        />
-                        <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(163,50,21,0.9)]">
-                          {t.showroom.labelAfter}
-                        </span>
+                        <LazyImage src={selectedImage.afterImage || ''} alt={`${t.showroom[selectedImage.titleKey as keyof typeof t.showroom] || selectedImage.title} après`} className="w-full h-auto max-h-[70vh] object-contain rounded-r-lg" />
+                        <span className="absolute top-2.5 right-2.5 z-10 px-3 py-1.5 rounded text-xs font-semibold uppercase text-white bg-[rgba(163,50,21,0.9)]">{t.showroom.labelAfter}</span>
                       </div>
                     </div>
                   </div>
                 )}
               </div>
-
               <div className="mt-4 flex-shrink-0 max-h-[20vh] overflow-y-auto rounded-lg p-4 bg-white/10 text-white">
                 <h2 className="text-xl font-bold mb-2">{t.showroom[selectedImage.titleKey as keyof typeof t.showroom] || selectedImage.title}</h2>
                 <p className="text-gray-200 text-sm">{t.showroom[selectedImage.descriptionKey as keyof typeof t.showroom] || selectedImage.descriptionKey}</p>
