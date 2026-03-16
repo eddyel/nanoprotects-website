@@ -5,6 +5,8 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import { useLanguage } from "./contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 // Lazy load page components for code splitting
 const Home = lazy(() => import("./pages/Home"));
@@ -27,6 +29,45 @@ function LoadingFallback() {
       </div>
     </div>
   );
+}
+
+// SEO Updater — met à jour le title, description et lang automatiquement selon la langue active
+function SEOUpdater() {
+  const { language } = useLanguage();
+
+  useEffect(() => {
+    const seo = translations[language].seo;
+
+    // Mise à jour du title
+    document.title = seo.title;
+
+    // Mise à jour de l'attribut lang sur <html>
+    document.documentElement.lang = language;
+
+    // Mise à jour meta description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', seo.description);
+
+    // Mise à jour meta keywords
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (metaKeywords) metaKeywords.setAttribute('content', seo.keywords);
+
+    // Mise à jour Open Graph
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', seo.title);
+
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', seo.description);
+
+    // Mise à jour Twitter
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) twitterTitle.setAttribute('content', seo.title);
+
+    const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDesc) twitterDesc.setAttribute('content', seo.description);
+  }, [language]);
+
+  return null;
 }
 
 function Router() {
@@ -62,13 +103,13 @@ function usePageTitle(title: string) {
 // - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
 //   to keep consistent foreground/background color across components
 // - Then manage colors palette with CSS variables in client/src/index.css instead of hard-coding to keep global consistency.
-
 export default function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider>
         <LanguageProvider>
           <TooltipProvider>
+            <SEOUpdater />
             <Router />
             <Toaster />
           </TooltipProvider>
