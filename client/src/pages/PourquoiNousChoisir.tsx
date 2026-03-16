@@ -3,43 +3,69 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect, useRef } from 'react';
 
 export default function PourquoiNousChoisir() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
 
   const reasons = [
-    {
-      number: 1,
-      titleKey: 'reason1Title',
-      descriptionKey: 'reason1Description',
-      icon: 'network'
-    },
-    {
-      number: 2,
-      titleKey: 'reason2Title',
-      descriptionKey: 'reason2Description',
-      icon: 'shield'
-    },
-    {
-      number: 3,
-      titleKey: 'reason3Title',
-      descriptionKey: 'reason3Description',
-      icon: 'balance'
-    },
-    {
-      number: 4,
-      titleKey: 'reason4Title',
-      descriptionKey: 'reason4Description',
-      icon: 'chart'
-    }
+    { number: 1, titleKey: 'reason1Title', descriptionKey: 'reason1Description', icon: 'network' },
+    { number: 2, titleKey: 'reason2Title', descriptionKey: 'reason2Description', icon: 'shield' },
+    { number: 3, titleKey: 'reason3Title', descriptionKey: 'reason3Description', icon: 'balance' },
+    { number: 4, titleKey: 'reason4Title', descriptionKey: 'reason4Description', icon: 'chart' }
   ];
+
+  // SEO — title dynamique par langue
+  useEffect(() => {
+    const pageTitles: Record<string, string> = {
+      fr: 'Pourquoi Choisir NanoProtects – Expert Bejmat, Zellige & Surfaces Traditionnelles Marrakech',
+      en: 'Why Choose NanoProtects – Bejmat, Zellige & Traditional Surface Expert Marrakech',
+      ar: 'لماذا تختار NanoProtects – خبير البيجمات والزليج والأسطح التقليدية مراكش',
+      es: '¿Por Qué Elegir NanoProtects? – Experto Bejmat, Zellige y Superficies Tradicionales Marrakech',
+    };
+    document.title = pageTitles[language] || pageTitles['fr'];
+  }, [language]);
+
+  // SEO — Schema.org JSON-LD
+  useEffect(() => {
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": language === 'fr' ? "Pourquoi Choisir NanoProtects – Expert Bejmat, Zellige & Surfaces Marrakech"
+        : language === 'en' ? "Why Choose NanoProtects – Bejmat, Zellige & Traditional Surface Expert Marrakech"
+        : language === 'ar' ? "لماذا تختار NanoProtects – خبير البيجمات والزليج مراكش"
+        : "¿Por Qué Elegir NanoProtects? – Experto Bejmat, Zellige Marrakech",
+      "url": "https://nanoprotects.com/pourquoi-nous-choisir",
+      "description": language === 'fr' ? "Découvrez pourquoi NanoProtects est la référence en nettoyage et protection nanotechnologique du bejmat, zellige, carreaux de ciment beldi, pierre taza et marbre pour hôtels et riads à Marrakech."
+        : language === 'en' ? "Discover why NanoProtects is the reference in nanotechnology cleaning and protection of bejmat, zellige, beldi cement tiles, taza stone and marble for hotels and riads in Marrakech."
+        : language === 'ar' ? "اكتشف لماذا NanoProtects هي المرجع في التنظيف النانوي للبيجمات والزليج وحجر تازة والرخام للفنادق والرياض في مراكش."
+        : "Descubra por qué NanoProtects es la referencia en limpieza y protección nanotecnológica de bejmat, zellige, piedra taza y mármol para hoteles y riads en Marrakech.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "NanoProtects",
+        "telephone": "+212675971971",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Q.I. Sidi Ghanem, N°158, B44",
+          "addressLocality": "Marrakech",
+          "addressRegion": "Marrakech-Safi",
+          "postalCode": "40000",
+          "addressCountry": "MA"
+        }
+      }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'pourquoi-schema-ld';
+    script.textContent = JSON.stringify(schemaData);
+    const existing = document.getElementById('pourquoi-schema-ld');
+    if (existing) existing.remove();
+    document.head.appendChild(script);
+    return () => { const el = document.getElementById('pourquoi-schema-ld'); if (el) el.remove(); };
+  }, [language]);
 
   // Scroll animation setup
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -48,7 +74,6 @@ export default function PourquoiNousChoisir() {
         }
       });
     }, observerOptions);
-
     if (containerRef.current) {
       const cards = containerRef.current.querySelectorAll('.reason-card');
       cards.forEach((card, index) => {
@@ -57,23 +82,16 @@ export default function PourquoiNousChoisir() {
         observer.observe(card);
       });
     }
-
     return () => observer.disconnect();
   }, []);
 
-  // SVG icon renderer
   const renderIcon = (iconType: string) => {
     switch (iconType) {
       case 'network':
         return (
           <svg className="w-12 h-12 stroke-primary group-hover:stroke-accent transition-colors duration-300" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="24" cy="12" r="4"/>
-            <circle cx="18" cy="22" r="4"/>
-            <circle cx="30" cy="22" r="4"/>
-            <circle cx="24" cy="32" r="4"/>
-            <line x1="24" y1="16" x2="24" y2="28"/>
-            <line x1="21" y1="20" x2="20" y2="24"/>
-            <line x1="27" y1="20" x2="28" y2="24"/>
+            <circle cx="24" cy="12" r="4"/><circle cx="18" cy="22" r="4"/><circle cx="30" cy="22" r="4"/><circle cx="24" cy="32" r="4"/>
+            <line x1="24" y1="16" x2="24" y2="28"/><line x1="21" y1="20" x2="20" y2="24"/><line x1="27" y1="20" x2="28" y2="24"/>
             <path d="M20 36L28 36M24 36L24 42M18 42L30 42"/>
           </svg>
         );
@@ -88,14 +106,11 @@ export default function PourquoiNousChoisir() {
       case 'balance':
         return (
           <svg className="w-12 h-12 stroke-primary group-hover:stroke-accent transition-colors duration-300" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="18" cy="24" r="7"/>
-            <circle cx="30" cy="24" r="7"/>
-            <line x1="18" y1="17" x2="30" y2="17" strokeWidth="1.5"/>
-            <line x1="18" y1="31" x2="30" y2="31" strokeWidth="1.5"/>
+            <circle cx="18" cy="24" r="7"/><circle cx="30" cy="24" r="7"/>
+            <line x1="18" y1="17" x2="30" y2="17" strokeWidth="1.5"/><line x1="18" y1="31" x2="30" y2="31" strokeWidth="1.5"/>
             <path d="M12 24L6 24M42 24L36 24" strokeLinecap="round" strokeWidth="2"/>
             <path d="M24 12L24 6M24 42L24 36" strokeLinecap="round" strokeWidth="2"/>
-            <circle cx="18" cy="24" r="2.5" fill="currentColor"/>
-            <circle cx="30" cy="24" r="2.5" fill="currentColor"/>
+            <circle cx="18" cy="24" r="2.5" fill="currentColor"/><circle cx="30" cy="24" r="2.5" fill="currentColor"/>
           </svg>
         );
       case 'chart':
@@ -103,9 +118,7 @@ export default function PourquoiNousChoisir() {
           <svg className="w-12 h-12 stroke-primary group-hover:stroke-accent transition-colors duration-300" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
             <path d="M8 24L16 16L24 24L32 16L40 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M12 32L16 28L20 32M28 32L32 28L36 32" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <circle cx="16" cy="16" r="2" fill="currentColor"/>
-            <circle cx="24" cy="24" r="2" fill="currentColor"/>
-            <circle cx="32" cy="16" r="2" fill="currentColor"/>
+            <circle cx="16" cy="16" r="2" fill="currentColor"/><circle cx="24" cy="24" r="2" fill="currentColor"/><circle cx="32" cy="16" r="2" fill="currentColor"/>
             <line x1="8" y1="40" x2="40" y2="40" strokeWidth="2" strokeLinecap="round"/>
           </svg>
         );
@@ -122,14 +135,11 @@ export default function PourquoiNousChoisir() {
       
       <section className="pt-32 pb-20">
         <div className="container max-w-6xl">
-          {/* Page Title */}
           <h1 className="font-display text-[2.5rem] md:text-[4rem] font-bold text-left mb-20" style={{ color: '#A33215' }}>
             {t.why.title}
           </h1>
           
-          {/* Comparison Section with Icons and Text */}
           <div className="mb-20 grid md:grid-cols-2 gap-8">
-            {/* Left: Problem */}
             <div className="p-8 bg-red-50 rounded-lg border-2 border-red-200">
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-4xl">❌</span>
@@ -137,21 +147,16 @@ export default function PourquoiNousChoisir() {
               </div>
               <div className="space-y-4">
                 <div>
-                  <p className="font-semibold text-red-700 mb-2 flex items-center gap-2">
-                    <span className="text-xl">⚠️</span> {t.why.comparisonProblemLabel}
-                  </p>
+                  <p className="font-semibold text-red-700 mb-2 flex items-center gap-2"><span className="text-xl">⚠️</span> {t.why.comparisonProblemLabel}</p>
                   <p className="text-gray-700 ml-8">{t.why.comparisonProblemText}</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-red-700 mb-2 flex items-center gap-2">
-                    <span className="text-xl">📉</span> {t.why.comparisonImpactLabel}
-                  </p>
+                  <p className="font-semibold text-red-700 mb-2 flex items-center gap-2"><span className="text-xl">📉</span> {t.why.comparisonImpactLabel}</p>
                   <p className="text-gray-700 ml-8">{t.why.comparisonImpactText}</p>
                 </div>
               </div>
             </div>
             
-            {/* Right: Solution */}
             <div className="p-8 bg-green-50 rounded-lg border-2 border-green-200">
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-4xl">✅</span>
@@ -159,43 +164,31 @@ export default function PourquoiNousChoisir() {
               </div>
               <div className="space-y-4">
                 <div>
-                  <p className="font-semibold text-green-700 mb-2 flex items-center gap-2">
-                    <span className="text-xl">🔬</span> {t.why.comparisonSolutionLabel}
-                  </p>
+                  <p className="font-semibold text-green-700 mb-2 flex items-center gap-2"><span className="text-xl">🔬</span> {t.why.comparisonSolutionLabel}</p>
                   <p className="text-gray-700 ml-8">{t.why.comparisonSolutionText}</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-green-700 mb-2 flex items-center gap-2">
-                    <span className="text-xl">💎</span> {t.why.comparisonBenefitLabel}
-                  </p>
+                  <p className="font-semibold text-green-700 mb-2 flex items-center gap-2"><span className="text-xl">💎</span> {t.why.comparisonBenefitLabel}</p>
                   <p className="text-gray-700 ml-8">{t.why.comparisonBenefitText}</p>
                 </div>
               </div>
             </div>
           </div>
           
-          {/* 4-column grid on desktop, 2 on tablet, 1 on mobile */}
           <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {reasons.map((reason, index) => (
-              <article 
+              <article
                 key={index}
                 className="reason-card relative p-8 rounded-lg border shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group overflow-hidden"
                 style={{ backgroundColor: '#ffffff', borderColor: '#A75C16' }}
               >
-                {/* Top border animation on hover */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-t-lg" />
-
-                {/* Icon wrapper */}
                 <div className="w-16 h-16 mb-6 flex items-center justify-center">
                   {renderIcon(reason.icon)}
                 </div>
-
-                {/* Title with number */}
                 <h2 className="text-lg font-semibold text-secondary mb-4 leading-snug">
                   <span className="text-primary font-bold">{reason.number}.</span> {t.why[reason.titleKey as keyof typeof t.why]}
                 </h2>
-
-                {/* Description */}
                 <p className="text-gray-600 text-sm leading-relaxed">
                   {t.why[reason.descriptionKey as keyof typeof t.why]}
                 </p>
