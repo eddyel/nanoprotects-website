@@ -17,7 +17,7 @@ export default function Home() {
       <section 
         className="relative h-screen flex flex-col items-center justify-between w-full pt-20"
         style={{
-          backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310419663028302117/UxxaIQUWeWFAiEWn.webp)',
+          backgroundImage: 'url(/images/hero-riad-marrakech.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed'
