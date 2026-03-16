@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import { Droplet, Shield, Sparkles, Building2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -6,6 +7,7 @@ import { translations } from '@/lib/translations';
 export default function APropos() {
   const { language } = useLanguage();
   const t = translations[language];
+
   const references = [
     'Palais Ronsard',
     'Palais Selman',
@@ -15,6 +17,74 @@ export default function APropos() {
     'Riad Al Dall',
     'Ayaso'
   ];
+
+  // SEO — title dynamique par langue
+  useEffect(() => {
+    const pageTitles: Record<string, string> = {
+      fr: 'À Propos – NanoProtects Marrakech | Expert Nettoyage Bejmat & Surfaces Traditionnelles',
+      en: 'About – NanoProtects Marrakech | Bejmat & Traditional Surface Cleaning Expert',
+      ar: 'حول NanoProtects مراكش | خبير تنظيف البيجمات والأسطح التقليدية',
+      es: 'Acerca de – NanoProtects Marrakech | Experto en Limpieza Bejmat y Superficies Tradicionales',
+    };
+    document.title = pageTitles[language] || pageTitles['fr'];
+  }, [language]);
+
+  // SEO — Schema.org JSON-LD page À Propos
+  useEffect(() => {
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": language === 'fr' ? "À Propos – NanoProtects Marrakech"
+        : language === 'en' ? "About – NanoProtects Marrakech"
+        : language === 'ar' ? "حول NanoProtects مراكش"
+        : "Acerca de – NanoProtects Marrakech",
+      "url": "https://nanoprotects.com/a-propos",
+      "description": language === 'fr' ? "Fondée en 2019, NanoProtects est spécialiste du nettoyage et traitement nanotechnologique du bejmat, zellige, carreaux de ciment beldi, pierre taza et marbre pour hôtels et riads à Marrakech."
+        : language === 'en' ? "Founded in 2019, NanoProtects specialises in nanotechnology cleaning and treatment of bejmat, zellige, beldi cement tiles, taza stone and marble for hotels and riads in Marrakech."
+        : language === 'ar' ? "تأسست NanoProtects عام 2019، متخصصة في التنظيف النانوي للبيجمات والزليج وبلاط الإسمنت البلدي وحجر تازة والرخام للفنادق والرياض في مراكش."
+        : "Fundada en 2019, NanoProtects es especialista en limpieza nanotecnológica de bejmat, zellige, baldosas de cemento beldi, piedra taza y mármol para hoteles y riads en Marrakech.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "NanoProtects",
+        "telephone": "+212675971971",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Q.I. Sidi Ghanem, N°158, B44",
+          "addressLocality": "Marrakech",
+          "addressRegion": "Marrakech-Safi",
+          "postalCode": "40000",
+          "addressCountry": "MA"
+        },
+        "foundingDate": "2019",
+        "url": "https://nanoprotects.com",
+        "sameAs": [
+          "https://www.linkedin.com/company/nanoprotects",
+          "https://web.facebook.com/NanoProtects",
+          "https://www.instagram.com/nanoprotects"
+        ]
+      },
+      "mentions": references.map(ref => ({
+        "@type": "Hotel",
+        "name": ref,
+        "addressLocality": "Marrakech",
+        "addressCountry": "MA"
+      }))
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'apropos-schema-ld';
+    script.textContent = JSON.stringify(schemaData);
+
+    const existing = document.getElementById('apropos-schema-ld');
+    if (existing) existing.remove();
+    document.head.appendChild(script);
+
+    return () => {
+      const el = document.getElementById('apropos-schema-ld');
+      if (el) el.remove();
+    };
+  }, [language]);
 
   return (
     <div className="min-h-screen" style={{ position: 'relative' }}>
