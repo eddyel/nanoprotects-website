@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import { Sparkles, Shield, CheckCircle, Clock, TrendingUp, Handshake } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -6,6 +7,96 @@ import { translations } from '@/lib/translations';
 export default function NotreMethode() {
   const { language } = useLanguage();
   const t = translations[language];
+
+  // SEO — title dynamique par langue
+  useEffect(() => {
+    const pageTitles: Record<string, string> = {
+      fr: 'Notre Méthode Nanotechnologique – Diagnostic, Nettoyage & Protection | NanoProtects Marrakech',
+      en: 'Our Nanotechnology Method – Diagnosis, Cleaning & Protection | NanoProtects Marrakech',
+      ar: 'طريقتنا النانوية – التشخيص والتنظيف والحماية | NanoProtects مراكش',
+      es: 'Nuestro Método Nanotecnológico – Diagnóstico, Limpieza y Protección | NanoProtects Marrakech',
+    };
+    document.title = pageTitles[language] || pageTitles['fr'];
+  }, [language]);
+
+  // SEO — Schema.org HowTo pour les 3 phases de la méthode
+  useEffect(() => {
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": language === 'fr' ? "Méthode NanoProtects : nettoyage et protection nanotechnologique surfaces traditionnelles Marrakech"
+        : language === 'en' ? "NanoProtects Method: nanotechnology cleaning and protection of traditional surfaces Marrakech"
+        : language === 'ar' ? "طريقة NanoProtects: التنظيف النانوي والحماية للأسطح التقليدية مراكش"
+        : "Método NanoProtects: limpieza y protección nanotecnológica de superficies tradicionales Marrakech",
+      "description": language === 'fr' ? "Protocole en 3 phases pour le nettoyage et la protection nanotechnologique du bejmat, zellige, carreaux de ciment beldi, pierre taza et marbre à Marrakech."
+        : language === 'en' ? "3-phase protocol for nanotechnology cleaning and protection of bejmat, zellige, beldi cement tiles, taza stone and marble in Marrakech."
+        : language === 'ar' ? "بروتوكول من 3 مراحل لتنظيف وحماية البيجمات والزليج وبلاط الإسمنت البلدي وحجر تازة والرخام في مراكش."
+        : "Protocolo de 3 fases para la limpieza y protección nanotecnológica de bejmat, zellige, baldosas de cemento beldi, piedra taza y mármol en Marrakech.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "NanoProtects",
+        "telephone": "+212675971971",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Q.I. Sidi Ghanem, N°158, B44",
+          "addressLocality": "Marrakech",
+          "addressRegion": "Marrakech-Safi",
+          "postalCode": "40000",
+          "addressCountry": "MA"
+        }
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": t.method.phase1Title,
+          "text": t.method.phase1Description,
+          "itemListElement": [
+            { "@type": "HowToDirection", "text": t.method.phase1Point1 },
+            { "@type": "HowToDirection", "text": t.method.phase1Point2 },
+            { "@type": "HowToDirection", "text": t.method.phase1Point3 }
+          ]
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": t.method.phase2Title,
+          "text": t.method.phase2Description,
+          "itemListElement": [
+            { "@type": "HowToDirection", "text": t.method.phase2Point1 },
+            { "@type": "HowToDirection", "text": t.method.phase2Point2 },
+            { "@type": "HowToDirection", "text": t.method.phase2Point3 }
+          ]
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": t.method.phase3Title,
+          "text": t.method.phase3Description,
+          "itemListElement": [
+            { "@type": "HowToDirection", "text": t.method.phase3Point1 },
+            { "@type": "HowToDirection", "text": t.method.phase3Point2 },
+            { "@type": "HowToDirection", "text": t.method.phase3Point3 }
+          ]
+        }
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'methode-schema-ld';
+    script.textContent = JSON.stringify(schemaData);
+
+    const existing = document.getElementById('methode-schema-ld');
+    if (existing) existing.remove();
+    document.head.appendChild(script);
+
+    return () => {
+      const el = document.getElementById('methode-schema-ld');
+      if (el) el.remove();
+    };
+  }, [language, t]);
+
   return (
     <div className="min-h-screen" style={{ position: 'relative' }}>
       {/* DO NOT CHANGE - backgroundSize must stay '100% auto' */}
