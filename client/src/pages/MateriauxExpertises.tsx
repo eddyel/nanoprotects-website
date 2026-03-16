@@ -98,9 +98,84 @@ export default function MateriauxExpertises() {
   const [bgImage, setBgImage] = useState(bgImages['pierres']);
   const [bgOpacity, setBgOpacity] = useState(0.18);
   const fadeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  
+
   const categories = getCategoriesData(t);
   const activeCategory = categories.find(cat => cat.id === activeTab);
+
+  // SEO — title de page dynamique selon la langue
+  useEffect(() => {
+    const pageTitles: Record<string, string> = {
+      fr: 'Bejmat, Zellige, Pierre Taza, Marbre – Matériaux & Expertises | NanoProtects Marrakech',
+      en: 'Bejmat, Zellige, Taza Stone, Marble – Materials & Expertise | NanoProtects Marrakech',
+      ar: 'البيجمات، الزليج، حجر تازة، الرخام – المواد والخبرات | NanoProtects مراكش',
+      es: 'Bejmat, Zellige, Piedra Taza, Mármol – Materiales & Experiencias | NanoProtects Marrakech',
+    };
+    document.title = pageTitles[language] || pageTitles['fr'];
+  }, [language]);
+
+  // SEO — Schema.org JSON-LD pour la page matériaux (invisible pour l'utilisateur)
+  useEffect(() => {
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": t.materials.title,
+      "description": t.materials.subtitle,
+      "url": "https://nanoprotects.com/materiaux-expertises",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "NanoProtects",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Marrakech",
+          "addressCountry": "MA"
+        }
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": language === 'fr' ? "Services de nettoyage et protection nanotechnologique" : "Nanotechnology cleaning and protection services",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": language === 'fr' ? "Nettoyage et protection bejmat, zellige, carreaux ciment beldi Marrakech"
+              : language === 'en' ? "Bejmat, zellige, beldi cement tiles cleaning and protection Marrakech"
+              : language === 'ar' ? "تنظيف وحماية البيجمات والزليج وبلاط الإسمنت البلدي مراكش"
+              : "Limpieza y protección bejmat, zellige, baldosas cemento beldi Marrakech"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": language === 'fr' ? "Traitement et protection pierre taza et marbre hôtels riads Marrakech"
+              : language === 'en' ? "Taza stone and marble treatment for hotels and riads Marrakech"
+              : language === 'ar' ? "معالجة وحماية حجر تازة والرخام للفنادق والرياض مراكش"
+              : "Tratamiento protección piedra taza y mármol hoteles riads Marrakech"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": language === 'fr' ? "Protection nanotechnologique surfaces traditionnelles marocaines"
+              : language === 'en' ? "Nanotechnology protection for traditional Moroccan surfaces"
+              : language === 'ar' ? "الحماية النانوية للأسطح التقليدية المغربية"
+              : "Protección nanotecnológica superficies tradicionales marroquíes"
+          }
+        ]
+      }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'materiaux-schema-ld';
+    script.textContent = JSON.stringify(schemaData);
+
+    const existing = document.getElementById('materiaux-schema-ld');
+    if (existing) existing.remove();
+    document.head.appendChild(script);
+
+    return () => {
+      const el = document.getElementById('materiaux-schema-ld');
+      if (el) el.remove();
+    };
+  }, [language, t]);
 
   const checkScroll = () => {
     const container = containerRef.current;
@@ -174,7 +249,7 @@ export default function MateriauxExpertises() {
         }}
       />
       <Navigation />
-      
+
       {/* Hero Section with Title */}
       <section className="pt-32 pb-10" style={{ backgroundColor: 'rgba(245,245,245,0.18)', position: 'relative', zIndex: 1 }}>
         <div className="container max-w-5xl">
@@ -241,7 +316,7 @@ export default function MateriauxExpertises() {
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   {getTranslationValue(`materials.${activeCategory.titleKey}`)}
                 </h2>
-                
+
                 {activeCategory.subtitleKey && (
                   <p className="text-gray-600 mb-6 italic">
                     {getTranslationValue(`materials.${activeCategory.subtitleKey}`)}
@@ -268,7 +343,7 @@ export default function MateriauxExpertises() {
                   </div>
                 )}
               </div>
-              
+
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">{t.materials.issuesLabel}</h3>
@@ -276,14 +351,14 @@ export default function MateriauxExpertises() {
                     {getTranslationValue(`materials.${activeCategory.issuesKey}`)}
                   </p>
                 </div>
-                
+
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">{t.materials.actionsLabel}</h3>
                   <p className="text-gray-700 leading-relaxed">
                     {getTranslationValue(`materials.${activeCategory.actionsKey}`)}
                   </p>
                 </div>
-                
+
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">{t.materials.surfacesLabel}</h3>
                   <p className="text-gray-600 italic">
