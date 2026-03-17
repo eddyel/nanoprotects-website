@@ -61,10 +61,10 @@ export default function Navigation() {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{ backgroundColor: '#A33215' }}
     >
-      {/* Skip to main content */}
       
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg focus:outline-none"
+        style={{ zIndex: 60 }}
       >
         Aller au contenu principal
       </a>
@@ -72,19 +72,14 @@ export default function Navigation() {
       <div className="container">
         <div className="flex items-center justify-between h-20">
 
-          {/* Logo — WebP avec fallback PNG + dimensions explicites */}
           <Link href="/" className="logo-link flex items-center gap-2">
             <picture>
-              <source
-                srcSet="/images/nanoprotects-logo-new.webp"
-                type="image/webp"
-              />
+              <source srcSet="/images/nanoprotects-logo-new.webp" type="image/webp" />
               <img
                 src="/images/nanoprotects-logo-new.png"
                 alt="NanoProtects – Nettoyage Bejmat Zellige Marrakech"
                 className="h-16 object-contain brightness-0 invert"
                 loading="eager"
-                fetchPriority="high"
                 width="423"
                 height="112"
                 decoding="sync"
@@ -92,13 +87,12 @@ export default function Navigation() {
             </picture>
           </Link>
 
-          {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-12">
             {menuItems.map((item) => (
               <Link
                 key={item.path}
                 href={item.path}
-                className={`text-xs font-bold transition-colors text-center leading-tight whitespace-pre-line focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded px-2 py-1 ${
+                className={`text-xs font-bold transition-colors text-center leading-tight whitespace-pre-line focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded px-2 py-1 ${
                   location === item.path
                     ? 'text-white border-b-2 border-b-amber-600 pb-2'
                     : 'text-white border-b-2 border-b-amber-600/40 hover:border-b-amber-600 pb-2'
@@ -109,15 +103,14 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Social + Language */}
           <div className="hidden lg:flex items-center gap-6">
-            <a href="https://web.facebook.com/NanoProtects" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded p-1" aria-label="Visit NanoProtects on Facebook">
+            <a href="https://web.facebook.com/NanoProtects" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded p-1" aria-label="Visit NanoProtects on Facebook">
               <SiFacebook className="w-6 h-6" />
             </a>
-            <a href="https://www.linkedin.com/company/nanoprotects" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded p-1" aria-label="Visit NanoProtects on LinkedIn">
+            <a href="https://www.linkedin.com/company/nanoprotects" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded p-1" aria-label="Visit NanoProtects on LinkedIn">
               <SiLinkedin className="w-6 h-6" />
             </a>
-            <a href="https://www.instagram.com/nanoprotects" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] rounded p-1" aria-label="Visit NanoProtects on Instagram">
+            <a href="https://www.instagram.com/nanoprotects" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded p-1" aria-label="Visit NanoProtects on Instagram">
               <SiInstagram className="w-6 h-6" />
             </a>
 
@@ -135,7 +128,6 @@ export default function Navigation() {
             </Select>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             className="lg:hidden text-white p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -147,7 +139,6 @@ export default function Navigation() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
@@ -185,7 +176,7 @@ export default function Navigation() {
                     >
                       <Link
                         href={item.path}
-                        className={`block text-lg py-3 px-4 rounded transition-colors w-full text-left min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#A33215] ${
+                        className={`block text-lg py-3 px-4 rounded transition-colors w-full text-left min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
                           location === item.path
                             ? 'text-white bg-white/10 font-semibold'
                             : 'text-white/90 hover:bg-white/5 hover:text-white'
