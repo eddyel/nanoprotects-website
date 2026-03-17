@@ -13,10 +13,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <!-- CSP corrigée — ajout gstatic.com pour reCAPTCHA -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://cdn.jsdelivr.net https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://tagmanager.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://tagmanager.google.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https:; media-src 'self' https://files.manuscdn.com; frame-src https://www.googletagmanager.com https://www.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" />
-
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -24,21 +21,17 @@
 
     <title>NanoProtects – Nettoyage Bejmat, Zellige & Surfaces Traditionnelles Marrakech</title>
 
-    <!-- Mobile -->
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="NanoProtects" />
     <meta name="theme-color" content="#A75C16" />
-
-    <!-- SEO -->
     <meta name="description" content="Spécialiste nettoyage et protection nanotechnologique du bejmat, zellige, carreaux de ciment beldi, pierre taza et marbre. Expert hôtels et riads à Marrakech. Protection invisible 3-5 ans. Diagnostic gratuit." />
     <meta name="keywords" content="nettoyage bejmat marrakech, protection zellige, carreaux ciment beldi, pierre taza traitement, marbre nettoyage marrakech, surfaces traditionnelles marocaines, hôtels marrakech, riads marrakech, nanotechnologie surfaces, imperméabilisation bejmat, protection hydrofuge zellige, nettoyage surfaces marrakech" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="NanoProtects" />
     <meta name="google-site-verification" content="LhnkJc8Dt0y1MI7bCwQOpjtEI_5Pw5nayCE74hzWzaE" />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://nanoprotects.com/" />
     <meta property="og:title" content="NanoProtects – Nettoyage Bejmat, Zellige & Surfaces Traditionnelles Marrakech" />
@@ -53,7 +46,6 @@
     <meta property="og:locale:alternate" content="ar_MA" />
     <meta property="og:locale:alternate" content="es_ES" />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://nanoprotects.com/" />
     <meta name="twitter:title" content="NanoProtects – Nettoyage Bejmat, Zellige & Surfaces Traditionnelles Marrakech" />
@@ -62,7 +54,6 @@
     <meta name="twitter:image:alt" content="Nettoyage et protection pierre taza par NanoProtects – Hôtel Marrakech" />
     <meta name="twitter:creator" content="@nanoprotects" />
 
-    <!-- Schema.org LocalBusiness -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -110,14 +101,13 @@
     }
     </script>
 
-    <!-- Schema.org Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "NanoProtects",
       "url": "https://nanoprotects.com",
-      "logo": "https://nanoprotects.com/images/nanoprotects-logo-new.webp",
+      "logo": "https://nanoprotects.com/images/nanoprotects-logo-new-1.webp",
       "description": "Spécialiste nettoyage et protection nanotechnologique du bejmat, zellige, pierre taza et marbre à Marrakech",
       "foundingDate": "2019",
       "telephone": "+212675971971",
@@ -137,42 +127,32 @@
     }
     </script>
 
-    <!-- Canonical -->
     <link rel="canonical" href="https://nanoprotects.com/" />
-
-    <!-- Hreflang -->
     <link rel="alternate" hreflang="fr" href="https://nanoprotects.com/?lang=fr" />
     <link rel="alternate" hreflang="ar" href="https://nanoprotects.com/?lang=ar" />
     <link rel="alternate" hreflang="es" href="https://nanoprotects.com/?lang=es" />
     <link rel="alternate" hreflang="en" href="https://nanoprotects.com/?lang=en" />
     <link rel="alternate" hreflang="x-default" href="https://nanoprotects.com/" />
 
-    <!-- Performance — DNS prefetch + preconnect -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Google Fonts — chargement non bloquant -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
     <noscript>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" />
     </noscript>
 
-    <!-- Préchargement image hero -->
-    <link rel="preload" as="image" href="/images/hero-riad-marrakech.webp" fetchpriority="high" />
+    <!-- Préchargement image hero compressée -->
+    <link rel="preload" as="image" href="/images/hero-riad-marrakech-1.webp" fetchpriority="high" />
 
-    <!-- reCAPTCHA v3 — chargement différé -->
-
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-
-    <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json" />
   </head>
 
