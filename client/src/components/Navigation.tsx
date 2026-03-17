@@ -70,7 +70,7 @@ export default function Navigation() {
 
           <Link href="/" className="logo-link flex items-center gap-2">
             <picture>
-              <source srcSet="/images/nanoprotects-logo-new.webp" type="image/webp" />
+              <source srcSet="/images/nanoprotects-logo-new-1.webp" type="image/webp" />
               <img src="/images/nanoprotects-logo-new.png" alt="NanoProtects – Nettoyage Bejmat Zellige Marrakech" className="h-16 object-contain brightness-0 invert" loading="eager" width="423" height="112" decoding="sync" />
             </picture>
           </Link>
