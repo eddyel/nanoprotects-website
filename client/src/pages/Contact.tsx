@@ -81,6 +81,18 @@ export default function Contact() {
     document.title = pageTitles[language] || pageTitles['fr'];
   }, [language]);
 
+  // reCAPTCHA — chargé uniquement sur cette page
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://www.google.com/recaptcha/api.js';
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+    return () => {
+      if (document.head.contains(script)) document.head.removeChild(script);
+    };
+  }, []);
+
   // SEO — Schema.org ContactPage
   useEffect(() => {
     const schemaData = {
@@ -231,7 +243,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
-      
+
       <section className="pt-32 pb-20">
         <div className="container max-w-3xl">
           <h1 className="text-4xl md:text-5xl font-bold text-[#A33215] mb-8">{t.contact.title}</h1>
