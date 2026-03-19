@@ -307,7 +307,6 @@ export interface Translations {
 
 export const translations: Record<Language, Translations> = {
   fr: {
-    // SEO Metadata — OPTIMISÉ pour "nettoyage bejmat zellige marrakech"
     seo: {
       title: 'NanoProtects – Nettoyage Bejmat, Zellige & Surfaces Traditionnelles Marrakech',
       description: 'Spécialiste nettoyage et protection nanotechnologique du bejmat, zellige, carreaux de ciment beldi, pierre taza et marbre. Expert hôtels et riads à Marrakech. Protection invisible 3-5 ans. Diagnostic gratuit.',
@@ -325,8 +324,8 @@ export const translations: Record<Language, Translations> = {
       contact: 'Contact',
     },
     hero: {
-      title: 'Nanotechnologie Certifiée',
-      subtitle: 'Pour <span style="font-weight: 600; color: #fef3c7;">Bejmat</span>, <span style="font-weight: 600; color: #fef3c7;">Marbre</span>, <span style="font-weight: 600; color: #fef3c7;">Zellige</span>, <span style="font-weight: 600; color: #fef3c7;">Pierres Naturelles</span> et toutes surfaces nobles. Diagnostic gratuit, <span style="font-weight: 600; color: #fef3c7;">protection 3-5 ans garantie</span>.',
+      title: 'Remis à Neuf. Protégés <span style="font-weight: 600; color: #fef3c7;">Durablement.</span>',
+      subtitle: '<span style="font-weight: 600; color: #fef3c7;">Bejmat</span>, <span style="font-weight: 600; color: #fef3c7;">Marbre</span>, <span style="font-weight: 600; color: #fef3c7;">Zellige</span>, Textile... — Nettoyage & Nano-Protection. Diagnostic gratuit · <span style="font-weight: 600; color: #fef3c7;">Garantie 3-5 ans</span> · Clients ravis.',
       cta: 'Contactez Nous',
       realizationsButton: 'Nos Réalisations',
     },
@@ -545,7 +544,6 @@ export const translations: Record<Language, Translations> = {
       section3Text: 'Authenticité, Excellence, Engagement, Proximité — quatre valeurs qui guident chacune de nos interventions pour préserver durablement votre patrimoine.',
     },
     materials: {
-      // OPTIMISÉ SEO — H1 et intro de la page Matériaux
       title: 'Nettoyage & Protection – Bejmat, Zellige, Pierre Taza, Marbre',
       subtitle: 'Spécialistes du nettoyage et traitement nanotechnologique du bejmat, zellige, carreaux de ciment beldi, pierre taza et marbre pour hôtels et riads à Marrakech. Solutions adaptées à chaque surface, durables et invisibles.',
       issuesLabel: 'Enjeux',
@@ -613,7 +611,6 @@ export const translations: Record<Language, Translations> = {
     },
   },
   ar: {
-    // SEO Metadata — OPTIMISÉ pour les recherches arabes
     seo: {
       title: 'NanoProtects – تنظيف وحماية البيجمات والزليج وأسطح تقليدية مراكش',
       description: 'متخصصون في التنظيف والحماية النانوية للبيجمات والزليج وبلاط الإسمنت البلدي وحجر تازة والرخام. خبراء الفنادق والرياض في مراكش. حماية غير مرئية 3-5 سنوات. تشخيص مجاني.',
@@ -631,8 +628,8 @@ export const translations: Record<Language, Translations> = {
       contact: 'اتصل بنا',
     },
     hero: {
-      title: 'تكنولوجيا النانو المعتمدة',
-      subtitle: 'للبيجمات والرخام والزليج والحجر الطبيعي وجميع الأسطح النبيلة. تشخيص مجاني، <span style="font-weight: 600; color: #fef3c7;">حماية 3-5 سنوات مضمونة</span>.',
+      title: 'مُجدَّد. محمي <span style="font-weight: 600; color: #fef3c7;">بشكل دائم.</span>',
+      subtitle: '<span style="font-weight: 600; color: #fef3c7;">بيجمات</span>، <span style="font-weight: 600; color: #fef3c7;">رخام</span>، <span style="font-weight: 600; color: #fef3c7;">زليج</span>، نسيج... — تنظيف وحماية نانو. تشخيص مجاني · <span style="font-weight: 600; color: #fef3c7;">ضمان 3-5 سنوات</span> · عملاء راضون.',
       cta: 'اتصل بنا',
       realizationsButton: 'إنجازاتنا',
     },
@@ -851,7 +848,6 @@ export const translations: Record<Language, Translations> = {
       section3Text: 'الأصالة، التميز، الالتزام، القرب — أربع قيم توجه كل تدخل من تدخلاتنا للحفاظ على تراثكم بشكل دائم.',
     },
     materials: {
-      // OPTIMISÉ SEO — H1 et intro de la page Matériaux en arabe
       title: 'تنظيف وحماية البيجمات والزليج وحجر تازة والرخام',
       subtitle: 'متخصصون في التنظيف والمعالجة النانوية للبيجمات والزليج وبلاط الإسمنت البلدي وحجر تازة والرخام لفنادق ورياض مراكش. حلول متكيفة مع كل سطح، دائمة وغير مرئية.',
       issuesLabel: 'التحديات',
@@ -919,7 +915,6 @@ export const translations: Record<Language, Translations> = {
     },
   },
   es: {
-    // SEO Metadata — OPTIMISÉ pour les recherches espagnoles
     seo: {
       title: 'NanoProtects – Limpieza Bejmat, Zellige y Superficies Tradicionales Marrakech',
       description: 'Especialista en limpieza y protección nanotecnológica de bejmat, zellige, baldosas de cemento beldi, piedra taza y mármol. Experto en hoteles y riads en Marrakech. Protección invisible 3-5 años. Diagnóstico gratuito.',
@@ -937,8 +932,8 @@ export const translations: Record<Language, Translations> = {
       contact: 'Contacto',
     },
     hero: {
-      title: 'Nanotecnología certificada',
-      subtitle: 'Para <span style="font-weight: 600; color: #fef3c7;">Bejmat</span>, <span style="font-weight: 600; color: #fef3c7;">Mármol</span>, <span style="font-weight: 600; color: #fef3c7;">Zellige</span>, <span style="font-weight: 600; color: #fef3c7;">Piedras Naturales</span> y todas las superficies nobles. Diagnóstico gratuito, <span style="font-weight: 600; color: #fef3c7;">protección 3-5 años garantizada</span>.',
+      title: 'Renovado. Protegido <span style="font-weight: 600; color: #fef3c7;">Durablemente.</span>',
+      subtitle: '<span style="font-weight: 600; color: #fef3c7;">Bejmat</span>, <span style="font-weight: 600; color: #fef3c7;">Mármol</span>, <span style="font-weight: 600; color: #fef3c7;">Zellige</span>, Textil... — Limpieza & Nano-Protección. Diagnóstico gratuito · <span style="font-weight: 600; color: #fef3c7;">Garantía 3-5 años</span> · Clientes satisfechos.',
       cta: 'Contáctanos',
       realizationsButton: 'Nuestras Realizaciones',
     },
@@ -1157,7 +1152,6 @@ export const translations: Record<Language, Translations> = {
       section3Text: 'Autenticidad, Excelencia, Compromiso, Proximidad — cuatro valores que guían cada una de nuestras intervenciones para preservar de manera sostenible su patrimonio.',
     },
     materials: {
-      // OPTIMISÉ SEO — H1 et intro de la page Matériaux en espagnol
       title: 'Limpieza & Protección – Bejmat, Zellige, Piedra Taza, Mármol',
       subtitle: 'Especialistas en limpieza y tratamiento nanotecnológico de bejmat, zellige, baldosas de cemento beldi, piedra taza y mármol para hoteles y riads en Marrakech. Soluciones duraderas e invisibles adaptadas a cada superficie.',
       issuesLabel: 'Desafíos',
@@ -1225,7 +1219,6 @@ export const translations: Record<Language, Translations> = {
     },
   },
   en: {
-    // SEO Metadata — OPTIMISÉ pour les recherches en anglais
     seo: {
       title: 'NanoProtects – Bejmat, Zellige & Traditional Surface Cleaning Marrakech',
       description: 'Specialist in nanotechnology cleaning and protection of bejmat, zellige, beldi cement tiles, taza stone and marble. Expert for hotels and riads in Marrakech. 3-5 year invisible protection. Free diagnosis.',
@@ -1243,8 +1236,8 @@ export const translations: Record<Language, Translations> = {
       contact: 'Contact',
     },
     hero: {
-      title: 'Certified Nanotechnology',
-      subtitle: 'For <span style="font-weight: 600; color: #fef3c7;">Bejmat</span>, <span style="font-weight: 600; color: #fef3c7;">Marble</span>, <span style="font-weight: 600; color: #fef3c7;">Zellige</span>, <span style="font-weight: 600; color: #fef3c7;">Natural Stones</span> and all noble surfaces. Free diagnosis, <span style="font-weight: 600; color: #fef3c7;">3-5 year guaranteed protection</span>.',
+      title: 'Restored. Protected <span style="font-weight: 600; color: #fef3c7;">for Good.</span>',
+      subtitle: '<span style="font-weight: 600; color: #fef3c7;">Bejmat</span>, <span style="font-weight: 600; color: #fef3c7;">Marble</span>, <span style="font-weight: 600; color: #fef3c7;">Zellige</span>, Textile... — Cleaning & Nano-Protection. Free diagnosis · <span style="font-weight: 600; color: #fef3c7;">3-5 Year Guarantee</span> · Happy Clients.',
       cta: 'Contact Us',
       realizationsButton: 'Our Realizations',
     },
@@ -1326,36 +1319,27 @@ export const translations: Record<Language, Translations> = {
       title26: 'Black Marble Console - Relais Châteaux',
       title27: 'Aluminium Lounger - Private',
     },
-    method: {
-      title: 'Our Methodical Approach: Reveal and Preserve Original Beauty',
-      subtitle: 'A complete approach to reveal and protect the beauty of your surfaces',
-      highTechTitle: 'High-Tech Cleaning',
-      highTechDescription: 'Precise diagnosis, deep surface cleaning, restoration of original shine and elimination of stubborn stains thanks to scientific protocols and ecological agents.',
-      protectionTitle: 'Protection Treatment',
-      protectionDescription: 'Application of invisible nanotechnology coatings (Nano-SiO₂) that form a molecular-level impermeable barrier, protecting against water, oil and stains for 3 to 5 years.',
-      phase1Title: 'Diagnosis',
-      phase1Description: 'Expert analysis of your surfaces\' condition to determine the exact nature of soiling, alterations and restoration potential.',
-      phase1Point1: 'Complete mapping of degradations (stains, wear, micro-scratches)',
-      phase1Point2: 'Identification of surface types and their sensitivity',
-      phase1Point3: 'Establishment of personalized and justified intervention protocol',
-      phase2Title: 'Reveal',
-      phase2Description: 'Cleaning and regeneration based on diagnosis, to restore the original shine and integrity of the surface.',
-      phase2Point1: 'Stripping and professional cleaning targeted according to diagnosis conclusions',
-      phase2Point2: 'Scientific removal of stains, residues and microorganisms identified',
-      phase2Point3: 'Aesthetic and preparatory restoration ensuring a perfectly healthy and receptive surface for protection',
-      phase3Title: 'Protection',
-      phase3Description: 'Application of nanotechnology coatings for lasting protection',
-      phase3Point1: 'Nano-SiO2 Application',
-      phase3Point2: 'Invisible nanotechnology coating',
-      phase3Point3: 'Long-lasting protection 3-5 years',
-      trustTitle: 'They Trust Us',
-      metric1Label: 'Time Freed',
-      metric1Description: 'Your teams spend 60% less time on intensive maintenance',
-      metric2Label: 'Return on Investment',
-      metric2Description: 'Measurable return through sustainable savings',
-      metric3Label: 'Sustainable',
-      metric3Subtitle: 'months',
-      metric3Description: 'Continuous support and systematic dialogue',
+    why: {
+      title: 'Why Choose NanoProtects',
+      subtitle: 'Every surface tells a story. Every material carries the soul of the craftsman who created it. Preserving this beauty means honoring a legacy and ensuring your spaces continue to inspire wonder for generations to come.',
+      comparisonProblemTitle: 'Common Film Protection',
+      comparisonProblemLabel: 'Problem:',
+      comparisonProblemText: 'Surface film that can chip and yellow.',
+      comparisonImpactLabel: 'Impact:',
+      comparisonImpactText: 'Alters appearance, limited lifespan, complicated maintenance.',
+      comparisonSolutionTitle: 'NanoProtects Impregnation',
+      comparisonSolutionLabel: 'Solution:',
+      comparisonSolutionText: 'Nanotechnology barrier integrated into the material.',
+      comparisonBenefitLabel: 'Benefit:',
+      comparisonBenefitText: 'Original beauty preserved, long durability, easy maintenance.',
+      reason1Title: 'Scientific & Custom Expertise',
+      reason1Description: 'Our precise diagnosis and ecological scientific protocols, applied by highly qualified teams, guarantee a solution perfectly adapted to each material and your specific needs.',
+      reason2Title: 'Sustainable & Regenerative Technology',
+      reason2Description: 'We combine regenerative cleaning that restores the original shine to surfaces with invisible and durable nanotechnology protection (3-5 years), for beauty preserved long-term.',
+      reason3Title: 'Operational Agility & Total Discretion',
+      reason3Description: 'Our process is designed to be ultra-efficient, agile and completely discreet. It integrates without disrupting your operations, strictly respecting your schedules and brand image.',
+      reason4Title: 'Profitable & Trustworthy Partnership',
+      reason4Description: 'Through continuous dialogue and reliable execution, we drastically reduce your long-term maintenance costs, transforming maintenance into a strategic and secure investment.',
     },
     what: {
       title: 'Reveal Beauty, Then Make It Eternal',
@@ -1472,7 +1456,6 @@ export const translations: Record<Language, Translations> = {
       section3Text: 'Authenticity, Excellence, Commitment, Proximity — four values that guide each of our interventions to sustainably preserve your heritage.',
     },
     materials: {
-      // OPTIMISÉ SEO — H1 et intro de la page Matériaux en anglais
       title: 'Cleaning & Protection – Bejmat, Zellige, Taza Stone, Marble',
       subtitle: 'Specialists in nanotechnology cleaning and treatment of bejmat, zellige, beldi cement tiles, taza stone and marble for hotels and riads in Marrakech. Durable and invisible solutions adapted to each surface.',
       issuesLabel: 'Challenges',
@@ -1507,27 +1490,36 @@ export const translations: Record<Language, Translations> = {
       processStep2: 'Nanotechnology Application',
       processStep3: 'Durable Protection',
     },
-    why: {
-      title: 'Why Choose NanoProtects',
-      subtitle: 'Every surface tells a story. Every material carries the soul of the craftsman who created it. Preserving this beauty means honoring a legacy and ensuring your spaces continue to inspire wonder for generations to come.',
-      comparisonProblemTitle: 'Common Film Protection',
-      comparisonProblemLabel: 'Problem:',
-      comparisonProblemText: 'Surface film that can chip and yellow.',
-      comparisonImpactLabel: 'Impact:',
-      comparisonImpactText: 'Alters appearance, limited lifespan, complicated maintenance.',
-      comparisonSolutionTitle: 'NanoProtects Impregnation',
-      comparisonSolutionLabel: 'Solution:',
-      comparisonSolutionText: 'Nanotechnology barrier integrated into the material.',
-      comparisonBenefitLabel: 'Benefit:',
-      comparisonBenefitText: 'Original beauty preserved, long durability, easy maintenance.',
-      reason1Title: 'Scientific & Custom Expertise',
-      reason1Description: 'Our precise diagnosis and ecological scientific protocols, applied by highly qualified teams, guarantee a solution perfectly adapted to each material and your specific needs.',
-      reason2Title: 'Sustainable & Regenerative Technology',
-      reason2Description: 'We combine regenerative cleaning that restores the original shine to surfaces with invisible and durable nanotechnology protection (3-5 years), for beauty preserved long-term.',
-      reason3Title: 'Operational Agility & Total Discretion',
-      reason3Description: 'Our process is designed to be ultra-efficient, agile and completely discreet. It integrates without disrupting your operations, strictly respecting your schedules and brand image.',
-      reason4Title: 'Profitable & Trustworthy Partnership',
-      reason4Description: 'Through continuous dialogue and reliable execution, we drastically reduce your long-term maintenance costs, transforming maintenance into a strategic and secure investment.',
+    method: {
+      title: 'Our Methodical Approach: Reveal and Preserve Original Beauty',
+      subtitle: 'A complete approach to reveal and protect the beauty of your surfaces',
+      highTechTitle: 'High-Tech Cleaning',
+      highTechDescription: 'Precise diagnosis, deep surface cleaning, restoration of original shine and elimination of stubborn stains thanks to scientific protocols and ecological agents.',
+      protectionTitle: 'Protection Treatment',
+      protectionDescription: 'Application of invisible nanotechnology coatings (Nano-SiO₂) that form a molecular-level impermeable barrier, protecting against water, oil and stains for 3 to 5 years.',
+      phase1Title: 'Diagnosis',
+      phase1Description: 'Expert analysis of your surfaces\' condition to determine the exact nature of soiling, alterations and restoration potential.',
+      phase1Point1: 'Complete mapping of degradations (stains, wear, micro-scratches)',
+      phase1Point2: 'Identification of surface types and their sensitivity',
+      phase1Point3: 'Establishment of personalized and justified intervention protocol',
+      phase2Title: 'Reveal',
+      phase2Description: 'Cleaning and regeneration based on diagnosis, to restore the original shine and integrity of the surface.',
+      phase2Point1: 'Stripping and professional cleaning targeted according to diagnosis conclusions',
+      phase2Point2: 'Scientific removal of stains, residues and microorganisms identified',
+      phase2Point3: 'Aesthetic and preparatory restoration ensuring a perfectly healthy and receptive surface for protection',
+      phase3Title: 'Protection',
+      phase3Description: 'Application of nanotechnology coatings for lasting protection',
+      phase3Point1: 'Nano-SiO2 Application',
+      phase3Point2: 'Invisible nanotechnology coating',
+      phase3Point3: 'Long-lasting protection 3-5 years',
+      trustTitle: 'They Trust Us',
+      metric1Label: 'Time Freed',
+      metric1Description: 'Your teams spend 60% less time on intensive maintenance',
+      metric2Label: 'Return on Investment',
+      metric2Description: 'Measurable return through sustainable savings',
+      metric3Label: 'Sustainable',
+      metric3Subtitle: 'months',
+      metric3Description: 'Continuous support and systematic dialogue',
     },
   },
 };
