@@ -2,9 +2,16 @@ import { Link, useLocation } from 'wouter';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Menu, X } from 'lucide-react';
 import { SiFacebook, SiLinkedin, SiInstagram } from 'react-icons/si';
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
+// framer-motion chargé uniquement quand le menu mobile est ouvert
+const MotionDiv = lazy(() =>
+  import('framer-motion').then(m => ({ default: m.motion.div }))
+);
+const AnimatePresence = lazy(() =>
+  import('framer-motion').then(m => ({ default: m.AnimatePresence }))
+);
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -104,44 +111,74 @@ export default function Navigation() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }} className="lg:hidden fixed inset-0 top-20 bg-black/50 z-40" onClick={handleBackdropClick} aria-hidden="true" />
+      {/* Menu mobile — framer-motion chargé en lazy uniquement ici */}
+      {mobileMenuOpen && (
+        <Suspense fallback={
+          <div className="lg:hidden bg-secondary border-t border-white/10 relative z-50">
+            <div className="container py-4">
+              {menuItems.map((item) => (
+                <Link key={item.path} href={item.path} className="block text-lg py-3 px-4 rounded text-white/90" onClick={() => setMobileMenuOpen(false)}>
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        }>
+          <Suspense fallback={null}>
+            <AnimatePresence>
+              {mobileMenuOpen && (
+                <>
+                  <MotionDiv
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="lg:hidden fixed inset-0 top-20 bg-black/50 z-40"
+                    onClick={handleBackdropClick}
+                    aria-hidden="true"
+                  />
 
-            <motion.div ref={mobileMenuRef} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2, ease: 'easeOut' }} className="lg:hidden bg-secondary border-t border-white/10 relative z-50">
-              <div className="container py-4 space-y-3">
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1, duration: 0.2 }} className="flex flex-col space-y-2">
-                  {menuItems.map((item, index) => (
-                    <motion.div key={item.path} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 + index * 0.05, duration: 0.2 }}>
-                      <Link href={item.path} className={`block text-lg py-3 px-4 rounded transition-colors w-full text-left min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${location === item.path ? 'text-white bg-white/10 font-semibold' : 'text-white/90 hover:bg-white/5 hover:text-white'}`} onClick={() => setMobileMenuOpen(false)}>
-                        {item.label}
-                      </Link>
-                    </motion.div>
-                  ))}
-                </motion.div>
+                  <MotionDiv
+                    ref={mobileMenuRef as any}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    className="lg:hidden bg-secondary border-t border-white/10 relative z-50"
+                  >
+                    <div className="container py-4 space-y-3">
+                      <div className="flex flex-col space-y-2">
+                        {menuItems.map((item) => (
+                          <Link key={item.path} href={item.path} className={`block text-lg py-3 px-4 rounded transition-colors w-full text-left min-h-[44px] flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${location === item.path ? 'text-white bg-white/10 font-semibold' : 'text-white/90 hover:bg-white/5 hover:text-white'}`} onClick={() => setMobileMenuOpen(false)}>
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
 
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.25, duration: 0.2 }} className="pt-4 border-t border-white/10 flex gap-6">
-                  <a href="https://web.facebook.com/NanoProtects" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 rounded p-1" aria-label="Visit NanoProtects on Facebook"><SiFacebook className="w-7 h-7" /></a>
-                  <a href="https://www.linkedin.com/company/nanoprotects" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 rounded p-1" aria-label="Visit NanoProtects on LinkedIn"><SiLinkedin className="w-7 h-7" /></a>
-                  <a href="https://www.instagram.com/nanoprotects" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 rounded p-1" aria-label="Visit NanoProtects on Instagram"><SiInstagram className="w-7 h-7" /></a>
-                </motion.div>
+                      <div className="pt-4 border-t border-white/10 flex gap-6">
+                        <a href="https://web.facebook.com/NanoProtects" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 rounded p-1" aria-label="Visit NanoProtects on Facebook"><SiFacebook className="w-7 h-7" /></a>
+                        <a href="https://www.linkedin.com/company/nanoprotects" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 rounded p-1" aria-label="Visit NanoProtects on LinkedIn"><SiLinkedin className="w-7 h-7" /></a>
+                        <a href="https://www.instagram.com/nanoprotects" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#A75C16] transition-all duration-300 hover:scale-110 rounded p-1" aria-label="Visit NanoProtects on Instagram"><SiInstagram className="w-7 h-7" /></a>
+                      </div>
 
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3, duration: 0.2 }} className="pt-4">
-                  <Select value={language} onValueChange={(value) => { setLanguage(value as any); setMobileMenuOpen(false); }}>
-                    <SelectTrigger className="w-full border border-white/20 bg-white/10 text-white focus:ring-0 py-2 min-h-[44px]"><SelectValue placeholder="Language" /></SelectTrigger>
-                    <SelectContent className="bg-secondary border-white/20">
-                      {languages.map((lang) => (
-                        <SelectItem key={lang.code} value={lang.code} className="text-white hover:bg-white/10 focus:bg-white/10 cursor-pointer">{lang.label}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </motion.div>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+                      <div className="pt-4">
+                        <Select value={language} onValueChange={(value) => { setLanguage(value as any); setMobileMenuOpen(false); }}>
+                          <SelectTrigger className="w-full border border-white/20 bg-white/10 text-white focus:ring-0 py-2 min-h-[44px]"><SelectValue placeholder="Language" /></SelectTrigger>
+                          <SelectContent className="bg-secondary border-white/20">
+                            {languages.map((lang) => (
+                              <SelectItem key={lang.code} value={lang.code} className="text-white hover:bg-white/10 focus:bg-white/10 cursor-pointer">{lang.label}</SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  </MotionDiv>
+                </>
+              )}
+            </AnimatePresence>
+          </Suspense>
+        </Suspense>
+      )}
     </nav>
   );
 }
