@@ -106,3 +106,4 @@ temp/
 *.sqlite3
 .vercel
 .claude/settings.local.json
+.env
