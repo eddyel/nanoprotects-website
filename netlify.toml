@@ -1,16 +1,11 @@
 [build]
-  # Commande de build depuis la racine (pas de cd client)
-  command = "npm run build"
-  
-  # Dossier de publication = dist/public (tel que configuré dans vite.config.ts)
+  command = "npm run build:ssg"
   publish = "dist/public"
 
-# Configuration des fonctions Netlify
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
-# Redirection SPA (pour le routing React)
 [[redirects]]
   from = "/*"
   to = "/index.html"
