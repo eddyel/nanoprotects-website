@@ -1,7 +1,7 @@
 import { Suspense, lazy, useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Route, Switch } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
@@ -31,12 +31,18 @@ function LoadingFallback() {
   );
 }
 
-// SEO Updater — met à jour le title, description et lang automatiquement selon la langue active
+// SEO Updater — met à jour le title, description, canonical et lang selon la langue et la route active
 function SEOUpdater() {
   const { language } = useLanguage();
+  const [location] = useLocation();
 
   useEffect(() => {
     const seo = translations[language].seo;
+    const baseUrl = 'https://nanoprotects.com';
+
+    // Canonical URL avec trailing slash
+    const canonicalPath = location === '/' ? '/' : `${location}/`;
+    const canonicalUrl = `${baseUrl}${canonicalPath}`;
 
     // Mise à jour du title
     document.title = seo.title;
@@ -52,6 +58,10 @@ function SEOUpdater() {
     const metaKeywords = document.querySelector('meta[name="keywords"]');
     if (metaKeywords) metaKeywords.setAttribute('content', seo.keywords);
 
+    // Mise à jour canonical
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute('href', canonicalUrl);
+
     // Mise à jour Open Graph
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) ogTitle.setAttribute('content', seo.title);
@@ -59,13 +69,17 @@ function SEOUpdater() {
     const ogDesc = document.querySelector('meta[property="og:description"]');
     if (ogDesc) ogDesc.setAttribute('content', seo.description);
 
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
+
     // Mise à jour Twitter
     const twitterTitle = document.querySelector('meta[name="twitter:title"]');
     if (twitterTitle) twitterTitle.setAttribute('content', seo.title);
 
     const twitterDesc = document.querySelector('meta[name="twitter:description"]');
     if (twitterDesc) twitterDesc.setAttribute('content', seo.description);
-  }, [language]);
+
+  }, [language, location]);
 
   return null;
 }
@@ -92,17 +106,6 @@ function Router() {
   );
 }
 
-// Update page titles for SEO
-function usePageTitle(title: string) {
-  useEffect(() => {
-    document.title = `${title} | NanoProtects`;
-  }, [title]);
-}
-
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - Then manage colors palette with CSS variables in client/src/index.css instead of hard-coding to keep global consistency.
 export default function App() {
   return (
     <ErrorBoundary>
