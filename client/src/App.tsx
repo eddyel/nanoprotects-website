@@ -31,6 +31,12 @@ function LoadingFallback() {
   );
 }
 
+// Pages alias : meme contenu qu'une autre page, canonical vers la page principale.
+// Doit rester identique a scripts/prerender.mjs.
+const canonicalTarget: Record<string, string> = {
+  "/nos-realisations": "/showroom",
+};
+
 // Titre et description par page (francais).
 // Ces textes doivent rester identiques a ceux de scripts/prerender.mjs.
 // L'accueil et les autres langues utilisent les textes de translations.ts.
@@ -74,9 +80,11 @@ function SEOUpdater() {
     const seo = translations[language].seo;
     const baseUrl = 'https://nanoprotects.com';
 
-    // Route normalisée (sans slash final) puis canonical avec un seul slash final
+    // Route normalisée (sans slash final), puis canonical avec un seul slash final.
+    // Les pages alias pointent vers leur page principale.
     const route = location.replace(/\/+$/, '') || '/';
-    const canonicalUrl = route === '/' ? `${baseUrl}/` : `${baseUrl}${route}/`;
+    const canonicalRoute = canonicalTarget[route] || route;
+    const canonicalUrl = canonicalRoute === '/' ? `${baseUrl}/` : `${baseUrl}${canonicalRoute}/`;
 
     // Titre et description : propres à la page en français, génériques sinon
     const pageSeo = language === 'fr' ? pageSeoFr[route] : undefined;
