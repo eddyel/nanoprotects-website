@@ -1,5 +1,5 @@
 # NanoProtects - Robots Configuration
-# Allow all search engines to index the site
+# Allow all search engines and AI search assistants to index the site
 
 User-agent: *
 Allow: /
@@ -8,8 +8,23 @@ Disallow: /.git
 Disallow: /node_modules
 Disallow: /.env
 
-# Crawl delay to prevent server overload (in seconds)
-Crawl-delay: 1
+# ChatGPT Search (citations dans les reponses ChatGPT)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Claude
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
 
 # Sitemap location
-Sitemap: https://nanoprotects.manus.space/sitemap.xml
+Sitemap: https://nanoprotects.com/sitemap.xml
