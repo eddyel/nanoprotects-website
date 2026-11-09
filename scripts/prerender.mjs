@@ -16,6 +16,12 @@ const routes = [
   "/materiaux-expertises", "/showroom", "/nos-realisations", "/contact",
 ];
 
+// Pages alias : meme contenu qu'une autre page, canonical vers la page principale.
+// Doit rester identique a client/src/App.tsx.
+const canonicalTarget = {
+  "/nos-realisations": "/showroom",
+};
+
 // Titre et description par page (francais, langue du HTML pre-rendu).
 // L'accueil ("/") garde ceux du template index.html.
 // Ces textes doivent rester identiques a ceux de client/src/App.tsx.
@@ -55,7 +61,11 @@ const pageSeo = {
 const escRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const escAttr  = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const escText  = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-const canonicalFor = (route) => (route === "/" ? SITE + "/" : SITE + route + "/");
+
+const canonicalFor = (route) => {
+  const target = canonicalTarget[route] || route;
+  return target === "/" ? SITE + "/" : SITE + target + "/";
+};
 
 function metaTagRegex(key) {
   return new RegExp('<meta\\s+[^>]*(?:name|property)=["\']' + escRegex(key) + '["\'][^>]*>', "i");
@@ -136,6 +146,7 @@ function checkPageHead(html, route) {
   if (readCanonical(html) !== expected) problems.push("canonical attendu " + expected + " mais trouve " + readCanonical(html));
   if (count(/<title[\s>]/gi) !== 1) problems.push("le nombre de balises title est different de 1");
   if (readMeta(html, "og:url") !== expected) problems.push("og:url incorrect");
+  if (count(/hreflang=/gi) !== 0) problems.push("des balises hreflang sont encore presentes");
 
   const seo = pageSeo[route];
   if (seo) {
