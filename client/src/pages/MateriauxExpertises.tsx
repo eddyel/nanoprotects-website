@@ -102,8 +102,10 @@ export default function MateriauxExpertises() {
   const categories = getCategoriesData(t);
   const activeCategory = categories.find(cat => cat.id === activeTab);
 
-  // SEO — title de page dynamique selon la langue
+  // SEO - titre de page dynamique pour les langues autres que le francais.
+  // En francais, le titre est gere par SEOUpdater (App.tsx) pour rester identique au pre-rendu.
   useEffect(() => {
+    if (language === 'fr') return;
     const pageTitles: Record<string, string> = {
       fr: 'Bejmat, Zellige, Pierre Taza, Marbre – Matériaux & Expertises | NanoProtects Marrakech',
       en: 'Bejmat, Zellige, Taza Stone, Marble – Materials & Expertise | NanoProtects Marrakech',
@@ -113,14 +115,14 @@ export default function MateriauxExpertises() {
     document.title = pageTitles[language] || pageTitles['fr'];
   }, [language]);
 
-  // SEO — Schema.org JSON-LD pour la page matériaux (invisible pour l'utilisateur)
+  // SEO - Schema.org JSON-LD pour la page materiaux (invisible pour l'utilisateur)
   useEffect(() => {
     const schemaData = {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "name": t.materials.title,
       "description": t.materials.subtitle,
-      "url": "https://nanoprotects.com/materiaux-expertises",
+      "url": "https://nanoprotects.com/materiaux-expertises/",
       "provider": {
         "@type": "LocalBusiness",
         "name": "NanoProtects",
