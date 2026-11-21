@@ -553,6 +553,17 @@ export default function NettoyageBejmat() {
               >
                 Ce que la réforme exige de vos sols
               </Link>
+              <p className="text-gray-700 mt-3">
+                Pour chiffrer et planifier l&apos;entretien, voir{' '}
+                <Link
+                  href="/temps-cycles-entretien-sols-hotellerie"
+                  className="font-semibold underline underline-offset-4"
+                  style={{ color: brand }}
+                >
+                  les temps, cycles et fréquences d&apos;entretien des sols
+                </Link>
+                .
+              </p>
             </div>
           </section>
         )}
