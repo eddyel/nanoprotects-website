@@ -408,6 +408,25 @@ export default function MateriauxExpertises() {
           </Link>
         </div>
       </section>
+
+      {/* Renvoi vers la page reglementaire. Francais uniquement : la page n'existe qu'en francais. */}
+      {language === 'fr' && (
+        <section className="pb-16 px-4 md:px-8" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="max-w-7xl mx-auto rounded-lg p-6" style={{ backgroundColor: 'rgba(255,255,255,0.92)', border: '1px solid rgba(167,92,22,0.25)' }}>
+            <h2 className="text-xl font-bold mb-2" style={{ color: '#A33215' }}>
+              Classement hôtelier : vos sols sont inspectés
+            </h2>
+            <p className="text-gray-700 mb-3">
+              La réforme du classement des établissements d&apos;hébergement touristique classe le bon état
+              d&apos;entretien et de propreté des sols parmi les normes obligatoires, et impose aux riads des matériaux
+              traditionnels : pierre, marbre, zellijs ou parquet en bois.
+            </p>
+            <Link href="/classement-hotelier-maroc-etat-des-sols" className="font-semibold underline underline-offset-4" style={{ color: '#A33215' }}>
+              Ce que la réforme exige de vos sols
+            </Link>
+          </div>
+        </section>
+      )}
     </div>
   );
 }
