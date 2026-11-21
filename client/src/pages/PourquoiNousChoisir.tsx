@@ -1,3 +1,4 @@
+import { Link } from 'wouter';
 import Navigation from '@/components/Navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect, useRef } from 'react';
@@ -13,7 +14,7 @@ export default function PourquoiNousChoisir() {
     { number: 4, titleKey: 'reason4Title', descriptionKey: 'reason4Description', icon: 'chart' }
   ];
 
-  // SEO — title dynamique par langue
+  // SEO : title dynamique par langue
   useEffect(() => {
     // En francais, le titre est gere par SEOUpdater (App.tsx) pour rester identique au pre-rendu.
     if (language === 'fr') return;
@@ -26,7 +27,7 @@ export default function PourquoiNousChoisir() {
     document.title = pageTitles[language] || pageTitles['fr'];
   }, [language]);
 
-  // SEO — Schema.org JSON-LD
+  // SEO : Schema.org JSON-LD
   useEffect(() => {
     const schemaData = {
       "@context": "https://schema.org",
@@ -197,6 +198,30 @@ export default function PourquoiNousChoisir() {
               </article>
             ))}
           </div>
+
+          {/* Renvoi vers la page reglementaire (francais uniquement : la page n'existe qu'en francais) */}
+          {language === 'fr' && (
+            <aside
+              className="mt-16 rounded-lg p-8"
+              style={{ backgroundColor: '#ffffff', border: '1px solid #A75C16' }}
+            >
+              <h2 className="text-xl md:text-2xl font-semibold mb-3" style={{ color: '#A33215' }}>
+                Classement hôtelier : l&apos;état des sols est une norme obligatoire
+              </h2>
+              <p className="text-gray-700 leading-relaxed mb-4 max-w-3xl">
+                La réforme du classement des établissements d&apos;hébergement touristique a introduit des visites
+                mystères depuis mai 2026. Dans les grilles officielles, le bon état d&apos;entretien et de propreté des
+                sols est classé comme norme obligatoire, et les normes obligatoires doivent être satisfaites en totalité.
+              </p>
+              <Link
+                href="/classement-hotelier-maroc-etat-des-sols"
+                className="font-semibold underline underline-offset-4"
+                style={{ color: '#A33215' }}
+              >
+                Ce que la réforme exige de vos sols
+              </Link>
+            </aside>
+          )}
         </div>
       </section>
       </div>
