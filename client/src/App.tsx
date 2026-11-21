@@ -17,6 +17,7 @@ const NotreMethode = lazy(() => import("./pages/NotreMethode"));
 const MateriauxExpertises = lazy(() => import("./pages/MateriauxExpertises"));
 const NettoyageBejmat = lazy(() => import("./pages/NettoyageBejmat"));
 const ClassementHotelier = lazy(() => import("./pages/ClassementHotelier"));
+const TempsCyclesEntretien = lazy(() => import("./pages/TempsCyclesEntretien"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Confirmation = lazy(() => import("./pages/Confirmation"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -54,6 +55,10 @@ const pageSeoFr: Record<string, { title: string; description: string }> = {
   "/classement-hotelier-maroc-etat-des-sols": {
     title: "Classement hôtelier Maroc : l'état des sols | NanoProtects",
     description: "Ce que la réforme du classement hôtelier marocain (loi 80-14, arrêté 985-24) exige de l'état des sols des hôtels et riads, et comment s'y préparer.",
+  },
+  "/temps-cycles-entretien-sols-hotellerie": {
+    title: "Temps et cycles d'entretien des sols | NanoProtects",
+    description: "Cadences de référence du secteur en mètres et minutes : temps de nettoyage au 100 m², temps par chambre, cycles et fréquences en hôtellerie.",
   },
   "/materiaux-expertises": {
     title: "Nettoyage Bejmat, Zellige, Pierre Taza, Marbre | NanoProtects",
@@ -158,6 +163,7 @@ function Router() {
         <Route path="/materiaux-expertises" component={MateriauxExpertises} />
         <Route path="/nettoyage-bejmat-marrakech" component={NettoyageBejmat} />
         <Route path="/classement-hotelier-maroc-etat-des-sols" component={ClassementHotelier} />
+        <Route path="/temps-cycles-entretien-sols-hotellerie" component={TempsCyclesEntretien} />
         <Route path="/contact" component={Contact} />
         <Route path="/confirmation" component={Confirmation} />
         <Route path="/merci" component={Confirmation} />
