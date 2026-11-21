@@ -13,7 +13,8 @@ const SITE = "https://nanoprotects.com";
 
 const routes = [
   "/", "/a-propos", "/pourquoi-nous-choisir", "/notre-methode",
-  "/materiaux-expertises", "/nettoyage-bejmat-marrakech", "/showroom", "/nos-realisations", "/contact",
+  "/materiaux-expertises", "/nettoyage-bejmat-marrakech", "/classement-hotelier-maroc-etat-des-sols",
+  "/showroom", "/nos-realisations", "/contact",
 ];
 
 // Pages alias : meme contenu qu'une autre page, canonical vers la page principale.
@@ -29,6 +30,10 @@ const pageSeo = {
   "/nettoyage-bejmat-marrakech": {
     title: "Nettoyage et Protection Bejmat Marrakech | NanoProtects",
     description: "Nettoyage, décapage et protection hydrofuge et oléofuge du bejmat à Marrakech pour riads, hôtels et villas. Essai préalable et diagnostic gratuit.",
+  },
+  "/classement-hotelier-maroc-etat-des-sols": {
+    title: "Classement hôtelier Maroc : l'état des sols | NanoProtects",
+    description: "Ce que la réforme du classement hôtelier marocain (loi 80-14, arrêté 985-24) exige de l'état des sols des hôtels et riads, et comment s'y préparer.",
   },
   "/materiaux-expertises": {
     title: "Nettoyage Bejmat, Zellige, Pierre Taza, Marbre | NanoProtects",
@@ -69,6 +74,16 @@ const requiredMarkers = {
     "Questions fréquentes sur le bejmat",
     '"@type":"FAQPage"',
     '"@type":"Service"',
+  ],
+  "/classement-hotelier-maroc-etat-des-sols": [
+    "Classement hôtelier au Maroc : ce que la réforme exige de vos sols",
+    "Ce que les grilles demandent aux sols",
+    "Le cas des riads : les matériaux eux-mêmes sont imposés",
+    "Ce que nous faisons, et ce que nous ne faisons pas",
+    "Questions fréquentes sur le classement et les sols",
+    "Arrete-985-24",
+    '"@type":"FAQPage"',
+    '"@type":"Article"',
   ],
 };
 
