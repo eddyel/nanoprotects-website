@@ -13,7 +13,7 @@ const SITE = "https://nanoprotects.com";
 
 const routes = [
   "/", "/a-propos", "/pourquoi-nous-choisir", "/notre-methode",
-  "/materiaux-expertises", "/showroom", "/nos-realisations", "/contact",
+  "/materiaux-expertises", "/nettoyage-bejmat-marrakech", "/showroom", "/nos-realisations", "/contact",
 ];
 
 // Pages alias : meme contenu qu'une autre page, canonical vers la page principale.
@@ -26,6 +26,10 @@ const canonicalTarget = {
 // L'accueil ("/") garde ceux du template index.html.
 // Ces textes doivent rester identiques a ceux de client/src/App.tsx.
 const pageSeo = {
+  "/nettoyage-bejmat-marrakech": {
+    title: "Nettoyage et Protection Bejmat Marrakech | NanoProtects",
+    description: "Nettoyage, décapage et protection hydrofuge et oléofuge du bejmat à Marrakech pour riads, hôtels et villas. Essai préalable et diagnostic gratuit.",
+  },
   "/materiaux-expertises": {
     title: "Nettoyage Bejmat, Zellige, Pierre Taza, Marbre | NanoProtects",
     description: "Nettoyage et protection nano du bejmat, zellige, carreaux beldi, pierre de Taza et marbre. Solutions durables pour hôtels et riads à Marrakech.",
@@ -54,6 +58,18 @@ const pageSeo = {
     title: "Diagnostic Gratuit Nano-Protection | Contact NanoProtects",
     description: "Demandez votre diagnostic gratuit et sans engagement pour vos surfaces : bejmat, zellige, marbre, pierre de Taza. Réponse sous 24 heures ouvrées.",
   },
+};
+
+// Contenus qui doivent obligatoirement se trouver dans le HTML pre-rendu de la page.
+// Si l'un manque, le deploiement est arrete et la version actuelle du site reste en ligne.
+const requiredMarkers = {
+  "/nettoyage-bejmat-marrakech": [
+    "Nettoyage et protection du bejmat à Marrakech",
+    "Essai préalable sur zone test",
+    "Questions fréquentes sur le bejmat",
+    '"@type":"FAQPage"',
+    '"@type":"Service"',
+  ],
 };
 
 // ---------- Outils pour ecrire l'en-tete HTML de chaque page ----------
@@ -153,6 +169,10 @@ function checkPageHead(html, route) {
     const t = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
     if (!t || t[1] !== escText(seo.title)) problems.push("title incorrect");
     if (readMeta(html, "description") !== escAttr(seo.description)) problems.push("meta description incorrecte");
+  }
+
+  for (const marker of requiredMarkers[route] || []) {
+    if (!html.includes(marker) && !html.includes(escText(marker))) problems.push("contenu manquant dans le HTML : " + marker);
   }
   return problems;
 }
@@ -300,6 +320,10 @@ async function run() {
   console.log("\n──────────────────────────────────────────");
   console.log("  " + ok + " page(s) générée(s)   |   " + ko + " erreur(s)   |   " + seoKo + " en-tête(s) SEO incorrect(s)");
 
+  if (ko > 0) {
+    console.error("\n❌ " + ko + " page(s) n'ont pas pu être générées. Déploiement arrêté par sécurité : la version actuelle du site reste en ligne.\n");
+    process.exit(1);
+  }
   if (seoKo > 0) {
     console.error("\n❌ En-tête SEO incorrect sur " + seoKo + " page(s). Déploiement arrêté par sécurité : la version actuelle du site reste en ligne.\n");
     process.exit(1);
