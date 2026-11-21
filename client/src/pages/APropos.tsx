@@ -1,12 +1,49 @@
 import { useEffect } from 'react';
+import { Link } from 'wouter';
 import Navigation from '@/components/Navigation';
 import { Droplet, Shield, Sparkles, Building2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 
+// Section "veille reglementaire". Le texte est porte par la page elle-meme
+// pour ne pas alourdir translations.ts. Le lien n'apparait qu'en francais,
+// car la page de destination n'existe qu'en francais.
+const veilleTexts: Record<string, { title: string; p1: string; p2: string; p3: string; cta: string }> = {
+  fr: {
+    title: 'Notre veille au service des établissements',
+    p1: "Le cadre dans lequel travaillent les hôtels et les riads marocains a changé. La réforme du classement des établissements d'hébergement touristique place le bon état d'entretien et de propreté des sols parmi les normes obligatoires, et les visites mystères engagées en mai 2026 évaluent l'expérience réelle du client.",
+    p2: "Nous suivons ces évolutions de près, parce qu'elles déterminent ce que l'on attend de vos surfaces. Cette veille fait partie du service : lorsqu'un texte change ce qui est exigé d'un sol, nos clients l'apprennent par nous, et non le jour d'un contrôle.",
+    p3: "Nous ne sommes ni consultants en classement, ni organisme de contrôle. Nous suivons ce qui concerne les surfaces, et nous le traduisons en décisions d'entretien concrètes, au bon moment et au bon coût.",
+    cta: 'Classement hôtelier : vos sols sont inspectés',
+  },
+  en: {
+    title: 'Our regulatory watch, for the benefit of our clients',
+    p1: "The framework Moroccan hotels and riads work in has changed. The reform of the tourist accommodation classification system places the good condition and cleanliness of floors among the mandatory standards, and the mystery visits launched in May 2026 assess the guest's actual experience.",
+    p2: 'We follow these developments closely, because they determine what is expected of your surfaces. This watch is part of the service: when a text changes what is required of a floor, our clients hear it from us, not on the day of an inspection.',
+    p3: 'We are neither classification consultants nor an inspection body. We track what concerns surfaces, and we translate it into concrete maintenance decisions, at the right time and the right cost.',
+    cta: '',
+  },
+  ar: {
+    title: 'رصدنا الدائم في خدمة المؤسسات',
+    p1: 'تغيّر الإطار الذي تعمل فيه الفنادق والرياضات في المغرب. فإصلاح تصنيف مؤسسات الإيواء السياحي يضع حسن صيانة الأرضيات ونظافتها ضمن المعايير الإلزامية، كما أن زيارات الزبون الخفي التي انطلقت في ماي 2026 تقيّم تجربة النزيل الفعلية.',
+    p2: 'نتابع هذه التطورات عن قرب لأنها تحدد ما هو مطلوب من أسطحكم. وهذه المتابعة جزء من الخدمة: عندما يغيّر نص قانوني ما هو مطلوب من أرضية، يعلم زبناؤنا ذلك منّا، لا يوم المراقبة.',
+    p3: 'لسنا مستشارين في التصنيف ولا هيئة مراقبة. نتابع ما يخص الأسطح ونترجمه إلى قرارات صيانة ملموسة، في الوقت المناسب وبالتكلفة المناسبة.',
+    cta: '',
+  },
+  es: {
+    title: 'Nuestra vigilancia al servicio de los establecimientos',
+    p1: 'El marco en el que trabajan los hoteles y riads marroquíes ha cambiado. La reforma de la clasificación de los establecimientos de alojamiento turístico sitúa el buen estado de conservación y limpieza de los suelos entre las normas obligatorias, y las visitas misteriosas iniciadas en mayo de 2026 evalúan la experiencia real del cliente.',
+    p2: 'Seguimos de cerca esta evolución, porque determina lo que se espera de sus superficies. Esta vigilancia forma parte del servicio: cuando un texto cambia lo que se exige de un suelo, nuestros clientes lo saben por nosotros, y no el día de una inspección.',
+    p3: 'No somos ni consultores en clasificación ni organismo de control. Seguimos lo que concierne a las superficies y lo traducimos en decisiones de mantenimiento concretas, en el momento adecuado y al coste adecuado.',
+    cta: '',
+  },
+};
+
 export default function APropos() {
   const { language } = useLanguage();
   const t = translations[language];
+
+  const veille = veilleTexts[language] ?? veilleTexts.fr;
 
   const references = [
     'Palais Ronsard',
@@ -18,7 +55,7 @@ export default function APropos() {
     'Ayaso'
   ];
 
-  // SEO — title dynamique par langue
+  // SEO : title dynamique par langue
   useEffect(() => {
     // En francais, le titre est gere par SEOUpdater (App.tsx) pour rester identique au pre-rendu.
     if (language === 'fr') return;
@@ -31,7 +68,7 @@ export default function APropos() {
     document.title = pageTitles[language] || pageTitles['fr'];
   }, [language]);
 
-  // SEO — Schema.org JSON-LD page À Propos
+  // SEO : Schema.org JSON-LD page À Propos
   useEffect(() => {
     const schemaData = {
       "@context": "https://schema.org",
@@ -133,6 +170,29 @@ export default function APropos() {
             </h2>
             <div className="font-body text-base md:text-lg max-w-none text-gray-700 leading-relaxed space-y-4">
               <p>{t.about.section3Text}</p>
+            </div>
+          </div>
+
+          {/* Section 4: Notre veille reglementaire */}
+          <div className="space-y-6">
+            <h2 className="font-display text-[2rem] md:text-[2.5rem] font-bold text-secondary mb-6">
+              {veille.title}
+            </h2>
+            <div className="font-body text-base md:text-lg max-w-none text-gray-700 leading-relaxed space-y-4">
+              <p>{veille.p1}</p>
+              <p>{veille.p2}</p>
+              <p>{veille.p3}</p>
+              {language === 'fr' && veille.cta && (
+                <p>
+                  <Link
+                    href="/classement-hotelier-maroc-etat-des-sols"
+                    className="font-semibold underline underline-offset-4"
+                    style={{ color: '#A33215' }}
+                  >
+                    {veille.cta}
+                  </Link>
+                </p>
+              )}
             </div>
           </div>
         </div>
