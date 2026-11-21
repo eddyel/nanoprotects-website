@@ -14,6 +14,7 @@ const SITE = "https://nanoprotects.com";
 const routes = [
   "/", "/a-propos", "/pourquoi-nous-choisir", "/notre-methode",
   "/materiaux-expertises", "/nettoyage-bejmat-marrakech", "/classement-hotelier-maroc-etat-des-sols",
+  "/temps-cycles-entretien-sols-hotellerie",
   "/showroom", "/nos-realisations", "/contact",
 ];
 
@@ -34,6 +35,10 @@ const pageSeo = {
   "/classement-hotelier-maroc-etat-des-sols": {
     title: "Classement hôtelier Maroc : l'état des sols | NanoProtects",
     description: "Ce que la réforme du classement hôtelier marocain (loi 80-14, arrêté 985-24) exige de l'état des sols des hôtels et riads, et comment s'y préparer.",
+  },
+  "/temps-cycles-entretien-sols-hotellerie": {
+    title: "Temps et cycles d'entretien des sols | NanoProtects",
+    description: "Cadences de référence du secteur en mètres et minutes : temps de nettoyage au 100 m², temps par chambre, cycles et fréquences en hôtellerie.",
   },
   "/materiaux-expertises": {
     title: "Nettoyage Bejmat, Zellige, Pierre Taza, Marbre | NanoProtects",
@@ -82,6 +87,15 @@ const requiredMarkers = {
     "Ce que nous faisons, et ce que nous ne faisons pas",
     "Questions fréquentes sur le classement et les sols",
     "Arrete-985-24",
+    '"@type":"FAQPage"',
+    '"@type":"Article"',
+  ],
+  "/temps-cycles-entretien-sols-hotellerie": [
+    "Temps, cycles et fréquences",
+    "Combien de temps pour nettoyer 100 m² de sol",
+    "Les trois cycles",
+    "Ce que ces repères ne disent pas",
+    "Comment construire votre propre repère",
     '"@type":"FAQPage"',
     '"@type":"Article"',
   ],
