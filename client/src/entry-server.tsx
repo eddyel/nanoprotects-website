@@ -12,6 +12,7 @@ import NotreMethode         from "./pages/NotreMethode";
 import MateriauxExpertises  from "./pages/MateriauxExpertises";
 import NettoyageBejmat      from "./pages/NettoyageBejmat";
 import ClassementHotelier   from "./pages/ClassementHotelier";
+import TempsCyclesEntretien from "./pages/TempsCyclesEntretien";
 import Contact              from "./pages/Contact";
 
 const routeMap: Record<string, React.ComponentType> = {
@@ -24,6 +25,7 @@ const routeMap: Record<string, React.ComponentType> = {
   "/materiaux-expertises":  MateriauxExpertises,
   "/nettoyage-bejmat-marrakech": NettoyageBejmat,
   "/classement-hotelier-maroc-etat-des-sols": ClassementHotelier,
+  "/temps-cycles-entretien-sols-hotellerie": TempsCyclesEntretien,
   "/contact":               Contact,
 };
 
