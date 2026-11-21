@@ -1,4 +1,4 @@
-import { useLocation } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -70,6 +70,18 @@ export default function Home() {
                 {t.hero.cta}
               </Button>
             </div>
+
+            {/* Renvoi vers la page reglementaire. Francais uniquement : la page n'existe qu'en francais. */}
+            {language === 'fr' && (
+              <Link
+                href="/classement-hotelier-maroc-etat-des-sols"
+                className="inline-flex items-center gap-2 mt-5 font-semibold text-sm md:text-base transition-colors"
+                style={{ color: '#F7E6D2', textShadow: '0 1px 3px rgba(0,0,0,0.45)' }}
+              >
+                <span className="underline underline-offset-4">Classement hôtelier : vos sols sont inspectés</span>
+                <span aria-hidden="true">&rarr;</span>
+              </Link>
+            )}
           </div>
         </div>
 
