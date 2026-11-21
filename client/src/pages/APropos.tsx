@@ -20,6 +20,8 @@ export default function APropos() {
 
   // SEO — title dynamique par langue
   useEffect(() => {
+    // En francais, le titre est gere par SEOUpdater (App.tsx) pour rester identique au pre-rendu.
+    if (language === 'fr') return;
     const pageTitles: Record<string, string> = {
       fr: 'À Propos – NanoProtects Marrakech | Expert Nettoyage Bejmat & Surfaces Traditionnelles',
       en: 'About – NanoProtects Marrakech | Bejmat & Traditional Surface Cleaning Expert',
@@ -38,7 +40,7 @@ export default function APropos() {
         : language === 'en' ? "About – NanoProtects Marrakech"
         : language === 'ar' ? "حول NanoProtects مراكش"
         : "Acerca de – NanoProtects Marrakech",
-      "url": "https://nanoprotects.com/a-propos",
+      "url": "https://nanoprotects.com/a-propos/",
       "description": language === 'fr' ? "Fondée en 2019, NanoProtects est spécialiste du nettoyage et traitement nanotechnologique du bejmat, zellige, carreaux de ciment beldi, pierre taza et marbre pour hôtels et riads à Marrakech."
         : language === 'en' ? "Founded in 2019, NanoProtects specialises in nanotechnology cleaning and treatment of bejmat, zellige, beldi cement tiles, taza stone and marble for hotels and riads in Marrakech."
         : language === 'ar' ? "تأسست NanoProtects عام 2019، متخصصة في التنظيف النانوي للبيجمات والزليج وبلاط الإسمنت البلدي وحجر تازة والرخام للفنادق والرياض في مراكش."
