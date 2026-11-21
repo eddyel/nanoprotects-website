@@ -15,6 +15,7 @@ const APropos = lazy(() => import("./pages/APropos"));
 const PourquoiNousChoisir = lazy(() => import("./pages/PourquoiNousChoisir"));
 const NotreMethode = lazy(() => import("./pages/NotreMethode"));
 const MateriauxExpertises = lazy(() => import("./pages/MateriauxExpertises"));
+const NettoyageBejmat = lazy(() => import("./pages/NettoyageBejmat"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Confirmation = lazy(() => import("./pages/Confirmation"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -41,6 +42,14 @@ const canonicalTarget: Record<string, string> = {
 // Ces textes doivent rester identiques a ceux de scripts/prerender.mjs.
 // L'accueil et les autres langues utilisent les textes de translations.ts.
 const pageSeoFr: Record<string, { title: string; description: string }> = {
+  "/": {
+    title: "NanoProtects | Nettoyage Bejmat, Zellige, Marbre Marrakech",
+    description: "Nettoyage et protection nanotechnologique du bejmat, zellige, pierre de Taza et marbre pour hôtels et riads à Marrakech. Diagnostic gratuit.",
+  },
+  "/nettoyage-bejmat-marrakech": {
+    title: "Nettoyage et Protection Bejmat Marrakech | NanoProtects",
+    description: "Nettoyage, décapage et protection hydrofuge et oléofuge du bejmat à Marrakech pour riads, hôtels et villas. Essai préalable et diagnostic gratuit.",
+  },
   "/materiaux-expertises": {
     title: "Nettoyage Bejmat, Zellige, Pierre Taza, Marbre | NanoProtects",
     description: "Nettoyage et protection nano du bejmat, zellige, carreaux beldi, pierre de Taza et marbre. Solutions durables pour hôtels et riads à Marrakech.",
@@ -142,6 +151,7 @@ function Router() {
         <Route path="/pourquoi-nous-choisir" component={PourquoiNousChoisir} />
         <Route path="/notre-methode" component={NotreMethode} />
         <Route path="/materiaux-expertises" component={MateriauxExpertises} />
+        <Route path="/nettoyage-bejmat-marrakech" component={NettoyageBejmat} />
         <Route path="/contact" component={Contact} />
         <Route path="/confirmation" component={Confirmation} />
         <Route path="/merci" component={Confirmation} />
