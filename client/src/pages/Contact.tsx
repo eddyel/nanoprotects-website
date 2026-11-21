@@ -72,6 +72,8 @@ export default function Contact() {
 
   // SEO — title dynamique par langue
   useEffect(() => {
+    // En francais, le titre est gere par SEOUpdater (App.tsx) pour rester identique au pre-rendu.
+    if (language === 'fr') return;
     const pageTitles: Record<string, string> = {
       fr: 'Contact & Diagnostic Gratuit – Nettoyage Bejmat, Zellige, Marbre Marrakech | NanoProtects',
       en: 'Contact & Free Diagnosis – Bejmat, Zellige, Marble Cleaning Marrakech | NanoProtects',
@@ -102,7 +104,7 @@ export default function Contact() {
         : language === 'en' ? "Contact NanoProtects – Free diagnostic surface cleaning Marrakech"
         : language === 'ar' ? "اتصل بـ NanoProtects – تشخيص مجاني لتنظيف الأسطح مراكش"
         : "Contacto NanoProtects – Diagnóstico gratuito limpieza superficies Marrakech",
-      "url": "https://nanoprotects.com/contact",
+      "url": "https://nanoprotects.com/contact/",
       "description": language === 'fr' ? "Demandez votre diagnostic gratuit pour le nettoyage et la protection nanotechnologique du bejmat, zellige, carreaux de ciment beldi, pierre taza et marbre à Marrakech."
         : language === 'en' ? "Request your free diagnostic for nanotechnology cleaning and protection of bejmat, zellige, beldi cement tiles, taza stone and marble in Marrakech."
         : language === 'ar' ? "اطلب تشخيصك المجاني لتنظيف وحماية البيجمات والزليج وبلاط الإسمنت البلدي وحجر تازة والرخام في مراكش."
