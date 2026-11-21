@@ -534,6 +534,29 @@ export default function NettoyageBejmat() {
           </div>
         </section>
 
+        {/* Renvoi vers la page reglementaire. Francais uniquement : la page n'existe qu'en francais. */}
+        {language === 'fr' && (
+          <section className="pb-6 px-4 md:px-8">
+            <div className="max-w-5xl mx-auto rounded-lg p-6" style={cardStyle}>
+              <h2 className="text-xl font-bold mb-2" style={{ color: brand }}>
+                Classement hôtelier : vos sols sont inspectés
+              </h2>
+              <p className="text-gray-700 mb-3">
+                Pour les riads, l&apos;arrêté de classement impose des sols en matériaux traditionnels, pierre, marbre,
+                zellijs ou parquet en bois. Il exige par ailleurs, au titre des normes obligatoires, que les sols soient
+                en bon état d&apos;entretien et de propreté dans tous les espaces de l&apos;établissement.
+              </p>
+              <Link
+                href="/classement-hotelier-maroc-etat-des-sols"
+                className="font-semibold underline underline-offset-4"
+                style={{ color: brand }}
+              >
+                Ce que la réforme exige de vos sols
+              </Link>
+            </div>
+          </section>
+        )}
+
         {/* Appel a l'action final */}
         <section className="py-14 px-4 md:px-8">
           <div className="max-w-5xl mx-auto rounded-xl p-8 text-center" style={cardStyle}>
