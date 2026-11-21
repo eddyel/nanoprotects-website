@@ -4,9 +4,19 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { SiFacebook, SiLinkedin, SiInstagram } from 'react-icons/si';
 
+// Libelle du raccourci vers la page bejmat.
+// "Bejmat" est en gras, le reste en graisse normale.
+const bejmatLabels: Record<string, { strong: string; rest: string }> = {
+  fr: { strong: 'Bejmat', rest: ' : nettoyage et protection' },
+  en: { strong: 'Bejmat', rest: ': cleaning and protection' },
+  ar: { strong: 'البيجمات', rest: ': تنظيف وحماية' },
+  es: { strong: 'Bejmat', rest: ': limpieza y protección' },
+};
+
 export default function Home() {
   const [, setLocation] = useLocation();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const bejmat = bejmatLabels[language] ?? bejmatLabels.fr;
 
   return (
     <div className="w-full">
@@ -34,6 +44,16 @@ export default function Home() {
               dangerouslySetInnerHTML={{ __html: t.hero.subtitle }}
             />
             <div className="flex flex-col gap-4 w-fit md:gap-4 gap-3">
+              <Button
+                size="lg"
+                onClick={() => setLocation('/nettoyage-bejmat-marrakech')}
+                className="text-lg px-6 py-6 justify-center whitespace-nowrap border-2 btn-brand md:text-lg text-base md:px-6 px-4 md:py-6 py-4"
+              >
+                <span>
+                  <span className="font-bold">{bejmat.strong}</span>
+                  <span className="font-normal">{bejmat.rest}</span>
+                </span>
+              </Button>
               <Button
                 size="lg"
                 onClick={() => setLocation('/showroom')}
