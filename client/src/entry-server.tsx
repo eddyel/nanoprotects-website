@@ -10,6 +10,7 @@ import APropos              from "./pages/APropos";
 import PourquoiNousChoisir  from "./pages/PourquoiNousChoisir";
 import NotreMethode         from "./pages/NotreMethode";
 import MateriauxExpertises  from "./pages/MateriauxExpertises";
+import NettoyageBejmat      from "./pages/NettoyageBejmat";
 import Contact              from "./pages/Contact";
 
 const routeMap: Record<string, React.ComponentType> = {
@@ -20,6 +21,7 @@ const routeMap: Record<string, React.ComponentType> = {
   "/pourquoi-nous-choisir": PourquoiNousChoisir,
   "/notre-methode":         NotreMethode,
   "/materiaux-expertises":  MateriauxExpertises,
+  "/nettoyage-bejmat-marrakech": NettoyageBejmat,
   "/contact":               Contact,
 };
 
