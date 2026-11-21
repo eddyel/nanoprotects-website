@@ -10,6 +10,8 @@ export default function NotreMethode() {
 
   // SEO — title dynamique par langue
   useEffect(() => {
+    // En francais, le titre est gere par SEOUpdater (App.tsx) pour rester identique au pre-rendu.
+    if (language === 'fr') return;
     const pageTitles: Record<string, string> = {
       fr: 'Notre Méthode Nanotechnologique – Diagnostic, Nettoyage & Protection | NanoProtects Marrakech',
       en: 'Our Nanotechnology Method – Diagnosis, Cleaning & Protection | NanoProtects Marrakech',
