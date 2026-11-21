@@ -380,6 +380,13 @@ export default function ClassementHotelier() {
               </Link>
               .
             </p>
+            <p className="text-gray-700 leading-relaxed mt-3 max-w-3xl">
+              Pour chiffrer et planifier l&apos;entretien, voir aussi{' '}
+              <Link href="/temps-cycles-entretien-sols-hotellerie" className="font-semibold underline underline-offset-4" style={{ color: brand }}>
+                les temps, cycles et fréquences d&apos;entretien des sols en hôtellerie
+              </Link>
+              .
+            </p>
           </div>
         </section>
 
