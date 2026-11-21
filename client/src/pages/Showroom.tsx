@@ -76,6 +76,8 @@ export default function Showroom() {
 
   // SEO — title dynamique par langue
   useEffect(() => {
+    // En francais, le titre est gere par SEOUpdater (App.tsx) pour rester identique au pre-rendu.
+    if (language === 'fr') return;
     const pageTitles: Record<string, string> = {
       fr: 'Nos Réalisations – Avant/Après Bejmat, Zellige, Pierre Taza, Marbre | NanoProtects Marrakech',
       en: 'Our Projects – Before/After Bejmat, Zellige, Taza Stone, Marble | NanoProtects Marrakech',
@@ -94,7 +96,7 @@ export default function Showroom() {
         : language === 'en' ? "Before/after gallery – Bejmat, zellige, taza stone, marble cleaning in Marrakech"
         : language === 'ar' ? "معرض قبل/بعد – تنظيف البيجمات والزليج وحجر تازة والرخام في مراكش"
         : "Galería antes/después – Limpieza bejmat, zellige, piedra taza, mármol en Marrakech",
-      "url": "https://nanoprotects.com/showroom",
+      "url": "https://nanoprotects.com/showroom/",
       "description": language === 'fr' ? "Découvrez les transformations spectaculaires de NanoProtects : nettoyage et protection du bejmat, zellige, carreaux de ciment beldi, pierre taza et marbre dans les hôtels et riads de Marrakech."
         : language === 'en' ? "Discover NanoProtects spectacular transformations: cleaning and protection of bejmat, zellige, beldi cement tiles, taza stone and marble in Marrakech hotels and riads."
         : language === 'ar' ? "اكتشف التحولات المذهلة لـ NanoProtects: تنظيف وحماية البيجمات والزليج وبلاط الإسمنت البلدي وحجر تازة والرخام في فنادق ورياض مراكش."
