@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Link } from 'wouter';
 import Navigation from '@/components/Navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
@@ -232,6 +233,30 @@ export default function MateriauxExpertises() {
     return value || key;
   };
 
+  const bejmatLinkTexts: Record<string, { title: string; text: string; cta: string }> = {
+    fr: {
+      title: 'Bejmat : notre page dédiée',
+      text: 'Nettoyage, décapage, traitement du salpêtre et protection du bejmat : méthode, réalisations et questions fréquentes.',
+      cta: 'Voir la page Nettoyage et protection du bejmat',
+    },
+    en: {
+      title: 'Bejmat: our dedicated page',
+      text: 'Cleaning, stripping, saltpetre treatment and protection of bejmat: method, projects and frequently asked questions.',
+      cta: 'See the Bejmat cleaning and protection page',
+    },
+    ar: {
+      title: 'البيجمات: صفحتنا المخصصة',
+      text: 'تنظيف البيجمات وإزالة طبقاته القديمة ومعالجة الأملاح وحمايته: المنهجية والإنجازات والأسئلة الشائعة.',
+      cta: 'عرض صفحة تنظيف وحماية البيجمات',
+    },
+    es: {
+      title: 'Bejmat: nuestra página dedicada',
+      text: 'Limpieza, decapado, tratamiento del salitre y protección del bejmat: método, realizaciones y preguntas frecuentes.',
+      cta: 'Ver la página de limpieza y protección del bejmat',
+    },
+  };
+  const bejmatLink = bejmatLinkTexts[language] ?? bejmatLinkTexts.fr;
+
   return (
     <div className="min-h-screen" style={{ position: 'relative' }}>
       {/* DO NOT CHANGE - backgroundSize must stay '100% auto' */}
@@ -370,6 +395,17 @@ export default function MateriauxExpertises() {
               </div>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Lien vers la page dediee Bejmat (toujours visible, y compris dans le HTML pre-rendu) */}
+      <section className="pb-16 px-4 md:px-8" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="max-w-7xl mx-auto rounded-lg p-6" style={{ backgroundColor: 'rgba(255,255,255,0.92)', border: '1px solid rgba(167,92,22,0.25)' }}>
+          <h2 className="text-xl font-bold mb-2" style={{ color: '#A33215' }}>{bejmatLink.title}</h2>
+          <p className="text-gray-700 mb-3">{bejmatLink.text}</p>
+          <Link href="/nettoyage-bejmat-marrakech" className="font-semibold underline underline-offset-4" style={{ color: '#A33215' }}>
+            {bejmatLink.cta}
+          </Link>
         </div>
       </section>
     </div>
