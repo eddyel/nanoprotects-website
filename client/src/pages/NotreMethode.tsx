@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'wouter';
 import Navigation from '@/components/Navigation';
 import { Sparkles, Shield, CheckCircle, Clock, TrendingUp, Handshake } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -8,7 +9,7 @@ export default function NotreMethode() {
   const { language } = useLanguage();
   const t = translations[language];
 
-  // SEO — title dynamique par langue
+  // SEO : title dynamique par langue
   useEffect(() => {
     // En francais, le titre est gere par SEOUpdater (App.tsx) pour rester identique au pre-rendu.
     if (language === 'fr') return;
@@ -21,7 +22,7 @@ export default function NotreMethode() {
     document.title = pageTitles[language] || pageTitles['fr'];
   }, [language]);
 
-  // SEO — Schema.org HowTo pour les 3 phases de la méthode
+  // SEO : Schema.org HowTo pour les 3 phases de la méthode
   useEffect(() => {
     const schemaData = {
       "@context": "https://schema.org",
@@ -227,7 +228,7 @@ export default function NotreMethode() {
 
             <div className="bg-primary/5 rounded-2xl p-8 text-center">
               <TrendingUp className="w-12 h-12 text-primary mx-auto mb-4" />
-              <div className="font-display text-5xl font-bold text-primary mb-2">12-18</div>
+              <div className="font-display text-5xl font-bold text-primary mb-2">24 / 36</div>
               <p className="text-gray-700 font-semibold mb-2">{t.method.metric2Label}</p>
               <p className="text-sm text-gray-600">
                 {t.method.metric2Description}
@@ -243,6 +244,59 @@ export default function NotreMethode() {
               </p>
             </div>
           </div>
+
+          {/* Reperes professionnels. Francais uniquement : les deux pages de destination n'existent qu'en francais. */}
+          {language === 'fr' && (
+            <div className="mt-16">
+              <h2 className="font-display text-[1.75rem] md:text-[2.25rem] font-bold text-secondary mb-3">
+                Repères professionnels
+              </h2>
+              <p className="text-gray-700 mb-6 max-w-3xl">
+                Deux références que nous tenons à jour pour les établissements, sources officielles à l&apos;appui.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <article
+                  className="rounded-2xl p-6"
+                  style={{ backgroundColor: '#ffffff', border: '1px solid rgba(167,92,22,0.25)' }}
+                >
+                  <h3 className="font-display text-xl font-semibold text-gray-900 mb-2">
+                    Classement hôtelier et état des sols
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    Ce que la réforme du classement exige de vos sols, et pourquoi le bon état des sols est une norme
+                    obligatoire.
+                  </p>
+                  <Link
+                    href="/classement-hotelier-maroc-etat-des-sols"
+                    className="font-semibold underline underline-offset-4"
+                    style={{ color: '#A33215' }}
+                  >
+                    Lire la page
+                  </Link>
+                </article>
+
+                <article
+                  className="rounded-2xl p-6"
+                  style={{ backgroundColor: '#ffffff', border: '1px solid rgba(167,92,22,0.25)' }}
+                >
+                  <h3 className="font-display text-xl font-semibold text-gray-900 mb-2">
+                    Temps, cycles et fréquences
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    Les cadences de référence du secteur converties en mètres et minutes, et ce qu&apos;elles ne
+                    couvrent pas.
+                  </p>
+                  <Link
+                    href="/temps-cycles-entretien-sols-hotellerie"
+                    className="font-semibold underline underline-offset-4"
+                    style={{ color: '#A33215' }}
+                  >
+                    Lire la page
+                  </Link>
+                </article>
+              </div>
+            </div>
+          )}
         </div>
       </section>
       </div>
