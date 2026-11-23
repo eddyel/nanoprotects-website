@@ -474,9 +474,27 @@ export default function MateriauxExpertises() {
         </div>
       </section>
 
-      {/* Section zellige : chaine de degradation, dans les quatre langues */}
-      <section className="pb-16 px-4 md:px-8" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="max-w-7xl mx-auto">
+      {/* Section zellige : chaine de degradation, dans les quatre langues.
+          Fond propre a la section (photo de zellige) : le fond general de la page
+          suit l'onglet de categorie actif et montrait du marbre a cet endroit. */}
+      <section
+        className="py-14 px-4 md:px-8"
+        style={{ position: 'relative', zIndex: 1, backgroundColor: '#f8f3ec', overflow: 'hidden' }}
+      >
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundImage: "url('/images/BackgroundImages/bg-zellige.webp')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: 0.22,
+            pointerEvents: 'none',
+          }}
+        />
+        <div className="max-w-7xl mx-auto" style={{ position: 'relative' }}>
           <h2 className="font-display text-[1.75rem] md:text-[2.25rem] font-bold mb-3" style={{ color: '#A33215' }}>
             {zellige.title}
           </h2>
