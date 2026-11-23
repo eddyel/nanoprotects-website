@@ -11,8 +11,8 @@ const PHONE_DISPLAY = '+212 675 971 971';
 const PHONE_TEL = '+212675971971';
 const WHATSAPP_URL = 'https://wa.me/212675971971';
 
-const SRC_ISSA = 'https://www.energy.wsu.edu/Documents/Session%206%20-%20Utilizing%20Custodial%20Staffing%20and%20Performance....pdf';
-const SRC_ISSA_ORG = 'https://www.issa.com/';
+const SRC_ISSA = 'https://www.kimpaper.com/wp-content/resources/Kim-Paper-ISSA-Cleaning-Times.pdf';
+const SRC_ISSA_ORG = 'https://www.issa.com/cleaning-times/';
 const SRC_SITEMINDER = 'https://www.siteminder.com/r/hotel-room-cleaning/';
 const SRC_DEEPCLEAN = 'https://hospitalitylawyer.com/wp-content/uploads/2019/01/Deep-cleaning.pdf';
 
@@ -48,6 +48,11 @@ const solRows: Row[] = [
     cadence: '372 à 511 m² par heure',
     temps: '12 à 16 min',
   },
+];
+
+const eauRows: Row[] = [
+  { label: 'Lavage humide, serpillière essorée', cadence: '9,83 m² par litre', temps: 'env. 10 L' },
+  { label: 'Lavage à grande eau', cadence: '4,91 m² par litre', temps: 'env. 20 L' },
 ];
 
 const chambreRows: Row[] = [
@@ -87,6 +92,10 @@ const faqs: Faq[] = [
   {
     q: 'D’où viennent ces cadences ?',
     a: "Elles sont publiées par ISSA, l’association mondiale de l’industrie du nettoyage, dans le recueil connu sous le nom de ISSA Cleaning Times. Elles sont issues d’études de temps et mouvements et servent de base aux chiffrages de contrats de propreté dans le monde entier. Elles sont exprimées en pieds carrés par heure : 1 000 pieds carrés valent 92,9 m².",
+  },
+  {
+    q: 'Combien d’eau faut-il pour nettoyer 100 m² de sol ?',
+    a: "Les conversions métriques publiées avec les cadences de référence donnent 9,83 m² par litre en lavage humide avec serpillière essorée, soit environ 10 litres pour 100 m², et 4,91 m² par litre en lavage à grande eau, soit environ 20 litres pour 100 m². Ces valeurs supposent un sol où l’eau reste en surface : elles ne décrivent pas un support poreux non traité, qui absorbe l’eau pendant le passage.",
   },
   {
     q: 'Combien de temps pour nettoyer une chambre d’hôtel ?',
@@ -149,7 +158,7 @@ export default function TempsCyclesEntretien() {
       { '@type': 'Thing', name: 'Cadences de nettoyage ISSA' },
     ],
     citation: [
-      { '@type': 'CreativeWork', name: 'ISSA 540 Cleaning Times, cadences de nettoyage de référence', url: SRC_ISSA },
+      { '@type': 'CreativeWork', name: 'ISSA 540 Cleaning Times, cadences de nettoyage et conversions métriques', url: SRC_ISSA },
       { '@type': 'CreativeWork', name: 'SiteMinder, guide du housekeeping hôtelier', url: SRC_SITEMINDER },
       { '@type': 'CreativeWork', name: 'Ten steps to guest-room deep cleaning', url: SRC_DEEPCLEAN },
     ],
@@ -294,6 +303,26 @@ export default function TempsCyclesEntretien() {
           </div>
         </section>
 
+        {/* Eau au 100 m2 */}
+        <section className="py-12 px-4 md:px-8">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: brand }}>
+              Combien d&apos;eau pour 100 m² de sol
+            </h2>
+            <p className="text-gray-700 leading-relaxed mb-6 max-w-3xl">
+              Le même recueil publie des conversions métriques directes pour la consommation de solution. Elles sont
+              rarement citées, et ce sont pourtant les seules références chiffrées publiques sur la quantité d&apos;eau
+              nécessaire au nettoyage d&apos;un sol.
+            </p>
+            {renderTable(eauRows, ['Méthode', 'Référence', 'Pour 100 m²'])}
+            <p className="text-sm text-gray-600 mt-4 max-w-3xl">
+              Valeurs d&apos;origine : 37,20 m² pour 3,785 litres en lavage humide, 18,60 m² pour 3,785 litres en
+              lavage à grande eau. Il s&apos;agit de la solution consommée, dans des conditions normales, avec une
+              serpillière essorée et un sol où l&apos;eau reste en surface.
+            </p>
+          </div>
+        </section>
+
         {/* Temps chambre */}
         <section className="py-12 px-4 md:px-8">
           <div className="max-w-5xl mx-auto">
@@ -355,6 +384,12 @@ export default function TempsCyclesEntretien() {
                 Elle ne va pas de soi au Maroc. Un bejmat, une pierre de Taza ou un carreau de ciment beldi non traité
                 absorbe l&apos;eau pendant le passage. L&apos;agent remouille, change l&apos;eau plus souvent, repasse.
                 Le temps réel s&apos;écarte du repère, et aucun barème public ne chiffre cet écart.
+              </p>
+              <p>
+                Le repère d&apos;eau souffre exactement du même angle mort. Dix litres pour 100 m², c&apos;est la
+                consommation d&apos;une serpillière essorée passée sur un sol qui ne boit pas. Sur un support poreux
+                non traité, l&apos;agent vide son seau et le remplit à nouveau, et la consommation réelle n&apos;a plus
+                de rapport avec ce chiffre.
               </p>
               <p>
                 Le temps de séchage n&apos;apparaît dans aucune de ces références non plus. C&apos;est pourtant lui qui
@@ -475,12 +510,13 @@ export default function TempsCyclesEntretien() {
             <ul className="space-y-3 list-none p-0 m-0 max-w-3xl">
               <li className="rounded-lg p-5" style={cardStyle}>
                 <a href={SRC_ISSA} target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-4" style={{ color: brand }}>
-                  ISSA 540 Cleaning Times, cadences de nettoyage de référence
+                  ISSA 540 Cleaning Times, cadences de nettoyage et conversions métriques
                 </a>
                 <p className="text-gray-700 leading-relaxed mt-2">
-                  Cadence du lavage humide, tête de 12 onces, seau et presse simples : 1 000 pieds carrés en
-                  16,80 minutes, soit 3 571 pieds carrés par heure. Document publié par le Washington State University
-                  Energy Program. Le recueil lui-même est édité par{' '}
+                  Ligne 329 du recueil : lavage humide, tête de 12 onces, seau et presse simples, 1 000 pieds carrés
+                  en 16,80 minutes, soit 3 571 pieds carrés par heure. Le même document publie les conversions
+                  métriques directes reprises plus haut. Chart reproduit et mis en ligne par un distributeur
+                  professionnel. Le recueil lui-même est édité par{' '}
                   <a href={SRC_ISSA_ORG} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4" style={{ color: brand }}>
                     ISSA
                   </a>
