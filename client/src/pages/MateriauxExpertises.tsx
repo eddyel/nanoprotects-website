@@ -233,6 +233,82 @@ export default function MateriauxExpertises() {
     return value || key;
   };
 
+  // Section zellige : chaine de degradation. Contenu porte par la page pour ne pas
+  // alourdir translations.ts, dans les quatre langues.
+  const zelligeTexts: Record<string, {
+    title: string; lead: string; chainLabel: string;
+    steps: { t: string; d: string }[];
+    replaceTitle: string; replaceText: string;
+    doTitle: string; doText: string; cta: string;
+  }> = {
+    fr: {
+      title: 'Zellige : comprendre la chaîne de dégradation',
+      lead: "Le zellige ne se dégrade pas d'un coup. Il suit un enchaînement précis, et chaque étape rend la suivante plus coûteuse. Comprendre cet enchaînement, c'est savoir à quel moment intervenir.",
+      chainLabel: "L'enchaînement, étape par étape",
+      steps: [
+        { t: 'Le calcaire se dépose sur l\u2019émail', d: "L'eau dure laisse un film blanchâtre sur la partie émaillée. Les couleurs s'éteignent, la surface perd son éclat. À ce stade, le zellige est intact : il est seulement encrassé." },
+        { t: 'Les joints s\u2019attaquent', d: "Les joints subissent toutes sortes d'agressions : eau, calcaire, produits de nettoyage inadaptés, passage. Ils sont presque toujours négligés, alors que leur rôle est central." },
+        { t: 'Les arêtes se découvrent', d: "Un joint dégradé n'enveloppe plus les bords des pièces. Les arêtes de l'émail se trouvent exposées, et l'écaillage commence." },
+        { t: 'Le calepinage se fragilise', d: "Plus profondément, c'est la structure qui maintient les pièces en place qui faiblit. Des pièces peuvent se déchausser et se retirer du calepinage." },
+      ],
+      replaceTitle: 'Pourquoi le remplacement est un piège',
+      replaceText: "Le zellige ancien est très difficile à remplacer à l'identique, et le zellige récent l'est parfois tout autant. Les teintes varient d'une cuisson à l'autre, puis évoluent avec l'exposition aux UV. Une pièce neuve posée au milieu d'un calepinage ancien se voit, et elle se verra encore plus dans cinq ans.",
+      doTitle: 'Ce que nous faisons',
+      doText: "Nous détartrons l'émail et ravivons les couleurs, nous traitons les joints au lieu de les ignorer, puis nous protégeons l'ensemble par une imprégnation hydrofuge et oléofuge non filmogène, qui laisse le support respirer. L'objectif est d'arrêter l'enchaînement avant l'étape 3, celle où la perte devient irréversible.",
+      cta: 'Demander un diagnostic gratuit',
+    },
+    en: {
+      title: 'Zellige: understanding the chain of damage',
+      lead: 'Zellige does not fail all at once. It follows a precise sequence, and each stage makes the next one more expensive. Understanding that sequence is knowing when to act.',
+      chainLabel: 'The sequence, step by step',
+      steps: [
+        { t: 'Limescale settles on the glaze', d: 'Hard water leaves a whitish film on the glazed surface. Colours fade and the surface loses its shine. At this stage the zellige is intact: it is only soiled.' },
+        { t: 'The joints come under attack', d: 'Joints face every kind of aggression: water, limescale, unsuitable cleaning products, foot traffic. They are almost always neglected, although their role is central.' },
+        { t: 'The edges become exposed', d: 'A damaged joint no longer wraps the edges of each piece. The edges of the glaze are left exposed, and chipping begins.' },
+        { t: 'The layout itself weakens', d: 'Deeper down, the structure holding the pieces in place gives way. Pieces can work loose and come out of the layout.' },
+      ],
+      replaceTitle: 'Why replacement is a trap',
+      replaceText: 'Old zellige is very hard to replace identically, and recent zellige sometimes just as hard. Shades vary from one firing to the next, then shift with UV exposure. A new piece set into an old layout shows, and it will show even more in five years.',
+      doTitle: 'What we do',
+      doText: 'We descale the glaze and revive the colours, we treat the joints instead of ignoring them, then we protect the whole with a water and oil repellent impregnation that forms no film, so the substrate keeps breathing. The aim is to stop the sequence before stage 3, where the loss becomes irreversible.',
+      cta: 'Request a free assessment',
+    },
+    ar: {
+      title: 'الزليج: فهم سلسلة التدهور',
+      lead: 'لا يتدهور الزليج دفعة واحدة، بل يتبع تسلسلاً دقيقاً، وكل مرحلة تجعل التي تليها أكثر كلفة. فهم هذا التسلسل يعني معرفة الوقت المناسب للتدخل.',
+      chainLabel: 'التسلسل، مرحلة بمرحلة',
+      steps: [
+        { t: 'ترسّب الكلس على المينا', d: 'يترك الماء العسر طبقة بيضاء على الجزء المطلي بالمينا، فتخبو الألوان ويفقد السطح لمعانه. في هذه المرحلة يبقى الزليج سليماً، وهو متسخ فقط.' },
+        { t: 'تضرّر الفواصل', d: 'تتعرض الفواصل لكل أنواع الاعتداء: الماء والكلس ومواد التنظيف غير الملائمة وحركة المرور. وغالباً ما تُهمل رغم دورها المركزي.' },
+        { t: 'انكشاف الحواف', d: 'الفاصل المتضرر لم يعد يغلف حواف القطع، فتنكشف حواف المينا ويبدأ التقشر.' },
+        { t: 'ضعف بنية التركيب', d: 'في العمق، تضعف البنية التي تثبّت القطع في مكانها، فقد تتزحزح بعض القطع وتخرج من التركيب.' },
+      ],
+      replaceTitle: 'لماذا يعدّ الاستبدال فخاً',
+      replaceText: 'يصعب كثيراً استبدال الزليج القديم بالمثل، وأحياناً حتى الزليج الحديث. فالألوان تختلف من حرق إلى آخر، ثم تتغير مع التعرض للأشعة فوق البنفسجية. القطعة الجديدة وسط تركيب قديم تُرى، وستُرى أكثر بعد خمس سنوات.',
+      doTitle: 'ما نقوم به',
+      doText: 'نزيل الكلس عن المينا ونعيد إحياء الألوان، ونعالج الفواصل بدل إهمالها، ثم نحمي المجموع بتشريب طارد للماء والزيوت لا يشكّل طبقة، فيبقى السطح قادراً على التنفس. الهدف هو إيقاف التسلسل قبل المرحلة الثالثة، حيث تصبح الخسارة غير قابلة للإصلاح.',
+      cta: 'اطلب تشخيصاً مجانياً',
+    },
+    es: {
+      title: 'Zellige: entender la cadena de deterioro',
+      lead: 'El zellige no se deteriora de golpe. Sigue una secuencia precisa, y cada etapa encarece la siguiente. Entender esa secuencia es saber cuándo intervenir.',
+      chainLabel: 'La secuencia, etapa por etapa',
+      steps: [
+        { t: 'La cal se deposita sobre el esmalte', d: 'El agua dura deja una película blanquecina sobre la parte esmaltada. Los colores se apagan y la superficie pierde su brillo. En esta etapa el zellige está intacto: solo está sucio.' },
+        { t: 'Las juntas se deterioran', d: 'Las juntas sufren todo tipo de agresiones: agua, cal, productos de limpieza inadecuados, tránsito. Casi siempre se descuidan, aunque su papel es central.' },
+        { t: 'Los cantos quedan expuestos', d: 'Una junta deteriorada ya no envuelve los bordes de las piezas. Los cantos del esmalte quedan expuestos y empieza el desconchado.' },
+        { t: 'La estructura se debilita', d: 'Más a fondo, se debilita la estructura que mantiene las piezas en su sitio. Algunas piezas pueden aflojarse y salirse del despiece.' },
+      ],
+      replaceTitle: 'Por qué sustituir es una trampa',
+      replaceText: 'El zellige antiguo es muy difícil de sustituir de forma idéntica, y el reciente a veces también. Los tonos varían de una cocción a otra y luego evolucionan con la exposición a los rayos UV. Una pieza nueva colocada en un despiece antiguo se nota, y se notará aún más dentro de cinco años.',
+      doTitle: 'Lo que hacemos',
+      doText: 'Descalcificamos el esmalte y revivimos los colores, tratamos las juntas en lugar de ignorarlas, y después protegemos el conjunto con una impregnación hidrófuga y oleófuga que no forma película, de modo que el soporte sigue respirando. El objetivo es detener la secuencia antes de la etapa 3, donde la pérdida se vuelve irreversible.',
+      cta: 'Solicitar un diagnóstico gratuito',
+    },
+  };
+
+  const zellige = zelligeTexts[language] ?? zelligeTexts.fr;
+
   const bejmatLinkTexts: Record<string, { title: string; text: string; cta: string }> = {
     fr: {
       title: 'Bejmat : notre page dédiée',
@@ -395,6 +471,63 @@ export default function MateriauxExpertises() {
               </div>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Section zellige : chaine de degradation, dans les quatre langues */}
+      <section className="pb-16 px-4 md:px-8" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-display text-[1.75rem] md:text-[2.25rem] font-bold mb-3" style={{ color: '#A33215' }}>
+            {zellige.title}
+          </h2>
+          <p className="text-gray-700 leading-relaxed mb-8 max-w-3xl">{zellige.lead}</p>
+
+          <p className="text-sm font-semibold text-gray-700 mb-4 uppercase tracking-wide">{zellige.chainLabel}</p>
+          <ol className="grid md:grid-cols-2 gap-4 list-none p-0 m-0 mb-8">
+            {zellige.steps.map((step, i) => (
+              <li
+                key={step.t}
+                className="rounded-lg p-5 flex gap-4"
+                style={{ backgroundColor: 'rgba(255,255,255,0.92)', border: '1px solid rgba(167,92,22,0.25)' }}
+              >
+                <span
+                  className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-white"
+                  style={{ backgroundColor: '#A33215' }}
+                  aria-hidden="true"
+                >
+                  {i + 1}
+                </span>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-1">{step.t}</h3>
+                  <p className="text-gray-700 leading-relaxed">{step.d}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            <div
+              className="rounded-lg p-5"
+              style={{ backgroundColor: 'rgba(167,92,22,0.08)', border: '1px solid rgba(167,92,22,0.3)' }}
+            >
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">{zellige.replaceTitle}</h3>
+              <p className="text-gray-700 leading-relaxed">{zellige.replaceText}</p>
+            </div>
+            <div
+              className="rounded-lg p-5"
+              style={{ backgroundColor: 'rgba(255,255,255,0.92)', border: '1px solid rgba(167,92,22,0.25)' }}
+            >
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">{zellige.doTitle}</h3>
+              <p className="text-gray-700 leading-relaxed mb-4">{zellige.doText}</p>
+              <Link
+                href="/contact"
+                className="font-semibold underline underline-offset-4"
+                style={{ color: '#A33215' }}
+              >
+                {zellige.cta}
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
